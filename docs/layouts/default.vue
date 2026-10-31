@@ -2,6 +2,7 @@
 import {
   computed,
   inject,
+  onMounted,
   ref,
   useAsyncData,
   queryContent,
@@ -15,6 +16,7 @@ import type { Ref } from 'vue';
 
 const route = useRoute();
 const { t } = useDocsStrings();
+const fallbackNavigation = inject<Ref<NavItem[]>>('navigation', ref([]));
 
 // The MCP & CLI area has its own sidebar; everything else uses the main one.
 const navigationFileQueryPath = computed(() =>
@@ -41,25 +43,70 @@ const navTree = computed<NavItem[]>(() => {
   }
 
   // Fallback to the navigation generated from the content folder
-  const fallbackNavigation = inject<Ref<NavItem[]>>('navigation', ref([]));
   return fallbackNavigation.value || [];
 });
+
+// The sidebar can be folded to a slim rail to give the page more room; the
+// choice is remembered on this device.
+const SIDEBAR_KEY = 'docsSidebarCollapsed';
+const collapsed = ref(false);
+
+onMounted(() => {
+  try {
+    collapsed.value = localStorage.getItem(SIDEBAR_KEY) === 'true';
+  } catch {
+    // Storage can be unavailable (private mode); the sidebar stays open.
+  }
+});
+
+const toggleSidebar = () => {
+  collapsed.value = !collapsed.value;
+  try {
+    localStorage.setItem(SIDEBAR_KEY, String(collapsed.value));
+  } catch {
+    // The choice then lasts for this page only.
+  }
+};
+
+// Fixed-width sidebar column (narrower than the page grid's quarter), or a rail
+const pageUi = computed(() => ({
+  wrapper: `flex flex-col lg:grid lg:gap-10 transition-[grid-template-columns] duration-300 ${
+    collapsed.value ? 'lg:grid-cols-[2.5rem_minmax(0,1fr)]' : 'lg:grid-cols-[15.5rem_minmax(0,1fr)]'
+  }`,
+  left: 'lg:col-span-1 min-w-0',
+  center: { base: 'lg:col-span-1 min-w-0' },
+}));
 </script>
 
 <template>
   <UContainer>
-    <UPage>
+    <UPage :ui="pageUi">
       <template #left>
         <UAside>
-          <UNavigationTree
-            v-if="!navPending && navTree.length > 0"
-            :links="mapContentNavigation(navTree)"
-            default-open
-            :multiple="false"
-            class="navigation-tree"
-          />
-          <div v-else-if="navPending" class="p-4">{{ t('loadingNavigation') }}</div>
-          <div v-else class="p-4">{{ t('noNavigation') }}</div>
+          <div :class="['hidden lg:flex mb-3', collapsed ? 'justify-center' : 'justify-end -mr-2']">
+            <UTooltip :text="collapsed ? t('expandSidebar') : t('collapseSidebar')">
+              <UButton
+                :icon="collapsed ? 'i-heroicons-chevron-double-right-20-solid' : 'i-heroicons-chevron-double-left-20-solid'"
+                :aria-label="collapsed ? t('expandSidebar') : t('collapseSidebar')"
+                :aria-expanded="!collapsed"
+                color="gray"
+                variant="ghost"
+                size="xs"
+                @click="toggleSidebar"
+              />
+            </UTooltip>
+          </div>
+          <div v-show="!collapsed">
+            <UNavigationTree
+              v-if="!navPending && navTree.length > 0"
+              :links="mapContentNavigation(navTree)"
+              default-open
+              :multiple="false"
+              class="navigation-tree"
+            />
+            <div v-else-if="navPending" class="p-4">{{ t('loadingNavigation') }}</div>
+            <div v-else class="p-4">{{ t('noNavigation') }}</div>
+          </div>
         </UAside>
       </template>
       <slot />
