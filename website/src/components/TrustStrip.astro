@@ -1,0 +1,30 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const items = [
+  { icon: 'lucide:bot-off', b: '0', t: t(lang, 'trust.bots') },
+  { icon: 'lucide:hard-drive', b: t(lang, 'trust.localLabel'), t: '' },
+  { icon: 'lucide:user-x', b: '0', t: t(lang, 'trust.pillars') },
+  { icon: 'lucide:cpu', b: t(lang, 'trust.byokLabel'), t: t(lang, 'trust.byok') },
+  { icon: 'lucide:file-check-2', b: t(lang, 'trust.sourceBackedLabel'), t: t(lang, 'trust.sourceBacked') },
+];
+---
+<div class="trust">
+  <div class="container trust-in">
+    {items.map((item) => (
+      <span class="t">
+        <span class="tic" aria-hidden="true">
+          <Icon name={item.icon} width="13" height="13" />
+        </span>
+        <b>{item.b}</b>{item.t && <>&nbsp;{item.t}</>}
+      </span>
+    ))}
+  </div>
+</div>

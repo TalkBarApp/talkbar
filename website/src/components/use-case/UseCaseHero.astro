@@ -1,0 +1,100 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+import { t, type Language } from '../../i18n';
+import { Icon } from 'astro-icon/components';
+import HeroImageZoom from '../HeroImageZoom.tsx';
+import Screenshot from '../ui/Screenshot.astro';
+import type { ShotId } from '../../lib/screenshots';
+import { DOWNLOAD_LINK_WINDOWS } from '../../lib/download';
+
+interface Props {
+  lang: Language;
+  icon: string;
+  eyebrow: string;
+  headline: string;
+  accent: string;
+  sub: string;
+  ctaPrimary: { label: string; href: string };
+  ctaSecondary: { label: string; href: string };
+  mediaLabel: string;
+  mediaImage?: ImageMetadata;
+  mediaPlaceholder?: string;
+  /** Screenshot slot for the hero (src/lib/screenshots.ts). */
+  shot?: ShotId;
+}
+
+const { lang, eyebrow, headline, accent, sub, ctaPrimary, ctaSecondary, mediaLabel, mediaImage, shot = 'live-focus' } = Astro.props;
+const isCtaPrimaryDownload = ctaPrimary.href === '/#cta' || ctaPrimary.href === '#cta';
+const formatMediaText = (key: string, label: string) => t(lang, key).replace('{label}', label);
+const expandLabel = formatMediaText('media.zoom.expand', mediaLabel);
+const closeLabel = formatMediaText('media.zoom.close', mediaLabel);
+const imageAlt = formatMediaText('media.alt.screenshot', mediaLabel);
+---
+<section class="section-pro uc-hero relative overflow-hidden pt-28 sm:pt-32 lg:pt-40 pb-16 sm:pb-20 lg:pb-24">
+  <div class="container relative z-10">
+    <div class="uc-hero-grid">
+      <div class="uc-hero-copy">
+        <span class="eyebrow">{eyebrow}</span>
+
+        <h1 class="uc-hero-title">
+          {headline} <span class="accent-phrase">{accent}</span>
+        </h1>
+
+        <p class="uc-hero-lead">
+          {sub}
+        </p>
+
+        <div class="mt-10 lg:mt-14 flex flex-col sm:flex-row gap-3 sm:items-center">
+          <a
+            href={isCtaPrimaryDownload ? DOWNLOAD_LINK_WINDOWS : ctaPrimary.href}
+            data-download-link={isCtaPrimaryDownload ? "" : undefined}
+            class="group btn-pill btn-primary w-full sm:w-auto"
+          >
+            {isCtaPrimaryDownload && (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.11 144.637" class="w-4 h-4 fill-current mr-0.5 download-icon" aria-hidden="true">
+                <path d="M34.089 6.949s32.8-17.843 60.859 3.654L79.246 64.561s-17.574-12.104-30.623-10.8c-13.049 1.304-30.234 7.554-30.234 7.554l15.7-54.366zM15.621 70.823s17.604-8.188 32.221-7.146c14.615 1.043 26.285 8.91 28.802 10.717l-15.865 54.521s-17.635-11.476-30.162-10.432C18.089 119.53 7.229 121.438 0 125.181l15.621-54.358zM84.859 79.672s16.744 10.888 27.705 10.627c10.799-.258 18.27-1.109 32.921-6.852.114-.045.412-.258.313-.195-.313.195-15.699 54.031-15.699 54.031s-17.273 8.082-32.935 7.301c-15.658-.783-25.062-9.738-27.929-10.873l15.624-54.039z"/>
+                <path d="M103.251 16.295L87.51 69.942s12.788 12.527 30.797 11.482c18.008-1.043 27.795-6.719 30.176-7.52l15.627-54.12s-20.748 8.66-34.32 7.094c-13.571-1.564-22.024-7.335-26.539-10.583z"/>
+              </svg>
+            )}
+            {ctaPrimary.label}
+            <Icon name="lucide:arrow-right" width="16" height="16" class="transition-transform group-hover:translate-x-0.5" />
+          </a>
+          <a href={ctaSecondary.href} class="btn-pill btn-outline w-full sm:w-auto">
+            {ctaSecondary.label}
+          </a>
+        </div>
+
+        {t(lang, 'hero.ctaNote') && (
+          <p class="mt-6 label text-muted-foreground">
+            {t(lang, 'hero.ctaNote')}
+          </p>
+        )}
+      </div>
+
+      <div class="uc-hero-media">
+        {mediaImage ? (
+          <div class="dash overflow-hidden">
+            <HeroImageZoom
+              client:load
+              className="aspect-[16/10] h-full w-full [&_[data-rmiz]]:h-full [&_[data-rmiz-content]]:h-full [&_picture]:h-full [&_img]:h-full"
+              zoomLabel={expandLabel}
+              unzoomLabel={closeLabel}
+            >
+              <Picture
+                src={mediaImage}
+                alt={imageAlt}
+                formats={['avif', 'webp']}
+                widths={[768, 1024, 1280, 1600, 2048, 2400, 3200]}
+                sizes="100vw"
+                class="h-full w-full cursor-zoom-in object-cover"
+              />
+            </HeroImageZoom>
+          </div>
+        ) : (
+          <Screenshot lang={lang} id={shot} class="uc-hero-shot" sizes="(min-width: 1024px) 760px, 100vw" />
+        )}
+      </div>
+    </div>
+  </div>
+</section>

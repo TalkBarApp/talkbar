@@ -1,0 +1,24 @@
+---
+interface Props {
+  paragraphs: string[];
+  pullquote?: string;
+}
+const { paragraphs, pullquote } = Astro.props;
+const mid = pullquote ? Math.ceil(paragraphs.length / 2) : -1;
+---
+<section class="section-pro section-pro-alt section-pad-sm">
+  <div class="container">
+    <div class="uc-problem">
+      {paragraphs.map((p, i) => (
+        <>
+          <p class="uc-problem-p">{p}</p>
+          {pullquote && i === mid - 1 && (
+            <blockquote class="uc-pullquote">
+              <p>“{pullquote}”</p>
+            </blockquote>
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+</section>

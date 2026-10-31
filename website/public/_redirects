@@ -1,0 +1,13 @@
+# Legacy industry slugs → renamed, content-matched slugs (301)
+/competitor-intelligence      /venture-private-equity/   301
+/competitor-intelligence/*    /venture-private-equity/   301
+/brand-compliance             /legal-counsel/            301
+/brand-compliance/*           /legal-counsel/            301
+/developers                   /executive-leadership/     301
+/developers/*                 /executive-leadership/     301
+/ecommerce                    /b2b-sales/                301
+/ecommerce/*                  /b2b-sales/                301
+/seo                          /consulting/               301
+/seo/*                        /consulting/               301
+/personal                     /product-research/         301
+/personal/*                   /product-research/         301

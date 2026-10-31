@@ -1,0 +1,22 @@
+---
+import { t } from '../../i18n';
+import { CURRENT_CONFIG } from '../../i18n/domains';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import type { Language } from '../../i18n/types';
+
+export function getStaticPaths() {
+  const locales = CURRENT_CONFIG.locales.filter(l => l !== CURRENT_CONFIG.defaultLocale);
+  return locales.map(locale => ({ params: { locale }, props: { locale: locale as Language } }));
+}
+
+const { locale } = Astro.props;
+---
+<BaseLayout lang={locale} title="404 - TalkBar" description="" noindex>
+  <div class="flex min-h-screen items-center justify-center bg-muted">
+    <div class="text-center">
+      <h1 class="mb-4 text-4xl font-bold">{t(locale, 'notfound.title')}</h1>
+      <p class="mb-4 text-xl text-muted-foreground">{t(locale, 'notfound.subtitle')}</p>
+      <a href={`/${locale}/`} class="text-primary underline hover:text-primary/90">{t(locale, 'notfound.cta')}</a>
+    </div>
+  </div>
+</BaseLayout>

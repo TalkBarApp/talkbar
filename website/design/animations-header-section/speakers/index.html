@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Luna — Talkbar sound wave morph</title>
+		<style>
+			:root {
+				--page: #ffffff;
+				--text: #2b3a5d;
+				--wave: #054df5;
+			}
+
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				background: var(--page);
+				display: grid;
+				place-items: center;
+				font-family:
+					'Stack Sans Text', -apple-system, BlinkMacSystemFont,
+					'Helvetica Neue', Arial, sans-serif;
+			}
+
+			#stage {
+				width: min(1040px, 90vw);
+			}
+
+			#stage svg {
+				display: block;
+				width: 100%;
+				height: auto;
+				overflow: visible;
+			}
+
+			/* Stack Sans Text ExtraLight 18/22.15 — the family is not installed
+			   here, so the fallback runs at weight 200 and every word is pinned
+			   to its Figma width with textLength. */
+			#stage text {
+				font-size: 18px;
+				font-weight: 200;
+				letter-spacing: 0;
+			}
+
+			.hint {
+				position: fixed;
+				left: 50%;
+				bottom: 28px;
+				transform: translateX(-50%);
+				font-size: 12px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+				color: #9aa4bd;
+				user-select: none;
+			}
+
+			.hint a {
+				color: inherit;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="stage"></div>
+		<p class="hint">
+			click / space — replay · <a href="editor.html">editor</a>
+		</p>
+
+		<script src="vendor/gsap.min.js"></script>
+		<script src="vendor/MorphSVGPlugin.min.js"></script>
+		<script src="vendor/DrawSVGPlugin.min.js"></script>
+		<script src="figma-source.js"></script>
+		<script src="luna.js"></script>
+		<script>
+			gsap.registerPlugin(MorphSVGPlugin, DrawSVGPlugin);
+
+			const scene = Luna.build(document.getElementById('stage'));
+			const timeline = Luna.create(scene);
+
+			const replay = () => timeline.restart();
+			document.addEventListener('click', replay);
+			document.addEventListener('keydown', (e) => {
+				if (e.code === 'Space') {
+					e.preventDefault();
+					replay();
+				}
+			});
+		</script>
+	</body>
+</html>

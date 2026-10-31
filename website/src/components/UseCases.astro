@@ -1,0 +1,46 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const cards = [
+  { href: '/one-on-one-meetings/', icon: 'lucide:heart-handshake', titleKey: 'usecases.oneOnOne.title', descKey: 'usecases.oneOnOne.desc', ctaKey: 'usecases.cardCta' },
+  { href: '/client-calls/', icon: 'lucide:phone-call', titleKey: 'usecases.clientCalls.title', descKey: 'usecases.clientCalls.desc', ctaKey: 'usecases.cardCta' },
+  { href: '/interviews/', icon: 'lucide:user-check', titleKey: 'usecases.interviews.title', descKey: 'usecases.interviews.desc', ctaKey: 'usecases.cardCta' },
+  { href: '/venture-private-equity/', icon: 'lucide:chart-line', titleKey: 'industries.venture.eyebrow', descKey: 'industries.venture.teaser', ctaKey: 'industries.cardCta' },
+  { href: '/legal-counsel/', icon: 'lucide:scale', titleKey: 'industries.legal.eyebrow', descKey: 'industries.legal.teaser', ctaKey: 'industries.cardCta' },
+  { href: '/b2b-sales/', icon: 'lucide:handshake', titleKey: 'industries.sales.eyebrow', descKey: 'industries.sales.teaser', ctaKey: 'industries.cardCta' },
+];
+---
+<section class="section-pro surface-ink surface-ink-use section-pad" id="use-cases">
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'usecases.eyebrowCombined')}
+      headline={t(lang, 'usecases.headline')}
+      headlineIt
+      accent={t(lang, 'usecases.accent')}
+      plainAccent
+      subhead={t(lang, 'industries.subhead')}
+    />
+
+    <div class="uc">
+      {cards.map(({ href, icon, titleKey, descKey, ctaKey }) => (
+        <a class="u group" href={href} aria-label={t(lang, titleKey)}>
+          <span class="icon-line uc-ic" aria-hidden="true"><Icon name={icon} width="24" height="24" is:inline /></span>
+          <h3>{t(lang, titleKey)}</h3>
+          <p>{t(lang, descKey)}</p>
+          <span class="ucta">
+            {t(lang, ctaKey)}
+            <Icon name="lucide:arrow-right" width="14" height="14" />
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

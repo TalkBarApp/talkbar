@@ -1,0 +1,77 @@
+---
+interface Props {
+  eyebrow?: string;
+  headline: string;
+  accent?: string;
+  /** Plain words that open the accent's line ("Built for" + accent "sensitive talk."). */
+  accentLead?: string;
+  /** Show the accent phrase in the headline colour (it still starts its own line). */
+  plainAccent?: boolean;
+  /** Let the accent flow on from the headline instead of starting a new line
+      (for headlines too long to hold their first line on its own). */
+  inlineAccent?: boolean;
+  /** Give the headline itself the accent treatment. */
+  headlineIt?: boolean;
+  /** Words or phrases to set in the accent colour wherever they appear in the
+      headline or accent (matched whole-word, ignoring case). */
+  highlight?: string[];
+  subhead?: string;
+  /** 'split' puts the headline left and the supporting line right. */
+  layout?: 'split' | 'center' | 'stack';
+  tone?: 'light' | 'ink' | 'brand';
+  size?: 'md' | 'lg';
+  class?: string;
+}
+
+const {
+  eyebrow,
+  headline,
+  accent,
+  accentLead,
+  plainAccent = false,
+  inlineAccent = false,
+  headlineIt = false,
+  highlight = [],
+  subhead,
+  layout = 'split',
+  size = 'md',
+  class: className,
+} = Astro.props;
+
+const center = layout === 'center';
+const split = layout === 'split' && Boolean(subhead);
+const headlineSize = size === 'lg' ? 'text-[clamp(38px,5.2vw,68px)]' : '';
+
+const phrases = highlight.map((p) => p.trim()).filter(Boolean);
+const escape = (p: string) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const matcher = phrases.length
+  ? new RegExp(`(?<![\\p{L}\\p{N}])(${phrases.map(escape).join('|')})(?![\\p{L}\\p{N}])`, 'giu')
+  : null;
+// Split text into plain runs and highlighted phrases.
+const mark = (text: string) =>
+  matcher ? text.split(matcher).map((part, i) => ({ part, hit: i % 2 === 1 })) : [{ part: text, hit: false }];
+---
+<div
+  class:list={[
+    split ? 'section-split' : '',
+    center ? 'max-w-3xl mx-auto text-center' : 'text-left',
+    !split && !center ? 'max-w-3xl' : '',
+    'mb-12 sm:mb-16 lg:mb-22',
+    className,
+  ]}
+>
+  <div>
+    {eyebrow && (
+      <span class:list={['eyebrow mb-6', center && 'ctr']}>{eyebrow}</span>
+    )}
+    <h2 class:list={['h2-serif', headlineSize]}>
+      {headlineIt ? <span class="it">{headline}</span> : mark(headline).map(({ part, hit }) => (hit ? <span class="it inline">{part}</span> : part))}{accent && (<> <span class:list={['it', plainAccent && 'plain', inlineAccent && 'inline']}>{accentLead && (<><span class="it-lead">{accentLead}</span> </>)}{mark(accent).map(({ part, hit }) => (hit ? <span class="it inline">{part}</span> : part))}</span></>)}
+    </h2>
+    {subhead && !split && (
+      <p class:list={['lead-serif', center && 'ctr']}>{subhead}</p>
+    )}
+  </div>
+  {subhead && split && (
+    <p class="lead-serif">{subhead}</p>
+  )}
+</div>

@@ -1,0 +1,104 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+import HeroImageZoom from '../HeroImageZoom.tsx';
+import Screenshot from '../ui/Screenshot.astro';
+import type { ShotId } from '../../lib/screenshots';
+import UseCaseCardsMock from './UseCaseCardsMock.astro';
+import UseCaseMemoryMock from './UseCaseMemoryMock.astro';
+import { t, type Language } from '../../i18n';
+
+interface Props {
+  lang: Language;
+  icon: string;
+  heading: string;
+  body: string;
+  mediaSide?: 'left' | 'right';
+  mediaLabel?: string;
+  mediaImage?: ImageMetadata;
+  mediaMock?: 'cards' | 'memory';
+  mediaPlaceholder?: string;
+  subList?: string[];
+  /** Screenshot slot (src/lib/screenshots.ts); media blocks default by position. */
+  shot?: ShotId;
+  index: number;
+}
+const { lang, icon, heading, body, mediaSide = 'right', mediaLabel, mediaImage, mediaMock, mediaPlaceholder, subList, shot, index } = Astro.props;
+// Live session first, then a Knowledge Card with its source.
+const DEFAULT_SHOTS: ShotId[] = ['live-transcript', 'knowledge-source'];
+const blockShot = shot ?? DEFAULT_SHOTS[index];
+const hasMedia = Boolean(mediaImage || mediaMock || mediaLabel || mediaPlaceholder);
+const resolvedMediaLabel = mediaLabel ?? heading;
+const formatMediaText = (key: string, label: string) => t(lang, key).replace('{label}', label);
+const placeholderText = mediaPlaceholder ?? formatMediaText('media.placeholder.default', resolvedMediaLabel);
+const expandLabel = formatMediaText('media.zoom.expand', resolvedMediaLabel);
+const closeLabel = formatMediaText('media.zoom.close', resolvedMediaLabel);
+const imageAlt = formatMediaText('media.alt.screenshot', resolvedMediaLabel);
+const isLeftMedia = mediaSide === 'left';
+// Blocks alternate between the page tone and the alternate band.
+const isAltBand = index % 2 === 1;
+---
+<section class:list={['section-pro', isAltBand && 'section-pro-alt', hasMedia ? 'py-16 sm:py-20 lg:py-26' : 'py-14 sm:py-16 lg:py-22']}>
+  <div class="container">
+    <div
+      class:list={[
+        'uc-feature',
+        hasMedia ? (isLeftMedia ? 'uc-feature-media uc-feature-media-left' : 'uc-feature-media') : 'uc-feature-text',
+      ]}
+    >
+      <div class="uc-feature-copy">
+        <span class="icon-line uc-feature-ic" aria-hidden="true"><Icon name={icon} width="40" height="40" is:inline /></span>
+        <h2 class="uc-feature-title">{heading}</h2>
+        <p class="uc-feature-body">{body}</p>
+        {subList && subList.length > 0 && (
+          <ul class="mt-6 space-y-3">
+            {subList.map((item) => (
+              <li class="flex items-start gap-3 text-[15px] leading-relaxed text-[hsl(var(--lead))]">
+                <Icon name="lucide:check" width="16" height="16" class="text-[hsl(var(--accent-text))] flex-shrink-0 mt-1" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      {hasMedia && (
+      <div class="uc-feature-visual">
+        {mediaImage ? (
+          <HeroImageZoom
+            client:load
+            className="mockup-pro aspect-[5/3] w-full overflow-hidden [&_[data-rmiz]]:h-full [&_[data-rmiz-content]]:h-full [&_picture]:h-full [&_img]:h-full"
+            zoomLabel={expandLabel}
+            unzoomLabel={closeLabel}
+          >
+            <Picture
+              src={mediaImage}
+              alt={imageAlt}
+              formats={['avif', 'webp']}
+              widths={[768, 1024, 1280, 1600, 2048, 2400]}
+              sizes="100vw"
+              class="h-full w-full cursor-zoom-in object-cover"
+            />
+          </HeroImageZoom>
+        ) : mediaMock === 'cards' ? (
+          <UseCaseCardsMock lang={lang} />
+        ) : mediaMock === 'memory' ? (
+          <UseCaseMemoryMock lang={lang} />
+        ) : blockShot ? (
+          <Screenshot lang={lang} id={blockShot} sizes="(min-width: 1024px) 640px, 100vw" />
+        ) : (
+          <div class="mockup-pro aspect-[5/3] w-full overflow-hidden">
+            <div class="screenshot-placeholder-pro h-full w-full border-2 border-dashed border-primary/30">
+              <span class="screenshot-placeholder-label">
+                <Icon name="lucide:image-plus" width="20" height="20" class="text-primary" />
+                <span>{placeholderText}</span>
+              </span>
+            </div>
+          </div>
+        )}
+      </div>
+      )}
+    </div>
+  </div>
+</section>

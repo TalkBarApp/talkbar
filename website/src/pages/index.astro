@@ -1,0 +1,7 @@
+---
+import HomePage from '../components/HomePage.astro';
+import { CURRENT_CONFIG } from '../i18n/domains';
+
+const { defaultLocale } = CURRENT_CONFIG;
+---
+<HomePage lang={defaultLocale} />

@@ -1,0 +1,81 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+
+const groups = [
+  {
+    label: 'featuresGrid.group.capture',
+    features: [
+      { icon: 'lucide:bot-off', name: 'featuresGrid.botFree.name', desc: 'featuresGrid.botFree.desc' },
+      { icon: 'lucide:clipboard-check', name: 'featuresGrid.briefing.name', desc: 'featuresGrid.briefing.desc' },
+      { icon: 'lucide:hard-drive', name: 'featuresGrid.docs.name', desc: 'featuresGrid.docs.desc' },
+      { icon: 'lucide:notebook-pen', name: 'featuresGrid.notes.name', desc: 'featuresGrid.notes.desc' },
+    ],
+  },
+  {
+    label: 'featuresGrid.group.remember',
+    features: [
+      { icon: 'lucide:database', name: 'featuresGrid.memory.name', desc: 'featuresGrid.memory.desc' },
+      { icon: 'lucide:list-checks', name: 'featuresGrid.followups.name', desc: 'featuresGrid.followups.desc' },
+      { icon: 'lucide:book-open-text', name: 'featuresGrid.vocab.name', desc: 'featuresGrid.vocab.desc' },
+      { icon: 'lucide:messages-square', name: 'featuresGrid.chat.name', desc: 'featuresGrid.chat.desc' },
+    ],
+  },
+  {
+    label: 'featuresGrid.group.control',
+    features: [
+      { icon: 'lucide:layout-template', name: 'featuresGrid.templates.name', desc: 'featuresGrid.templates.desc' },
+      { icon: 'lucide:shield-check', name: 'featuresGrid.privacy.name', desc: 'featuresGrid.privacy.desc' },
+      { icon: 'lucide:file-output', name: 'featuresGrid.exports.name', desc: 'featuresGrid.exports.desc' },
+      { icon: 'lucide:key-round', name: 'featuresGrid.localAi.name', desc: 'featuresGrid.localAi.desc' },
+    ],
+  },
+];
+---
+<section
+  class:list={[
+    'section-pro surface-ink features-surface-ink relative overflow-hidden',
+    compact ? 'section-pad-sm' : 'section-pad',
+  ]}
+  id="features"
+>
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'featuresGrid.eyebrow')}
+      headline={t(lang, 'featuresGrid.headline')}
+      accent={t(lang, 'featuresGrid.accent')}
+      inlineAccent
+      subhead={compact ? undefined : t(lang, 'featuresGrid.lead')}
+      layout="center"
+    />
+
+    <div class="feat-cols">
+      {groups.map((group) => (
+        <div class="feat-col">
+          <span class="feat-label">{t(lang, group.label)}</span>
+          <ul class="feat-list">
+            {group.features.map((f) => (
+              <li class="feat-row">
+                <h3 class="feat-name">
+                  <span class="feat-ic" aria-hidden="true">
+                    <Icon name={f.icon} width="18" height="18" is:inline />
+                  </span>
+                  {t(lang, f.name)}
+                </h3>
+                <p class="feat-desc">{t(lang, f.desc)}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

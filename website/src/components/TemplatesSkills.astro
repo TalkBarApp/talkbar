@@ -1,0 +1,65 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const kinds = [
+  { title: 'templates.part.session.title', desc: 'templates.part.session.desc' },
+  { title: 'templates.part.notes.title', desc: 'templates.part.notes.desc' },
+  { title: 'templates.part.skills.title', desc: 'templates.part.skills.desc' },
+];
+
+// Six of the app's built-in note templates, from six different categories.
+const templates = [1, 2, 3, 4, 5, 6].map((n) => {
+  const sections = t(lang, `templates.picker.card${n}.sections`);
+  return {
+    name: t(lang, `templates.picker.card${n}.name`),
+    desc: t(lang, `templates.picker.card${n}.desc`),
+    count: t(lang, 'templates.picker.sections').replace('{n}', sections),
+  };
+});
+---
+<section class="section-pro surface-ink section-pad" id="templates">
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'templates.eyebrow')}
+      headline={t(lang, 'templates.headline')}
+      accent={t(lang, 'templates.accent')}
+      subhead={t(lang, 'templates.subhead')}
+    />
+
+    <div class="tpl-kinds">
+      {kinds.map(({ title, desc }) => (
+        <div class="tpl-kind">
+          <h3>{t(lang, title)}</h3>
+          <p>{t(lang, desc)}</p>
+        </div>
+      ))}
+    </div>
+
+    <ul class="tpl-index">
+      {templates.map(({ name, desc, count }) => (
+        <li>
+          <div>
+            <p class="tpl-index-name">{name}</p>
+            <p class="tpl-index-desc">{desc}</p>
+          </div>
+          <p class="tpl-index-count">{count}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="mt-10 text-center">
+      <a href="/#use-cases" class="cmp2-link">
+        {t(lang, 'templates.link.useCases')}
+        <Icon name="lucide:arrow-down" width="14" height="14" />
+      </a>
+    </div>
+  </div>
+</section>

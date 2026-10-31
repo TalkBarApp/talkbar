@@ -1,0 +1,71 @@
+---
+import type { Language } from '../i18n';
+import { t } from '../i18n';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const faqs = [
+  { q: t(lang, 'faq.what.q'), a: t(lang, 'faq.what.a') },
+  { q: t(lang, 'faq.different.q'), a: t(lang, 'faq.different.a') },
+  { q: t(lang, 'faq.capture.q'), a: t(lang, 'faq.capture.a') },
+  { q: t(lang, 'faq.apps.q'), a: t(lang, 'faq.apps.a') },
+  { q: t(lang, 'faq.privateMode.q'), a: t(lang, 'faq.privateMode.a') },
+  { q: t(lang, 'faq.translate.q'), a: t(lang, 'faq.translate.a') },
+  { q: t(lang, 'faq.external.q'), a: t(lang, 'faq.external.a') },
+  { q: t(lang, 'faq.platforms.q'), a: t(lang, 'faq.platforms.a') },
+  { q: t(lang, 'faq.chat.q'), a: t(lang, 'faq.chat.a') },
+  { q: t(lang, 'faq.actions.q'), a: t(lang, 'faq.actions.a') },
+  { q: t(lang, 'faq.delete.q'), a: t(lang, 'faq.delete.a') },
+  { q: t(lang, 'faq.export.q'), a: t(lang, 'faq.export.a') },
+  { q: t(lang, 'faq.consent.q'), a: t(lang, 'faq.consent.a') },
+  { q: t(lang, 'faq.who.q'), a: t(lang, 'faq.who.a') },
+];
+
+// Two fixed stacks so opening an answer never moves a question into the
+// other column; source order runs down the first column, then the second.
+const half = Math.ceil(faqs.length / 2);
+const columns = [faqs.slice(0, half), faqs.slice(half)];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<section class="section-pro surface-ink surface-ink-deep section-pad" id="faq">
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'faq.eyebrow')}
+      headline={t(lang, 'faq.headline')}
+      accent={t(lang, 'faq.accent')}
+      subhead={t(lang, 'faq.subhead')}
+    />
+
+    <div class="faq2">
+      {columns.map((column, c) => (
+        <div class="faq2-col">
+          {column.map((f, i) => (
+            <details open={c === 0 && i === 0}>
+              <summary>
+                {f.q}
+                <span class="pm" aria-hidden="true"></span>
+              </summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+</section>

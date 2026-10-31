@@ -1,0 +1,36 @@
+---
+import { t, type Language } from '../../i18n';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const results = [
+  { icon: 'lucide:phone-call', textKey: 'ucMock.result1.text', sourceKey: 'ucMock.result1.source' },
+  { icon: 'lucide:file-text', textKey: 'ucMock.result2.text', sourceKey: 'ucMock.result2.source' },
+  { icon: 'lucide:voicemail', textKey: 'ucMock.result3.text', sourceKey: 'ucMock.result3.source' },
+];
+---
+<div class="uc-mock uc-mock-memory">
+  <div class="uc-mock-search">
+    <Icon name="lucide:search" width="16" height="16" class="flex-shrink-0 text-[hsl(var(--accent-text))]" />
+    <span>{t(lang, 'ucMock.search.query')}</span>
+  </div>
+  <div class="uc-mock-label">{t(lang, 'ucMock.search.label')}</div>
+  <div class="uc-mock-results">
+    {results.map(({ icon, textKey, sourceKey }) => (
+      <div class="uc-mock-result">
+        <span class="uc-mock-result-ic">
+          <Icon name={icon} width="15" height="15" />
+        </span>
+        <div class="min-w-0">
+          <p class="uc-mock-result-text">{t(lang, textKey)}</p>
+          <span class="uc-mock-source">{t(lang, sourceKey)}</span>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>

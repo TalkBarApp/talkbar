@@ -1,0 +1,45 @@
+---
+import { t, type Language } from '../../i18n';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const cards = [
+  {
+    icon: 'lucide:triangle-alert',
+    labelKey: 'liveDemo.card.fact.title',
+    quoteKey: 'liveDemo.card.fact.example',
+    confidence: true,
+  },
+  {
+    icon: 'lucide:circle-help',
+    labelKey: 'liveDemo.card.question.title',
+    quoteKey: 'liveDemo.card.question.example',
+    confidence: false,
+  },
+  {
+    icon: 'lucide:square-check-big',
+    labelKey: 'liveDemo.card.action.title',
+    quoteKey: 'liveDemo.card.action.example',
+    confidence: false,
+  },
+];
+---
+<div class="uc-mock uc-mock-cards">
+  {cards.map(({ icon, labelKey, quoteKey, confidence }) => (
+    <div class="lcc2">
+      <div class="lt">
+        <span class="lab">
+          <Icon name={icon} width="13" height="13" />
+          {t(lang, labelKey)}
+        </span>
+        {confidence && <span class="conf">{t(lang, 'hero.dash.high')}</span>}
+      </div>
+      <p class="q">"{t(lang, quoteKey)}"</p>
+    </div>
+  ))}
+</div>

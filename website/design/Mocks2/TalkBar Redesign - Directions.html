@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="warm">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TalkBar — Homepage Redesign Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="assets/base.css" />
+<style>
+  body { background: var(--bg); }
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+  .top { padding: 64px 0 8px; }
+  .top h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(34px, 5vw, 58px); line-height: 1.0; letter-spacing: -0.02em; max-width: 18ch; }
+  .top h1 .it { font-style: italic; color: var(--primary); }
+  .top p { color: var(--ink-2); font-size: 18px; line-height: 1.6; max-width: 64ch; margin-top: 20px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .meta .tag { font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding: 48px 0 30px; }
+  @media (max-width: 1000px){ .grid { grid-template-columns: 1fr; max-width: 560px; margin: 0 auto; } }
+
+  .opt { border: 1px solid var(--line); border-radius: 18px; background: var(--surface); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s, box-shadow .2s; }
+  .opt:hover { transform: translateY(-4px); border-color: var(--primary-line); box-shadow: 0 18px 50px rgba(20,24,29,0.08); }
+  .preview { position: relative; height: 286px; overflow: hidden; border-bottom: 1px solid var(--line); background: var(--surface-2); }
+  .preview img { position: absolute; top: 0; left: 0; width: 100%; height: auto; display: block; }
+  .preview .badge { position: absolute; top: 14px; left: 14px; z-index: 2; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: rgba(20,22,28,0.78); backdrop-filter: blur(6px); border-radius: 999px; padding: 6px 12px; }
+  .opt-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .opt-body h2 { font-family: var(--font-serif); font-size: 26px; font-weight: 500; letter-spacing: -0.01em; }
+  .opt-body .sub { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-top: 4px; }
+  .opt-body p { color: var(--ink-2); font-size: 14.5px; line-height: 1.55; margin-top: 12px; flex: 1; }
+  .traits { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 16px; }
+  .traits span { font-size: 12px; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+  .opt .btn { margin-top: 20px; }
+
+  .note { display: flex; align-items: flex-start; gap: 12px; max-width: 760px; margin: 16px auto 70px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--ink-2); font-size: 14px; line-height: 1.55; }
+  .note svg { color: var(--primary); flex: none; margin-top: 2px; }
+  .note b { color: var(--ink); }
+  .footer-line { text-align: center; padding: 0 0 48px; color: var(--muted); font-size: 13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top" data-reveal>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <a class="brand" href="#" aria-label="TalkBar home">
+        <span class="brand-mark"><span class="bars"><i style="height:5px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:8px"></i><i style="height:5px"></i></span></span>
+        <span class="brand-name">Talk<b>Bar</b></span>
+      </a>
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+        <button data-set="warm" aria-pressed="true" title="Warm theme"><span class="sw"></span></button>
+        <button data-set="blue" aria-pressed="false" title="Blue theme"><span class="sw"></span></button>
+      </div>
+    </div>
+    <span class="eyebrow" style="margin-top:30px">Homepage redesign · 5 directions</span>
+    <h1>A flatter, more modern <span class="it">TalkBar</span> homepage.</h1>
+    <p>Five takes on a flat, professional, gradient-free redesign — all sharing one refined serif system, the same copy, and a warm ↔ blue theme switch in every header. Toggle the theme here and it carries into each page. Pick a direction and we'll apply it across the rest of the site.</p>
+    <div class="meta">
+      <span class="tag">Serif: Newsreader</span>
+      <span class="tag">Sans: Hanken Grotesk</span>
+      <span class="tag">Flat surfaces · hairlines</span>
+      <span class="tag">Full-width header &amp; footer</span>
+      <span class="tag">Dual theme</span>
+    </div>
+  </header>
+
+  <section class="grid">
+    <a class="opt" href="TalkBar Home - Editorial.html" data-reveal>
+      <div class="preview"><span class="badge">01 · Editorial</span><img src="screenshots/preview-editorial.png" alt="Editorial direction preview" /></div>
+      <div class="opt-body">
+        <h2>Editorial</h2>
+        <div class="sub">Warm paper · asymmetric · ultra-flat</div>
+        <p>A calm, high-end editorial layout. Numbered sections, generous whitespace, hairline rules, and a left-aligned serif voice. The most restrained and magazine-like.</p>
+        <div class="traits"><span>Asymmetric hero</span><span>Hairline dividers</span><span>Borders, no shadows</span></div>
+        <span class="btn btn-primary">Open homepage →</span>
+      </div>
+    </a>
+
+    <a class="opt" href="TalkBar Home - Studio.html" data-reveal>
+      <div class="preview"><span class="badge">02 · Studio</span><img src="screenshots/preview-studio.png" alt="Studio direction preview" /></div>
+      <div class="opt-body">
+        <h2>Studio</h2>
+        <div class="sub">Dark ink bands · product-forward</div>
+        <p>A confident SaaS feel. A dark ink hero and CTA bookend white, crisply-gridded sections, with a full product dashboard mockup floating into view. The most product-led.</p>
+        <div class="traits"><span>Dark hero + CTA</span><span>Dashboard mockup</span><span>Bento cards</span></div>
+        <span class="btn btn-primary">Open homepage →</span>
+      </div>
+    </a>
+
+    <a class="opt" href="TalkBar Home - Soft.html" data-reveal>
+      <div class="preview"><span class="badge">03 · Soft</span><img src="screenshots/preview-soft.png" alt="Soft direction preview" /></div>
+      <div class="opt-body">
+        <h2>Soft</h2>
+        <div class="sub">Tinted bands · friendly · rounded</div>
+        <p>Warmer and more approachable. A centered hero with floating cards, soft tinted section bands, the five lifecycle pillars, and a bold full-color CTA. The most inviting.</p>
+        <div class="traits"><span>Centered hero</span><span>Tinted bands</span><span>Bold color CTA</span></div>
+        <span class="btn btn-primary">Open homepage →</span>
+      </div>
+    </a>
+
+    <a class="opt" href="TalkBar Home - Aurora.html" data-reveal>
+      <div class="preview"><span class="badge">04 · Aurora</span><img src="screenshots/preview-aurora.png" alt="Aurora direction preview" /></div>
+      <div class="opt-body">
+        <h2>Aurora</h2>
+        <div class="sub">Alternating light / dark bands</div>
+        <p>Full-bleed sections that alternate between light paper and deep ink, with a full-width header and footer. Bold rhythm and contrast — the most dynamic to scroll.</p>
+        <div class="traits"><span>Full-width chrome</span><span>Light ↔ dark bands</span><span>Edge-to-edge</span></div>
+        <span class="btn btn-primary">Open homepage →</span>
+      </div>
+    </a>
+
+    <a class="opt" href="TalkBar Home - Midnight.html" data-reveal>
+      <div class="preview"><span class="badge">05 · Midnight</span><img src="screenshots/preview-midnight.png" alt="Midnight direction preview" /></div>
+      <div class="opt-body">
+        <h2>Midnight</h2>
+        <div class="sub">Dark-dominant · premium · sleek</div>
+        <p>A dark-first, premium feel. Most sections sit on deep ink with glowing accents, broken up by light “relief” bands. Full-width header and footer. The most striking.</p>
+        <div class="traits"><span>Dark-dominant</span><span>Light relief bands</span><span>Glass mockups</span></div>
+        <span class="btn btn-primary">Open homepage →</span>
+      </div>
+    </a>
+  </section>
+
+  <div class="note" data-reveal>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v4h1"/></svg>
+    <div>Open any card for the full, interactive homepage — each has the working <b>warm ↔ blue</b> toggle in its header, plus a <b>full-width header and footer</b>. <b>Aurora</b> and <b>Midnight</b> are the new mixed light/dark directions. Once you pick one, I'll roll it out to the use-case, industry, and other pages.</div>
+  </div>
+
+  <div class="footer-line">© 2026 TalkBar · Homepage redesign exploration</div>
+</div>
+
+<script src="assets/talkbar.js"></script>
+</body>
+</html>

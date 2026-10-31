@@ -1,0 +1,100 @@
+---
+import { t, LANGUAGE_FLAGS, type Language } from '../i18n';
+import { ENGLISH_CROSS_LINK } from '../i18n/domains';
+import { DOWNLOAD_LINK_WINDOWS } from '../lib/download';
+import { SITE_CONFIG } from '../lib/siteConfig';
+import { logos } from '../lib/logos';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const currentYear = new Date().getFullYear();
+const copyrightText = t(lang, 'footer.copyright').replace('2026', String(currentYear));
+
+const columns = [
+  {
+    heading: t(lang, 'footer.product'),
+    links: [
+      { label: t(lang, 'footer.liveContextCards'), href: '/#knowledge' },
+      { label: t(lang, 'footer.lifecycle'), href: '/#lifecycle' },
+      { label: t(lang, 'footer.featuresLink'), href: '/#features' },
+      { label: t(lang, 'footer.templates'), href: '/#templates' },
+      { label: t(lang, 'footer.privacy'), href: '/privacy/' },
+    ],
+  },
+  {
+    heading: t(lang, 'footer.useCases'),
+    links: [
+      { label: t(lang, 'usecases.oneOnOne.title'), href: '/one-on-one-meetings/' },
+      { label: t(lang, 'usecases.clientCalls.title'), href: '/client-calls/' },
+      { label: t(lang, 'usecases.interviews.title'), href: '/interviews/' },
+      { label: t(lang, 'usecases.voiceNotes.title'), href: '/voice-notes/' },
+    ],
+  },
+  {
+    heading: t(lang, 'footer.company'),
+    links: [
+      { label: t(lang, 'footer.faq'), href: '/#faq' },
+      { label: t(lang, 'footer.support'), href: `mailto:${SITE_CONFIG.contactEmail}?subject=Support` },
+      { label: t(lang, 'footer.contact'), href: `mailto:${SITE_CONFIG.contactEmail}`, contact: true },
+      { label: t(lang, 'footer.download'), href: DOWNLOAD_LINK_WINDOWS, download: true },
+    ],
+  },
+];
+---
+<footer class="surface-ink surface-ink-deep text-white">
+  <div class="container py-20 pb-10">
+    <div class="grid grid-cols-2 md:grid-cols-[1.6fr_1fr_1fr_1fr] gap-x-8 gap-y-10">
+      <div class="col-span-2 md:col-span-1">
+        <a href="/" class="inline-flex items-center" aria-label={t(lang, 'footer.homeAria')}>
+          <span class="relative block h-8 w-[155px]">
+            <img src={logos.warmDark} alt={t(lang, 'footer.brand')} class="footer-logo footer-logo-warm" />
+            <img src={logos.blueDark} alt={t(lang, 'footer.brand')} class="footer-logo footer-logo-blue" />
+          </span>
+        </a>
+        <p class="mt-3.5 max-w-[36ch] text-sm leading-[1.55] text-white/55">
+          {t(lang, 'footer.tagline')}
+        </p>
+      </div>
+
+      {columns.map((col) => (
+        <div>
+          <p class="mb-4 eyebrow footer-heading">{col.heading}</p>
+          <ul>
+            {col.links.map((l) => (
+              <li>
+                <a
+                  href={l.href}
+                  data-download-link={l.download ? '' : undefined}
+                  data-contact-link={l.contact ? '' : undefined}
+                  class="block py-[6px] text-[15px] text-white/[0.72] hover:text-white transition-colors"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-14 flex flex-col sm:flex-row gap-3 justify-between items-center label text-white/45">
+      <span>{copyrightText}</span>
+      <div class="flex items-center gap-4">
+        {ENGLISH_CROSS_LINK && (
+          <a
+            href={ENGLISH_CROSS_LINK}
+            hreflang="en"
+            lang="en"
+            class="inline-flex items-center gap-1.5 text-white/[0.72] hover:text-white transition-colors"
+          >
+            <span class="flags text-[13px] leading-none">{LANGUAGE_FLAGS.en}</span>
+            English
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</footer>

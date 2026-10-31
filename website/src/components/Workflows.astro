@@ -1,0 +1,75 @@
+---
+import { t, type Language } from '../i18n';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const stages = [
+  {
+    num: '01',
+    label: t(lang, 'workflows.before.label'),
+    title: t(lang, 'workflows.before.title'),
+    body: t(lang, 'workflows.before.body'),
+    items: [t(lang, 'workflows.before.item1'), t(lang, 'workflows.before.item2'), t(lang, 'workflows.before.item3')],
+    seeHref: '#preparation',
+  },
+  {
+    num: '02',
+    label: t(lang, 'workflows.during.label'),
+    title: t(lang, 'workflows.during.title'),
+    body: t(lang, 'workflows.during.body'),
+    items: [t(lang, 'workflows.during.item1'), t(lang, 'workflows.during.item2'), t(lang, 'workflows.during.item3')],
+    seeHref: '#live-context-cards',
+  },
+  {
+    num: '03',
+    label: t(lang, 'workflows.after.label'),
+    title: t(lang, 'workflows.after.title'),
+    body: t(lang, 'workflows.after.body'),
+    items: [t(lang, 'workflows.after.item1'), t(lang, 'workflows.after.item2'), t(lang, 'workflows.after.item3')],
+    seeHref: '#followup',
+  },
+];
+---
+<section class="section-pro section-pro-alt section-pad" id="lifecycle">
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'workflows.tag')}
+      headline={t(lang, 'workflows.headline')}
+      accent={t(lang, 'workflows.accent')}
+      plainAccent
+      highlight={stages.map((stage) => stage.label)}
+      subhead={t(lang, 'workflows.subhead')}
+    />
+
+    <div class="life">
+      {stages.map((stage) => (
+        <div class="lc">
+          <span class="lghost" aria-hidden="true">{Number(stage.num)}</span>
+          <div class="lstep">{stage.label}</div>
+          <h3>{stage.title}</h3>
+          <p>{stage.body}</p>
+          <ul>
+            {stage.items.map((item) => (
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 sm:mt-12 lg:mt-14">
+      <a href="#preparation" class="btn-pill btn-primary">
+        {t(lang, 'workflows.seeIt')}
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>

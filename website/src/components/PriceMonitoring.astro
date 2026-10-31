@@ -1,0 +1,54 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+import Screenshot from './ui/Screenshot.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const features = [
+  { icon: 'lucide:calendar-check', key: 'priceMonitoring.agenda' },
+  { icon: 'lucide:list-todo', key: 'priceMonitoring.openItems' },
+  { icon: 'lucide:file-search', key: 'priceMonitoring.documents' },
+  { icon: 'lucide:users', key: 'priceMonitoring.profile' },
+  { icon: 'lucide:layout-template', key: 'priceMonitoring.templates' },
+  { icon: 'lucide:sliders-horizontal', key: 'priceMonitoring.focus' },
+];
+---
+<section class="section-pro relative section-pad overflow-hidden" id="preparation">
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'priceMonitoring.eyebrow')}
+      headline={t(lang, 'priceMonitoring.headline')}
+      accent={t(lang, 'priceMonitoring.accent')}
+      subhead={t(lang, 'priceMonitoring.subhead')}
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1.18fr_0.82fr] gap-6 lg:gap-10 items-start">
+      <Screenshot lang={lang} id="session-setup" />
+
+      <div class="briefing-delivery-panel panel-pro p-4 sm:p-5">
+        <div class="mb-4">
+          <div class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-2 flex items-center gap-2">
+            <Icon name="lucide:sparkles" width="14" height="14" />
+            {t(lang, 'priceMonitoring.delivered')}
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">{t(lang, 'priceMonitoring.deliveredDesc')}</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
+          {features.map(({ icon, key }) => (
+            <div class="flex items-center gap-3.5 py-2">
+              <span class="icon-mark"><Icon name={icon} width="20" height="20" /></span>
+              <div class="text-[15px] font-semibold">{t(lang, key)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

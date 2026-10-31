@@ -1,0 +1,26 @@
+{
+  "name": "talkbar",
+  "private": true,
+  "description": "TalkBar releases, documentation site (docs/) and website (website/)",
+  "scripts": {
+    "setup": "npm install && npm --prefix docs install && npm --prefix website install",
+    "dev": "concurrently -n docs,website -c blue,magenta \"npm:dev:docs\" \"npm:dev:website\"",
+    "dev:docs": "npm --prefix docs run dev",
+    "dev:docs:ru": "npm --prefix docs run dev:ru",
+    "dev:website": "npm --prefix website run dev",
+    "dev:website:ru": "npm --prefix website run dev:ru",
+    "build:docs": "npm --prefix docs run generate:en",
+    "build:docs:ru": "npm --prefix docs run generate:ru",
+    "build:website": "npm --prefix website run build",
+    "build:website:preview": "npm --prefix website run build:preview",
+    "build:website:preview:ru": "npm --prefix website run build:preview:ru",
+    "check": "npm --prefix docs run check:content && npm --prefix website test && npm --prefix website run lint && npm --prefix website run check",
+    "deploy:docs": "npm run build:docs && npx --yes wrangler pages deploy docs/dist --project-name talkbar-docs --branch main",
+    "deploy:docs:ru": "npm run build:docs:ru && npx --yes wrangler pages deploy docs/dist --project-name talkbar-docs-ru --branch main",
+    "deploy:website:preview": "npm --prefix website run deploy:preview",
+    "deploy:website:preview:ru": "npm --prefix website run deploy:preview:ru"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.6"
+  }
+}

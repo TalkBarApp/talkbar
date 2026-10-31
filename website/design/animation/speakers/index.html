@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Chorus — Talkbar speaker recognition</title>
+		<style>
+			:root {
+				--page: #ffffff;
+				--text: #2b3a5d;
+				--ink: #054df5;
+			}
+
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				background: var(--page);
+				display: grid;
+				place-items: center;
+				font-family:
+					'Stack Sans Text', -apple-system, BlinkMacSystemFont,
+					'Helvetica Neue', Arial, sans-serif;
+			}
+
+			#stage {
+				width: min(880px, 90vw);
+				/* clear of the GSDevTools bar along the bottom */
+				margin-bottom: 60px;
+			}
+
+			#stage svg {
+				display: block;
+				width: 100%;
+				height: auto;
+				overflow: visible;
+			}
+
+			/* Stack Sans Text ExtraLight 18/22.15 — the family is not installed
+			   here, so the fallback runs at weight 200 and each word is pinned to
+			   its Figma width with textLength. */
+			#stage text {
+				font-size: 18px;
+				font-weight: 200;
+				letter-spacing: 0;
+			}
+
+			/* Only the things that are transformed every frame get the hint. The
+			   bodies are not among them — they are drawn, not moved. */
+			#stage .chorus-token,
+			#stage text {
+				will-change: transform;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="stage"></div>
+
+		<script src="vendor/gsap.min.js"></script>
+		<script src="vendor/DrawSVGPlugin.min.js"></script>
+		<script src="vendor/GSDevTools.min.js"></script>
+		<script src="figma-source.js"></script>
+		<script src="chorus.js"></script>
+		<script>
+			gsap.registerPlugin(DrawSVGPlugin, GSDevTools);
+
+			const scene = Chorus.build(document.getElementById('stage'));
+			let timeline = null;
+
+			// A looping band of moving type is exactly what a vestibular trigger
+			// looks like, so the motion is gated behind matchMedia: readers who
+			// ask for reduced motion get the composed frame 05 and nothing else.
+			// matchMedia reverts what it created when the query stops matching, so
+			// toggling the OS setting swaps cleanly, live.
+			const mm = gsap.matchMedia();
+
+			mm.add(
+				{
+					motion: '(prefers-reduced-motion: no-preference)',
+					reduced: '(prefers-reduced-motion: reduce)',
+				},
+				(context) => {
+					if (context.conditions.reduced) {
+						Chorus.still(scene);
+						return;
+					}
+					timeline = Chorus.create(scene);
+					// The stock GSAP scrubber. Its readout is in real seconds
+					// because create() bakes the six-second fit into the durations
+					// themselves rather than into timeScale — which is also what
+					// leaves this bar's own speed control free to work.
+					GSDevTools.create({animation: timeline, id: 'chorus'});
+					return () => {
+						timeline = null;
+					};
+				},
+			);
+		</script>
+	</body>
+</html>

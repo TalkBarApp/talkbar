@@ -1,0 +1,59 @@
+---
+import { APP_LANGUAGE_OPTIONS, t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const languageGroups = [
+  'languageSupport.groups.localizedUi',
+  'languageSupport.groups.nativeScripts',
+  'languageSupport.groups.regionalVariants',
+  'languageSupport.groups.eastAsianScripts',
+  'languageSupport.groups.portugueseChinese',
+];
+---
+
+<section class="section-pro relative section-pad overflow-hidden" id="languages">
+  <div class="container relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-[0.85fr_1.15fr] gap-10 lg:gap-14 items-start">
+      <div class="section-header-pro">
+        <span class="inline-flex text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-4">
+          {t(lang, 'languageSupport.eyebrow')}
+        </span>
+        <span class="section-header-rule" aria-hidden="true"></span>
+        <h2 class="font-display text-[clamp(36px,5vw,60px)] font-normal leading-[1.05] tracking-tight mb-5">
+          {t(lang, 'languageSupport.headline')}
+          <span class="accent-phrase"> {t(lang, 'languageSupport.accent')}</span>
+        </h2>
+        <p class="text-muted-foreground text-lg leading-relaxed max-w-xl">
+          {t(lang, 'languageSupport.subhead')}
+        </p>
+
+        <div class="mt-7 flex flex-wrap gap-2">
+          {languageGroups.map((group) => (
+            <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3.5 py-2 text-[11px] font-mono uppercase tracking-[0.12em] text-muted-foreground shadow-soft">
+              <Icon name="lucide:check" width="13" height="13" class="text-ps-green" />
+              {t(lang, group)}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {APP_LANGUAGE_OPTIONS.map((language) => (
+          <div class="panel-pro p-4 flex items-center gap-3">
+            <span class="flags text-2xl leading-none">{language.flag}</span>
+            <div class="min-w-0">
+              <div class="font-semibold text-sm text-foreground">{language.name}</div>
+              <div class="text-sm text-muted-foreground">{language.nativeName}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

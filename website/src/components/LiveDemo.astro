@@ -1,0 +1,64 @@
+---
+import { t, type Language } from '../i18n';
+import SectionHeader from './ui/SectionHeader.astro';
+import CardExplorer, { type ExplorerItem } from './ui/CardExplorer.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const cardTypes: ExplorerItem[] = [
+  {
+    icon: 'lucide:layers-3',
+    title: t(lang, 'liveDemo.card.document.title'),
+    desc: t(lang, 'liveDemo.card.document.desc'),
+    shot: 'live-focus',
+    quote: t(lang, 'liveDemo.card.document.example'),
+    meta: t(lang, 'liveDemo.featured.source'),
+    quoted: true,
+  },
+  {
+    icon: 'lucide:list-todo',
+    title: t(lang, 'liveDemo.card.action.title'),
+    desc: t(lang, 'liveDemo.card.action.desc'),
+    shot: 'live-summary',
+    quote: t(lang, 'liveDemo.card.action.example'),
+    quoted: true,
+  },
+  {
+    icon: 'lucide:messages-square',
+    title: t(lang, 'liveDemo.card.memory.title'),
+    desc: t(lang, 'liveDemo.card.memory.desc'),
+    shot: 'live-translation',
+    quote: t(lang, 'liveDemo.card.memory.example'),
+    quoted: true,
+  },
+  {
+    icon: 'lucide:file-search',
+    title: t(lang, 'liveDemo.card.source.title'),
+    desc: t(lang, 'liveDemo.card.source.desc'),
+    shot: 'knowledge-source',
+    quote: t(lang, 'liveDemo.card.source.example'),
+  },
+];
+---
+<section class="section-pro section-pro-alt section-pad" id="live-context-cards">
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'liveDemo.eyebrow')}
+      headline={t(lang, 'liveDemo.headline')}
+      accent={t(lang, 'liveDemo.accent')}
+      subhead={t(lang, 'liveDemo.subhead')}
+    />
+
+    <CardExplorer
+      lang={lang}
+      id="live-cards"
+      label={t(lang, 'liveDemo.explorer.label')}
+      items={cardTypes}
+      mediaOnly
+    />
+  </div>
+</section>

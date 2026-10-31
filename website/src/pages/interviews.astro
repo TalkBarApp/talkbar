@@ -1,0 +1,37 @@
+---
+import UseCaseLayout from '../layouts/UseCaseLayout.astro';
+import UseCaseHero from '../components/use-case/UseCaseHero.astro';
+import UseCaseProblem from '../components/use-case/UseCaseProblem.astro';
+import UseCaseFeatureBlock from '../components/use-case/UseCaseFeatureBlock.astro';
+import UseCaseExamples from '../components/use-case/UseCaseExamples.astro';
+import UseCaseWorkflow from '../components/use-case/UseCaseWorkflow.astro';
+import UseCaseFAQ from '../components/use-case/UseCaseFAQ.astro';
+import UseCaseCTA from '../components/use-case/UseCaseCTA.astro';
+
+import Spotlights from '../components/Spotlights.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import PrivacyCompare from '../components/PrivacyCompare.astro';
+import ScreenshotStrip from '../components/ScreenshotStrip.astro';
+
+import { CURRENT_CONFIG } from '../i18n/domains';
+import { getUseCaseContent } from '../content/use-cases';
+
+const lang = CURRENT_CONFIG.defaultLocale;
+const c = getUseCaseContent('interviews', lang);
+const breadcrumbUrl = Astro.url.href;
+---
+<UseCaseLayout lang={lang} title={c.meta.title} description={c.meta.description} breadcrumb={{ name: c.meta.shortTitle ?? c.meta.title, url: breadcrumbUrl }}>
+  <UseCaseHero lang={lang} {...c.hero} />
+  <UseCaseProblem paragraphs={c.problem.paragraphs} pullquote={c.problem.pullquote} />
+  {c.features.map((f, i) => (
+    <UseCaseFeatureBlock lang={lang} {...f} index={i} />
+  ))}
+  <UseCaseExamples lang={lang} {...c.examples} />
+  <ScreenshotStrip lang={lang} compact />
+  <Spotlights lang={lang} compact />
+  <UseCaseWorkflow {...c.workflow} />
+  <HowItWorks lang={lang} compact />
+  <PrivacyCompare lang={lang} compact />
+  <UseCaseFAQ {...c.faq} />
+  <UseCaseCTA {...c.cta} />
+</UseCaseLayout>

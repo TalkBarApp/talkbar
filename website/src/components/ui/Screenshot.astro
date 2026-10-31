@@ -1,0 +1,62 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import HeroImageZoom from '../HeroImageZoom.tsx';
+import { SCREENSHOTS, showTempLabel, type ShotId } from '../../lib/screenshots';
+import { t, type Language } from '../../i18n';
+
+interface Props {
+  lang: Language;
+  id: ShotId;
+  /** Fixed frame ratio such as "16/10"; the image is cropped from its top-left.
+      Leave unset to show the whole screenshot at its own ratio. */
+  aspect?: string;
+  /** In a fixed frame, show the whole screenshot instead of cropping it. */
+  fit?: 'cover' | 'contain';
+  /** Drop the screenshot's own frame when a parent already draws one. */
+  flush?: boolean;
+  sizes?: string;
+  class?: string;
+}
+
+const {
+  lang,
+  id,
+  aspect,
+  fit = 'cover',
+  flush = false,
+  sizes = '(min-width: 1280px) 760px, (min-width: 1024px) 60vw, 100vw',
+  class: className,
+} = Astro.props;
+
+const shot = SCREENSHOTS[id];
+const alt = t(lang, shot.altKey);
+const caption = t(lang, shot.captionKey);
+const zoomLabel = t(lang, 'media.zoom.expand').replace('{label}', caption);
+const unzoomLabel = t(lang, 'media.zoom.close').replace('{label}', caption);
+const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
+---
+<figure
+  class:list={['shot', aspect && 'shot-fixed', aspect && fit === 'contain' && 'shot-contain', flush && 'shot-flush', className]}
+  style={aspect ? `--shot-ratio: ${aspect}` : undefined}
+  data-shot={id}
+>
+  <HeroImageZoom
+    client:visible
+    className="shot-zoom"
+    zoomLabel={zoomLabel}
+    unzoomLabel={unzoomLabel}
+    zoomSrc={full.src}
+  >
+    <Picture
+      src={shot.src}
+      alt={alt}
+      formats={['avif', 'webp']}
+      widths={[720, 1080, 1440, 2160]}
+      sizes={sizes}
+      class="shot-img"
+      loading="lazy"
+      decoding="async"
+    />
+  </HeroImageZoom>
+  {showTempLabel(id) && <span class="shot-tag" aria-hidden="true">Temp · {id}</span>}
+</figure>

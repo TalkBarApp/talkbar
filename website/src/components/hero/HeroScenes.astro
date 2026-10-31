@@ -1,0 +1,107 @@
+---
+/**
+ * The storyboard lines above the hero headline: four blocks, played one line
+ * at a time, with a row of dots to jump between them. Scenes live in
+ * `src/lib/hero-scenes/`; the script below says which plays, with which
+ * words, in which order.
+ */
+import { icons as lucide } from '@iconify-json/lucide';
+import { CHOREO_ICONS } from '../../lib/hero-scenes';
+import { t, getTranslations, type Language } from '../../i18n';
+
+interface Props {
+  lang: Language;
+  class?: string;
+}
+
+const { lang, class: className } = Astro.props;
+
+const pair = (id: string): [string, string] => [
+  t(lang, `hero.scene.${id}.left`),
+  t(lang, `hero.scene.${id}.right`),
+];
+
+// Word-to-figure space is set per locale in the translations
+// (`hero.scene.<id>.gap`, stage units) — the words differ in length between
+// languages, so the same gap does not suit them all.
+const localeGap = (id: string): number | undefined => {
+  const raw = getTranslations(lang)[`hero.scene.${id}.gap`];
+  const n = Number(raw);
+  return raw !== undefined && raw !== '' && Number.isFinite(n) ? n : undefined;
+};
+
+interface Line {
+  scene: string;
+  icon: string;
+  typed?: string;
+  seconds?: number;
+}
+
+// The script: four blocks, a scene per line, the lucide mark it takes in
+// the overview. The words and the word-to-figure gap come from the
+// translations (`hero.scene.<id>.left/right/gap`).
+const blocks: Line[][] = [
+  [
+    { scene: 'transcription', icon: 'audio-lines', typed: t(lang, 'hero.scene.transcription.typed'), seconds: 6 },
+    { scene: 'speakers', icon: 'users', seconds: 5 },
+  ],
+  [
+    { scene: 'timeline', icon: 'history' },
+    { scene: 'cards', icon: 'layers', seconds: 5 },
+    { scene: 'search', icon: 'file-search', seconds: 5.5 },
+  ],
+  [
+    { scene: 'checks', icon: 'list-checks' },
+    { scene: 'notes', icon: 'notebook-pen' },
+    { scene: 'memory', icon: 'book-open-text' },
+  ],
+  [
+    { scene: 'chat', icon: 'messages-square' },
+    { scene: 'shield', icon: 'shield-check' },
+    { scene: 'cloud', icon: 'cloud-off' },
+  ],
+];
+const scriptBlocks = blocks.map((block) =>
+  block.map((line) => ({ ...line, words: pair(line.scene), gap: localeGap(line.scene) })),
+);
+
+// Lucide bodies the client needs: overview marks plus what the
+// choreographies draw. Their stroke-width attributes are stripped so the
+// scenes can set the width that keeps strokes at 2 units after scaling.
+const wanted = new Set<string>([...CHOREO_ICONS, 'play', 'pause', ...blocks.flat().map((l) => l.icon)]);
+const iconBodies: Record<string, string> = {};
+for (const name of wanted) {
+  const body = lucide.icons[name]?.body;
+  if (body) iconBodies[name] = body.replace(/\s*stroke-width="[^"]*"/g, '');
+}
+
+const script = {
+  blocks: scriptBlocks,
+  icons: iconBodies,
+  labels: { play: t(lang, 'hero.scenes.play'), pause: t(lang, 'hero.scenes.pause') },
+};
+---
+<div
+  class:list={['hero-scenes', className]}
+  data-hero-scenes
+  data-scene-script={JSON.stringify(script)}
+></div>
+
+<script>
+  import { mountHeroScenes } from '../../lib/hero-scenes/sequencer';
+
+  const teardown = new WeakMap<HTMLElement, () => void>();
+
+  function init() {
+    document.querySelectorAll<HTMLElement>('[data-hero-scenes]').forEach((stage) => {
+      if (teardown.has(stage)) return;
+      const script = JSON.parse(
+        stage.dataset.sceneScript || '{"blocks":[],"icons":{},"labels":{"play":"Play","pause":"Pause"}}',
+      );
+      teardown.set(stage, mountHeroScenes(stage, script));
+    });
+  }
+
+  init();
+  document.addEventListener('astro:page-load', init);
+</script>

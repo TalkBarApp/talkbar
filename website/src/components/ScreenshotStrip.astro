@@ -1,0 +1,73 @@
+---
+import { getImage } from 'astro:assets';
+import ScreenshotGallery, { type GalleryItem } from './ScreenshotGallery.tsx';
+import SectionHeader from './ui/SectionHeader.astro';
+import { GALLERY_SHOTS, SCREENSHOTS, showTempLabel, type ShotId } from '../lib/screenshots';
+import { t, type Language } from '../i18n';
+
+interface Props {
+  lang: Language;
+  /** Which screenshots to show, in order. Defaults to the full product tour. */
+  ids?: ShotId[];
+  /** Band colour, chosen per page so neighbouring sections alternate. */
+  band?: 'page' | 'alt';
+  compact?: boolean;
+}
+
+const { lang, ids = GALLERY_SHOTS, band = 'page', compact = false } = Astro.props;
+
+const THUMB_WIDTHS = [640, 960];
+
+const items: GalleryItem[] = await Promise.all(
+  ids.map(async (id) => {
+    const shot = SCREENSHOTS[id];
+    const ratio = shot.src.height / shot.src.width;
+    const thumbs = await Promise.all(
+      THUMB_WIDTHS.map((width) => getImage({ src: shot.src, width, format: 'webp' })),
+    );
+    const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
+    const width = THUMB_WIDTHS[THUMB_WIDTHS.length - 1];
+    return {
+      id,
+      thumb: thumbs[0].src,
+      thumbSrcSet: thumbs.map((img, i) => `${img.src} ${THUMB_WIDTHS[i]}w`).join(', '),
+      full: full.src,
+      width,
+      height: Math.round(width * ratio),
+      alt: t(lang, shot.altKey),
+      caption: t(lang, shot.captionKey),
+      temp: showTempLabel(id),
+    };
+  }),
+);
+
+const labels = {
+  prev: t(lang, 'gallery.prev'),
+  next: t(lang, 'gallery.next'),
+  counter: t(lang, 'gallery.counter'),
+  zoom: t(lang, 'media.zoom.expand'),
+  unzoom: t(lang, 'media.zoom.close'),
+  region: t(lang, 'gallery.region'),
+  scrub: t(lang, 'gallery.scrub'),
+};
+---
+<section
+  class:list={[
+    'section-pro overflow-hidden',
+    band === 'alt' && 'section-pro-alt',
+    compact ? 'section-pad-sm' : 'section-pad',
+  ]}
+  id="screenshots"
+>
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'gallery.eyebrow')}
+      headline={t(lang, 'gallery.headline')}
+      accent={t(lang, 'gallery.accent')}
+      subhead={t(lang, 'gallery.lead')}
+      class="gal-header"
+    />
+  </div>
+
+  <ScreenshotGallery client:visible items={items} labels={labels} />
+</section>

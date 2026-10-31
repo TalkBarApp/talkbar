@@ -1,0 +1,195 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Language } from '../../i18n';
+import type { ShotId } from '../../lib/screenshots';
+import Screenshot from './Screenshot.astro';
+
+export interface ExplorerItem {
+  icon: string;
+  title: string;
+  /** Supporting line under the title in the list (desktop). */
+  desc?: string;
+  /** What the live card in the call window says. */
+  quote: string;
+  /** Wrap the card text in quotes (it is something said or surfaced verbatim). */
+  quoted?: boolean;
+  meta?: string;
+  /** Screenshot shown in this card's panel (src/lib/screenshots.ts). */
+  shot?: ShotId;
+}
+
+interface Props {
+  lang: Language;
+  /** Unique per page: prefixes the tab/panel ids. */
+  id: string;
+  /** Accessible name for the list of tabs. */
+  label: string;
+  items: ExplorerItem[];
+  /** Show only each card's screenshot, whole and edge to edge, with no text under it. */
+  mediaOnly?: boolean;
+}
+
+const { lang, id, label, items, mediaOnly = false } = Astro.props;
+---
+<div class:list={['cx', mediaOnly && 'cx-media']} data-cx>
+  <div class="cx-list" role="tablist" aria-label={label}>
+    {items.map((item, i) => (
+      <button
+        type="button"
+        role="tab"
+        id={`${id}-tab-${i}`}
+        aria-controls={`${id}-panel-${i}`}
+        aria-selected={i === 0 ? 'true' : 'false'}
+        tabindex={i === 0 ? 0 : -1}
+        class="cx-tab"
+      >
+        <span class="cx-ic icon-line" aria-hidden="true">
+          <Icon name={item.icon} width="40" height="40" is:inline />
+        </span>
+        <span class="cx-copy">
+          <span class="cx-title">{item.title}</span>
+          {item.desc && <span class="cx-desc">{item.desc}</span>}
+        </span>
+      </button>
+    ))}
+  </div>
+
+  <div class="cx-window">
+    <div class="cx-body">
+      {items.map((item, i) => (
+        <div
+          role="tabpanel"
+          id={`${id}-panel-${i}`}
+          aria-labelledby={`${id}-tab-${i}`}
+          class="cx-panel"
+          hidden={i !== 0}
+        >
+          {item.shot && mediaOnly ? (
+            <Screenshot lang={lang} id={item.shot} aspect="2660/1853" fit="contain" flush sizes="(min-width: 1280px) 800px, (min-width: 1024px) 64vw, 100vw" />
+          ) : item.shot ? (
+            <Screenshot lang={lang} id={item.shot} aspect="16/10" sizes="(min-width: 1280px) 780px, (min-width: 1024px) 62vw, 100vw" />
+          ) : (
+            <div class="mockup-pro aspect-[16/10] w-full overflow-hidden">
+              <div class="screenshot-placeholder-pro h-full w-full border-2 border-dashed border-primary/30" role="img" aria-label={item.title}>
+                <span class="screenshot-placeholder-label">
+                  <Icon name="lucide:image-plus" width="20" height="20" class="text-primary" />
+                  <span>{item.title}</span>
+                </span>
+              </div>
+            </div>
+          )}
+          {!mediaOnly && (
+            <>
+              {item.desc && <p class="cx-panel-desc">{item.desc}</p>}
+              <p class="q">{item.quoted ? `"${item.quote}"` : item.quote}</p>
+              {item.meta && <div class="meta">{item.meta}</div>}
+            </>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+
+<script>
+  function initCardExplorers() {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    document.querySelectorAll<HTMLElement>('[data-cx]:not([data-cx-init])').forEach((root) => {
+      root.dataset.cxInit = '1';
+      const list = root.querySelector<HTMLElement>('[role="tablist"]');
+      const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+      const panels = tabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls') ?? ''));
+      if (!list || tabs.length < 2 || panels.some((p) => !p)) return;
+
+      let current = 0;
+      let timer: ReturnType<typeof setInterval> | null = null;
+      let interacted = false;
+      let hovered = false;
+
+      const select = (next: number, focus = false) => {
+        if (next === current) {
+          if (focus) tabs[next].focus();
+          return;
+        }
+        tabs.forEach((tab, i) => {
+          const on = i === next;
+          tab.setAttribute('aria-selected', String(on));
+          tab.tabIndex = on ? 0 : -1;
+          panels[i]!.hidden = !on;
+        });
+        const panel = panels[next]!;
+        if (!reduce) {
+          panel.classList.remove('is-entering');
+          void panel.offsetWidth; // restart the entrance
+          panel.classList.add('is-entering');
+        }
+        // In the mobile pill row, keep the active pill in view without
+        // scrolling the page itself.
+        if (list.scrollWidth > list.clientWidth) {
+          list.scrollTo({ left: tabs[next].offsetLeft - 16, behavior: reduce ? 'auto' : 'smooth' });
+        }
+        if (focus) tabs[next].focus();
+        current = next;
+      };
+
+      const stop = () => {
+        interacted = true;
+        if (timer) clearInterval(timer);
+        timer = null;
+      };
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => {
+          stop();
+          select(i);
+        });
+      });
+
+      list.addEventListener('keydown', (event) => {
+        const last = tabs.length - 1;
+        const moves: Record<string, number> = {
+          ArrowDown: current === last ? 0 : current + 1,
+          ArrowRight: current === last ? 0 : current + 1,
+          ArrowUp: current === 0 ? last : current - 1,
+          ArrowLeft: current === 0 ? last : current - 1,
+          Home: 0,
+          End: last,
+        };
+        if (!(event.key in moves)) return;
+        event.preventDefault();
+        stop();
+        select(moves[event.key], true);
+      });
+
+      if (reduce) return;
+
+      // One quiet walk through the cards while the section is on screen,
+      // until the visitor takes over.
+      root.addEventListener('mouseenter', () => { hovered = true; });
+      root.addEventListener('mouseleave', () => { hovered = false; });
+      root.addEventListener('focusin', stop);
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (interacted) return;
+            if (entry.isIntersecting && !timer) {
+              timer = setInterval(() => {
+                if (!hovered) select((current + 1) % tabs.length);
+              }, 4500);
+            } else if (!entry.isIntersecting && timer) {
+              clearInterval(timer);
+              timer = null;
+            }
+          });
+        },
+        { threshold: 0.4 },
+      );
+      io.observe(root);
+    });
+  }
+
+  initCardExplorers();
+  document.addEventListener('astro:page-load', initCardExplorers);
+</script>

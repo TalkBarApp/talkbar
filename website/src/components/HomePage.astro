@@ -1,0 +1,61 @@
+---
+import type { Language } from '../i18n';
+import { getTranslations } from '../i18n';
+import { ENGLISH_CROSS_LINK } from '../i18n/domains';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from './Navbar.tsx';
+import Hero from './Hero.astro';
+import Workflows from './Workflows.astro';
+import PriceMonitoring from './PriceMonitoring.astro';
+import LiveDemo from './LiveDemo.astro';
+import FollowupShowcase from './FollowupShowcase.astro';
+import Knowledge from './Knowledge.astro';
+import AskTalkBar from './AskTalkBar.astro';
+import FeaturesGrid from './FeaturesGrid.astro';
+import TemplatesSkills from './TemplatesSkills.astro';
+import ScreenshotStrip from './ScreenshotStrip.astro';
+import StickyDownloadBar from './StickyDownloadBar.astro';
+import UseCases from './UseCases.astro';
+import PrivacyCompare from './PrivacyCompare.astro';
+import HowItWorks from './HowItWorks.astro';
+import FAQ from './FAQ.astro';
+import CTASection from './CTASection.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const translations = getTranslations(lang);
+---
+<BaseLayout
+  lang={lang}
+  title={translations['meta.title']}
+  description={translations['meta.description']}
+  ogTitle={translations['meta.ogTitle']}
+  ogDescription={translations['meta.ogDescription']}
+  jsonLdDescription={translations['meta.jsonLdDescription']}
+  siteSchema
+>
+  <Navbar client:load lang={lang} translations={translations} englishUrl={ENGLISH_CROSS_LINK} />
+  <main id="main-content">
+    <Hero lang={lang} />
+    <Workflows lang={lang} />
+    <PriceMonitoring lang={lang} />
+    <LiveDemo lang={lang} />
+    <FollowupShowcase lang={lang} />
+    <Knowledge lang={lang} />
+    <AskTalkBar lang={lang} />
+    <FeaturesGrid lang={lang} />
+    <ScreenshotStrip lang={lang} />
+    <TemplatesSkills lang={lang} />
+    <UseCases lang={lang} />
+    <PrivacyCompare lang={lang} />
+    <HowItWorks lang={lang} />
+    <FAQ lang={lang} />
+    <CTASection lang={lang} />
+  </main>
+  <StickyDownloadBar lang={lang} />
+  <Footer lang={lang} />
+</BaseLayout>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="warm">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>TalkBar — Aurora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+<link rel="stylesheet" href="assets/base.css" />
+<link rel="stylesheet" href="assets/components.css" />
+<style>
+  /* Aurora — alternating light / dark full-bleed bands */
+  body { background: var(--bg); }
+  .nav-in { height: 74px; }
+  /* hairline between consecutive same-tone sections (safety) */
+  .invert + .invert { border-top: 1px solid var(--line); }
+  .section:not(.invert) + .section:not(.invert) { border-top: 1px solid var(--line-2); }
+  /* hero gets a soft tonal floor */
+  .hero { background:
+    radial-gradient(120% 90% at 78% 0%, var(--primary-soft), transparent 60%); }
+
+</style>
+</head>
+<body>
+<!-- ============ HEADER (full width) ============ -->
+<header class="nav" id="nav">
+  <div class="xwrap nav-in">
+    <a class="brand" href="#" aria-label="TalkBar home">
+        <span class="brand-mark"><span class="bars"><i style="height:5px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:8px"></i><i style="height:5px"></i></span></span>
+        <span class="brand-name">Talk<b>Bar</b></span>
+      </a>
+    <nav class="nav-links">
+        <a href="#signature">Live Cards</a>
+        <a href="#lifecycle">Lifecycle</a>
+        <a href="#features">Features</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    <div class="nav-right">
+      <div class="theme-toggle" role="group" aria-label="Color theme">
+          <button data-set="warm" aria-pressed="true" title="Warm theme"><span class="sw"></span></button>
+          <button data-set="blue" aria-pressed="false" title="Blue theme"><span class="sw"></span></button>
+        </div>
+      <a class="btn btn-primary" href="#">Download</a>
+    </div>
+  </div>
+</header>
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div data-reveal>
+        <span class="eyebrow">Privacy-first · Runs locally · No accounts</span>
+        <h1>Private conversation <span class="it">intelligence</span><br />for your desktop.</h1>
+        <p class="hero-sub">A local-first, bot-free desktop app that gives you private, source-backed context during live conversations — then turns every meeting, call, and voice note into searchable memory.</p>
+        <div class="hero-hl">
+          <span class="chip"><span class="dot"></span>Native audio capture</span>
+          <span class="chip"><span class="dot"></span>Live context cards</span>
+          <span class="chip"><span class="dot"></span>Local AI optional</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#">Download for Mac &amp; Windows</a>
+          <a class="btn btn-ghost btn-lg" href="#lifecycle">See how it works</a>
+        </div>
+        <p class="hero-plat chip">Available on macOS and Windows 10, 11</p>
+      </div>
+
+      <div data-reveal>
+        <div class="mock">
+          <div class="mock-bar">
+            <div class="mock-dots"><i></i><i></i><i></i></div>
+            <span class="mini-pill"><span class="live-dot"></span>Live conversation</span>
+          </div>
+          <div class="mock-body">
+            <div class="panel">
+              <div class="panel-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h2l2-7 4 16 3-9 2 4h5"/></svg>Native audio</div>
+              <div class="wavebox"><div class="wave">
+                <i style="height:28%"></i><i style="height:54%"></i><i style="height:78%"></i><i style="height:40%"></i><i style="height:88%"></i><i style="height:56%"></i><i style="height:70%"></i><i style="height:34%"></i><i style="height:62%"></i><i style="height:46%"></i>
+              </div></div>
+              <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+                <div class="skel" style="width:92%"></div>
+                <div class="skel" style="width:78%"></div>
+                <div class="skel" style="width:64%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="lcc">
+                <div class="lcc-top">
+                  <span class="panel-label" style="margin:0"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Memory match</span>
+                  <span class="badge-conf">High</span>
+                </div>
+                <p class="lcc-quote">"During the March 12 call, Sarah noted procurement approval is required before legal review."</p>
+                <div class="lcc-src"><span>Source · <b>account call</b></span><span>Open ↗</span></div>
+              </div>
+              <div class="statrow">
+                <div class="stat"><div class="k">Memory</div><div class="v">42</div><div class="d">matched notes</div></div>
+                <div class="stat"><div class="k">Follow-up</div><div class="v">3</div><div class="d">drafted tasks</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="insights">
+          <div>
+            <div class="ins-k"><span class="pip" style="background:color-mix(in srgb,var(--amber) 14%,transparent);color:var(--amber)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span>Flag</div>
+            <p class="ins-t">Renewal notice appears to be 60 days, not 30.</p>
+          </div>
+          <div>
+            <div class="ins-k"><span class="pip" style="background:var(--primary-soft);color:var(--primary)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 2.5M12 17h.01"/></svg></span>Ask</div>
+            <p class="ins-t">Has budget approval been secured for Q3?</p>
+          </div>
+          <div>
+            <div class="ins-k"><span class="pip" style="background:color-mix(in srgb,var(--green) 12%,transparent);color:var(--green)"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6 9 17l-5-5"/></svg></span>Act</div>
+            <p class="ins-t">Send revised pricing model to Alex by Friday.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span><span class="dot"></span>Venture intel · $2M ARR verified</span>
+      <span><span class="dot"></span>Legal counsel · SLA mismatch flagged</span>
+      <span><span class="dot"></span>Executive sync · Decision owner confirmed</span>
+      <span><span class="dot"></span>B2B sales · MEDDPICC · Budget owner confirmed</span>
+      <span><span class="dot"></span>Research interview · Theme matched</span>
+      <span><span class="dot"></span>Client workshop · Open issue captured</span>
+      <span><span class="dot"></span>Venture intel · $2M ARR verified</span>
+      <span><span class="dot"></span>Legal counsel · SLA mismatch flagged</span>
+      <span><span class="dot"></span>Executive sync · Decision owner confirmed</span>
+      <span><span class="dot"></span>B2B sales · MEDDPICC · Budget owner confirmed</span>
+      <span><span class="dot"></span>Research interview · Theme matched</span>
+      <span><span class="dot"></span>Client workshop · Open issue captured</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE / LIVE CARDS ============ -->
+<section class="section invert" id="signature">
+  <div class="container">
+    <div data-reveal>
+      <div class="secmark"><span class="num">01</span><span class="eyebrow no-rule">Signature experience</span></div>
+      <h2 class="h2">The right context, <span class="it">exactly when it matters.</span></h2>
+      <p class="lead">TalkBar listens for meaning, not noise. When prior memory, a document, a risk, or a better question can help, it surfaces a lightweight Live Context Card while the conversation is still happening.</p>
+    </div>
+    <div class="lib-grid">
+      <div class="lib-card" data-reveal>
+        <div class="lib-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Memory Card</h3>
+        <p>Recall what was said last time, with source context and timestamp.</p>
+        <p class="lib-eg">"Last call, Sarah said procurement approval was required before legal review."</p>
+      </div>
+      <div class="lib-card" data-reveal>
+        <div class="lib-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg></div>
+        <h3>Document Card</h3>
+        <p>Surface the clause, memo, note, or PDF that matters right now.</p>
+        <p class="lib-eg">"The signed agreement lists renewal notice at 60 days, not 30."</p>
+      </div>
+      <div class="lib-card" data-reveal>
+        <div class="lib-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 2.5-3 2.5M12 17h.01"/></svg></div>
+        <h3>Suggested Question</h3>
+        <p>Ask the better question before the moment passes.</p>
+        <p class="lib-eg">"Ask whether budget approval has already been secured for Q3."</p>
+      </div>
+      <div class="lib-card" data-reveal>
+        <div class="lib-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div>
+        <h3>Fact Check Card</h3>
+        <p>Flag a possible inconsistency between the conversation and prior records.</p>
+        <p class="lib-eg">"This timeline differs from the March 12 discussion."</p>
+      </div>
+      <div class="lib-card" data-reveal>
+        <div class="lib-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></div>
+        <h3>Blind Spot Card</h3>
+        <p>Show what has not yet been clarified in the conversation.</p>
+        <p class="lib-eg">"Timeline and decision owner have not been confirmed."</p>
+      </div>
+      <div class="lib-card" data-reveal>
+        <div class="lib-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Action Card</h3>
+        <p>Turn a live commitment into a next step you won't forget.</p>
+        <p class="lib-eg">"Create task: send revised pricing model to Alex by Friday."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIFECYCLE ============ -->
+<section class="section" id="lifecycle">
+  <div class="container">
+    <div data-reveal>
+      <div class="secmark"><span class="num">02</span><span class="eyebrow no-rule">Lifecycle intelligence</span></div>
+      <h2 class="h2">Before, during, and after <span class="it">every conversation.</span></h2>
+      <p class="lead">Most AI meeting tools tell you what happened after the call ends. TalkBar helps while the conversation is still happening — and keeps the memory after.</p>
+    </div>
+    <div class="life-grid" data-reveal>
+      <div class="life-col">
+        <span class="life-tag">Before</span>
+        <h3>Walk in briefed</h3>
+        <p>Private preparation from your own history, notes, past meetings, and local documents — no data onboarding pipeline.</p>
+        <div class="life-out"><div class="ol">Key outputs</div><div class="ot">Prior recap · suggested agenda · recommended questions · relevant excerpts · open items.</div></div>
+      </div>
+      <div class="life-col">
+        <span class="life-tag">During</span>
+        <h3>Live, private intelligence</h3>
+        <p>TalkBar captures audio without a bot and surfaces lightweight context cards exactly when they add value.</p>
+        <div class="life-out"><div class="ol">Key outputs</div><div class="ot">Memory matches · document matches · suggested questions · inconsistencies · live action items.</div></div>
+      </div>
+      <div class="life-col">
+        <span class="life-tag">After</span>
+        <h3>Action &amp; lasting memory</h3>
+        <p>Turn every call into structured outputs, verified decisions, task lists, and permanent searchable history.</p>
+        <div class="life-out"><div class="ol">Key outputs</div><div class="ot">Executive summary · decisions · action items · follow-up drafts · searchable history · exports.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="section invert" id="features">
+  <div class="container">
+    <div data-reveal>
+      <div class="secmark"><span class="num">03</span><span class="eyebrow no-rule">Capabilities</span></div>
+      <h2 class="h2">Everything you need to turn talk <span class="it">into an asset.</span></h2>
+    </div>
+    <div class="feat-grid" data-reveal>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4"/></svg></div><h3>Bot-free capture</h3><p>Records from your desktop mic and system sound. No calendar bots, no awkward explanations.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M7 20h10M8 9h8M8 13h5"/></svg></div><h3>Strategic briefing</h3><p>Walk into every conversation with a concise briefing from history, notes, and decisions.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div><h3>Live context cards</h3><p>Relevant memory, documents, questions, and risks surfaced as you talk.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div><h3>Searchable memory</h3><p>Search meetings, people, companies, deals, and topics with source-backed answers.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M14 4v5h5"/></svg></div><h3>Document integration</h3><p>Link local folders of PDFs, Markdown, memos, and transcripts for context-aware help.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>Automated action items</h3><p>Generate summaries, decisions, owners, due dates, and follow-up emails.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7V5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2M9 20h6M12 4v16"/></svg></div><h3>Custom vocabulary</h3><p>Teach the names, acronyms, clients, and legal terms that matter to your work.</p></div>
+      <div class="feat"><div class="fic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></div><h3>BYOK or local AI</h3><p>Run private AI locally through Ollama, or connect your own provider key.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ USE CASES + INDUSTRIES ============ -->
+<section class="section">
+  <div class="container">
+    <div class="split">
+      <div data-reveal>
+        <div class="secmark"><span class="num">04</span><span class="eyebrow no-rule">Use cases</span></div>
+        <h2 class="h2" style="font-size:clamp(26px,3vw,36px)">Built for the conversations you need to remember.</h2>
+        <div class="uc-list">
+          <div class="uc-item"><span class="uc-n">01</span><div><h4>One-on-one meetings</h4><p>Carry goals, blockers, and commitments across recurring private conversations.</p></div></div>
+          <div class="uc-item"><span class="uc-n">02</span><div><h4>Coaching sessions</h4><p>Track goals, progress, reflections, and action plans across sessions.</p></div></div>
+          <div class="uc-item"><span class="uc-n">03</span><div><h4>Interviews</h4><p>Bring criteria, themes, and follow-up prompts into structured interviews.</p></div></div>
+          <div class="uc-item"><span class="uc-n">04</span><div><h4>Client calls</h4><p>Keep client history, decisions, and next steps connected across every call.</p></div></div>
+          <div class="uc-item"><span class="uc-n">05</span><div><h4>Voice notes</h4><p>Turn spoken ideas and field notes into searchable context and follow-ups.</p></div></div>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="secmark"><span class="num">05</span><span class="eyebrow no-rule">Industries</span></div>
+        <h2 class="h2" style="font-size:clamp(26px,3vw,36px)">Made for your work.</h2>
+        <div class="uc-list">
+          <div class="uc-item"><span class="uc-n">→</span><div><h4>Venture &amp; private equity</h4><p>Founder pitch recall, diligence tracking, metric verification, and memo drafts.</p></div></div>
+          <div class="uc-item"><span class="uc-n">→</span><div><h4>Legal counsel &amp; M&amp;A</h4><p>Prior term recall, contract excerpts, chronology, and inconsistency alerts.</p></div></div>
+          <div class="uc-item"><span class="uc-n">→</span><div><h4>Executive leadership</h4><p>Briefings, decision tracking, commitment follow-through, and team histories.</p></div></div>
+          <div class="uc-item"><span class="uc-n">→</span><div><h4>B2B sales &amp; accounts</h4><p>Account briefings, objection recall, stakeholder mapping, and follow-up drafts.</p></div></div>
+          <div class="uc-item"><span class="uc-n">→</span><div><h4>Consultants &amp; advisors</h4><p>Workshop memory, advisory notes, and source-backed client recaps.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section class="section invert" id="privacy">
+  <div class="container">
+    <div data-reveal>
+      <div class="secmark"><span class="num">06</span><span class="eyebrow no-rule">Privacy-first foundation</span></div>
+      <h2 class="h2">Local-first. Bot-free. <span class="it">Built for sensitive talk.</span></h2>
+      <p class="lead">Capture conversations without meeting bots, keep memory under your control, and choose what gets recorded, retained, indexed, deleted, exported, or processed by AI.</p>
+    </div>
+    <div class="cmp" data-reveal>
+      <table>
+        <thead>
+          <tr><th class="feat-name">Capability</th><th class="tb ctr col-tb">TalkBar</th><th class="ctr">Cloud meeting bots</th><th class="ctr">Browser-only tools</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat-name">Captures without a visible meeting bot</td><td class="ctr col-tb"><span class="yes">Yes</span></td><td class="ctr no">No</td><td class="ctr lim">Limited</td></tr>
+          <tr><td class="feat-name">Designed for local-first desktop workflows</td><td class="ctr col-tb"><span class="yes">Yes</span></td><td class="ctr no">No</td><td class="ctr no">No</td></tr>
+          <tr><td class="feat-name">Links directly to local files and folders</td><td class="ctr col-tb"><span class="yes">Yes</span></td><td class="ctr no">No</td><td class="ctr lim">Limited</td></tr>
+          <tr><td class="feat-name">Supports local AI through Ollama</td><td class="ctr col-tb"><span class="yes">Yes</span></td><td class="ctr no">No</td><td class="ctr no">No</td></tr>
+          <tr><td class="feat-name">Lets users control raw audio retention</td><td class="ctr col-tb"><span class="yes">Yes</span></td><td class="ctr lim">Varies</td><td class="ctr lim">Varies</td></tr>
+          <tr><td class="feat-name">Surfaces live context from private memory</td><td class="ctr col-tb"><span class="yes">Yes</span></td><td class="ctr no">No</td><td class="ctr no">No</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section">
+  <div class="container">
+    <div data-reveal>
+      <div class="secmark"><span class="num">07</span><span class="eyebrow no-rule">How it works</span></div>
+      <h2 class="h2">Set up your local intelligence layer <span class="it">in 60 seconds.</span></h2>
+    </div>
+    <div class="steps" data-reveal>
+      <div class="step"><div class="sn">Step 1</div><h4>Choose a profile</h4><p>Sales, legal, investing, leadership, research, recruiting, or general.</p></div>
+      <div class="step"><div class="sn">Step 2</div><h4>Configure audio</h4><p>Enable mic and system audio capture — no meeting participant.</p></div>
+      <div class="step"><div class="sn">Step 3</div><h4>Link knowledge</h4><p>Connect local folders, PDFs, Markdown notes, transcripts, and memos.</p></div>
+      <div class="step"><div class="sn">Step 4</div><h4>Talk normally</h4><p>TalkBar works quietly, surfacing only cards that add value.</p></div>
+      <div class="step"><div class="sn">Step 5</div><h4>Export what matters</h4><p>Summaries, decisions, tasks to Markdown, Word, PDF, or Obsidian.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section invert" id="faq">
+  <div class="container">
+    <div data-reveal>
+      <div class="secmark"><span class="num">08</span><span class="eyebrow no-rule">FAQ</span></div>
+      <h2 class="h2">Common <span class="it">questions.</span></h2>
+    </div>
+    <div class="faq" data-reveal>
+      <details open><summary>What exactly does TalkBar do?<span class="pm"></span></summary><p>TalkBar is a local-first, bot-free conversation intelligence app for Mac and Windows. It prepares you before important conversations, assists you with source-backed Live Context Cards while you talk, and turns conversations into searchable memory and clear follow-up.</p></details>
+      <details><summary>How is it different from an AI note-taker?<span class="pm"></span></summary><p>Most AI note-takers summarize after the meeting. TalkBar helps before, during, and after — preparing private context, surfacing relevant memory live, and creating structured outputs afterward.</p></details>
+      <details><summary>How does bot-free capture work?<span class="pm"></span></summary><p>TalkBar records from your desktop microphone and system audio instead of joining your meeting as a visible bot.</p></details>
+      <details><summary>Can TalkBar run AI locally?<span class="pm"></span></summary><p>Yes. TalkBar supports local AI workflows through Ollama, allowing analysis to run on your own machine when Local Mode is enabled.</p></details>
+      <details><summary>Can I choose what gets saved or deleted?<span class="pm"></span></summary><p>Yes. TalkBar gives you clear controls over what is recorded, retained, indexed, deleted, exported, or sent to any external provider.</p></details>
+      <details><summary>What can I export?<span class="pm"></span></summary><p>Summaries, transcripts, action items, decisions, follow-up emails, and meeting briefs to formats such as Markdown, Word, PDF, and Obsidian-friendly folders.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section">
+  <div class="container">
+    <div class="cta" data-reveal data-comment-anchor="cta">
+      <h2>Ready to bring your private memory <span class="it">into every conversation?</span></h2>
+      <p>Privacy-first · Runs locally · No accounts</p>
+      <a class="btn btn-primary btn-lg" href="#">Download for Mac &amp; Windows</a>
+      <div class="cta-chips">
+        <span class="cc">Privacy-first</span><span class="cc">Runs locally</span><span class="cc">No accounts</span><span class="cc">Mac &amp; Windows</span>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<!-- ============ FOOTER (full width) ============ -->
+<footer class="ft invert">
+  <div class="xwrap">
+    <div class="ft-grid">
+      <div>
+        <a class="brand" href="#" aria-label="TalkBar home">
+        <span class="brand-mark"><span class="bars"><i style="height:5px"></i><i style="height:9px"></i><i style="height:13px"></i><i style="height:8px"></i><i style="height:5px"></i></span></span>
+        <span class="brand-name">Talk<b>Bar</b></span>
+      </a>
+        <p class="ft-tag">Private conversation intelligence. Built for sensitive conversations — before, during, and after.</p>
+      </div>
+      <div><h5>Product</h5><a href="#signature">Live Context Cards</a><a href="#lifecycle">Lifecycle</a><a href="#features">Features</a><a href="#privacy">Privacy</a></div>
+      <div><h5>Use cases</h5><a href="#">One-on-ones</a><a href="#">Client calls</a><a href="#">Interviews</a><a href="#">Voice notes</a></div>
+      <div><h5>Company</h5><a href="#faq">FAQ</a><a href="#">Support</a><a href="#">Contact</a><a href="#">Download</a></div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 TalkBar. Built for sensitive conversations.</span>
+      <span class="chip">macOS · Windows 10, 11</span>
+    </div>
+  </div>
+</footer>
+<script src="assets/talkbar.js"></script>
+</body>
+</html>

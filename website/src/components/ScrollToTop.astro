@@ -1,0 +1,54 @@
+---
+import { Icon } from 'astro-icon/components';
+import { t, type Language } from '../i18n';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const label = t(lang, 'a11y.backToTop');
+---
+<button
+  type="button"
+  class="to-top"
+  data-to-top
+  aria-label={label}
+  data-tooltip={label}
+  data-tooltip-side="left"
+>
+  <Icon name="lucide:chevron-up" width="22" height="22" is:inline />
+</button>
+
+<script>
+  function initScrollToTop() {
+    const button = document.querySelector<HTMLButtonElement>('[data-to-top]');
+    if (!button || button.dataset.init) return;
+    button.dataset.init = '1';
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    // Appears once the first screen has scrolled away.
+    let queued = false;
+    const update = () => {
+      queued = false;
+      button.classList.toggle('is-shown', window.scrollY > window.innerHeight * 0.9);
+    };
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+
+    button.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: reduce.matches ? 'auto' : 'smooth' });
+    });
+  }
+
+  initScrollToTop();
+  document.addEventListener('astro:page-load', initScrollToTop);
+</script>

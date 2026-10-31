@@ -1,0 +1,194 @@
+/* ============================================================
+   TalkBar — shared foundation
+   Flat, confident & crisp. Dual color theme (warm / blue).
+   ============================================================ */
+
+/* ---------- tokens ---------- */
+:root {
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* neutral ramp (cool-leaning, overridden warm per theme) */
+  --ink: #16181d;          /* primary text */
+  --ink-2: #3d4149;        /* secondary text */
+  --muted: #6b7178;        /* tertiary / captions */
+  --line: #e6e3dd;         /* hairlines */
+  --line-2: #efece6;       /* faint hairlines */
+  --bg: #faf8f4;           /* page background */
+  --surface: #ffffff;      /* card / raised */
+  --surface-2: #f4f1ea;    /* sunken */
+
+  --primary: #c2603a;            /* terracotta */
+  --primary-strong: #a64e2d;
+  --primary-ink: #ffffff;
+  --primary-soft: rgba(194, 96, 58, 0.09);
+  --primary-line: rgba(194, 96, 58, 0.26);
+
+  --green: #2f8f5b;
+  --amber: #c98a21;
+
+  --radius: 12px;
+  --radius-sm: 9px;
+  --radius-lg: 18px;
+  --maxw: 1200px;
+  --shadow-flat: 0 1px 2px rgba(20, 24, 29, 0.04);
+  --shadow-card: 0 1px 3px rgba(20, 24, 29, 0.05), 0 8px 24px rgba(20, 24, 29, 0.04);
+}
+
+/* ---------- themes ---------- */
+[data-theme="warm"] {
+  --bg: #faf8f4;
+  --surface: #ffffff;
+  --surface-2: #f5f1ea;
+  --line: #e8e3da;
+  --line-2: #f0ece3;
+  --primary: #c2603a;
+  --primary-strong: #a64e2d;
+  --primary-soft: rgba(194, 96, 58, 0.09);
+  --primary-line: rgba(194, 96, 58, 0.26);
+}
+[data-theme="blue"] {
+  --bg: #fafbfd;
+  --surface: #ffffff;
+  --surface-2: #f1f4f9;
+  --line: #e4e8ef;
+  --line-2: #eef1f6;
+  --ink: #14161c;
+  --ink-2: #383d47;
+  --muted: #69707c;
+  --primary: #054df6;
+  --primary-strong: #0436b8;
+  --primary-soft: rgba(5, 77, 246, 0.07);
+  --primary-line: rgba(5, 77, 246, 0.24);
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+h1, h2, h3, h4 { margin: 0; font-weight: 500; }
+p { margin: 0; }
+::selection { background: var(--primary); color: var(--primary-ink); }
+
+/* ---------- type primitives ---------- */
+.serif { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.012em; }
+.mono { font-family: var(--font-mono); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7em;
+}
+.eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--primary);
+  opacity: 0.7;
+}
+.eyebrow.no-rule::before { display: none; }
+
+/* ---------- layout ---------- */
+.container { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+.container-wide { max-width: 1320px; }
+@media (max-width: 640px) { .container { padding: 0 18px; } }
+
+/* ---------- buttons (flat) ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-size: 15px; font-weight: 600; letter-spacing: -0.01em;
+  padding: 13px 22px; border-radius: 999px; border: 1px solid transparent;
+  transition: transform .15s ease, border-color .15s ease, color .15s ease;
+  white-space: nowrap;
+}
+.btn-primary { background-color: var(--primary); color: var(--primary-ink); }
+.btn-primary:hover { background-color: var(--primary-strong); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ink:hover { transform: translateY(-1px); opacity: 0.92; }
+.btn svg { width: 16px; height: 16px; }
+.btn-lg { padding: 15px 26px; font-size: 16px; }
+
+/* ---------- chips / pills ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 500;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--muted);
+}
+.chip .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--primary); flex: none; }
+.tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--surface); font-size: 12.5px; color: var(--ink-2); font-weight: 500;
+}
+
+/* ---------- cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.card-pad { padding: 24px; }
+
+/* ---------- hairline ---------- */
+.rule { height: 1px; background: var(--line); border: 0; width: 100%; }
+
+/* ---------- theme toggle ---------- */
+.theme-toggle {
+  display: inline-flex; align-items: center; padding: 3px;
+  border: 1px solid var(--line); border-radius: 999px; background: var(--surface);
+  gap: 2px;
+}
+.theme-toggle button {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 26px; height: 26px; border-radius: 999px; border: 0; background: transparent;
+  transition: transform .15s ease;
+}
+.theme-toggle button .sw { width: 13px; height: 13px; border-radius: 50%; }
+.theme-toggle button[data-set="warm"] .sw { background: #c2603a; }
+.theme-toggle button[data-set="blue"] .sw { background: #054df6; }
+.theme-toggle button[aria-pressed="true"] { background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); }
+
+/* ---------- reveal on scroll (safe: visible by default, hide only once JS arms it) ---------- */
+html.reveal-armed [data-reveal] { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+html.reveal-armed [data-reveal].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-armed [data-reveal] { opacity: 1 !important; transform: none !important; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- brand mark ---------- */
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); }
+/* injected wordmark logo (img, 4 themed variants) */
+.brand .tb-logo { height: 26px; width: auto; display: block; }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px; border: 1.5px solid var(--ink);
+  display: grid; place-items: center; flex: none;
+}
+.brand-mark .bars { display: flex; align-items: center; gap: 2px; height: 13px; }
+.brand-mark .bars i { width: 2px; border-radius: 2px; background: var(--primary); display: block; }
+.brand-name { font-family: var(--font-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
+.brand-name b { color: var(--primary); font-weight: 700; }
+
+/* ---------- waveform helper ---------- */
+.wave { display: flex; align-items: center; gap: 3px; height: 100%; }
+.wave i { flex: 1; border-radius: 999px; background: var(--primary); opacity: 0.8; }

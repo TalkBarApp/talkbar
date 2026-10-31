@@ -1,0 +1,62 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+import Screenshot from './ui/Screenshot.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const exports = ['Markdown', t(lang, 'followup.chip.text'), 'HTML', 'Obsidian', 'ZIP'];
+
+const points = [
+  { icon: 'lucide:badge-check', titleKey: 'followup.point1.title', descKey: 'followup.point1.desc' },
+  { icon: 'lucide:user-round-check', titleKey: 'followup.point2.title', descKey: 'followup.point2.desc' },
+  { icon: 'lucide:send', titleKey: 'followup.point3.title', descKey: 'followup.point3.desc' },
+  { icon: 'lucide:scan-search', titleKey: 'followup.point4.title', descKey: 'followup.point4.desc' },
+];
+---
+<section class="section-pro relative section-pad overflow-hidden" id="followup">
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'followup.eyebrow')}
+      headline={t(lang, 'followup.headline')}
+      accent={t(lang, 'followup.accent')}
+      subhead={t(lang, 'followup.subhead')}
+    />
+
+    <div class="fu-frame">
+      <ul class="fu-points order-2 lg:order-1">
+        {points.map(({ icon, titleKey, descKey }) => (
+          <li class="fu-point">
+            <span class="icon-line icon-line-xl fu-point-ic" aria-hidden="true"><Icon name={icon} width="60" height="60" is:inline /></span>
+            <div>
+              <h3 class="fu-point-title">{t(lang, titleKey)}</h3>
+              <p class="fu-point-desc">{t(lang, descKey)}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="fu-mock order-1 lg:order-2">
+        <div class="fu-mock-body">
+          <Screenshot lang={lang} id="session-overview" class="shot-flat" />
+        </div>
+        <div class="fu-export">
+          <div class="fu-mock-label">{t(lang, 'followup.exportLabel')}</div>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {exports.map((label) => (
+              <span class="fu-chip">
+                <Icon name="lucide:arrow-up-right" width="14" height="14" />
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

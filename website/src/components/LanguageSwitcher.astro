@@ -1,0 +1,42 @@
+---
+import { APP_LANGUAGE_OPTIONS, LANGUAGE_NAMES, type Language } from '../i18n';
+import { getLanguageLinks } from '../i18n/domains';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+const localeUrls = getLanguageLinks();
+---
+<div class="relative inline-block">
+  <details class="group">
+    <summary class="flex items-center gap-1.5 cursor-pointer text-xs text-muted-foreground hover:text-foreground transition-colors list-none px-2 py-1 rounded-md hover:bg-muted">
+      <Icon name="lucide:globe" width="14" height="14" />
+      <span>{LANGUAGE_NAMES[lang]}</span>
+      <Icon name="lucide:chevron-down" width="12" height="12" class="transition-transform group-open:rotate-180" />
+    </summary>
+    <div class="nav-panel-pro nav-dropdown-panel absolute right-0 mt-1 py-1 min-w-[180px] max-h-[70vh] overflow-y-auto z-50">
+      {APP_LANGUAGE_OPTIONS.map((option) => (
+        option.locale ? (
+        <a
+          href={localeUrls[option.locale]}
+          class:list={[
+            'block px-3 py-1.5 text-xs transition-colors',
+            option.locale === lang
+              ? 'text-primary font-semibold bg-accent-soft'
+              : 'text-muted-foreground hover:text-foreground hover:bg-muted',
+          ]}
+        >
+          {option.nativeName}
+        </a>
+        ) : (
+        <span class="block px-3 py-1.5 text-xs text-muted-foreground/70">
+          {option.nativeName}
+        </span>
+        )
+      ))}
+    </div>
+  </details>
+</div>

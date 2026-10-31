@@ -1,0 +1,53 @@
+---
+import { t, type Language } from '../../i18n';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+  title: string;
+  icon: string;
+}
+
+const { lang, title, icon } = Astro.props;
+---
+<div class="uc-hero-mock">
+  <div class="ldp-top">
+    <span class="ldp-rec"><i></i>{t(lang, 'hero.dash.recording')}</span>
+    <span class="ldp-title inline-flex items-center gap-2">
+      <Icon name={icon} width="16" height="16" class="text-[hsl(var(--accent-text))]" />
+      {title}
+    </span>
+    <span class="conf">{t(lang, 'hero.dash.live')}</span>
+  </div>
+  <div class="uc-hero-mock-body">
+    <div class="conv-line">
+      <span class="who">{t(lang, 'mock.speaker.sj')}</span>
+      <div class="bubble"><div class="skel" style="width:86%"></div><div class="skel" style="width:58%"></div></div>
+    </div>
+
+    <div class="lcc2">
+      <div class="lt">
+        <span class="lab">
+          <Icon name="lucide:layers-3" width="14" height="14" />
+          {t(lang, 'hero.dash.memoryMatch')}
+        </span>
+        <span class="conf">{t(lang, 'hero.dash.high')}</span>
+      </div>
+      <p class="q">"{t(lang, 'ucMock.hero.quote')}"</p>
+      <div class="meta">
+        <span>{t(lang, 'ucMock.hero.source')}</span>
+        <span>·</span>
+        <span class="font-semibold text-[hsl(var(--accent-text))]">{t(lang, 'hero.dash.open')}</span>
+      </div>
+    </div>
+
+    <div class="conv-line">
+      <span class="who">{t(lang, 'mock.speaker.you')}</span>
+      <div class="bubble"><div class="skel" style="width:70%"></div><div class="skel" style="width:42%"></div></div>
+    </div>
+    <div class="conv-line" style="margin-bottom:0">
+      <span class="who">{t(lang, 'mock.speaker.sj')}</span>
+      <div class="bubble"><div class="skel" style="width:62%"></div></div>
+    </div>
+  </div>
+</div>

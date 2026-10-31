@@ -1,0 +1,92 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const tiles = [
+  { icon: 'lucide:clipboard-check', name: 'featuresGrid.briefing.name', desc: 'featuresGrid.briefing.desc' },
+  { icon: 'lucide:hard-drive', name: 'featuresGrid.docs.name', desc: 'featuresGrid.docs.desc' },
+  { icon: 'lucide:notebook-pen', name: 'featuresGrid.notes.name', desc: 'featuresGrid.notes.desc' },
+  { icon: 'lucide:database', name: 'featuresGrid.memory.name', desc: 'featuresGrid.memory.desc' },
+  { icon: 'lucide:list-checks', name: 'featuresGrid.followups.name', desc: 'featuresGrid.followups.desc' },
+  { icon: 'lucide:book-open-text', name: 'featuresGrid.vocab.name', desc: 'featuresGrid.vocab.desc' },
+  { icon: 'lucide:messages-square', name: 'featuresGrid.chat.name', desc: 'featuresGrid.chat.desc' },
+  { icon: 'lucide:layout-template', name: 'featuresGrid.templates.name', desc: 'featuresGrid.templates.desc' },
+  { icon: 'lucide:shield-check', name: 'featuresGrid.privacy.name', desc: 'featuresGrid.privacy.desc' },
+  { icon: 'lucide:file-output', name: 'featuresGrid.exports.name', desc: 'featuresGrid.exports.desc' },
+];
+
+const aiChips = [
+  'featuresGrid.localAi.chip.local',
+  'featuresGrid.localAi.chip.ollama',
+  'featuresGrid.localAi.chip.key',
+];
+
+const waveHeights = [18, 46, 70, 34, 58, 78, 42, 64, 26, 52, 72, 38, 60, 30, 48];
+---
+<section class="section-pro section-pad section-pro-alt" id="features">
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'featuresGrid.eyebrow')}
+      headline={t(lang, 'featuresGrid.headline')}
+      accent={t(lang, 'featuresGrid.accent')}
+      plainAccent
+      inlineAccent
+      highlight={[t(lang, 'featuresGrid.highlight')]}
+      subhead={t(lang, 'featuresGrid.lead')}
+    />
+
+    <div class="fgb">
+      <div class="fgb-t fgb-hero">
+        <div class="fgb-top">
+          <div class="fgb-chips">
+            <span class="fgb-chip">{t(lang, 'featuresGrid.botFree.live')}</span>
+          </div>
+          <div class="fgb-wave" aria-hidden="true">
+            {waveHeights.map((h, i) => (
+              <i style={`--h:${h};--i:${i}`}></i>
+            ))}
+          </div>
+        </div>
+        <div class="fgb-text">
+          <h3 class="fgb-name">{t(lang, 'featuresGrid.botFree.name')}</h3>
+          <p class="fgb-desc">{t(lang, 'featuresGrid.botFree.desc')}</p>
+        </div>
+      </div>
+
+      <div class="fgb-t fgb-hero">
+        <div class="fgb-top">
+          <div class="fgb-chips">
+            {aiChips.map((key) => (
+              <span class="fgb-chip">{t(lang, key)}</span>
+            ))}
+          </div>
+        </div>
+        <div class="fgb-text">
+          <h3 class="fgb-name">{t(lang, 'featuresGrid.localAi.name')}</h3>
+          <p class="fgb-desc">{t(lang, 'featuresGrid.localAi.desc')}</p>
+        </div>
+      </div>
+
+      {tiles.map((f) => (
+        <div class="fgb-t">
+          <div class="fgb-top fgb-top-icon">
+            <span class="icon-line fgb-ic" aria-hidden="true">
+              <Icon name={f.icon} width="40" height="40" is:inline />
+            </span>
+          </div>
+          <div class="fgb-text">
+            <h3 class="fgb-name">{t(lang, f.name)}</h3>
+            <p class="fgb-desc">{t(lang, f.desc)}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

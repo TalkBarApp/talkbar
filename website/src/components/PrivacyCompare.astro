@@ -1,0 +1,105 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+
+const columns = [
+  { key: 'talkbar', labelKey: 'privacy.compare.talkbar', featured: true },
+  { key: 'cloud', labelKey: 'privacy.compare.cloudMeetingBots' },
+  { key: 'browser', labelKey: 'privacy.compare.browserTools' },
+];
+
+// The first row is the strongest privacy setup, so it is set apart.
+const rows = [
+  { labelKey: 'privacy.compare.privateAi', detailKey: 'privacy.compare.privateAi.detail', talkbar: 'yes', cloud: 'no', browser: 'lim', featured: true },
+  { labelKey: 'privacy.compare.visibleBot', detailKey: 'privacy.compare.visibleBot.detail', talkbar: 'yes', cloud: 'no', browser: 'lim' },
+  { labelKey: 'privacy.compare.localFirst', detailKey: 'privacy.compare.localFirst.detail', talkbar: 'yes', cloud: 'no', browser: 'no' },
+  { labelKey: 'privacy.compare.localFiles', detailKey: 'privacy.compare.localFiles.detail', talkbar: 'yes', cloud: 'lim', browser: 'lim' },
+  { labelKey: 'privacy.compare.localAi', detailKey: 'privacy.compare.localAi.detail', talkbar: 'yes', cloud: 'no', browser: 'no' },
+  { labelKey: 'privacy.compare.translation', detailKey: 'privacy.compare.translation.detail', talkbar: 'yes', cloud: 'no', browser: 'no' },
+  { labelKey: 'privacy.compare.review', detailKey: 'privacy.compare.review.detail', talkbar: 'yes', cloud: 'lim', browser: 'lim' },
+  { labelKey: 'privacy.compare.tempScan', detailKey: 'privacy.compare.tempScan.detail', talkbar: 'yes', cloud: 'no', browser: 'no' },
+  { labelKey: 'privacy.compare.rawAudio', detailKey: 'privacy.compare.rawAudio.detail', talkbar: 'yes', cloud: 'lim', browser: 'lim' },
+  { labelKey: 'privacy.compare.backup', detailKey: 'privacy.compare.backup.detail', talkbar: 'yes', cloud: 'no', browser: 'no' },
+  { labelKey: 'privacy.compare.liveContext', detailKey: 'privacy.compare.liveContext.detail', talkbar: 'yes', cloud: 'no', browser: 'no' },
+];
+
+const cell = {
+  yes: { cls: 'yes2', key: 'privacy.value.yes' },
+  no: { cls: 'no2', key: 'privacy.value.no' },
+  lim: { cls: 'lim2', key: 'privacy.value.varies' },
+};
+const valueOf = (tone: string) => {
+  const c = cell[tone as keyof typeof cell];
+  return { cls: c.cls, label: t(lang, c.key) };
+};
+---
+<section class:list={[
+  'section-pro surface-ink relative overflow-clip',
+  compact ? 'section-pad-sm' : 'section-pad',
+]} id="privacy">
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'privacy.tag')}
+      headline={t(lang, 'privacy.head.lead')}
+      accentLead={t(lang, 'privacy.head.accentLead')}
+      accent={t(lang, 'privacy.head.accent')}
+      subhead={t(lang, 'privacy.subtitle')}
+    />
+
+    <div class="cmp2">
+      <table>
+        <thead>
+          <tr>
+            <th class="fn">{t(lang, 'privacy.compare.capability')}</th>
+            {columns.map((col) => (
+              <th class:list={['ctr', col.featured && 'tb col-tb']}>{t(lang, col.labelKey)}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr class:list={[row.featured && 'cmp2-feature']}>
+              <td class="fn">
+                {row.featured && (
+                  <span class="cmp2-badge">
+                    <Icon name="lucide:shield-check" width="13" height="13" is:inline />
+                    {t(lang, 'privacy.compare.privateAi.badge')}
+                  </span>
+                )}
+                <span class="cmp2-name">{t(lang, row.labelKey)}</span>
+                <span class="cmp2-detail">{t(lang, row.detailKey)}</span>
+              </td>
+              {columns.map((col) => {
+                const v = valueOf(row[col.key as 'talkbar' | 'cloud' | 'browser']);
+                return (
+                  <td class:list={['ctr', col.featured && 'col-tb']}>
+                    <span class={v.cls}>{v.label}</span>
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <p class="cmp2-note">{t(lang, 'privacy.compare.note')}</p>
+
+    {!compact && (
+      <div class="mt-8 text-center">
+        <a href="/privacy/" class="cmp2-link">
+          {t(lang, 'privacyFlow.link')}
+          <Icon name="lucide:arrow-right" width="14" height="14" />
+        </a>
+      </div>
+    )}
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+import SectionHeader from '../ui/SectionHeader.astro';
+import type { UseCaseFAQItem } from '../../content/use-cases/types';
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  accent: string;
+  items: UseCaseFAQItem[];
+}
+const { eyebrow, headline, accent, items } = Astro.props;
+
+const half = Math.ceil(items.length / 2);
+const columns = [items.slice(0, half), items.slice(half)];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<section class="section-pro surface-ink surface-ink-deep section-pad">
+  <div class="container">
+    <SectionHeader eyebrow={eyebrow} headline={headline} accent={accent} />
+
+    <div class="faq2">
+      {columns.map((column, c) => (
+        <div class="faq2-col">
+          {column.map((f, i) => (
+            <details open={c === 0 && i === 0}>
+              <summary>
+                {f.q}
+                <span class="pm" aria-hidden="true"></span>
+              </summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} is:inline />
+</section>

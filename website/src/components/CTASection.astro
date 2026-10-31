@@ -1,0 +1,32 @@
+---
+import { t, type Language } from '../i18n';
+import DownloadButton from './ui/DownloadButton.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+---
+<section class="section-pro surface-ink cta-dark-gradient text-center section-pad cta-pad relative overflow-hidden" id="cta">
+  <span class="cta-glow" aria-hidden="true"></span>
+  <div class="container relative z-10">
+    <div>
+      <h2 class="cta-headline">
+        {t(lang, 'cta.headline.1')} <span class="it">{t(lang, 'cta.headline.2')}</span>
+      </h2>
+
+      <p class="mt-6 label text-ink-foreground/55">
+        {t(lang, 'cta.subtitle')}
+      </p>
+
+      <div class="mt-9 flex justify-center">
+        <DownloadButton label={t(lang, 'cta.button')} />
+      </div>
+
+      <p class="mt-6 text-sm text-ink-foreground/55">{t(lang, 'cta.platforms')}</p>
+
+    </div>
+  </div>
+</section>

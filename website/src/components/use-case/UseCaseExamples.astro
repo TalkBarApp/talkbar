@@ -1,0 +1,47 @@
+---
+import type { Language } from '../../i18n';
+import SectionHeader from '../ui/SectionHeader.astro';
+import CardExplorer, { type ExplorerItem } from '../ui/CardExplorer.astro';
+import type { UseCaseExampleItem } from '../../content/use-cases/types';
+import type { ShotId } from '../../lib/screenshots';
+
+interface Props {
+  lang: Language;
+  eyebrow: string;
+  headline: string;
+  accent?: string;
+  items: UseCaseExampleItem[];
+  templatesLine?: {
+    label: string;
+    chips: string[];
+  };
+}
+const { lang, headline, accent, items, templatesLine } = Astro.props;
+
+// The list names each scenario; the call window shows what TalkBar brings
+// to it, so the description is said once, in the live card. Scenarios without
+// their own screenshot walk through a session: live, wrap-up, knowledge, chat.
+const EXAMPLE_SHOTS: ShotId[] = ['live-translation', 'session-overview', 'knowledge-review', 'chat-sources'];
+const scenarios: ExplorerItem[] = items.map(({ icon, title, desc, shot }, i) => ({
+  icon,
+  title,
+  quote: desc,
+  shot: shot ?? EXAMPLE_SHOTS[i % EXAMPLE_SHOTS.length],
+}));
+---
+<section id="examples" class="section-pro section-pro-alt section-pad">
+  <div class="container">
+    {/* No "Examples" eyebrow: the headline introduces the section on its own. */}
+    <SectionHeader headline={headline} accent={accent} inlineAccent layout="center" />
+
+    <CardExplorer lang={lang} id="examples" label={accent ? `${headline} ${accent}` : headline} items={scenarios} />
+
+    {templatesLine && templatesLine.chips.length > 0 && (
+      <p class="mt-8 text-center text-sm leading-relaxed text-muted-foreground">
+        <span class="font-semibold text-foreground">{templatesLine.label}.</span>
+        {' '}
+        {templatesLine.chips.join(' · ')}
+      </p>
+    )}
+  </div>
+</section>

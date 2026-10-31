@@ -1,0 +1,43 @@
+---
+import { t, type Language } from '../i18n';
+import SectionHeader from './ui/SectionHeader.astro';
+
+interface Props {
+  lang: Language;
+  compact?: boolean;
+}
+
+const { lang, compact = false } = Astro.props;
+
+const steps = [
+  { title: 'howitworks.step1.title', desc: 'howitworks.step1.desc' },
+  { title: 'howitworks.step2.title', desc: 'howitworks.step2.desc' },
+  { title: 'howitworks.step3.title', desc: 'howitworks.step3.desc' },
+  { title: 'howitworks.step4.title', desc: 'howitworks.step4.desc' },
+  { title: 'howitworks.step5.title', desc: 'howitworks.step5.desc' },
+];
+---
+<section
+  class:list={['section-pro surface-ink surface-ink-lift', compact ? 'section-pad-sm' : 'section-pad']}
+  id="how-it-works"
+>
+  <div class="container">
+    <SectionHeader
+      eyebrow={t(lang, 'howitworks.tag')}
+      headline={t(lang, 'howitworks.headline')}
+      accent={`${t(lang, 'howitworks.accent')}.`}
+      inlineAccent
+      subhead={compact ? undefined : t(lang, 'howitworks.subhead')}
+    />
+
+    <div class="hiw2-grid">
+      {steps.map((s, i) => (
+        <div class="hiw2-step">
+          <span class="hiw2-sn">{t(lang, 'howitworks.stepLabel').replace('{number}', String(i + 1))}</span>
+          <h3>{t(lang, s.title)}</h3>
+          <p>{t(lang, s.desc)}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

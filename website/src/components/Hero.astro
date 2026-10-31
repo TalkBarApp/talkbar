@@ -1,0 +1,128 @@
+---
+import { t, type Language } from '../i18n';
+import DownloadButton from './ui/DownloadButton.astro';
+import HeroScenes from './hero/HeroScenes.astro';
+import { Picture } from 'astro:assets';
+import shotLight from '../assets/screenshots/en/1-session-view/session-en.png';
+import shotDark from '../assets/screenshots/en/1-session-view/session-en-dark.png';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const heroHighlights = [
+  'hero.proof.noAccount',
+  'hero.proof.noCloud',
+  'hero.proof.onDevice',
+  'hero.proof.localAi',
+];
+
+const shotAlt = t(lang, 'hero.shot.alt');
+---
+<section class="section-pro hero-section relative overflow-hidden pt-28 sm:pt-32 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
+  <div class="container relative z-10">
+    <div class="hero-grid">
+      <div
+        data-animate
+        class="hero-copy translate-y-4 transition-transform duration-500 [&.is-visible]:translate-y-0"
+      >
+        <HeroScenes lang={lang} />
+
+        <div class="hero-text">
+        <h1 class="hero-title">
+          <span class="it">{t(lang, 'hero.headline1')} </span><span class="hero-title-line2">{t(lang, 'hero.headline2')}</span>
+          {t(lang, 'hero.headlineAccent') && (
+            <><br /><span class="it">{t(lang, 'hero.headlineAccent')}</span></>
+          )}
+        </h1>
+
+        <p class="hero-lead">
+          {t(lang, 'hero.subheadline')}
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-x-7 gap-y-2.5">
+          {heroHighlights.map((key) => (
+            <span class="inline-flex items-center gap-2 label text-muted-foreground">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              {t(lang, key)}
+            </span>
+          ))}
+        </div>
+        </div>
+      </div>
+
+      <div
+        data-animate
+        class="hero-actions translate-y-4 transition-transform duration-700 [&.is-visible]:translate-y-0"
+      >
+        <div class="hero-actions-row">
+          <DownloadButton label={t(lang, 'hero.cta.primary')} fullWidth />
+          <a href="#how-it-works" class="btn-pill btn-ghost w-full sm:w-auto">
+            {t(lang, 'hero.cta.secondary')}
+          </a>
+        </div>
+      </div>
+
+      <div
+        data-animate
+        class="hero-media translate-y-6 transition-transform duration-700 [&.is-visible]:translate-y-0"
+      >
+        <div class="hero-shot">
+          <Picture
+            src={shotLight}
+            alt={shotAlt}
+            formats={['avif', 'webp']}
+            widths={[720, 1080, 1440, 2160]}
+            sizes="(min-width: 1180px) 1080px, 100vw"
+            class="hero-shot-img hero-shot-light"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <Picture
+            src={shotDark}
+            alt={shotAlt}
+            formats={['avif', 'webp']}
+            widths={[720, 1080, 1440, 2160]}
+            sizes="(min-width: 1180px) 1080px, 100vw"
+            class="hero-shot-img hero-shot-dark"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initCountup() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const els = document.querySelectorAll<HTMLElement>('[data-countup]:not([data-countup-done])');
+    if (!els.length) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          io.unobserve(el);
+          el.dataset.countupDone = '1';
+          const target = parseInt(el.dataset.countup ?? '0', 10);
+          const start = performance.now();
+          const dur = 900;
+          const step = (now: number) => {
+            const p = Math.min((now - start) / dur, 1);
+            el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+      },
+      { threshold: 0.5 },
+    );
+    els.forEach((el) => io.observe(el));
+  }
+
+  initCountup();
+  document.addEventListener('astro:page-load', initCountup);
+</script>

@@ -1,0 +1,80 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import { DOWNLOAD_LINK_WINDOWS } from '../lib/download';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+---
+<div class="sdl" data-sticky-dl aria-hidden="true">
+  <span class="label text-muted-foreground flex-shrink-0">
+    {t(lang, 'stickyBar.note')}
+  </span>
+  <a href={DOWNLOAD_LINK_WINDOWS} data-download-link class="flex-1 btn-pill btn-pill-sm btn-primary">
+    {t(lang, 'stickyBar.cta')}
+    <Icon name="lucide:arrow-down-to-line" width="15" height="15" />
+  </a>
+  <button
+    type="button"
+    data-sticky-dismiss
+    aria-label={t(lang, 'stickyBar.dismiss')}
+    class="flex-shrink-0 w-8 h-8 inline-flex items-center justify-center rounded-full border border-border text-muted-foreground"
+  >
+    <Icon name="lucide:x" width="14" height="14" />
+  </button>
+</div>
+
+<script>
+  function initStickyBar() {
+    const bar = document.querySelector<HTMLElement>('[data-sticky-dl]');
+    if (!bar || bar.dataset.init) return;
+    bar.dataset.init = '1';
+
+    let dismissed = false;
+    let pastHero = false;
+    let overCta = false;
+
+    const update = () => {
+      const show = pastHero && !overCta && !dismissed;
+      bar.classList.toggle('is-shown', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+    };
+
+    bar.querySelector('[data-sticky-dismiss]')?.addEventListener('click', () => {
+      dismissed = true;
+      update();
+    });
+
+    const hero = document.querySelector('main section');
+    if (hero) {
+      new IntersectionObserver(
+        ([entry]) => {
+          pastHero = !entry.isIntersecting;
+          update();
+        },
+        { threshold: 0 },
+      ).observe(hero);
+    } else {
+      pastHero = true;
+    }
+
+    const cta = document.getElementById('cta');
+    if (cta) {
+      new IntersectionObserver(
+        ([entry]) => {
+          overCta = entry.isIntersecting;
+          update();
+        },
+        { threshold: 0.1 },
+      ).observe(cta);
+    }
+
+    update();
+  }
+
+  initStickyBar();
+  document.addEventListener('astro:page-load', initStickyBar);
+</script>

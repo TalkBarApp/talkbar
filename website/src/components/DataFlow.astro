@@ -1,0 +1,74 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// What comes in, then what happens to it, one step per row.
+const inputs = [
+  { icon: 'lucide:mic', key: 'privacyFlow.mic' },
+  { icon: 'lucide:volume-2', key: 'privacyFlow.system' },
+  { icon: 'lucide:file-text', key: 'privacyFlow.documents' },
+  { icon: 'lucide:notebook-pen', key: 'privacyFlow.notes' },
+];
+const steps = [
+  { icon: 'lucide:circle-dot', key: 'privacyFlow.capture', desc: 'privacyFlow.capture.desc' },
+  { icon: 'lucide:cpu', key: 'privacyFlow.ai', desc: 'privacyFlow.ai.desc' },
+  { icon: 'lucide:database', key: 'privacyFlow.memory', desc: 'privacyFlow.memory.desc' },
+  { icon: 'lucide:file-output', key: 'privacyFlow.exports', desc: 'privacyFlow.exports.desc' },
+];
+
+// The internet column: what never happens, then what only happens when you set it up.
+const never = ['privacyFlow.noBot', 'privacyFlow.noCloud', 'privacyFlow.noAccount', 'privacyFlow.noCloudAccount'];
+const optIn = ['privacyFlow.byok', 'privacyFlow.email', 'privacyFlow.messenger', 'privacyFlow.links'];
+---
+<div class="dfl">
+  <div class="dfl-side">
+    <div class="dfl-label">{t(lang, 'privacyFlow.desktop')}</div>
+
+    <div class="dfl-inputs">
+      {inputs.map(({ icon, key }) => (
+        <span class="dfl-chip">
+          <Icon name={icon} width="13" height="13" />
+          {t(lang, key)}
+        </span>
+      ))}
+    </div>
+
+    <ol class="dfl-steps">
+      {steps.map(({ icon, key, desc }) => (
+        <li>
+          <span class="dfl-dot"><Icon name={icon} width="14" height="14" /></span>
+          <div>
+            <div class="dfl-step-title">{t(lang, key)}</div>
+            <div class="dfl-step-desc">{t(lang, desc)}</div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <div class="dfl-side dfl-net">
+    <div class="dfl-label">{t(lang, 'privacyFlow.internet')}</div>
+
+    <div class="dfl-group">{t(lang, 'privacyFlow.never')}</div>
+    {never.map((key) => (
+      <div class="dfl-no">
+        <span class="ck"><Icon name="lucide:check" width="11" height="11" /></span>
+        {t(lang, key)}
+      </div>
+    ))}
+
+    <div class="dfl-group dfl-group-2">{t(lang, 'privacyFlow.optIn')}</div>
+    {optIn.map((key) => (
+      <div class="dfl-no">
+        <span class="ky"><Icon name="lucide:key-round" width="11" height="11" /></span>
+        {t(lang, key)}
+      </div>
+    ))}
+  </div>
+</div>

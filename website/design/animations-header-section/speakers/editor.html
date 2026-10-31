@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Luna — editor</title>
+		<style>
+			:root {
+				--page: #ffffff;
+				--text: #2b3a5d;
+				--wave: #054df5;
+				--panel: #f6f7fb;
+				--rule: #e3e7f1;
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			html,
+			body {
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				display: grid;
+				grid-template-columns: 1fr 320px;
+				background: var(--page);
+				color: var(--text);
+				font-family:
+					-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial,
+					sans-serif;
+			}
+
+			main {
+				display: grid;
+				place-items: center;
+				padding: 24px 24px 96px;
+				min-width: 0;
+			}
+
+			#stage {
+				width: min(1040px, 100%);
+			}
+
+			#stage svg {
+				display: block;
+				width: 100%;
+				height: auto;
+				overflow: visible;
+			}
+
+			#stage text {
+				font-family: 'Stack Sans Text', -apple-system, 'Helvetica Neue', Arial,
+					sans-serif;
+				font-size: 18px;
+				font-weight: 200;
+			}
+
+			aside {
+				border-left: 1px solid var(--rule);
+				background: var(--panel);
+				overflow-y: auto;
+				padding: 20px 18px 120px;
+			}
+
+			h1 {
+				font-size: 13px;
+				letter-spacing: 0.12em;
+				text-transform: uppercase;
+				margin: 0 0 4px;
+			}
+
+			.sub {
+				margin: 0 0 20px;
+				font-size: 12px;
+				line-height: 1.5;
+				color: #7c87a3;
+			}
+
+			.group {
+				margin-bottom: 18px;
+			}
+
+			.group > h2 {
+				font-size: 11px;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: #9aa4bd;
+				margin: 0 0 8px;
+				border-top: 1px solid var(--rule);
+				padding-top: 12px;
+			}
+
+			label {
+				display: grid;
+				grid-template-columns: 1fr auto;
+				align-items: center;
+				gap: 4px 8px;
+				font-size: 12px;
+				margin-bottom: 8px;
+			}
+
+			label output {
+				font-variant-numeric: tabular-nums;
+				color: var(--wave);
+			}
+
+			label input,
+			label select {
+				grid-column: 1 / -1;
+				width: 100%;
+			}
+
+			select {
+				font: inherit;
+				font-size: 12px;
+				padding: 3px 4px;
+				border: 1px solid var(--rule);
+				border-radius: 4px;
+				background: #fff;
+			}
+
+			.row {
+				display: flex;
+				gap: 8px;
+				margin-top: 14px;
+			}
+
+			button {
+				flex: 1;
+				font: inherit;
+				font-size: 12px;
+				padding: 8px 10px;
+				border: 1px solid var(--wave);
+				border-radius: 6px;
+				background: #fff;
+				color: var(--wave);
+				cursor: pointer;
+			}
+
+			button.primary {
+				background: var(--wave);
+				color: #fff;
+			}
+
+			label.toggle {
+				grid-template-columns: auto 1fr;
+				align-items: start;
+				gap: 8px;
+				margin-top: 12px;
+				line-height: 1.4;
+				color: #5a6480;
+				cursor: pointer;
+			}
+
+			label.toggle input {
+				grid-column: auto;
+				width: auto;
+				margin: 2px 0 0;
+			}
+
+			.status {
+				margin: 12px 0 0;
+				font-size: 11px;
+				line-height: 1.5;
+				color: #7c87a3;
+				min-height: 1.5em;
+			}
+
+			.status.ok {
+				color: #1a8a4a;
+			}
+
+			.status.bad {
+				color: #c0392b;
+			}
+
+			button[disabled] {
+				opacity: 0.4;
+				cursor: default;
+			}
+
+			pre {
+				margin: 12px 0 0;
+				padding: 10px;
+				font-size: 11px;
+				line-height: 1.45;
+				background: #fff;
+				border: 1px solid var(--rule);
+				border-radius: 6px;
+				white-space: pre-wrap;
+				word-break: break-word;
+				color: #5a6480;
+			}
+		</style>
+	</head>
+	<body>
+		<main><div id="stage"></div></main>
+
+		<aside>
+			<h1>Luna</h1>
+			<p class="sub">
+				Figma <code>33:872</code> — steps 01 / 02 / 03 / 04. Scrub with the
+				GSDevTools bar; jump to a step from the <em>in/out</em> markers or the
+				buttons below.
+			</p>
+
+			<div class="row">
+				<button data-seek="01">01</button>
+				<button data-seek="02">02</button>
+				<button data-seek="03">03</button>
+				<button data-seek="04">04</button>
+			</div>
+
+			<div id="controls"></div>
+
+			<div class="group">
+				<h2>Сохранение</h2>
+				<div class="row">
+					<button id="connect" class="primary">Подключить luna.js</button>
+				</div>
+				<div class="row">
+					<button id="save" disabled>Сохранить сейчас</button>
+					<button id="reset">Сбросить</button>
+				</div>
+				<label class="toggle">
+					<input type="checkbox" id="auto" disabled />
+					<span>Автосохранение — писать в файл на каждое движение ползунка</span>
+				</label>
+				<p class="status" id="status"></p>
+			</div>
+
+			<div class="row">
+				<button id="copy">Скопировать конфиг</button>
+			</div>
+			<pre id="dump"></pre>
+		</aside>
+
+		<script src="vendor/gsap.min.js"></script>
+		<script src="vendor/MorphSVGPlugin.min.js"></script>
+		<script src="vendor/DrawSVGPlugin.min.js"></script>
+		<script src="vendor/GSDevTools.min.js"></script>
+		<script src="figma-source.js"></script>
+		<script src="luna.js"></script>
+		<script>
+			gsap.registerPlugin(MorphSVGPlugin, DrawSVGPlugin, GSDevTools);
+
+			const GROUPS = [
+				[
+					'01 → 02  words apart',
+					[
+						['split', 0.2, 2, 0.05],
+						['splitEase', 'ease'],
+					],
+				],
+				[
+					'02  wave in',
+					[
+						['barsIn', 0.1, 1.5, 0.05],
+						['barsInStagger', 0, 0.08, 0.002],
+					],
+				],
+				[
+					'02  sound wave',
+					[
+						['listen', 0.5, 8, 0.1],
+						['waveAmp', 0, 0.6, 0.01],
+						['waveEnv', 0, 0.5, 0.01],
+						['waveCeil', 0.05, 0.9, 0.01],
+						['waveSpeed', 0.2, 3, 0.05],
+					],
+				],
+				[
+					'02 → 03  collapse',
+					[
+						['collapse', 0.2, 2, 0.05],
+						['collapseStagger', 0, 0.05, 0.002],
+						['collapseEase', 'ease'],
+					],
+				],
+				[
+					'03 → 04  morph',
+					[
+						['morph', 0.2, 3, 0.05],
+						['morphEase', 'ease'],
+						['shapeIndex', -12, 12, 1],
+					],
+				],
+				[
+					'04  внутренний треугольник',
+					[
+						['counter', 0.1, 2, 0.05],
+						['counterEase', 'ease'],
+						['counterOverlap', 0, 1, 0.05],
+					],
+				],
+				[
+					'04 → 01  unwind',
+					[
+						['hold', 0, 4, 0.1],
+						['unmorph', 0.1, 2, 0.05],
+						['reset', 0.2, 2, 0.05],
+						['tail', 0, 2, 0.1],
+					],
+				],
+			];
+
+			const EASES = [
+				'none',
+				'power1.inOut',
+				'power2.inOut',
+				'power3.inOut',
+				'power4.inOut',
+				'power2.out',
+				'power3.out',
+				'expo.inOut',
+				'expo.out',
+				'circ.inOut',
+				'back.inOut(1.4)',
+				'back.out(1.7)',
+			];
+
+			const config = Object.assign({}, Luna.DEFAULTS);
+			let scene = null;
+			let timeline = null;
+			let devtools = null;
+
+			function rebuild(seekLabel) {
+				if (devtools) devtools.kill();
+				if (timeline) timeline.kill();
+				const stage = document.getElementById('stage');
+				stage.innerHTML = '';
+				scene = Luna.build(stage);
+				timeline = Luna.create(scene, config);
+				devtools = GSDevTools.create({
+					animation: timeline,
+					id: 'luna',
+					persist: false,
+				});
+				if (seekLabel) timeline.seek(timeline.labels[seekLabel], false);
+				dump();
+			}
+
+			function dump() {
+				const diff = {};
+				for (const k in config) {
+					if (config[k] !== Luna.DEFAULTS[k]) diff[k] = config[k];
+				}
+				document.getElementById('dump').textContent = Object.keys(diff).length
+					? 'Luna.create(scene, ' + JSON.stringify(diff, null, 2) + ');'
+					: '// defaults — nothing changed yet';
+			}
+
+			function controls() {
+				const host = document.getElementById('controls');
+				host.innerHTML = '';
+				for (const [title, fields] of GROUPS) {
+					const group = document.createElement('div');
+					group.className = 'group';
+					group.innerHTML = '<h2>' + title + '</h2>';
+					for (const field of fields) {
+						const key = field[0];
+						const label = document.createElement('label');
+						if (field[1] === 'ease') {
+							label.innerHTML =
+								'<span>' +
+								key +
+								'</span><output></output>' +
+								'<select>' +
+								EASES.map(
+									(e) =>
+										'<option' +
+										(e === config[key] ? ' selected' : '') +
+										'>' +
+										e +
+										'</option>',
+								).join('') +
+								'</select>';
+							label.querySelector('select').addEventListener('change', (e) => {
+								config[key] = e.target.value;
+								changed();
+							});
+						} else {
+							const [, min, max, step] = field;
+							label.innerHTML =
+								'<span>' +
+								key +
+								'</span><output>' +
+								config[key] +
+								'</output>' +
+								'<input type="range" min="' +
+								min +
+								'" max="' +
+								max +
+								'" step="' +
+								step +
+								'" value="' +
+								config[key] +
+								'">';
+							const out = label.querySelector('output');
+							label.querySelector('input').addEventListener('input', (e) => {
+								config[key] = Number(e.target.value);
+								out.textContent = config[key];
+								changed();
+							});
+						}
+						group.appendChild(label);
+					}
+					host.appendChild(group);
+				}
+			}
+
+			/* ---------------------------------------------- writing luna.js
+			   No server: the page asks Chrome for a handle on luna.js once, and
+			   from then on it rewrites the DEFAULTS block in place. The handle is
+			   kept in IndexedDB, so a reload only needs one click to re-grant.
+			   Browsers without the File System Access API fall back to a plain
+			   download of the patched file. */
+
+			const CAN_WRITE = 'showOpenFilePicker' in window;
+			const $ = (id) => document.getElementById(id);
+			let fileHandle = null;
+			let saveTimer = null;
+
+			function say(text, kind) {
+				const node = $('status');
+				node.textContent = text;
+				node.className = 'status' + (kind ? ' ' + kind : '');
+			}
+
+			function serialize(value) {
+				return typeof value === 'number'
+					? String(Math.round(value * 1e4) / 1e4)
+					: "'" + value + "'";
+			}
+
+			/** Rewrites the value of every DEFAULTS key, keeping comments intact. */
+			function patchDefaults(source, values) {
+				const start = source.indexOf('const DEFAULTS = {');
+				const end = source.indexOf('\n\t};', start);
+				if (start === -1 || end === -1) {
+					throw new Error('не нашёл блок DEFAULTS — это точно luna.js?');
+				}
+				let block = source.slice(start, end);
+				for (const key of Object.keys(values)) {
+					const line = new RegExp(
+						'^(\\s*' + key + ':\\s*)(.+?)(,)(\\s*//.*)?$',
+						'm',
+					);
+					if (!line.test(block)) {
+						throw new Error('в DEFAULTS нет ключа ' + key);
+					}
+					block = block.replace(
+						line,
+						(m, head, old, comma, tail) =>
+							head + serialize(values[key]) + comma + (tail || ''),
+					);
+				}
+				return source.slice(0, start) + block + source.slice(end);
+			}
+
+			const idb = {
+				open: () =>
+					new Promise((resolve, reject) => {
+						const req = indexedDB.open('luna-editor', 1);
+						req.onupgradeneeded = () => req.result.createObjectStore('h');
+						req.onsuccess = () => resolve(req.result);
+						req.onerror = () => reject(req.error);
+					}),
+				run: async (mode, fn) => {
+					const db = await idb.open();
+					return new Promise((resolve, reject) => {
+						const req = fn(db.transaction('h', mode).objectStore('h'));
+						req.onsuccess = () => resolve(req.result);
+						req.onerror = () => reject(req.error);
+					});
+				},
+				get: (key) => idb.run('readonly', (store) => store.get(key)),
+				set: (key, value) =>
+					idb.run('readwrite', (store) => store.put(value, key)),
+			};
+
+			async function allowed(handle, interactive) {
+				const opts = {mode: 'readwrite'};
+				if ((await handle.queryPermission(opts)) === 'granted') return true;
+				if (!interactive) return false;
+				return (await handle.requestPermission(opts)) === 'granted';
+			}
+
+			function armed(on, name) {
+				$('save').disabled = !on;
+				$('auto').disabled = !on;
+				$('connect').textContent = on
+					? 'Переподключить (' + name + ')'
+					: 'Подключить luna.js';
+				$('connect').classList.toggle('primary', !on);
+			}
+
+			async function writeNow() {
+				if (!fileHandle) throw new Error('файл не подключён');
+				if (!(await allowed(fileHandle, false))) {
+					armed(false);
+					throw new Error('доступ к файлу истёк — подключите заново');
+				}
+				const source = await (await fileHandle.getFile()).text();
+				const patched = patchDefaults(source, config);
+				const writable = await fileHandle.createWritable();
+				await writable.write(patched);
+				await writable.close();
+				// The file now *is* the baseline, so the diff dump goes quiet again.
+				Object.assign(Luna.DEFAULTS, config);
+				dump();
+				const now = new Date();
+				say(
+					'записано в ' + fileHandle.name + ' — ' +
+						now.toTimeString().slice(0, 8),
+					'ok',
+				);
+			}
+
+			function queueSave() {
+				if (!$('auto').checked || !fileHandle) return;
+				clearTimeout(saveTimer);
+				saveTimer = setTimeout(
+					() => writeNow().catch((e) => say(e.message, 'bad')),
+					400,
+				);
+			}
+
+			async function download() {
+				const source = await (await fetch('luna.js')).text();
+				const blob = new Blob([patchDefaults(source, config)], {
+					type: 'text/javascript',
+				});
+				const a = document.createElement('a');
+				a.href = URL.createObjectURL(blob);
+				a.download = 'luna.js';
+				a.click();
+				URL.revokeObjectURL(a.href);
+				say('скачал патченный luna.js — положите его в Luna/', 'ok');
+			}
+
+			/* ------------------------------------------------- local persistence */
+
+			const STORE = 'luna.editor';
+
+			function remember() {
+				try {
+					localStorage.setItem(
+						STORE,
+						JSON.stringify({config, auto: $('auto').checked}),
+					);
+				} catch (e) {
+					/* private mode — not worth interrupting for */
+				}
+			}
+
+			function restore() {
+				let saved = null;
+				try {
+					saved = JSON.parse(localStorage.getItem(STORE) || 'null');
+				} catch (e) {
+					return null;
+				}
+				if (!saved || !saved.config) return null;
+				for (const key in Luna.DEFAULTS) {
+					if (typeof saved.config[key] === typeof Luna.DEFAULTS[key]) {
+						config[key] = saved.config[key];
+					}
+				}
+				return saved;
+			}
+
+			function changed() {
+				rebuild();
+				remember();
+				queueSave();
+			}
+
+			/* ------------------------------------------------------------ wiring */
+
+			document.querySelectorAll('[data-seek]').forEach((btn) =>
+				btn.addEventListener('click', () => {
+					timeline.pause();
+					timeline.seek(timeline.labels[btn.dataset.seek], false);
+				}),
+			);
+
+			$('reset').addEventListener('click', () => {
+				Object.assign(config, Luna.DEFAULTS);
+				controls();
+				changed();
+			});
+
+			$('copy').addEventListener('click', () =>
+				navigator.clipboard.writeText($('dump').textContent),
+			);
+
+			$('connect').addEventListener('click', async () => {
+				try {
+					if (!CAN_WRITE) return await download();
+					const [handle] = await window.showOpenFilePicker({
+						id: 'luna-source',
+						types: [
+							{
+								description: 'luna.js',
+								accept: {'text/javascript': ['.js']},
+							},
+						],
+					});
+					if (!(await allowed(handle, true))) {
+						throw new Error('доступ на запись не выдан');
+					}
+					fileHandle = handle;
+					await idb.set('luna.js', handle);
+					armed(true, handle.name);
+					say('подключено: ' + handle.name, 'ok');
+				} catch (e) {
+					if (e.name !== 'AbortError') say(e.message, 'bad');
+				}
+			});
+
+			$('save').addEventListener('click', () =>
+				writeNow().catch((e) => say(e.message, 'bad')),
+			);
+
+			$('auto').addEventListener('change', () => {
+				remember();
+				if ($('auto').checked) queueSave();
+			});
+
+			/* -------------------------------------------------------------- boot */
+
+			const saved = restore();
+			controls();
+			rebuild();
+
+			if (!CAN_WRITE) {
+				$('connect').textContent = 'Скачать патченный luna.js';
+				armed(false);
+				say(
+					'Прямая запись в файл есть только в Chrome/Edge по http(s). ' +
+						'Здесь остаётся скачивание и «Скопировать конфиг».',
+				);
+			} else {
+				armed(false);
+				say('Файл ещё не подключён — правки живут только в этой вкладке.');
+				idb
+					.get('luna.js')
+					.then(async (handle) => {
+						if (!handle) return;
+						if (await allowed(handle, false)) {
+							fileHandle = handle;
+							armed(true, handle.name);
+							if (saved && saved.auto) $('auto').checked = true;
+							say('подключено: ' + handle.name, 'ok');
+						} else {
+							say('luna.js помнится с прошлого раза — нажмите «Подключить», чтобы разрешить запись.');
+						}
+					})
+					.catch(() => {});
+			}
+		</script>
+	</body>
+</html>

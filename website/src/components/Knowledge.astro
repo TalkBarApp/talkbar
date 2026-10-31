@@ -1,0 +1,73 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+import Screenshot from './ui/Screenshot.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const steps = [
+  { title: 'knowledge.scan.step1.title', desc: 'knowledge.scan.step1.desc' },
+  { title: 'knowledge.scan.step2.title', desc: 'knowledge.scan.step2.desc' },
+  { title: 'knowledge.scan.step3.title', desc: 'knowledge.scan.step3.desc' },
+];
+
+const parts = [
+  { icon: 'lucide:layers-3', title: 'knowledge.part.cards.title', desc: 'knowledge.part.cards.desc' },
+  { icon: 'lucide:hard-drive', title: 'knowledge.part.documents.title', desc: 'knowledge.part.documents.desc' },
+  { icon: 'lucide:users', title: 'knowledge.part.people.title', desc: 'knowledge.part.people.desc' },
+  { icon: 'lucide:building-2', title: 'knowledge.part.companies.title', desc: 'knowledge.part.companies.desc' },
+];
+---
+<section class="section-pro section-pro-alt relative section-pad overflow-hidden" id="knowledge">
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'knowledge.eyebrow')}
+      headline={t(lang, 'knowledge.headline')}
+      accent={t(lang, 'knowledge.accent')}
+      subhead={t(lang, 'knowledge.subhead')}
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[1.18fr_0.82fr] gap-6 lg:gap-10 items-start">
+      <Screenshot lang={lang} id="knowledge-review" />
+
+      <div class="panel-pro p-5 sm:p-6">
+        <div class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-5 flex items-center gap-2">
+          <Icon name="lucide:scan-search" width="14" height="14" />
+          {t(lang, 'knowledge.scan.label')}
+        </div>
+
+        <ol class="kn-steps">
+          {steps.map(({ title, desc }, i) => (
+            <li class="kn-step">
+              <span class="kn-num" aria-hidden="true">{i + 1}</span>
+              <div>
+                <h3>{t(lang, title)}</h3>
+                <p>{t(lang, desc)}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <a href="/#live-context-cards" class="text-link mt-7">
+          {t(lang, 'knowledge.link.live')}
+          <Icon name="lucide:arrow-right" width="14" height="14" />
+        </a>
+      </div>
+    </div>
+
+    <div class="kn-parts">
+      {parts.map(({ icon, title, desc }) => (
+        <div class="kn-part">
+          <span class="icon-mark"><Icon name={icon} width="20" height="20" is:inline /></span>
+          <h3>{t(lang, title)}</h3>
+          <p>{t(lang, desc)}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+import { t, getTranslations } from '../i18n';
+import { CURRENT_CONFIG, ENGLISH_CROSS_LINK } from '../i18n/domains';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.tsx';
+import Footer from '../components/Footer.astro';
+import { Icon } from 'astro-icon/components';
+
+const lang = CURRENT_CONFIG.defaultLocale;
+const translations = getTranslations(lang);
+---
+<BaseLayout lang={lang} title={t(lang, 'notfound.metaTitle')} description={t(lang, 'notfound.subtitle')} noindex>
+  <Navbar client:load lang={lang} translations={translations} englishUrl={ENGLISH_CROSS_LINK} />
+  <main id="main-content">
+    <section class="section-pro relative overflow-hidden flex min-h-[72vh] items-center pt-28 pb-20">
+      <div class="container relative z-10 text-center">
+        <span class="eyebrow ctr">{t(lang, 'notfound.title')}</span>
+        <h1 class="font-display text-[clamp(40px,6vw,72px)] leading-[1.02] tracking-[-0.022em] mt-5">
+          {t(lang, 'notfound.subtitle')}<span class="accent-phrase">.</span>
+        </h1>
+        <p class="mx-auto mt-5 max-w-[44ch] text-lg leading-relaxed text-muted-foreground">
+          {t(lang, 'notfound.body')}
+        </p>
+        <div class="mt-9 flex flex-col sm:flex-row gap-3 justify-center items-center">
+          <a href="/" class="group btn-pill btn-primary w-full sm:w-auto">
+            {t(lang, 'notfound.cta')}
+            <Icon name="lucide:arrow-right" width="16" height="16" class="transition-transform group-hover:translate-x-0.5" />
+          </a>
+          <a href="/#faq" class="btn-pill btn-outline w-full sm:w-auto">
+            {t(lang, 'notfound.faq')}
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer lang={lang} />
+</BaseLayout>

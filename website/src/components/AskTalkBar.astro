@@ -1,0 +1,47 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+import Screenshot from './ui/Screenshot.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+const modes = [
+  { icon: 'lucide:messages-square', title: 'ask.mode.session.title', example: 'ask.mode.session.example' },
+  { icon: 'lucide:file-search', title: 'ask.mode.document.title', example: 'ask.mode.document.example' },
+  { icon: 'lucide:search', title: 'ask.mode.knowledge.title', example: 'ask.mode.knowledge.example' },
+];
+---
+<section class="section-pro relative section-pad overflow-hidden" id="ask">
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'ask.eyebrow')}
+      headline={t(lang, 'ask.headline')}
+      accent={t(lang, 'ask.accent')}
+      subhead={t(lang, 'ask.subhead')}
+    />
+
+    <div class="ask-grid">
+      <div>
+        <Screenshot lang={lang} id="chat-sources" />
+        <p class="ask-privacy">{t(lang, 'ask.privacyLine')}</p>
+      </div>
+
+      <ul class="ask-list">
+        {modes.map(({ icon, title, example }) => (
+          <li class="ask-mode">
+            <div class="ask-mode-head">
+              <span class="icon-mark"><Icon name={icon} width="20" height="20" is:inline /></span>
+              <h3>{t(lang, title)}</h3>
+            </div>
+            <p class="ask-bubble">{t(lang, example)}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>

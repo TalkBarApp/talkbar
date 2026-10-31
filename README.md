@@ -21,6 +21,8 @@
   &nbsp;·&nbsp;
   <a href="https://www.talkbar.app">Website</a>
   &nbsp;·&nbsp;
+  <a href="https://docs.talkbar.app">Documentation</a>
+  &nbsp;·&nbsp;
   <a href="https://www.talkbar.app/#features">Features</a>
   &nbsp;·&nbsp;
   <a href="https://www.talkbar.app/privacy">Privacy</a>
@@ -154,11 +156,45 @@ conversations, as you would with any notes or recording tool.
 
 ## Learn more
 
-- Website: [www.talkbar.app](https://www.talkbar.app)
+- Website: [www.talkbar.app](https://www.talkbar.app) ([www.talkbar.ru](https://www.talkbar.ru) in Russian)
+- Documentation: [docs.talkbar.app](https://docs.talkbar.app) ([docs.talkbar.ru](https://docs.talkbar.ru) in Russian), including the [MCP & CLI guide](https://docs.talkbar.app/mcp)
 - Features: [www.talkbar.app/#features](https://www.talkbar.app/#features)
 - Knowledge Cards: [www.talkbar.app/#knowledge](https://www.talkbar.app/#knowledge)
 - Privacy: [www.talkbar.app/privacy](https://www.talkbar.app/privacy)
 - Questions: [FAQ](https://www.talkbar.app/#faq), or send a message through the website
+
+## In this repository
+
+Besides the releases, this repository holds the source of the TalkBar documentation and
+website:
+
+| Folder | What it is | Sites |
+| --- | --- | --- |
+| [`docs/`](docs/README.md) | Documentation site (Nuxt): user guide, settings reference, MCP & CLI | [docs.talkbar.app](https://docs.talkbar.app), [docs.talkbar.ru](https://docs.talkbar.ru) |
+| [`website/`](website/README.md) | Marketing website (Astro) | [www.talkbar.app](https://www.talkbar.app), [preview.talkbar.app](https://preview.talkbar.app), [preview.talkbar.ru](https://preview.talkbar.ru) |
+
+Both are deployed with Cloudflare Pages. To work on them locally (Node.js 22 or newer):
+
+```bash
+npm run setup      # install the root tools, docs and website
+npm run dev        # docs on http://localhost:8000 and website on http://localhost:4321
+```
+
+| Command | What it does |
+| --- | --- |
+| `npm run dev:docs` / `npm run dev:docs:ru` | Docs dev server, English (port 8000) or Russian (port 8001) |
+| `npm run dev:website` / `npm run dev:website:ru` | Website dev server, English (port 4321) or Russian (port 4322) |
+| `npm run build:docs` / `npm run build:docs:ru` | Production build of docs.talkbar.app / docs.talkbar.ru into `docs/dist` |
+| `npm run build:website` | Production build of www.talkbar.app into `website/dist-prod` |
+| `npm run build:website:preview` / `npm run build:website:preview:ru` | Preview builds for preview.talkbar.app / preview.talkbar.ru |
+| `npm run check` | Docs content checks, website tests, lint and type checks |
+| `npm run deploy:docs` / `npm run deploy:docs:ru` | Build and upload the docs to the `talkbar-docs` / `talkbar-docs-ru` Cloudflare Pages projects |
+| `npm run deploy:website:preview` / `npm run deploy:website:preview:ru` | Build and upload the website previews to `talkbar-preview` / `talkbar-preview-ru` |
+
+The `deploy:*` commands need [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
+signed in to the Cloudflare account. Production sites also deploy automatically from `main`
+when their Cloudflare Pages projects are connected to this repository (root directory `docs`
+or `website`).
 
 <p align="center">
   <sub>© 2026 TalkBar. Built for sensitive conversations.</sub>

@@ -1,0 +1,33 @@
+---
+import { Icon } from 'astro-icon/components';
+import SectionHeader from '../ui/SectionHeader.astro';
+import type { UseCaseWorkflowItem } from '../../content/use-cases/types';
+
+interface Props {
+  eyebrow: string;
+  headline: string;
+  accent: string;
+  note?: string;
+  items: UseCaseWorkflowItem[];
+}
+
+const { eyebrow, headline, accent, note, items } = Astro.props;
+---
+<section class="section-pro section-pad">
+  <div class="container">
+    <SectionHeader eyebrow={eyebrow} headline={headline} accent={accent} subhead={note} />
+
+    <div class="uc-flow">
+      {items.map((item) => (
+        <article class="uc-flow-card">
+          <span class="icon-line icon-line-xl uc-flow-ic" aria-hidden="true"><Icon name={item.icon} width="60" height="60" is:inline /></span>
+          <div>
+            {item.meta && <span class="uc-flow-meta">{item.meta}</span>}
+            <h3 class="uc-flow-title">{item.title}</h3>
+            <p class="uc-flow-desc">{item.desc}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
