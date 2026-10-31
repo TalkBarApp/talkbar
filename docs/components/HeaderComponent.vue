@@ -57,18 +57,20 @@ const panelLinks = computed(() => {
     </template>
 
     <template #center>
-      <div class="hidden lg:flex items-center gap-x-8">
+      <div class="hidden lg:flex items-center gap-x-5 xl:gap-x-8">
         <UHeaderLinks :links="links" />
         <AboutMenu v-if="aboutMenu" :menu="aboutMenu" />
       </div>
     </template>
 
     <template #right>
-      <div class="flex items-center gap-1 lg:ml-8">
-        <UButton :to="repoUrl" target="_blank" icon="i-simple-icons-github" aria-label="GitHub" color="gray" variant="ghost" />
-        <ColorThemeToggle />
+      <div class="flex items-center gap-1 lg:ml-4 xl:ml-8">
+        <!-- Phones keep only the essentials; GitHub is also in the footer -->
+        <UButton :to="repoUrl" target="_blank" icon="i-simple-icons-github" aria-label="GitHub" color="gray" variant="ghost" class="hidden sm:inline-flex" />
+        <ColorThemeToggle class="hidden sm:flex" />
         <UColorModeButton />
-        <UContentSearchButton :label="t('searchButton')" />
+        <UContentSearchButton :label="t('searchButton')" class="hidden md:flex" />
+        <UContentSearchButton :label="null" class="md:hidden" />
         <UButton
           to="https://github.com/TalkBarApp/talkbar/releases/latest"
           target="_blank"

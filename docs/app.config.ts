@@ -86,7 +86,8 @@ export default defineAppConfig({
     header: {
       wrapper: 'bg-[rgb(var(--ui-background))]/80 dark:bg-[rgb(var(--ui-background))]/80 backdrop-blur-md border-b border-gray-200/70 dark:border-gray-800',
       links: {
-        base: 'text-[15px] leading-6 font-medium flex items-center gap-1'
+        wrapper: 'flex items-center gap-x-5 xl:gap-x-8',
+        base: 'text-[15px] leading-6 font-medium flex items-center gap-1 whitespace-nowrap'
       },
       popover: {
         links: {
@@ -98,7 +99,7 @@ export default defineAppConfig({
     footer: {
       bottom: {
         container: 'py-6 lg:py-5 lg:flex lg:items-center lg:justify-between lg:gap-x-6',
-        left: 'flex items-center justify-center lg:justify-start lg:flex-1 mt-4 lg:mt-0 lg:order-1 text-[13px] leading-5 text-gray-500 dark:text-gray-400',
+        left: 'flex items-center justify-center lg:justify-start lg:flex-1 mt-4 lg:mt-0 lg:order-1 text-[15px] leading-6 text-gray-500 dark:text-gray-400',
         center: 'mt-3 lg:mt-0 lg:order-2 flex items-center justify-center',
         right: 'lg:flex-1 flex items-center justify-center lg:justify-end lg:order-3'
       },

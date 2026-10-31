@@ -1,9 +1,18 @@
 <script setup lang="ts">
-import { useDocsStrings } from '#imports';
+import { useAboutLinks, useDocsStrings } from '#imports';
 
-const { t, repoUrl, websiteUrl, licenseUrl } = useDocsStrings();
+const { t, repoUrl, websiteUrl } = useDocsStrings();
+const { aboutLinkHref } = useAboutLinks();
 
 const year = new Date().getFullYear();
+
+// Website and license portal pages, as in the About menu
+const footerLinks = [
+  { label: t('footerProduct'), href: aboutLinkHref({ to: '/#features' }) },
+  { label: t('footerPrivacy'), href: aboutLinkHref({ to: '/privacy/' }) },
+  { label: t('footerPricing'), href: aboutLinkHref({ to: '/pricing', site: 'license' }) },
+  { label: t('footerContact'), href: aboutLinkHref({ to: '/contact', site: 'license' }) },
+];
 </script>
 
 <template>
@@ -22,13 +31,18 @@ const year = new Date().getFullYear();
     </template>
 
     <template #right>
-      <div class="flex items-center gap-x-3">
-        <a
-          :href="`${licenseUrl}/contact`"
-          target="_blank"
-          rel="noopener"
-          class="text-[14px] leading-6 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200"
-        >{{ t('footerContact') }}</a>
+      <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-5">
+        <nav class="flex flex-wrap items-center justify-center" :aria-label="t('footerNavigation')">
+          <template v-for="(link, index) in footerLinks" :key="link.href">
+            <span v-if="index > 0" class="mx-2.5 text-gray-300 dark:text-gray-700" aria-hidden="true">|</span>
+            <a
+              :href="link.href"
+              target="_blank"
+              rel="noopener"
+              class="text-[15px] leading-6 text-gray-600 dark:text-gray-300 hover:text-primary"
+            >{{ link.label }}</a>
+          </template>
+        </nav>
         <UButton
           :to="repoUrl"
           target="_blank"

@@ -28,7 +28,7 @@ const { aboutLinkHref: href } = useAboutLinks()
 
 <template>
   <UPopover mode="hover" :popper="{ placement: 'bottom', offsetDistance: 12 }" :ui="{ width: 'max-w-none', rounded: 'rounded-2xl' }">
-    <button type="button" class="text-[15px] leading-6 font-medium flex items-center gap-1 hover:text-primary">
+    <button type="button" class="text-[15px] leading-6 font-medium flex items-center gap-1 whitespace-nowrap hover:text-primary">
       {{ menu.label }}
       <UIcon name="i-heroicons-chevron-down-20-solid" class="w-5 h-5" />
     </button>
