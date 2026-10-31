@@ -96,8 +96,14 @@ export default defineAppConfig({
     },
     // Footer: plain text links, without the external-link arrow
     footer: {
+      bottom: {
+        container: 'py-6 lg:py-5 lg:flex lg:items-center lg:justify-between lg:gap-x-6',
+        left: 'flex items-center justify-center lg:justify-start lg:flex-1 mt-4 lg:mt-0 lg:order-1 text-[13px] leading-5 text-gray-500 dark:text-gray-400',
+        center: 'mt-3 lg:mt-0 lg:order-2 flex items-center justify-center',
+        right: 'lg:flex-1 flex items-center justify-center lg:justify-end lg:order-3'
+      },
       links: {
-        base: 'text-[15px] leading-6',
+        base: 'text-[14px] leading-6',
         externalIcon: { base: 'hidden' }
       }
     },

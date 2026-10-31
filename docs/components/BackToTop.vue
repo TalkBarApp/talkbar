@@ -42,7 +42,7 @@ onUnmounted(() => {
   >
     <div
       v-if="showButton"
-      class="fixed bottom-6 right-10 z-50"
+      class="fixed bottom-20 right-5 sm:right-8 z-50"
     >      <UButton
         icon="i-heroicons-arrow-up"
         size="lg"
