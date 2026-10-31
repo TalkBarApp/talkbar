@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { useDocsStrings } from '#imports';
 
-const { t, repoUrl, websiteUrl } = useDocsStrings();
+const { t, repoUrl, websiteUrl, licenseUrl } = useDocsStrings();
+
+// Plain text links in the middle of the footer
+const footerLinks = [
+  { label: t('footerWebsite'), to: websiteUrl, target: '_blank' },
+  { label: t('footerContact'), to: `${licenseUrl}/contact`, target: '_blank' },
+];
 
 const links = [
-  {
-    icon: 'i-heroicons-globe-alt',
-    to: websiteUrl,
-    target: '_blank',
-    'aria-label': 'TalkBar website',
-  },
   {
     icon: 'i-simple-icons-github',
     to: repoUrl,
@@ -20,7 +20,7 @@ const links = [
 </script>
 
 <template>
-  <UFooter>
+  <UFooter :links="footerLinks">
     <template #left>
       <span><a :href="websiteUrl" target="_blank" rel="noopener"><b>TalkBar</b></a> {{ t('footerTagline') }} © {{ new Date().getFullYear() }} TalkBar.</span>
     </template>

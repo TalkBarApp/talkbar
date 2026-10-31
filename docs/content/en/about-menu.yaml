@@ -21,15 +21,6 @@ main:
     icon: 'i-heroicons-credit-card'
     site: 'license'
     to: '/pricing'
-  - label: 'Contact us'
-    description: 'Questions, bug reports and feature requests'
-    icon: 'i-heroicons-envelope'
-    site: 'license'
-    to: '/contact'
-  - label: 'TalkBar website'
-    description: 'Features, use cases and downloads'
-    icon: 'i-heroicons-globe-alt'
-    to: '/'
 groups:
   - label: 'Use Cases'
     items:

@@ -94,6 +94,13 @@ export default defineAppConfig({
         }
       }
     },
+    // Footer: plain text links, without the external-link arrow
+    footer: {
+      links: {
+        base: 'text-[15px] leading-6',
+        externalIcon: { base: 'hidden' }
+      }
+    },
     icons: {
       check: 'i-heroicons-check'
     }
