@@ -1,0 +1,229 @@
+---
+title: Настройка MCP
+description: Как включить MCP в TalkBar и подключить Claude Desktop, ChatGPT, Claude Code, Codex, agy, Grok, OpenCode или любой другой MCP-клиент.
+navigation:
+  icon: i-heroicons-wrench
+---
+
+Чтобы подключить ИИ-приложение к TalkBar, нужно два шага: включить MCP в разделе **Настройки → Доступ по MCP** и скопировать готовые настройки для своего приложения. TalkBar сам подставляет реальные пути на вашем компьютере, так что вводить их вручную не придётся.
+
+## Перед началом
+
+- TalkBar установлен на этом компьютере.
+- Ваше ИИ-приложение поддерживает локальные MCP-серверы (такие, которые запускают программу на вашем компьютере; их часто называют серверами stdio).
+- Если TalkBar управляет ваша организация, MCP может быть для вас отключён. См. [Правила администратора](/mcp/access-and-permissions#правила-администратора).
+
+## Включение MCP
+
+1. Откройте **Настройки → Доступ по MCP**.
+2. Включите переключатель в правом верхнем углу страницы. Надпись сменится с **Отключено** на **Включено**.
+3. Посмотрите на значок рядом с заголовком страницы:
+
+| Значок | Что означает |
+| --- | --- |
+| **Готово** | TalkBar нашёл `talkbar-cli`, и программа ответила. Можно подключать приложение. |
+| **Отсутствует** | TalkBar не нашёл `talkbar-cli` рядом с приложением. Переустановите TalkBar. |
+| **Ошибка** | `talkbar-cli` найден, но не запустился. Над страницей показано предупреждение с текстом ошибки. |
+| **Отключено** | MCP выключен. Подключённые приложения не видят инструментов TalkBar. |
+
+Когда MCP включён, чтение разрешено, а большинство изменений — нет. Это можно изменить позже, см. [Доступ и разрешения](/mcp/access-and-permissions).
+
+::screenshot{src="/screenshots/mcp/mcp-access-enabled.png" alt="Настройки → Доступ по MCP: переключатель в заголовке в положении «Включено», зелёный значок «Готово» рядом с заголовком «Доступ по MCP» и открытая под ним карточка «Подключение MCP» с кнопками клиентов ChatGPT, Claude Desktop, Claude Code, Codex, agy CLI, Grok CLI, OpenCode и «Общий JSON»" caption="MCP включён и готов к подключению"}
+::
+
+## Скопируйте настройки для своего приложения
+
+В карточке **Подключение MCP** есть кнопка для каждого приложения. Выберите своё и нажмите **Копировать MCP для *приложения*** под блоком кода. В зависимости от приложения вы получите либо блок JSON, который нужно вставить в его настройки, либо команду для запуска в терминале.
+
+Все варианты настроек делают одно и то же: говорят приложению запускать `talkbar-cli` с аргументами `serve --transport stdio` и задают в `TALKBAR_DATA_ROOT` вашу папку данных TalkBar.
+
+::callout{icon="i-heroicons-light-bulb" color="primary"}
+В примерах ниже используются пути `C:/path/to/talkbar-cli.exe` и `C:/Users/you/AppData/Local/TalkBar`. В копии из TalkBar будут реальные пути на вашем компьютере, поэтому копируйте настройки из раздела **Доступ по MCP**, а не с этой страницы. В путях используются прямые косые черты — Windows их понимает.
+::
+
+::tabs
+  ::div{label="Claude Desktop" icon="i-heroicons-computer-desktop"}
+  Скопируйте JSON и добавьте его в файл конфигурации Claude Desktop `claude_desktop_config.json` (в Claude Desktop: **Settings → Developer → Edit Config**). Если в файле уже есть раздел `mcpServers`, добавьте запись `talkbar` внутрь него. Затем закройте и снова откройте Claude Desktop.
+
+  ```json [claude_desktop_config.json]
+  {
+    "mcpServers": {
+      "talkbar": {
+        "command": "C:/path/to/talkbar-cli.exe",
+        "args": [
+          "serve",
+          "--transport",
+          "stdio"
+        ],
+        "env": {
+          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+        }
+      }
+    }
+  }
+  ```
+  ::
+
+  ::div{label="ChatGPT" icon="i-heroicons-chat-bubble-left-right"}
+  ChatGPT получает тот же JSON с `mcpServers`, что и Claude Desktop. Вставьте его туда, где ваше приложение ChatGPT принимает настройки MCP-серверов, и перезапустите приложение.
+
+  ```json
+  {
+    "mcpServers": {
+      "talkbar": {
+        "command": "C:/path/to/talkbar-cli.exe",
+        "args": [
+          "serve",
+          "--transport",
+          "stdio"
+        ],
+        "env": {
+          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+        }
+      }
+    }
+  }
+  ```
+  ::
+
+  ::div{label="Claude Code" icon="i-heroicons-command-line"}
+  Один раз выполните скопированную команду в терминале. `-s user` добавляет TalkBar для всех ваших проектов.
+
+  ```powershell
+  claude mcp add talkbar -s user -e TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```
+
+  Claude Code может также запускать `talkbar-cli` напрямую, без MCP. См. [Для ИИ-агентов с доступом к командной строке](/mcp/cli#для-ии-агентов-с-доступом-к-командной-строке).
+  ::
+
+  ::div{label="Codex" icon="i-heroicons-command-line"}
+  Один раз выполните скопированную команду в терминале.
+
+  ```powershell
+  codex mcp add talkbar --env TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```
+  ::
+
+  ::div{label="agy CLI" icon="i-heroicons-command-line"}
+  Один раз выполните скопированную команду в терминале. В agy параметры указываются перед именем сервера.
+
+  ```powershell
+  agy mcp add --env TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar talkbar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```
+  ::
+
+  ::div{label="Grok CLI" icon="i-heroicons-command-line"}
+  Один раз выполните скопированную команду в терминале.
+
+  ```powershell
+  grok mcp add talkbar -e TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```
+  ::
+
+  ::div{label="OpenCode" icon="i-heroicons-code-bracket"}
+  Добавьте скопированный блок в конфигурацию OpenCode. Если в ней уже есть раздел `mcp`, добавьте запись `talkbar` внутрь него.
+
+  ```json [opencode.json]
+  {
+    "$schema": "https://opencode.ai/config.json",
+    "mcp": {
+      "talkbar": {
+        "type": "local",
+        "command": [
+          "C:/path/to/talkbar-cli.exe",
+          "serve",
+          "--transport",
+          "stdio"
+        ],
+        "environment": {
+          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+        },
+        "enabled": true
+      }
+    }
+  }
+  ```
+  ::
+
+  ::div{label="Другие приложения" icon="i-heroicons-puzzle-piece"}
+  Для любого другого MCP-клиента, например Cursor, выберите **Общий JSON**. В нём четыре сведения, которые нужны любому клиенту: сервер stdio, программа, её аргументы и переменная окружения. Укажите их там, где их ожидает ваш клиент.
+
+  ```json
+  {
+    "type": "stdio",
+    "command": "C:/path/to/talkbar-cli.exe",
+    "args": [
+      "serve",
+      "--transport",
+      "stdio"
+    ],
+    "env": {
+      "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+    }
+  }
+  ```
+  ::
+::
+
+Добавив TalkBar, перезапустите приложение или перезагрузите его MCP-серверы. Затем для проверки подключения спросите что-нибудь вроде «Какие сессии TalkBar были у меня на этой неделе?». Больше примеров — в разделе [Примеры](/mcp/examples).
+
+## Копирование команды запуска сервера
+
+Кнопка **Копировать команду запуска сервера MCP** копирует одну строку, которая запускает MCP-сервер вручную, — для проверки или для клиента, которому нужна одна команда. В Windows это строка PowerShell:
+
+```powershell
+$env:TALKBAR_DATA_ROOT = 'C:/Users/you/AppData/Local/TalkBar'; & 'C:/path/to/talkbar-cli.exe' serve --transport stdio
+```
+
+После запуска сервер ждёт MCP-клиента на стандартном вводе. Чтобы остановить его, нажмите `Ctrl+C`.
+
+## Где установлен talkbar-cli
+
+`talkbar-cli.exe` устанавливается вместе с TalkBar в ту же папку, что и приложение. Карточка **Настройки сервера** в разделе **Доступ по MCP** показывает:
+
+| Параметр | Что показывает |
+| --- | --- |
+| **Путь к исполняемому файлу** | Полный путь к `talkbar-cli.exe`. **Копировать** копирует его. |
+| **Добавить в PATH** | Копирует команду PowerShell, которая добавляет эту папку в ваш пользовательский PATH. Выполните её в PowerShell, затем откройте новый терминал, чтобы запускать `talkbar-cli` по имени. |
+| **Папка данных** | Ваша папка данных TalkBar. **Копировать** копирует путь к ней. |
+
+Команда для PATH выглядит так (вместо `C:\path\to` будет ваша папка):
+
+```powershell
+$currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
+[Environment]::SetEnvironmentVariable("PATH", "$currentPath;C:\path\to", "User")
+```
+
+::screenshot{src="/screenshots/mcp/mcp-server-settings.png" alt="Карточка «Настройки сервера» внизу раздела «Настройки → Доступ по MCP»: переключатели «Журнал аудита» и «Разрешить удаление без подтверждения», поле «Путь к исполняемому файлу» с кнопками «Копировать» и «Добавить в PATH» и поле «Папка данных» с кнопкой «Копировать»" caption="Настройки сервера: где находится talkbar-cli и какую папку данных он использует"}
+::
+
+## TALKBAR_DATA_ROOT
+
+`TALKBAR_DATA_ROOT` сообщает `talkbar-cli`, какую папку данных TalkBar открыть. Готовые настройки TalkBar всегда указывают в ней папку, которую использует приложение, — она показана в поле **Папка данных**.
+
+- В Windows TalkBar хранит данные в `%LOCALAPPDATA%\TalkBar`. Если `TALKBAR_DATA_ROOT` не задана, `talkbar-cli` тоже использует эту папку.
+- Указывайте в ней только папку данных TalkBar. В папке без данных TalkBar будет создана новая пустая база данных, и ассистент увидит пустое пространство.
+- Чтобы открыть файл базы данных напрямую из командной строки, используйте `--db`. См. [talkbar-cli](/mcp/cli#глобальные-параметры).
+
+## После обновления TalkBar
+
+При установке обновления TalkBar закрываются все экземпляры `talkbar-cli`, запущенные из папки приложения, в том числе MCP-серверы, запущенные вашими ИИ-приложениями. Если после обновления приложение потеряло инструменты TalkBar, перезапустите его или заново подключите в нём сервер TalkBar.
+
+## Устранение неполадок
+
+| Проблема | Что попробовать |
+| --- | --- |
+| Приложение не показывает инструментов TalkBar | Проверьте, что в разделе **Доступ по MCP** выбрано **Включено**. Если приложение подключилось, пока MCP был выключен, перезапустите приложение или заново подключите TalkBar. |
+| Ассистент сообщает, что операция «is turned off in TalkBar» | Включите эту операцию в разделе **Доступ по MCP**. См. [Доступ и разрешения](/mcp/access-and-permissions). |
+| Ассистент видит пустое пространство | Проверьте, что `TALKBAR_DATA_ROOT` в настройках приложения совпадает с полем **Папка данных** в разделе **Доступ по MCP**. Если вы перемещали данные, скопируйте настройки заново. |
+| Удаление отклоняется с `confirmation_unavailable` | Ваше приложение не умеет запрашивать подтверждение. См. [Подтверждение удаления](/mcp/access-and-permissions#подтверждение-удаления). |
+| Значок показывает **Отсутствует** | `talkbar-cli` нет рядом с приложением. Переустановите TalkBar. |
+| Страница заблокирована с уведомлением от вашей организации | Администратор отключил MCP-сервер или инструмент командной строки на этом компьютере. |
+
+## См. также
+
+- [Обзор MCP](/mcp/overview)
+- [Доступ и разрешения](/mcp/access-and-permissions)
+- [Настройки «Доступ по MCP»](/settings/mcp-access)
+- [talkbar-cli](/mcp/cli)
+- [Примеры](/mcp/examples)

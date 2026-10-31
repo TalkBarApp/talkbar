@@ -1,0 +1,100 @@
+title: 'Документация TalkBar'
+description: 'Документация TalkBar — приватного ИИ-помощника для заметок в Windows. Записывайте встречи и звонки без бота, расшифровывайте речь на своём компьютере и превращайте каждый разговор в локальную память с поиском.'
+navigation: false
+hero:
+  title: 'Документация TalkBar'
+  description: 'Всё, что нужно, чтобы записывать, понимать и использовать ваши разговоры'
+  orientation: vertical
+  introductionSubtitle: 'Приватный ИИ для встреч, звонков и голосовых заметок. Запись без бота, локальная расшифровка, локальный ИИ или ваш собственный ключ.'
+  links:
+    - label: Начать
+      icon: i-heroicons-rocket-launch-20-solid
+      trailing: false
+      to: '/getting-started/introduction'
+      size: xl
+    - label: MCP и CLI
+      icon: i-heroicons-command-line-20-solid
+      trailing: false
+      variant: outline
+      to: '/mcp'
+      size: xl
+
+platforms:
+  items:
+    - title: 'Приложение TalkBar'
+      cta: 'Открыть руководство'
+      description: 'Записывайте, расшифровывайте и подводите итоги разговоров на компьютере с Windows, а важное сохраняйте как знания с поиском.'
+      icon: 'i-heroicons-chat-bubble-bottom-center-text'
+      id: 'app'
+      to: '/getting-started/introduction'
+      features:
+        - 'Запись встреч и звонков без бота'
+        - 'Локальная расшифровка с участниками'
+        - 'Итоги, перевод и карточки знаний в реальном времени'
+        - 'Итоги, решения и задачи'
+        - 'Спросите TalkBar о любой сессии или документе'
+        - 'Приватный режим ИИ и локальные модели'
+        - 'Экспорт, ссылки и резервные копии'
+    - title: 'MCP и CLI'
+      cta: 'Подключить ИИ-ассистента'
+      description: 'Дайте Claude, ChatGPT, Codex и другим MCP-клиентам искать и работать с вашим рабочим пространством TalkBar — с переключателями, которыми управляете вы.'
+      icon: 'i-heroicons-command-line'
+      id: 'mcp'
+      to: '/mcp'
+      features:
+        - 'Локальный MCP-сервер через stdio'
+        - 'Пять инструментов-шлюзов, более 140 операций'
+        - 'Переключатель для каждой операции'
+        - 'Подтверждение удаления в вашем клиенте'
+        - 'talkbar-cli для скриптов'
+        - 'Полный справочник операций'
+
+quickstart:
+  title: 'Разделы документации'
+  items:
+    - title: 'Установка и обновление'
+      description: 'Скачайте TalkBar для Windows и поддерживайте его в актуальном состоянии'
+      icon: 'i-heroicons-arrow-down-tray'
+      to: '/getting-started/install-and-update'
+    - title: 'Первая сессия'
+      description: 'Запишите, просмотрите и подведите итоги первого разговора'
+      icon: 'i-heroicons-play-circle'
+      to: '/getting-started/first-session'
+    - title: 'Сессии'
+      description: 'Запуск, запись, просмотр, планирование и подготовка сессий'
+      icon: 'i-heroicons-microphone'
+      to: '/sessions/overview'
+    - title: 'База знаний'
+      description: 'Карточки знаний, документы, люди, проекты и задачи'
+      icon: 'i-heroicons-light-bulb'
+      to: '/knowledge/knowledge-cards'
+    - title: 'ИИ и конфиденциальность'
+      description: 'Выберите, где работает ИИ: от локальных моделей до вашего ключа'
+      icon: 'i-heroicons-lock-closed'
+      to: '/ai/how-talkbar-uses-ai'
+    - title: 'Справочник настроек'
+      description: 'Каждая настройка, что она делает и её значение по умолчанию'
+      icon: 'i-heroicons-cog-6-tooth'
+      to: '/settings/overview'
+
+resources:
+  title: 'Ресурсы'
+  items:
+    - title: 'Скачать TalkBar'
+      description: 'Последняя версия для Windows'
+      icon: 'i-heroicons-arrow-down-tray'
+      to: 'https://github.com/TalkBarApp/talkbar/releases/latest'
+      target: '_blank'
+    - title: 'Сайт TalkBar'
+      description: 'Возможности, сценарии и тарифы'
+      icon: 'i-heroicons-globe-alt'
+      to: 'https://www.talkbar.ru'
+      target: '_blank'
+    - title: 'Устранение неполадок'
+      description: 'Решение частых проблем с записью, ИИ и обновлениями'
+      icon: 'i-heroicons-wrench-screwdriver'
+      to: '/help/troubleshooting'
+    - title: 'Вопросы и ответы'
+      description: 'Короткие ответы на частые вопросы'
+      icon: 'i-heroicons-question-mark-circle'
+      to: '/help/faq'

@@ -1,0 +1,61 @@
+title: 'MCP и CLI для TalkBar'
+description: 'Подключайте ИИ-ассистентов к рабочему пространству TalkBar через локальный MCP-сервер или управляйте им из скриптов с помощью talkbar-cli. Настройка, переключатели доступа, инструменты и полный справочник операций.'
+navigation: false
+hero:
+  title: 'MCP и CLI для TalkBar'
+  description: 'Безопасный локальный доступ ИИ-ассистента к вашим разговорам'
+  orientation: vertical
+  headline:
+    label: 'Локальный сервер stdio · переключатели под вашим контролем'
+    icon: 'i-heroicons-shield-check'
+    to: '/mcp/access-and-permissions'
+  introductionTitle: 'Claude, ChatGPT, Codex и другие MCP-клиенты могут искать, читать и обновлять ваши сессии, заметки, знания и многое другое в TalkBar — всё на вашем компьютере.'
+  introductionSubtitle: 'Начните с настройки, затем изучите инструменты и все операции, которые они выполняют.'
+  links:
+    - label: Настроить MCP
+      icon: i-heroicons-arrow-right
+      trailing: true
+      to: '/mcp/setup'
+      size: xl
+    - label: Справочник операций
+      icon: i-heroicons-book-open
+      trailing: true
+      variant: outline
+      to: '/mcp/operations'
+      size: xl
+
+features:
+  title: 'Разделы MCP и CLI'
+  items:
+    - title: 'Обзор'
+      description: 'Что ассистент может и чего не может делать с TalkBar'
+      icon: 'i-heroicons-information-circle'
+      to: '/mcp/overview'
+    - title: 'Настройка'
+      description: 'Включите доступ по MCP и подключите клиент'
+      icon: 'i-heroicons-wrench'
+      to: '/mcp/setup'
+    - title: 'Доступ и разрешения'
+      description: 'Переключатели операций и подтверждение удаления'
+      icon: 'i-heroicons-lock-closed'
+      to: '/mcp/access-and-permissions'
+    - title: 'Инструменты'
+      description: 'Пять инструментов-шлюзов и как их вызывать'
+      icon: 'i-heroicons-squares-2x2'
+      to: '/mcp/tools'
+    - title: 'Справочник операций'
+      description: 'Каждая операция, её аргументы и результаты'
+      icon: 'i-heroicons-book-open'
+      to: '/mcp/operations'
+    - title: 'talkbar-cli'
+      description: 'Те же операции из скриптов'
+      icon: 'i-heroicons-command-line'
+      to: '/mcp/cli'
+    - title: 'Ошибки и ограничения'
+      description: 'Коды ошибок, повторы, лимиты тарифа и правила аргументов'
+      icon: 'i-heroicons-exclamation-triangle'
+      to: '/mcp/errors-and-limits'
+    - title: 'Примеры'
+      description: 'Практические сценарии с настоящими запросами'
+      icon: 'i-heroicons-light-bulb'
+      to: '/mcp/examples'

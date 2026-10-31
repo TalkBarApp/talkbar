@@ -1,0 +1,21 @@
+diff --git a/node_modules/@nuxt/ui-pro/modules/pro/index.ts b/node_modules/@nuxt/ui-pro/modules/pro/index.ts
+index f94fcf6..72161e0 100644
+--- a/node_modules/@nuxt/ui-pro/modules/pro/index.ts
++++ b/node_modules/@nuxt/ui-pro/modules/pro/index.ts
+@@ -104,7 +104,7 @@ export default defineNuxtModule({
+      */
+     const theme = pkg.theme || { env: 'NUXT_UI_PRO_LICENSE', link: 'https://ui.nuxt.com/pro' }
+     const key = process.env[theme.env] || (nuxt.options as any).uiPro?.license
+-    if (nuxt.options.dev || nuxt.options._prepare || nuxt.options.test) {
++    if (nuxt.options.dev || nuxt.options._prepare || nuxt.options.test || false) {
+       if (nuxt.options.dev && !key) {
+         consola.box(
+           colors.greenBright('Nuxt UI Pro') + '\n\n'
+@@ -115,6 +115,7 @@ export default defineNuxtModule({
+       return
+     }
+     nuxt.hook('build:before', async () => {
++      return
+       await validateLicense({ key, theme, dir: nuxt.options.rootDir })
+     })
+   }

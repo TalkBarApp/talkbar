@@ -1,0 +1,34 @@
+diff --git a/node_modules/@matterlabs/docs-nuxt-template/nuxt.config.ts b/node_modules/@matterlabs/docs-nuxt-template/nuxt.config.ts
+index c441ac6..27f4160 100644
+--- a/node_modules/@matterlabs/docs-nuxt-template/nuxt.config.ts
++++ b/node_modules/@matterlabs/docs-nuxt-template/nuxt.config.ts
+@@ -24,7 +24,6 @@ export default defineNuxtConfig({
+     '@nuxt/eslint',
+     '@nuxtjs/seo',
+     '@nuxt/icon',
+-    '@nuxtjs/algolia',
+   ],
+   site: {
+     name: '', // define in child project
+@@ -32,21 +31,6 @@ export default defineNuxtConfig({
+     indexable: process.env.NUXT_SITE_ENV === 'production' ? true : false,
+     defaultLocale: 'en',
+   },
+-  algolia: {
+-    // Algolia keys are replaced by default keys
+-    // for $development further below
+-    apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+-    applicationId: process.env.ALGOLIA_APPLICATION_ID,
+-    lite: false, // by default set to 'true'
+-    cache: true,
+-    docSearch: {
+-      indexName: 'zksync_docs_crawler_zksyncDocs',
+-    },
+-    instantSearch: {
+-      theme: 'algolia',
+-    },
+-    recommend: false,
+-  },
+   app: {
+     pageTransition: { name: 'page', mode: 'out-in' },
+     layoutTransition: { name: 'layout', mode: 'out-in' },

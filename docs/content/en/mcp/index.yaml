@@ -1,0 +1,61 @@
+title: 'TalkBar MCP & CLI'
+description: 'Connect AI assistants to your TalkBar workspace with the local MCP server, or script it with talkbar-cli. Setup, access switches, tools and the full operations reference.'
+navigation: false
+hero:
+  title: 'TalkBar MCP & CLI'
+  description: 'Give your AI assistant safe, local access to your conversations'
+  orientation: vertical
+  headline:
+    label: 'Local stdio server · switches you control'
+    icon: 'i-heroicons-shield-check'
+    to: '/mcp/access-and-permissions'
+  introductionTitle: 'Let Claude, ChatGPT, Codex and other MCP clients search, read and update your TalkBar sessions, notes, knowledge and more, all on your computer.'
+  introductionSubtitle: 'Start with setup, then explore the tools and every operation they run.'
+  links:
+    - label: Set up MCP
+      icon: i-heroicons-arrow-right
+      trailing: true
+      to: '/mcp/setup'
+      size: xl
+    - label: Operations reference
+      icon: i-heroicons-book-open
+      trailing: true
+      variant: outline
+      to: '/mcp/operations'
+      size: xl
+
+features:
+  title: 'Explore MCP & CLI'
+  items:
+    - title: 'Overview'
+      description: 'What an assistant can and cannot do with TalkBar'
+      icon: 'i-heroicons-information-circle'
+      to: '/mcp/overview'
+    - title: 'Set up'
+      description: 'Turn on MCP Access and connect your client'
+      icon: 'i-heroicons-wrench'
+      to: '/mcp/setup'
+    - title: 'Access and permissions'
+      description: 'Per-operation switches and delete confirmation'
+      icon: 'i-heroicons-lock-closed'
+      to: '/mcp/access-and-permissions'
+    - title: 'Tools'
+      description: 'The five gateway tools and how to call them'
+      icon: 'i-heroicons-squares-2x2'
+      to: '/mcp/tools'
+    - title: 'Operations reference'
+      description: 'Every operation, its arguments and results'
+      icon: 'i-heroicons-book-open'
+      to: '/mcp/operations'
+    - title: 'talkbar-cli'
+      description: 'Run the same operations from scripts'
+      icon: 'i-heroicons-command-line'
+      to: '/mcp/cli'
+    - title: 'Errors and limits'
+      description: 'Error codes, retries, plan limits and argument rules'
+      icon: 'i-heroicons-exclamation-triangle'
+      to: '/mcp/errors-and-limits'
+    - title: 'Examples'
+      description: 'Practical walkthroughs with real requests'
+      icon: 'i-heroicons-light-bulb'
+      to: '/mcp/examples'

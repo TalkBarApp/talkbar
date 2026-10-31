@@ -1,0 +1,58 @@
+{
+  "name": "docs-talkbar",
+  "type": "module",
+  "description": "Documentation website for the TalkBar desktop app (doc.talkbar.app, doc.talkbar.ru)",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TalkBarApp/talkbar.git",
+    "directory": "docs"
+  },
+  "scripts": {
+    "dev": "nuxt dev",
+    "dev:ru": "cross-env DOCS_LOCALE=ru nuxt dev",
+    "build": "npm run search:index && nuxt build",
+    "generate": "npm run search:index && nuxt generate",
+    "generate:en": "cross-env DOCS_LOCALE=en NUXT_SITE_ENV=production npm run generate",
+    "generate:ru": "cross-env DOCS_LOCALE=ru NUXT_SITE_ENV=production npm run generate",
+    "generate:cf-pages": "npm run generate && cp public/_redirects dist/_redirects",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare && patch-package",
+    "search:index": "node scripts/generate-search-index.mjs",
+    "screenshots:list": "node scripts/list-screenshots.mjs",
+    "check:content": "node scripts/check-content.mjs",
+    "nav:sync": "node scripts/sync-navigation.mjs"
+  },
+  "overrides": {
+    "picomatch": "2.3.1",
+    "@netlify/blobs": "9.1.2",
+    "@nuxt/ui-pro": "1.8.0",
+    "@nuxtjs/seo": "2.2.0",
+    "unrs-resolver": "1.12.2"
+  },
+  "dependencies": {
+    "@iconify-json/heroicons": "^1.2.2",
+    "@iconify-json/simple-icons": "1.2.35",
+    "@matterlabs/docs-nuxt-template": "2.10.0",
+    "@nuxt/content": "2.13.4",
+    "@nuxt/fonts": "^0.11.4",
+    "@unhead/vue": "^2.1.17",
+    "fuse.js": "7.1.0",
+    "gray-matter": "4.0.3",
+    "marked": "15.0.12",
+    "nuxt": "3.21.11",
+    "nuxt-seo-utils": "7.0.12",
+    "patch-package": "8.0.0",
+    "tailwindcss": "^3.4.17",
+    "unhead": "^2.1.17",
+    "yaml": "^2.8.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "github-slugger": "^2.0.0",
+    "typescript": "5.6.2",
+    "vue-tsc": "2.1.6"
+  }
+}

@@ -1,0 +1,34 @@
+navigation: false
+# Меню «О TalkBar» в шапке: ссылки на www.talkbar.ru словами самого сайта.
+label: 'О TalkBar'
+site: 'https://www.talkbar.ru'
+main:
+  - label: 'Продукт'
+    description: 'Что умеет TalkBar, возможность за возможностью'
+    icon: 'i-heroicons-sparkles'
+    to: '/#features'
+  - label: 'Знания'
+    description: 'Карточки знаний, которые появляются во время звонков'
+    icon: 'i-heroicons-light-bulb'
+    to: '/#knowledge'
+  - label: 'Приватность'
+    description: 'Что остаётся на вашем компьютере и что никогда его не покидает'
+    icon: 'i-heroicons-shield-check'
+    to: '/privacy/'
+groups:
+  - label: 'Применение'
+    items:
+      - { label: 'Встречи 1:1', to: '/one-on-one-meetings/' }
+      - { label: 'Коуч-сессии', to: '/coaching-sessions/' }
+      - { label: 'Интервью', to: '/interviews/' }
+      - { label: 'Подкасты', to: '/podcasts/' }
+      - { label: 'Голосовые заметки', to: '/voice-notes/' }
+      - { label: 'Звонки с клиентами', to: '/client-calls/' }
+  - label: 'Отрасли'
+    items:
+      - { label: 'Венчур и Private Equity', to: '/venture-private-equity/' }
+      - { label: 'Юристы и M&A', to: '/legal-counsel/' }
+      - { label: 'Топ-менеджмент', to: '/executive-leadership/' }
+      - { label: 'B2B-продажи и Customer Success', to: '/b2b-sales/' }
+      - { label: 'Консультанты и советники', to: '/consulting/' }
+      - { label: 'Продуктовые исследования и рекрутинг', to: '/product-research/' }

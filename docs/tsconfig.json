@@ -1,0 +1,9 @@
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "strict": false
+  },
+  "include": ["./**/*.ts", "./**/*.js", "./**/*.vue", "app.config.ts"],
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"]
+}

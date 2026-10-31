@@ -1,0 +1,8 @@
+# Cloudflare Pages redirects (copied into dist/ by `npm run generate:cf-pages`).
+
+# Short links
+/mcp/reference   /mcp/operations   301
+/download        https://github.com/TalkBarApp/talkbar/releases/latest   302
+
+# Everything else that does not exist
+/* /404.html  404

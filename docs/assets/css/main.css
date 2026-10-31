@@ -1,0 +1,276 @@
+/* ============================================================
+   TalkBar brand, following www.talkbar.app
+   Light page #FAF9F5, ink text #2B3A5D, muted #656F88, hairline #E3E5EA
+   Dark page #141924, card #1D212C, text #E0DCD6
+   Accents: blue #054DF6 (default) and warm #D58458 (color toggle)
+   ============================================================ */
+
+:root {
+  --color-mark-background-color: rgb(var(--color-primary-200) / 0.6);
+  --text-color: rgb(var(--ui-foreground));
+}
+
+/* Warm accent, chosen with the header's color toggle. Higher specificity than
+   the :root variables Nuxt UI injects at runtime. */
+:root.color-theme-warm {
+  --color-primary-50: 252 244 239;
+  --color-primary-100: 248 230 220;
+  --color-primary-200: 240 203 183;
+  --color-primary-300: 231 173 142;
+  --color-primary-400: 221 154 116;
+  --color-primary-500: 213 132 88;
+  --color-primary-600: 184 96 46;
+  --color-primary-700: 150 77 36;
+  --color-primary-800: 122 63 31;
+  --color-primary-900: 99 53 28;
+  --color-primary-950: 54 26 13;
+  /* Warm text on light pages uses the deeper tone, as on the website */
+  --color-primary-DEFAULT: var(--color-primary-600);
+}
+
+:root.color-theme-warm.dark {
+  --color-primary-DEFAULT: var(--color-primary-400);
+}
+
+/* ---------- Type: text and heading faces per language ---------- */
+
+/* The theme layers put Inter first in Tailwind's sans stack, so the text face
+   is set here instead. */
+html[lang='en'],
+html[lang='en'] body,
+html[lang='en'] .font-sans {
+  font-family: 'Hanken Grotesk', 'Onest', ui-sans-serif, system-ui, sans-serif;
+}
+
+html[lang='ru'],
+html[lang='ru'] body,
+html[lang='ru'] .font-sans {
+  font-family: 'Onest', ui-sans-serif, system-ui, sans-serif;
+}
+
+html[lang='en'] :is(h1, h2, h3, h4),
+html[lang='en'] .font-display {
+  font-family: 'Urbanist', 'Onest', 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+html[lang='ru'] :is(h1, h2, h3, h4),
+html[lang='ru'] .font-display {
+  font-family: 'Onest', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Large titles are light, like the website's display headings */
+:is(h1, h2).font-display,
+.landing-title,
+[class*='page-header'] h1 {
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.prose {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.prose :is(h2, h3, h4) {
+  letter-spacing: -0.005em;
+}
+
+.prose h2 {
+  font-weight: 500;
+}
+
+.prose h3 {
+  font-weight: 500;
+}
+
+.prose h4 {
+  font-weight: 600;
+}
+
+/* Body copy and lists stay regular; bold UI labels read as medium-semibold */
+.prose strong {
+  font-weight: 600;
+}
+
+code,
+pre,
+kbd {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Small uppercase labels (the website's "eyebrow" style) */
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+/* ---------- Logo: one of four images by color theme and light/dark ---------- */
+
+.theme-logo {
+  display: none;
+  height: 100%;
+  width: auto;
+}
+
+:root:not(.color-theme-warm):not(.dark) .theme-logo-blue.theme-logo-light,
+:root:not(.color-theme-warm).dark .theme-logo-blue.theme-logo-dark,
+:root.color-theme-warm:not(.dark) .theme-logo-warm.theme-logo-light,
+:root.color-theme-warm.dark .theme-logo-warm.theme-logo-dark {
+  display: block;
+}
+
+/* ---------- Color toggle dot (same as the website) ---------- */
+
+.color-dot {
+  position: relative;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgb(15 19 28 / 0.25);
+}
+
+.color-dot-warm,
+.color-dot-blue {
+  position: absolute;
+  inset: 0;
+}
+
+.color-dot-warm {
+  background: #d58458;
+}
+
+.color-dot-blue {
+  background: #054df6;
+  transition: opacity 0.3s ease;
+}
+
+.color-theme-warm .color-dot-blue {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .color-dot-blue {
+    transition: none;
+  }
+}
+
+/* ---------- Content details ---------- */
+
+mark {
+  background-color: var(--color-mark-background-color) !important;
+  color: var(--text-color);
+}
+
+table {
+  overflow-x: auto !important;
+}
+
+table td code {
+  font-size: 89% !important;
+}
+
+/* Striped rows: a neutral tint, so they never read as the accent */
+table tr:nth-child(2n) {
+  background-color: rgb(120 110 90 / 0.035) !important;
+}
+
+.dark table tr:nth-child(2n) {
+  background-color: rgb(255 255 255 / 0.025) !important;
+}
+
+.navigation-tree > div > a {
+  gap: 0.625rem !important;
+  font-weight: 400 !important;
+}
+
+.navigation-tree > div > a.text-primary {
+  font-weight: 500 !important;
+}
+
+/* Page transition animations */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 300ms ease-in-out !important;
+}
+
+.page-enter-from {
+  opacity: 0;
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+.page-enter-to,
+.page-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body hr {
+  margin-top: 2em !important;
+  margin-bottom: 2em !important;
+}
+
+/* Screenshot placeholders and figures */
+figure.screenshot img {
+  margin: 0;
+}
+
+/* Field (MCP argument) names wrap instead of overflowing */
+.prose [class*='field'] code {
+  word-break: break-word;
+}
+
+/* ---------- Scrollbars: slim and quiet, as in the TalkBar app ---------- */
+
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(var(--color-gray-400) / 0.45) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-gray-400) / 0.45);
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--color-gray-500) / 0.7);
+  background-clip: padding-box;
+}
+
+.dark *::-webkit-scrollbar-thumb {
+  background: rgb(var(--color-gray-500) / 0.45);
+  background-clip: padding-box;
+}
+
+/* Sidebars show their scrollbar only while hovered */
+.navigation-tree,
+aside,
+nav[class*='toc'] {
+  scrollbar-color: transparent transparent;
+}
+
+aside:hover,
+nav[class*='toc']:hover {
+  scrollbar-color: rgb(var(--color-gray-400) / 0.45) transparent;
+}

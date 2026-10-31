@@ -1,0 +1,34 @@
+navigation: false
+# The header's "About" menu: links to www.talkbar.app, in the website's own words.
+label: 'About'
+site: 'https://www.talkbar.app'
+main:
+  - label: 'Product'
+    description: 'What TalkBar does, feature by feature'
+    icon: 'i-heroicons-sparkles'
+    to: '/#features'
+  - label: 'Knowledge'
+    description: 'Knowledge Cards that surface during your calls'
+    icon: 'i-heroicons-light-bulb'
+    to: '/#knowledge'
+  - label: 'Privacy'
+    description: 'What stays on your computer, and what never leaves'
+    icon: 'i-heroicons-shield-check'
+    to: '/privacy/'
+groups:
+  - label: 'Use Cases'
+    items:
+      - { label: 'One-on-one meetings', to: '/one-on-one-meetings/' }
+      - { label: 'Coaching sessions', to: '/coaching-sessions/' }
+      - { label: 'Interviews', to: '/interviews/' }
+      - { label: 'Podcasts', to: '/podcasts/' }
+      - { label: 'Voice notes', to: '/voice-notes/' }
+      - { label: 'Client calls', to: '/client-calls/' }
+  - label: 'Industries'
+    items:
+      - { label: 'Venture & private equity', to: '/venture-private-equity/' }
+      - { label: 'Legal counsel & M&A', to: '/legal-counsel/' }
+      - { label: 'Executive leadership', to: '/executive-leadership/' }
+      - { label: 'B2B sales & customer success', to: '/b2b-sales/' }
+      - { label: 'Consultants & advisors', to: '/consulting/' }
+      - { label: 'Product research & recruiting', to: '/product-research/' }
