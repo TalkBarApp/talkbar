@@ -96,7 +96,6 @@ useSeoMeta({
           v-for="(item, index) of page.quickstart.items"
           :key="index"
           v-bind="item"
-          class="hover:scale-105 transition-transform duration-300"
         />
       </UPageGrid>
     </ULandingSection>
@@ -112,7 +111,6 @@ useSeoMeta({
           v-for="(item, index) of page.resources.items"
           :key="index"
           v-bind="item"
-          class="hover:scale-105 transition-transform duration-300"
         />
       </UPageGrid>
     </ULandingSection>
