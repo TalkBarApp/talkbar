@@ -50,7 +50,7 @@ useSeoMeta({
           :key="index"
           class="relative group"
         >
-          <div :class="`bg-white dark:bg-gray-900 rounded-[18px] shadow-[0_1px_2px_rgb(30_40_60/0.03),0_10px_28px_-18px_rgb(30_45_80/0.1)] border border-gray-200 dark:border-gray-700 p-8 ${platform.id === 'app' ? 'hover:border-primary-500 dark:hover:border-primary-400' : 'hover:border-gray-400 dark:hover:border-gray-500'} transition-all duration-300 h-full`">
+          <div :class="`bg-white dark:bg-gray-900 rounded-[18px] shadow-[0_1px_2px_rgb(30_40_60/0.03),0_10px_28px_-18px_rgb(30_45_80/0.1)] border border-gray-200 dark:border-gray-700 p-8 ${platform.id === 'app' ? 'hover:border-primary-500 dark:hover:border-primary-400' : 'hover:border-gray-400 dark:hover:border-gray-500'} transition-all duration-300 h-full flex flex-col`">
             <div :class="`flex items-center gap-1 mb-6 ${platform.id === 'app' ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-200'}`">
               <div class="p-3 rounded-lg">
                 <UIcon :name="platform.icon" class="h-10 w-10" />
@@ -62,7 +62,7 @@ useSeoMeta({
 
             <p class="text-gray-600 dark:text-gray-300 mb-6 text-lg">{{ platform.description }}</p>
 
-            <ul class="space-y-3 mb-8">
+            <ul class="space-y-3 mb-8 flex-1">
               <li
                 v-for="feature in platform.features"
                 :key="feature"

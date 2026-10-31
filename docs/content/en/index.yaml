@@ -43,6 +43,7 @@ platforms:
       to: '/mcp'
       features:
         - 'Local stdio MCP server'
+        - 'Ready-made setups for ChatGPT, Claude and Codex'
         - 'Five gateway tools, 140+ operations'
         - 'Per-operation access switches'
         - 'Delete confirmation in your client'
