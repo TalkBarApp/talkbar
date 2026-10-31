@@ -1,7 +1,7 @@
 {
   "name": "docs-talkbar",
   "type": "module",
-  "description": "Documentation website for the TalkBar desktop app (doc.talkbar.app, doc.talkbar.ru)",
+  "description": "Documentation website for the TalkBar desktop app (docs.talkbar.app, docs.talkbar.ru)",
   "version": "0.1.0",
   "private": true,
   "license": "MIT",

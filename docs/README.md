@@ -4,8 +4,8 @@ Source of the TalkBar documentation websites:
 
 | Site | Language | Content folder |
 | --- | --- | --- |
-| [doc.talkbar.app](https://doc.talkbar.app) | English | `content/en` |
-| [doc.talkbar.ru](https://doc.talkbar.ru) | Russian | `content/ru` |
+| [docs.talkbar.app](https://docs.talkbar.app) | English | `content/en` |
+| [docs.talkbar.ru](https://docs.talkbar.ru) | Russian | `content/ru` |
 
 Both sites are built from this one package with Nuxt 3, Nuxt Content and the
 `@matterlabs/docs-nuxt-template` theme (Nuxt UI Pro). `DOCS_LOCALE` picks the language
@@ -28,14 +28,14 @@ npm run generate:en   # static English site in dist/
 npm run generate:ru   # static Russian site in dist/
 ```
 
-Each command writes a complete static site to `dist/` (Cloudflare Pages preset). Deploy
-them as two projects, for example two Cloudflare Pages projects connected to this
-repository:
+Each command writes a complete static site to `dist/` (Cloudflare Pages preset, with
+`_redirects` and `_headers` included). Deploy them as two Cloudflare Pages projects
+connected to the `main` branch of this repository:
 
-| Setting | doc.talkbar.app | doc.talkbar.ru |
+| Setting | docs.talkbar.app | docs.talkbar.ru |
 | --- | --- | --- |
 | Root directory | `docs` | `docs` |
-| Build command | `npm run generate:en && cp public/_redirects dist/_redirects` | `npm run generate:ru && cp public/_redirects dist/_redirects` |
+| Build command | `npm run generate:en` | `npm run generate:ru` |
 | Output directory | `dist` | `dist` |
 | Environment | `NODE_VERSION=22` | `NODE_VERSION=22` |
 

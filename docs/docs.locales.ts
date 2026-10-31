@@ -18,7 +18,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
   en: {
     code: 'en',
     label: 'English',
-    siteUrl: 'https://doc.talkbar.app',
+    siteUrl: 'https://docs.talkbar.app',
     websiteUrl: { production: 'https://www.talkbar.app', preview: 'https://preview.talkbar.app' },
     siteName: 'TalkBar Documentation',
     description:
@@ -49,7 +49,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
   ru: {
     code: 'ru',
     label: 'Русский',
-    siteUrl: 'https://doc.talkbar.ru',
+    siteUrl: 'https://docs.talkbar.ru',
     websiteUrl: { production: 'https://www.talkbar.ru', preview: 'https://preview.talkbar.ru' },
     siteName: 'Документация TalkBar',
     description:

@@ -65,7 +65,7 @@ const config = {
   content: {
     sources: {
       // Each build reads only its own language folder, so routes are identical
-      // on doc.talkbar.app and doc.talkbar.ru.
+      // on docs.talkbar.app and docs.talkbar.ru.
       content: {
         driver: "fs",
         base: resolve(__dirname, `./content/${locale}`),

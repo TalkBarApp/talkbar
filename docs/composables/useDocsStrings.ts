@@ -8,7 +8,7 @@ export const useDocsStrings = () => {
     locale: (config.docsLocale as string) || 'en',
     siteName: (config.docsSiteName as string) || 'TalkBar Documentation',
     description: (config.docsDescription as string) || '',
-    siteUrl: (config.docsSiteUrl as string) || 'https://doc.talkbar.app',
+    siteUrl: (config.docsSiteUrl as string) || 'https://docs.talkbar.app',
     websiteUrl: (config.docsWebsiteUrl as string) || 'https://www.talkbar.app',
     licenseUrl: (config.docsLicenseUrl as string) || 'https://license.talkbar.app',
     repoUrl: (config.docsRepoUrl as string) || 'https://github.com/TalkBarApp/talkbar',
