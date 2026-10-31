@@ -1,7 +1,8 @@
 navigation: false
-# The header's "About" menu: links to www.talkbar.app, in the website's own words.
+# The header's "About" menu, in the website's own words. Paths are on the TalkBar
+# website unless `site: license` puts them on the license portal; production builds
+# use the live domains, dev builds the preview ones.
 label: 'About'
-site: 'https://www.talkbar.app'
 main:
   - label: 'Product'
     description: 'What TalkBar does, feature by feature'
@@ -15,6 +16,20 @@ main:
     description: 'What stays on your computer, and what never leaves'
     icon: 'i-heroicons-shield-check'
     to: '/privacy/'
+  - label: 'License and pricing'
+    description: 'Plans, prices and buying a license'
+    icon: 'i-heroicons-credit-card'
+    site: 'license'
+    to: '/pricing'
+  - label: 'Contact us'
+    description: 'Questions, bug reports and feature requests'
+    icon: 'i-heroicons-envelope'
+    site: 'license'
+    to: '/contact'
+  - label: 'TalkBar website'
+    description: 'Features, use cases and downloads'
+    icon: 'i-heroicons-globe-alt'
+    to: '/'
 groups:
   - label: 'Use Cases'
     items:

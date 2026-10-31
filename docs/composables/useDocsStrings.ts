@@ -10,6 +10,7 @@ export const useDocsStrings = () => {
     description: (config.docsDescription as string) || '',
     siteUrl: (config.docsSiteUrl as string) || 'https://doc.talkbar.app',
     websiteUrl: (config.docsWebsiteUrl as string) || 'https://www.talkbar.app',
+    licenseUrl: (config.docsLicenseUrl as string) || 'https://license.talkbar.app',
     repoUrl: (config.docsRepoUrl as string) || 'https://github.com/TalkBarApp/talkbar',
     t: (key: string) => strings[key] ?? key,
   }

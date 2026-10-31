@@ -1,7 +1,7 @@
 navigation: false
-# Меню «О TalkBar» в шапке: ссылки на www.talkbar.ru словами самого сайта.
+# Меню «О TalkBar» в шапке словами самого сайта. Пути ведут на сайт TalkBar, а с
+# `site: license` — на портал лицензий; в рабочей сборке — боевые домены, в dev — preview.
 label: 'О TalkBar'
-site: 'https://www.talkbar.ru'
 main:
   - label: 'Продукт'
     description: 'Что умеет TalkBar, возможность за возможностью'
@@ -15,6 +15,20 @@ main:
     description: 'Что остаётся на вашем компьютере и что никогда его не покидает'
     icon: 'i-heroicons-shield-check'
     to: '/privacy/'
+  - label: 'Лицензия и цены'
+    description: 'Тарифы, цены и покупка лицензии'
+    icon: 'i-heroicons-credit-card'
+    site: 'license'
+    to: '/pricing'
+  - label: 'Связаться с нами'
+    description: 'Вопросы, сообщения об ошибках и предложения'
+    icon: 'i-heroicons-envelope'
+    site: 'license'
+    to: '/contact'
+  - label: 'Сайт TalkBar'
+    description: 'Возможности, сценарии и загрузка'
+    icon: 'i-heroicons-globe-alt'
+    to: '/'
 groups:
   - label: 'Применение'
     items:

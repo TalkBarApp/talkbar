@@ -7,7 +7,8 @@ export interface DocsLocaleConfig {
   code: DocsLocale
   label: string
   siteUrl: string
-  websiteUrl: string
+  /** www site for this language: production, and the preview used by dev builds */
+  websiteUrl: { production: string; preview: string }
   siteName: string
   description: string
   strings: Record<string, string>
@@ -18,7 +19,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     code: 'en',
     label: 'English',
     siteUrl: 'https://doc.talkbar.app',
-    websiteUrl: 'https://www.talkbar.app',
+    websiteUrl: { production: 'https://www.talkbar.app', preview: 'https://preview.talkbar.app' },
     siteName: 'TalkBar Documentation',
     description:
       'Documentation for TalkBar, the private AI note taker for Windows: capture meetings and calls, dictate voice notes, and keep every conversation as searchable local memory.',
@@ -49,7 +50,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     code: 'ru',
     label: 'Русский',
     siteUrl: 'https://doc.talkbar.ru',
-    websiteUrl: 'https://www.talkbar.ru',
+    websiteUrl: { production: 'https://www.talkbar.ru', preview: 'https://preview.talkbar.ru' },
     siteName: 'Документация TalkBar',
     description:
       'Документация TalkBar — приватного ИИ-помощника для заметок в Windows: записывайте встречи и звонки, диктуйте голосовые заметки и храните каждый разговор как локальную память с поиском.',
@@ -76,6 +77,12 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
       switchToBlue: 'Включить синюю цветовую тему',
     },
   },
+}
+
+/** License portal (pricing, contact): production, and the preview used by dev builds */
+export const licensePortalUrl = {
+  production: 'https://license.talkbar.app',
+  preview: 'https://license.preview.talkbar.app',
 }
 
 export const resolveDocsLocale = (value: string | undefined): DocsLocale =>

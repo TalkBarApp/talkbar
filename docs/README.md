@@ -106,7 +106,15 @@ that check. Nuxt UI Pro also accepts `NUXT_UI_PRO_LICENSE=oss` for open-source p
 the build then verifies this public repository with NuxtLabs. To use that instead, delete
 the patch and set the variable in the build environment.
 
+## Links to the website and license portal
+
+The header's About menu and the footer link to the TalkBar website and license portal.
+Production builds (`generate:en`, `generate:ru`) use www.talkbar.app (www.talkbar.ru for
+Russian) and license.talkbar.app; every other build uses the preview sites
+(preview.talkbar.app, preview.talkbar.ru, license.preview.talkbar.app). The domains are in
+`docs.locales.ts`; the menu items are in `content/<locale>/about-menu.yaml`.
+
 ## License
 
-Documentation content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/);
-the site code under the MIT license.
+Documentation content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+([content/LICENSE.md](content/LICENSE.md)); the site code under the [MIT license](LICENSE).

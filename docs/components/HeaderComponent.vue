@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, isMcpPath, queryContent, useAsyncData, useDocsStrings, useRoute } from '#imports'
+import { computed, isMcpPath, queryContent, useAboutLinks, useAsyncData, useDocsStrings, useRoute } from '#imports'
 import type { PropType } from 'vue'
 import type { AboutMenuData } from './AboutMenu.vue'
 
@@ -19,6 +19,7 @@ const props = defineProps({
 
 const route = useRoute()
 const { t, repoUrl } = useDocsStrings()
+const { aboutLinkHref, websiteUrl } = useAboutLinks()
 
 const isMcpRoute = computed(() => isMcpPath(route.path))
 
@@ -35,10 +36,10 @@ const panelLinks = computed(() => {
   if (!menu) return props.links
   const websiteLinks = [...menu.main, ...menu.groups.flatMap(group => group.items)].map(link => ({
     label: link.label,
-    to: `${menu.site}${link.to}`,
+    to: aboutLinkHref(link),
     target: '_blank',
   }))
-  return [...props.links, { label: menu.label, to: menu.site, children: websiteLinks }]
+  return [...props.links, { label: menu.label, to: websiteUrl, children: websiteLinks }]
 })
 </script>
 

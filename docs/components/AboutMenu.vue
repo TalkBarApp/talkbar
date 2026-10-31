@@ -1,27 +1,29 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
+import { useAboutLinks } from '#imports'
 
 export interface AboutMenuLink {
   label: string
   to: string
   description?: string
   icon?: string
+  /** 'license' for the license portal; the TalkBar website otherwise */
+  site?: 'license'
 }
 
 export interface AboutMenuData {
   label: string
-  site: string
   main: AboutMenuLink[]
   groups: { label: string; items: AboutMenuLink[] }[]
 }
 
-// The website menu in the docs header: three main pages, then use cases and
+// The website menu in the docs header: the main website and license pages, then use cases and
 // industries in two columns, as on www.talkbar.app.
-const props = defineProps({
+defineProps({
   menu: { type: Object as PropType<AboutMenuData>, required: true },
 })
 
-const href = (to: string) => `${props.menu.site}${to}`
+const { aboutLinkHref: href } = useAboutLinks()
 </script>
 
 <template>
@@ -37,7 +39,7 @@ const href = (to: string) => `${props.menu.site}${to}`
           <a
             v-for="link in menu.main"
             :key="link.to"
-            :href="href(link.to)"
+            :href="href(link)"
             target="_blank"
             rel="noopener"
             class="group flex gap-3 items-start px-3 py-2.5 rounded-lg hover:bg-gray-100/70 dark:hover:bg-gray-800/60 transition-colors"
@@ -57,7 +59,7 @@ const href = (to: string) => `${props.menu.site}${to}`
           <a
             v-for="item in group.items"
             :key="item.to"
-            :href="href(item.to)"
+            :href="href(item)"
             target="_blank"
             rel="noopener"
             class="block px-2 py-1.5 rounded-md text-[14px] leading-5 text-gray-700 dark:text-gray-200 hover:bg-gray-100/70 hover:text-primary dark:hover:bg-gray-800/60 transition-colors"

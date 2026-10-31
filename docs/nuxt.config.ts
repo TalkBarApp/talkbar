@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { existsSync, readdirSync } from "fs";
 import { join, relative, resolve, sep } from "path";
-import { docsLocales, resolveDocsLocale } from "./docs.locales";
+import { docsLocales, licensePortalUrl, resolveDocsLocale } from "./docs.locales";
 
 const locale = resolveDocsLocale(process.env.DOCS_LOCALE);
 const localeConfig = docsLocales[locale];
@@ -55,7 +55,9 @@ const config = {
       docsSiteName: localeConfig.siteName,
       docsDescription: localeConfig.description,
       docsSiteUrl: localeConfig.siteUrl,
-      docsWebsiteUrl: localeConfig.websiteUrl,
+      // Production builds link to the live sites; dev builds to the preview sites
+      docsWebsiteUrl: isProduction ? localeConfig.websiteUrl.production : localeConfig.websiteUrl.preview,
+      docsLicenseUrl: isProduction ? licensePortalUrl.production : licensePortalUrl.preview,
       docsRepoUrl: "https://github.com/TalkBarApp/talkbar",
       docsScreenshots: listScreenshots(screenshotsDir),
     },

@@ -30,7 +30,7 @@ TalkBar has five plans: **Free**, **Personal**, **Plus**, **Pro** and **Business
 
 **Devices** is how many computers can use one license at the same time. More sharing details are in [Share links](/sharing/share-links#sharing-limits-by-plan).
 
-For prices and to buy a license, visit [www.talkbar.app](https://www.talkbar.app). In the app, **Settings → License → Upgrade your plan** shows what each higher plan adds.
+For prices and to buy a license, see [TalkBar pricing](https://license.talkbar.app/pricing). In the app, **Settings → License → Upgrade your plan** shows what each higher plan adds.
 
 ::screenshot{src="/screenshots/data/license-current-plan.png" alt="Settings, License page showing the Current plan section with the plan name, usage meters for sessions, projects and workspaces, and the list of what the plan includes" caption="Your plan and usage in Settings → License"}
 ::
