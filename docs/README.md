@@ -98,6 +98,14 @@ is shown.
 the Russian page in the same change; `npm run check:content` reports pages missing from
 either language. Use the exact interface labels the Russian app shows.
 
+## Nuxt UI Pro license
+
+The theme is built on Nuxt UI Pro v1, which checks a license key during production
+builds. `patches/@nuxt+ui-pro+1.8.0.patch` (inherited from the QR-Platform docs) skips
+that check. Nuxt UI Pro also accepts `NUXT_UI_PRO_LICENSE=oss` for open-source projects:
+the build then verifies this public repository with NuxtLabs. To use that instead, delete
+the patch and set the variable in the build environment.
+
 ## License
 
 Documentation content is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/);

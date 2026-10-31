@@ -83,7 +83,8 @@ const pageUi = computed(() => ({
     <UPage :ui="pageUi">
       <template #left>
         <UAside>
-          <div :class="['hidden lg:flex mb-3', collapsed ? 'justify-center' : 'justify-end -mr-2']">
+          <div :class="['hidden lg:flex items-center mb-3', collapsed ? 'justify-center' : 'justify-between -mr-2']">
+            <span v-if="!collapsed" class="font-display font-light text-[15px] leading-6 text-gray-400 dark:text-gray-500">{{ t('sidebarTitle') }}</span>
             <UTooltip :text="collapsed ? t('expandSidebar') : t('collapseSidebar')">
               <UButton
                 :icon="collapsed ? 'i-heroicons-chevron-double-right-20-solid' : 'i-heroicons-chevron-double-left-20-solid'"
