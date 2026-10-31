@@ -11,6 +11,13 @@ const { lang } = Astro.props;
 
 const cardTypes: ExplorerItem[] = [
   {
+    icon: 'lucide:notebook-pen',
+    title: t(lang, 'liveDemo.card.source.title'),
+    desc: t(lang, 'liveDemo.card.source.desc'),
+    shot: 'knowledge-source',
+    quote: t(lang, 'liveDemo.card.source.example'),
+  },
+  {
     icon: 'lucide:layers-3',
     title: t(lang, 'liveDemo.card.document.title'),
     desc: t(lang, 'liveDemo.card.document.desc'),
@@ -34,13 +41,6 @@ const cardTypes: ExplorerItem[] = [
     shot: 'live-translation',
     quote: t(lang, 'liveDemo.card.memory.example'),
     quoted: true,
-  },
-  {
-    icon: 'lucide:file-search',
-    title: t(lang, 'liveDemo.card.source.title'),
-    desc: t(lang, 'liveDemo.card.source.desc'),
-    shot: 'knowledge-source',
-    quote: t(lang, 'liveDemo.card.source.example'),
   },
 ];
 ---

@@ -41,10 +41,9 @@
 
     --radius: 1rem;
 
-    /* Accent used for type — separate from --primary so buttons can stay
-       saturated while headline accents and links lift on dark surfaces. */
-    --accent-text: 21 60% 45%;
-    --accent-text-ink: 21 60% 66%;
+    /* Same orange as the header switch (.color-dot-warm, #d58458). */
+    --accent-text: 21 60% 59%;
+    --accent-text-ink: 21 60% 59%;
 
     /* Extended tokens */
     --surface-raised: 0 0% 100%;
@@ -137,8 +136,8 @@
     --input: 224 16% 22%;
     --ring: 21 60% 59%;
 
-    --accent-text: 21 60% 66%;
-    --accent-text-ink: 21 60% 66%;
+    --accent-text: 21 60% 59%;
+    --accent-text-ink: 21 60% 59%;
 
     /* Extended tokens */
     --surface-raised: 224 21% 14%;
@@ -2495,12 +2494,6 @@
   }
   .fu-mock {
     min-width: 0;
-    overflow: hidden;
-    border-radius: 12px;
-    background: hsl(var(--card));
-    box-shadow:
-      0 1px 3px hsl(222 20% 20% / 0.06),
-      0 16px 40px -20px hsl(222 30% 25% / 0.2);
   }
   .fu-mock-top {
     display: flex;
@@ -2529,8 +2522,6 @@
   .fu-mock-body {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
-    padding: 16px;
   }
   .fu-row {
     display: flex;
@@ -2589,10 +2580,7 @@
     color: hsl(var(--green));
   }
   .fu-export {
-    padding: 16px;
-    border: 1px solid hsl(var(--card-border));
-    border-radius: 12px;
-    background: hsl(var(--surface-alt) / 0.35);
+    margin-top: 18px;
   }
   .fu-chip {
     display: inline-flex;
@@ -2612,19 +2600,34 @@
     .fu-frame {
       padding: 32px;
     }
-    .fu-mock-body {
-      padding: 18px;
-    }
   }
   @media (min-width: 1024px) {
     .fu-frame {
-      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-      gap: 56px;
-      padding: 56px 56px 56px 64px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      grid-template-rows: auto auto;
+      column-gap: 56px;
+      row-gap: 18px;
+      padding: 56px 64px 56px 56px;
+    }
+    /* Screenshot on the left. The list shares that row. Export to stays under the image. */
+    .fu-mock {
+      display: contents;
     }
     .fu-points {
-      gap: 52px;
+      grid-column: 2;
+      grid-row: 1;
+      gap: 28px;
       padding: 0;
+      align-content: space-between;
+    }
+    .fu-mock-body {
+      grid-column: 1;
+      grid-row: 1;
+    }
+    .fu-export {
+      grid-column: 1;
+      grid-row: 2;
+      margin-top: 0;
     }
     .fu-point {
       gap: 36px;
@@ -2690,6 +2693,9 @@
   .shot-contain {
     background: hsl(220 14% 96%);
   }
+  .dark .shot-contain {
+    background: transparent;
+  }
   .shot-contain .shot-img {
     object-fit: contain;
     object-position: center;
@@ -2700,7 +2706,27 @@
     border-radius: 0;
     box-shadow: none;
   }
-  /* Explorer, screenshots only: the window is the screenshot, edge to edge. */
+  /* Light file is the default. The dark file replaces it with the theme.
+     Two classes so this wins over .shot-fixed .shot-zoom { display: block }. */
+  .shot-zoom.shot-dark { display: none; }
+  .dark .shot-zoom.shot-light { display: none; }
+  .dark .shot-zoom.shot-dark { display: block; }
+  /* Same lift as .panel-pro. Corners stay rounded; no outline. */
+  .shot-shadow {
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    background: hsl(var(--card));
+    box-shadow: var(--card-shadow);
+  }
+  /* Explorer, screenshots only: each shot draws its own frame (same lift as
+     Before the call). The window must not add a second box or clip that shadow. */
+  .cx-media .cx-window {
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
   .cx-media .cx-body {
     justify-content: flex-start;
     padding: 0;
@@ -4017,23 +4043,56 @@
     outline-offset: 1px;
   }
 
-  /* The app screenshot in the hero: light or dark to match the theme.
+  /* The app screenshot in the hero. The right edge fades out.
      Two dials, both on .hero-shot:
        --shot-overflow  how far past its column the window runs (100% = fits,
                         112% = 12% wider and cropped on the right);
        --shot-fade      where the right-edge fade starts (100% = no fade).
-     Set them at any breakpoint; the desktop block below overrides them. */
+     Set them at any breakpoint; the desktop block below overrides them.
+     The top and left shadow is painted in the padding, inside the frame.
+     A box-shadow here gets clipped by the shot mask and the section overflow. */
+  .hero-media {
+    position: relative;
+    --shot-overflow: 120%;
+    --shot-zoom: 1.34;
+    --shot-shadow-x: 62px;
+    --shot-shadow-y: 22px;
+    padding-top: var(--shot-shadow-y);
+    padding-left: var(--shot-shadow-x);
+    opacity: 0;
+    transition-property: transform, opacity;
+    transition-duration: 700ms;
+    transition-timing-function: ease;
+  }
+  .hero-media.is-loaded {
+    opacity: 1;
+  }
+  /* Same curve as the screenshot's transparent corner (81px on a 5518×3924
+     image drawn at --shot-overflow), so the shadow follows the window. */
+  .hero-media::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: var(--shot-shadow-y);
+    right: 0;
+    bottom: 0;
+    left: var(--shot-shadow-x);
+    border-radius: calc(81 / 5518 * var(--shot-overflow) * var(--shot-zoom)) /
+      calc(81 / 3924 * 100% * var(--shot-zoom));
+    pointer-events: none;
+    box-shadow: -6px -4px 34px hsl(222 28% 20% / 0.04);
+    clip-path: inset(-52px 0 0 -52px);
+  }
+  .dark .hero-media::before {
+    box-shadow: -6px -4px 34px hsl(220 45% 20% / 0.2);
+  }
   .hero-shot {
     --shot-overflow: 120%;
     --shot-fade: 96%;
+    --shot-trim: 0px;
     position: relative;
+    z-index: 1;
     overflow: hidden;
-    border-radius: 8px;
-    background: hsl(var(--card));
-    /* A very light lift: a hairline edge plus a soft, low drop */
-    box-shadow:
-      0 0 0 1px hsl(var(--foreground) / 0.06),
-      0 10px 30px -10px hsl(var(--foreground) / 0.16);
     -webkit-mask-image: linear-gradient(
       to right,
       #000 var(--shot-fade),
@@ -4045,13 +4104,18 @@
       transparent 100%
     );
   }
-  /* The captures carry a hairline window frame; --shot-trim pulls the image
-     outward by that much so the frame falls outside the clipped box. */
-  .hero-shot {
-    --shot-trim: 2px;
-  }
+  .hero-shot-zoom,
+  .hero-shot [data-rmiz],
+  .hero-shot [data-rmiz-content],
   .hero-shot picture {
     display: block;
+  }
+  .hero-shot-dark { display: none; }
+  .dark .hero-shot-light { display: none; }
+  .dark .hero-shot-dark { display: block; }
+  .hero-shot picture {
+    transform: scale(var(--shot-zoom));
+    transform-origin: top left;
   }
   .hero-shot-img {
     display: block;
@@ -4059,20 +4123,7 @@
     max-width: none;
     height: auto;
     margin: calc(-1 * var(--shot-trim)) 0 0 calc(-1 * var(--shot-trim));
-  }
-  .dark .hero-shot {
-    box-shadow:
-      0 0 0 1px hsl(var(--ink-foreground) / 0.08),
-      0 10px 30px -10px hsl(220 40% 2% / 0.6);
-  }
-  .hero-shot-dark {
-    display: none;
-  }
-  .dark .hero-shot-light {
-    display: none;
-  }
-  .dark .hero-shot-dark {
-    display: block;
+    cursor: zoom-in;
   }
 
   .hero-actions-row {
@@ -4129,12 +4180,27 @@
       grid-row: 1;
       position: relative;
       z-index: 1;
-      -webkit-mask-image: linear-gradient(
+      /* Half a column left of line 6, so the window starts at 5.5. */
+      --hero-col: calc((100% - 6 * 20px) / 7);
+      margin-left: calc(-0.5 * (var(--hero-col) + 20px));
+      width: calc(100% + 0.5 * (var(--hero-col) + 20px));
+    }
+    /* Bottom blend stays on the shot, not the media frame, so it cannot
+       clip the shadow painted in the padding. */
+    .hero-shot::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 36%;
+      pointer-events: none;
+      background: linear-gradient(
         to bottom,
-        #000 68%,
-        transparent 100%
+        transparent,
+        hsl(var(--background))
       );
-      mask-image: linear-gradient(to bottom, #000 68%, transparent 100%);
     }
     .hero-actions {
       grid-column: 7 / -1;
@@ -4146,11 +4212,12 @@
       z-index: 3;
     }
     /* Desktop: the whole window fits the column. To let it run past and
-       fade, try e.g. --shot-overflow: 112%; --shot-fade: 82%. */
+       fade, try e.g. --shot-overflow: 112%; --shot-fade: 82%.
+       Zoom stays on the base .hero-media rule so it does not grow the row. */
     .hero-shot {
-      --shot-overflow: 120%;
+      --shot-overflow: 105%;
       --shot-fade: 96%;
-      max-height: 560px;
+      max-height: 600px;
     }
   }
 

@@ -1,10 +1,10 @@
 ---
+import { getImage, Picture } from 'astro:assets';
 import { t, type Language } from '../i18n';
-import DownloadButton from './ui/DownloadButton.astro';
+import { SCREENSHOTS } from '../lib/screenshots';
 import HeroScenes from './hero/HeroScenes.astro';
-import { Picture } from 'astro:assets';
-import shotLight from '../assets/screenshots/en/1-session-view/session-en.png';
-import shotDark from '../assets/screenshots/en/1-session-view/session-en-dark.png';
+import HeroImageZoom from './HeroImageZoom.tsx';
+import DownloadButton from './ui/DownloadButton.astro';
 
 interface Props {
   lang: Language;
@@ -19,7 +19,15 @@ const heroHighlights = [
   'hero.proof.localAi',
 ];
 
+const shot = SCREENSHOTS['home-hero'];
 const shotAlt = t(lang, 'hero.shot.alt');
+const shotLabel = t(lang, shot.captionKey);
+const zoomLabel = t(lang, 'media.zoom.expand').replace('{label}', shotLabel);
+const unzoomLabel = t(lang, 'media.zoom.close').replace('{label}', shotLabel);
+const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
+const fullDark = shot.srcDark
+  ? await getImage({ src: shot.srcDark, width: Math.min(2400, shot.srcDark.width), format: 'webp' })
+  : null;
 ---
 <section class="section-pro hero-section relative overflow-hidden pt-28 sm:pt-32 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
   <div class="container relative z-10">
@@ -70,25 +78,44 @@ const shotAlt = t(lang, 'hero.shot.alt');
         class="hero-media translate-y-6 transition-transform duration-700 [&.is-visible]:translate-y-0"
       >
         <div class="hero-shot">
-          <Picture
-            src={shotLight}
-            alt={shotAlt}
-            formats={['avif', 'webp']}
-            widths={[720, 1080, 1440, 2160]}
-            sizes="(min-width: 1180px) 1080px, 100vw"
-            class="hero-shot-img hero-shot-light"
-            loading="eager"
-            fetchpriority="high"
-          />
-          <Picture
-            src={shotDark}
-            alt={shotAlt}
-            formats={['avif', 'webp']}
-            widths={[720, 1080, 1440, 2160]}
-            sizes="(min-width: 1180px) 1080px, 100vw"
-            class="hero-shot-img hero-shot-dark"
-            loading="lazy"
-          />
+          <HeroImageZoom
+            client:load
+            className="hero-shot-zoom hero-shot-light"
+            zoomLabel={zoomLabel}
+            unzoomLabel={unzoomLabel}
+            zoomSrc={full.src}
+          >
+            <Picture
+              src={shot.src}
+              alt={shotAlt}
+              formats={['avif', 'webp']}
+              widths={[720, 1080, 1440, 2160, 2880, shot.src.width]}
+              sizes="(min-width: 1180px) 1080px, 100vw"
+              class="hero-shot-img"
+              loading="eager"
+              fetchpriority="high"
+            />
+          </HeroImageZoom>
+          {fullDark && shot.srcDark && (
+            <HeroImageZoom
+              client:load
+              className="hero-shot-zoom hero-shot-dark"
+              zoomLabel={zoomLabel}
+              unzoomLabel={unzoomLabel}
+              zoomSrc={fullDark.src}
+            >
+              <Picture
+                src={shot.srcDark}
+                alt={shotAlt}
+                formats={['avif', 'webp']}
+                widths={[720, 1080, 1440, 2160, 2880, shot.srcDark.width]}
+                sizes="(min-width: 1180px) 1080px, 100vw"
+                class="hero-shot-img"
+                loading="eager"
+                fetchpriority="high"
+              />
+            </HeroImageZoom>
+          )}
         </div>
       </div>
     </div>
@@ -123,6 +150,24 @@ const shotAlt = t(lang, 'hero.shot.alt');
     els.forEach((el) => io.observe(el));
   }
 
+  function initHeroShotFade() {
+    const media = document.querySelector<HTMLElement>('.hero-media');
+    const dark = document.documentElement.classList.contains('dark');
+    const img = media?.querySelector<HTMLImageElement>(dark ? '.hero-shot-dark img' : '.hero-shot-light img')
+      ?? media?.querySelector('img');
+    if (!media || !img || media.classList.contains('is-loaded')) return;
+    const show = () => media.classList.add('is-loaded');
+    if (img.complete && img.naturalWidth > 0) show();
+    else {
+      img.addEventListener('load', show, { once: true });
+      img.addEventListener('error', show, { once: true });
+    }
+  }
+
   initCountup();
-  document.addEventListener('astro:page-load', initCountup);
+  initHeroShotFade();
+  document.addEventListener('astro:page-load', () => {
+    initCountup();
+    initHeroShotFade();
+  });
 </script>

@@ -21,7 +21,7 @@ const applyColorTheme = (colorTheme: ColorTheme) => {
   localStorage.setItem("colorTheme", colorTheme);
 
   const themeColor = document.querySelector('meta[name="theme-color"]');
-  if (themeColor) themeColor.setAttribute("content", isBlue ? BLUE : "#d4845a");
+  if (themeColor) themeColor.setAttribute("content", isBlue ? BLUE : "#d58458");
 };
 
 const ColorThemeToggle = ({ switchToWarmLabel, switchToBlueLabel }: ColorThemeToggleProps) => {

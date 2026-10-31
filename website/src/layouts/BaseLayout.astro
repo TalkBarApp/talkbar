@@ -184,7 +184,7 @@ const siteSchemas = [
       const colorTheme = localStorage.getItem('colorTheme') || 'blue';
       document.documentElement.classList.toggle('color-theme-blue', colorTheme !== 'warm');
       if (colorTheme === 'warm') {
-        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#d4845a');
+        document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#d58458');
       }
     </script>
     <script is:inline defer data-domain={BUILD_DOMAIN === 'preview' ? 'preview.talkbar.app' : BUILD_DOMAIN === 'preview-ru' ? 'preview.talkbar.ru' : BUILD_DOMAIN === 'prod-ru' ? 'talkbar.ru' : 'talkbar.app'} src="https://stats.pastebar.app/js/script.js"></script>

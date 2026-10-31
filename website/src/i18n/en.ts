@@ -76,7 +76,7 @@ const en: Translations = {
   "hero.proof.onDevice": "Runs on your machine",
   "hero.proof.localAi": "Local AI",
   "hero.shot.alt":
-    "TalkBar session view: summary, timeline and notes of a recorded conversation",
+    "TalkBar home: upcoming sessions, project stats, and recent notes",
   "hero.scenes.play": "Play",
   "hero.scenes.pause": "Pause",
   "hero.scene.transcription.typed": "Hello, everyone ",
@@ -182,12 +182,12 @@ const en: Translations = {
   "liveDemo.library.exampleLabel": "Example",
   "liveDemo.card.memory.title": "Ask TalkBar",
   "liveDemo.card.memory.desc":
-    "Ask about anything you’ve kept without leaving the call.",
+    "Ask a session, a note, or your documents.",
   "liveDemo.card.memory.example":
     "What did we agree about procurement approval?",
-  "liveDemo.card.document.title": "Knowledge Cards, on cue",
+  "liveDemo.card.document.title": "Knowledge Cards that help",
   "liveDemo.card.document.desc":
-    "Mention the renewal, and the renewal date you saved shows up.",
+    "See the facts, risks, and technical details you saved.",
   "liveDemo.card.document.example":
     "The signed agreement lists renewal notice at 60 days, not 30.",
   "liveDemo.card.question.title": "Suggested Question Card",
@@ -204,14 +204,14 @@ const en: Translations = {
   "liveDemo.card.blind.desc": "Show what has not yet been clarified.",
   "liveDemo.card.blind.example":
     "Timeline and decision owner have not been confirmed.",
-  "liveDemo.card.action.title": "Action item, back on the table",
+  "liveDemo.card.action.title": "Decisions and follow-ups",
   "liveDemo.card.action.desc":
-    "Last call’s “send revised pricing” reappears when pricing comes up.",
+    "See the decisions, open questions, and follow-ups from the call.",
   "liveDemo.card.action.example":
-    "Send revised pricing model to Alex · From the May 28 call",
-  "liveDemo.card.source.title": "Back to the source",
+    "Procurement approval precedes legal review.",
+  "liveDemo.card.source.title": "Notes, as you talk",
   "liveDemo.card.source.desc":
-    "Open the document, note, or earlier call behind any card.",
+    "Write in the session note before, during, or after the call.",
   "liveDemo.card.source.example": "Source: March 12 account call",
 
   "priceMonitoring.eyebrow": "Before the call",
@@ -334,9 +334,9 @@ const en: Translations = {
   "workflows.after.label": "After",
   "workflows.after.title": "Follow-up and memory",
   "workflows.after.body":
-    "Leave with the summary drafted and next steps ready for the next call.",
+    "Leave with the summary, action items, and notes from the call.",
   "workflows.after.output":
-    "Executive summary, decisions, action items, open questions, follow-up drafts, searchable history, and exports.",
+    "Summary, action items, notes, searchable history, and exports.",
   "workflows.outputLabel": "Key outputs",
 
   "usecases.tag": "Use Cases",
@@ -771,10 +771,10 @@ const en: Translations = {
     "Simulated interface preview — not a screen recording",
 
   "followup.eyebrow": "After the call",
-  "followup.headline": "Hang up with the follow-up",
-  "followup.accent": "already drafted.",
+  "followup.headline": "Leave with the session",
+  "followup.accent": "ready to review.",
   "followup.subhead":
-    "When the call ends, the summary, the decisions, the action items, and a follow-up draft are waiting. Look them over, polish what you like, and send when you’re ready.",
+    "When the call ends, the summary, action items, and notes are ready for follow-up in the session details. Review and analyze them, then export or share a web link when you need to.",
   "followup.card.title": "Call wrap-up · Acme Corp",
   "followup.card.time": "Ended 2 min ago",
   "followup.item.summary": "Executive summary",
@@ -794,9 +794,9 @@ const en: Translations = {
   "followup.point2.title": "Owners, due dates, next call",
   "followup.point2.desc":
     "Give each action item an owner and a due date, then add it to your next call.",
-  "followup.point3.title": "You review, then send",
+  "followup.point3.title": "Export or share",
   "followup.point3.desc":
-    "Drafts stay drafts until you export or send them.",
+    "Export the session, or share a web link, when you need to.",
   "followup.point4.title": "Knowledge worth keeping",
   "followup.chip.text": "Text",
   "followup.point4.desc":
@@ -1033,8 +1033,8 @@ const en: Translations = {
   "shot.knowledge-review.alt": "TalkBar knowledge review: suggested cards from a scanned session with Add to knowledge, Edit, and Dismiss",
   "shot.knowledge-cards.caption": "Knowledge Cards",
   "shot.knowledge-cards.alt": "TalkBar Knowledge area with cards saved from a knowledge scan",
-  "shot.knowledge-source.caption": "Back to the source",
-  "shot.knowledge-source.alt": "TalkBar Knowledge Card details with the source quote from the conversation and a link to open the session",
+  "shot.knowledge-source.caption": "Notes, as you talk",
+  "shot.knowledge-source.alt": "TalkBar session note open beside the call, with the document and a voice memo menu",
   "shot.documents.caption": "Documents",
   "shot.documents.alt": "TalkBar documents library with an imported document open and searchable",
   "shot.chat-sources.caption": "Ask TalkBar",
@@ -1045,6 +1045,22 @@ const en: Translations = {
   "shot.private-ai.alt": "TalkBar Private AI Mode settings with local models downloaded to your computer",
   "shot.setup-ai.caption": "Choose your AI",
   "shot.setup-ai.alt": "TalkBar AI setup: built-in local AI, external providers, or both",
+  "shot.home-hero.caption": "Home",
+  "shot.home-hero.alt": "TalkBar home: upcoming sessions, project stats, and recent notes",
+  "shot.home-mint.caption": "Home, mint frame",
+  "shot.home-mint.alt": "TalkBar home on a mint frame",
+  "shot.home-peach.caption": "Home, peach frame",
+  "shot.home-peach.alt": "TalkBar home on a peach frame",
+  "shot.settings-framed.caption": "General, framed",
+  "shot.settings-framed.alt": "TalkBar General settings in a framed crop",
+  "shot.settings-framed-lg.caption": "General, larger frame",
+  "shot.settings-framed-lg.alt": "TalkBar General settings in a larger framed crop",
+  "shot.settings-window.caption": "General, full window",
+  "shot.settings-window.alt": "TalkBar General settings in the full window",
+  "shot.settings-frame-win.caption": "General, framed window",
+  "shot.settings-frame-win.alt": "TalkBar General settings in a framed window",
+  "shot.topics-keywords.caption": "Topics & Keywords",
+  "shot.topics-keywords.alt": "TalkBar Topics & Keywords settings with action item labels",
 
   "faq.delete.aPrivacyPage": "Yes. You choose what’s recorded, whether the audio is kept, and what you delete or export. The lists above cover everything else.",
   "privacyPage.leaves.item4": "App traffic: model downloads, update checks, and startup analytics",

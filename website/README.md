@@ -80,9 +80,7 @@ environment variables, exactly as the English preview project does with `BUILD_D
 
 The site is hosted on **Cloudflare Pages**. Production (`www.talkbar.app`) and preview
 (`preview.talkbar.app`) are **two separate Pages projects** connected to this GitHub
-repo — same code, different build command and domain. The website lives in the `website/`
-folder of the [TalkBarApp/talkbar](https://github.com/TalkBarApp/talkbar) repository, so set
-each project's **Root directory** to `website`. Keeping them separate is what
+repo — same code, different build command and domain. Keeping them separate is what
 makes the preview build (with its `noindex` rules and early-access modals) stay off the
 production domain.
 

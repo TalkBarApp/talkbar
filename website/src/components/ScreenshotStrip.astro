@@ -26,6 +26,12 @@ const items: GalleryItem[] = await Promise.all(
       THUMB_WIDTHS.map((width) => getImage({ src: shot.src, width, format: 'webp' })),
     );
     const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
+    const darkThumbs = shot.srcDark
+      ? await Promise.all(THUMB_WIDTHS.map((width) => getImage({ src: shot.srcDark!, width, format: 'webp' })))
+      : null;
+    const fullDark = shot.srcDark
+      ? await getImage({ src: shot.srcDark, width: Math.min(2400, shot.srcDark.width), format: 'webp' })
+      : null;
     const width = THUMB_WIDTHS[THUMB_WIDTHS.length - 1];
     return {
       id,
@@ -37,6 +43,9 @@ const items: GalleryItem[] = await Promise.all(
       alt: t(lang, shot.altKey),
       caption: t(lang, shot.captionKey),
       temp: showTempLabel(id),
+      thumbDark: darkThumbs?.[0].src,
+      thumbSrcSetDark: darkThumbs?.map((img, i) => `${img.src} ${THUMB_WIDTHS[i]}w`).join(', '),
+      fullDark: fullDark?.src,
     };
   }),
 );

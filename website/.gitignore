@@ -28,8 +28,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Local configuration (see env.sample)
-.env
-.env.*
-!env.sample

@@ -15,6 +15,10 @@ export interface GalleryItem {
   caption: string;
   /** Temporary screenshot: shows its "Temp · id" label. */
   temp: boolean;
+  /** Dark-theme thumbnail, used when the page has the `dark` class. */
+  thumbDark?: string;
+  thumbSrcSetDark?: string;
+  fullDark?: string;
 }
 
 interface GalleryLabels {
@@ -80,7 +84,17 @@ export default function ScreenshotGallery({ items, labels }: ScreenshotGalleryPr
   const [snapCount, setSnapCount] = useState(1);
   const scrubbing = useRef(false);
   const [open, setOpen] = useState<number | null>(null);
+  const [darkTheme, setDarkTheme] = useState(false);
   const total = items.length;
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const sync = () => setDarkTheme(root.classList.contains('dark'));
+    sync();
+    const observer = new MutationObserver(sync);
+    observer.observe(root, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
+  }, []);
 
   // Leave room under the full-size image for the caption bar on wider screens.
   const [zoomMargin, setZoomMargin] = useState(24);
@@ -293,14 +307,19 @@ export default function ScreenshotGallery({ items, labels }: ScreenshotGalleryPr
         onKeyDown={onViewportKey}
       >
         <ul className="gal-track">
-          {items.map((item, i) => (
+          {items.map((item, i) => {
+            const dark = darkTheme && item.fullDark;
+            const thumb = dark ? item.thumbDark! : item.thumb;
+            const thumbSrcSet = dark ? item.thumbSrcSetDark! : item.thumbSrcSet;
+            const full = dark ? item.fullDark! : item.full;
+            return (
             <li key={item.id} className="gal-card" data-shot={item.id} aria-roledescription="slide" aria-label={counter(i + 1)}>
               <div className="gal-frame">
                 <ControlledZoom
                   isZoomed={open === i}
                   // A closing dialog reports late; only let it clear its own image.
                   onZoomChange={(zoomed) => setOpen((current) => (zoomed ? i : current === i ? null : current))}
-                  zoomImg={{ src: item.full, srcSet: `${item.full} 2400w`, sizes: '100vw', alt: item.alt }}
+                  zoomImg={{ src: full, srcSet: `${full} 2400w`, sizes: '100vw', alt: item.alt }}
                   zoomMargin={zoomMargin}
                   a11yNameButtonZoom={labels.zoom.replace('{label}', item.caption)}
                   a11yNameButtonUnzoom={labels.unzoom.replace('{label}', item.caption)}
@@ -308,8 +327,8 @@ export default function ScreenshotGallery({ items, labels }: ScreenshotGalleryPr
                 >
                   <img
                     className="gal-img"
-                    src={item.thumb}
-                    srcSet={item.thumbSrcSet}
+                    src={thumb}
+                    srcSet={thumbSrcSet}
                     sizes="(min-width: 1024px) 440px, 80vw"
                     alt={item.alt}
                     width={item.width}
@@ -327,7 +346,8 @@ export default function ScreenshotGallery({ items, labels }: ScreenshotGalleryPr
               </div>
               <p className="gal-cap">{item.caption}</p>
             </li>
-          ))}
+            );
+          })}
         </ul>
       </div>
     </div>

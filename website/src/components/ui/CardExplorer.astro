@@ -65,7 +65,7 @@ const { lang, id, label, items, mediaOnly = false } = Astro.props;
           hidden={i !== 0}
         >
           {item.shot && mediaOnly ? (
-            <Screenshot lang={lang} id={item.shot} aspect="2660/1853" fit="contain" flush sizes="(min-width: 1280px) 800px, (min-width: 1024px) 64vw, 100vw" />
+            <Screenshot lang={lang} id={item.shot} class="shot-shadow" sizes="(min-width: 1280px) 800px, (min-width: 1024px) 64vw, 100vw" />
           ) : item.shot ? (
             <Screenshot lang={lang} id={item.shot} aspect="16/10" sizes="(min-width: 1280px) 780px, (min-width: 1024px) 62vw, 100vw" />
           ) : (

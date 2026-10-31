@@ -10,12 +10,12 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const exports = ['Markdown', t(lang, 'followup.chip.text'), 'HTML', 'Obsidian', 'ZIP'];
+const exports = ['Markdown', t(lang, 'followup.chip.text'), 'HTML', 'Obsidian', 'ZIP', 'Web Link'];
 
 const points = [
   { icon: 'lucide:badge-check', titleKey: 'followup.point1.title', descKey: 'followup.point1.desc' },
   { icon: 'lucide:user-round-check', titleKey: 'followup.point2.title', descKey: 'followup.point2.desc' },
-  { icon: 'lucide:send', titleKey: 'followup.point3.title', descKey: 'followup.point3.desc' },
+  { icon: 'lucide:share-2', titleKey: 'followup.point3.title', descKey: 'followup.point3.desc' },
   { icon: 'lucide:scan-search', titleKey: 'followup.point4.title', descKey: 'followup.point4.desc' },
 ];
 ---
@@ -43,7 +43,7 @@ const points = [
 
       <div class="fu-mock order-1 lg:order-2">
         <div class="fu-mock-body">
-          <Screenshot lang={lang} id="session-overview" class="shot-flat" />
+          <Screenshot lang={lang} id="session-overview" class="shot-shadow" />
         </div>
         <div class="fu-export">
           <div class="fu-mock-label">{t(lang, 'followup.exportLabel')}</div>
