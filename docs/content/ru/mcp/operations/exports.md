@@ -312,7 +312,7 @@ navigation:
 - Правила администратора могут ограничивать, какие папки и места экспорта можно использовать.
 
 ```json
-{"tool": "exports.destination.save", "args": {"destinationId": "dest_vault", "name": "Obsidian vault", "format": "obsidian", "location": "C:\\Users\\me\\Documents\\Vault\\Meetings", "enabled": true, "layout": "project"}}
+{"tool": "exports.destination.save", "args": {"destinationId": "dest_vault", "name": "Obsidian vault", "format": "obsidian", "location": "PATH_TO_VAULT/Meetings", "enabled": true, "layout": "project"}}
 ```
 
 ## `exports.destination.delete`

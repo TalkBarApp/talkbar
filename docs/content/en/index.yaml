@@ -1,5 +1,5 @@
 title: 'TalkBar Documentation'
-description: 'Documentation for TalkBar, the private AI note taker for Windows. Capture meetings and calls without a bot, transcribe on your computer, and turn every conversation into searchable local memory.'
+description: 'Documentation for TalkBar, the private AI note taker for Windows and macOS. Capture meetings and calls without a bot, transcribe on your computer, and turn every conversation into searchable local memory.'
 navigation: false
 hero:
   title: 'TalkBar Documentation'
@@ -23,7 +23,7 @@ platforms:
   items:
     - title: 'TalkBar app'
       cta: 'Explore the user guide'
-      description: 'Record, transcribe and summarize conversations on your Windows PC, then keep what matters as searchable knowledge.'
+      description: 'Record, transcribe and summarize conversations on your computer, then keep what matters as searchable knowledge.'
       icon: 'i-heroicons-chat-bubble-bottom-center-text'
       id: 'app'
       to: '/getting-started/introduction'
@@ -54,7 +54,7 @@ quickstart:
   title: 'Explore the documentation'
   items:
     - title: 'Install and update'
-      description: 'Download TalkBar for Windows and keep it up to date'
+      description: 'Download TalkBar and keep it up to date'
       icon: 'i-heroicons-arrow-down-tray'
       to: '/getting-started/install-and-update'
     - title: 'Your first session'
@@ -82,7 +82,7 @@ resources:
   title: 'Resources'
   items:
     - title: 'Download TalkBar'
-      description: 'Get the latest release for Windows'
+      description: 'Get the latest release for your computer'
       icon: 'i-heroicons-arrow-down-tray'
       to: 'https://github.com/TalkBarApp/talkbar/releases/latest'
       target: '_blank'

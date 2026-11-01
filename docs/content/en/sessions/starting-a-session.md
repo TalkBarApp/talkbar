@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-play-circle
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 Every recording starts in the **New session** window. You pick what kind of session it is, where the audio comes from and how many people will talk, then click **Start session**. Everything else is optional and has sensible defaults.
 
 ## Ways to start

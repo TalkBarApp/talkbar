@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-adjustments-horizontal
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 **Settings → General** holds app-wide preferences: how TalkBar looks, how new sessions start, what gets cleaned up automatically, and how the app starts and updates. Changes save as you make them. The one exception is the timezone, which has its own **Save Timezone** button.
 
 ::screenshot{src="/screenshots/settings/general-appearance.png" alt="Settings → General scrolled to the top, showing the Appearance section with the Theme previews (System, Light, Dark), the Accent Color swatches, the Highlight on hover and Hover Animation switches, and the Collapsed sidebar choice" caption="Settings → General"}
@@ -141,7 +143,7 @@ You can also check for an update at any time with **Check for Update** at the bo
 | Setting | What it does | Default |
 | --- | --- | --- |
 | **Window mode on launch** | **Last state** opens the window if it was open when you last quit, and stays in the tray if it was minimized. **Tray** always starts in the system tray. **Window** always opens the main window. | Last state |
-| **Auto start** | Starts TalkBar when you sign in to Windows. | On |
+| **Auto start** | Starts TalkBar when you sign in to your computer. | On |
 | **Keep awake** | Keeps your computer from going to sleep while TalkBar is running. | Off |
 | **Show TalkBar shortcut** | A keyboard shortcut that opens and focuses the main TalkBar window from any app. Click the field to record a new shortcut, and use the switch to turn it on. | `Ctrl+Shift+Space`, off |
 
@@ -149,7 +151,7 @@ You can also check for an update at any time with **Check for Update** at the bo
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Custom timezone override (optional)** | The timezone used for schedules and dashboard dates. Leave it on **Auto (System timezone)** to follow Windows, or search for any timezone and click **Save Timezone**. **Reset to Auto** goes back to the system timezone. The line under the setting shows the timezone in use. | Auto (System timezone) |
+| **Custom timezone override (optional)** | The timezone used for schedules and dashboard dates. Leave it on **Auto (System timezone)** to follow the system, or search for any timezone and click **Save Timezone**. **Reset to Auto** goes back to the system timezone. The line under the setting shows the timezone in use. | Auto (System timezone) |
 | **Time format** | Shows times as **12-hour** (AM/PM) or **24-hour**. | Follows the app language (12-hour for US English) |
 
 Until you pick a time format, TalkBar uses the usual one for your app language, so US English shows 12-hour time and Russian shows 24-hour time. Your choice stays if you change the language later.

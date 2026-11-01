@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-microphone
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 **Settings → Voice** controls how TalkBar records audio, turns it into a transcript, runs dictation, and labels speakers. It has four inner tabs: **Recording**, **Transcription**, **Dictation** and **Speakers**. Speech models are downloaded and removed under [Settings → Private Local AI](/settings/private-local-ai); the **Manage Model** link next to a model opens that page.
 
 ::screenshot{src="/screenshots/settings/voice-recording-tab.png" alt="Settings → Voice with the Recording inner tab selected, showing the Recording section with Audio source, Microphone, the Test audio input panel and Mute microphone shortcut" caption="The Recording tab"}

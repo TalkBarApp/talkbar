@@ -22,7 +22,7 @@ Connecting an AI app to TalkBar takes two steps: turn MCP on in **Settings → M
 | Badge | What it means |
 | --- | --- |
 | **Ready** | TalkBar found `talkbar-cli` and it answered. You can connect your app. |
-| **Missing** | TalkBar could not find `talkbar-cli` next to the app. Reinstall TalkBar. |
+| **Missing** | TalkBar could not find `talkbar-cli`. Reinstall TalkBar. |
 | **Error** | `talkbar-cli` was found but failed to start. A warning above the page shows its message. |
 | **Disabled** | MCP is off. Connected apps see no TalkBar tools. |
 
@@ -38,7 +38,7 @@ The **MCP Connect** card shows one button per app. Pick yours, then use **Copy *
 Every setup does the same thing: it tells your app to start `talkbar-cli` with `serve --transport stdio`, and sets `TALKBAR_DATA_ROOT` to your TalkBar data folder.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Local/TalkBar`. TalkBar's own copy has the real paths for your computer, so copy it from **MCP Access** rather than from this page. Paths use forward slashes, which Windows accepts.
+The examples use placeholders for the executable and data folder. Replace them with the paths shown in **MCP Access**, or copy the ready-made setup from TalkBar. The executable name and paths depend on your operating system. Escape backslashes in JSON paths (or use forward slashes where supported).
 ::
 
 ::tabs
@@ -49,14 +49,14 @@ The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Lo
   {
     "mcpServers": {
       "talkbar": {
-        "command": "C:/path/to/talkbar-cli.exe",
+        "command": "PATH_TO_TALKBAR_CLI",
         "args": [
           "serve",
           "--transport",
           "stdio"
         ],
         "env": {
-          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+          "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
         }
       }
     }
@@ -71,14 +71,14 @@ The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Lo
   {
     "mcpServers": {
       "talkbar": {
-        "command": "C:/path/to/talkbar-cli.exe",
+        "command": "PATH_TO_TALKBAR_CLI",
         "args": [
           "serve",
           "--transport",
           "stdio"
         ],
         "env": {
-          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+          "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
         }
       }
     }
@@ -89,8 +89,8 @@ The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Lo
   ::div{label="Claude Code" icon="i-heroicons-command-line"}
   Run the copied command once in a terminal. `-s user` adds TalkBar for all your projects.
 
-  ```powershell
-  claude mcp add talkbar -s user -e TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  claude mcp add talkbar -s user -e "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
 
   Claude Code can also run `talkbar-cli` directly instead of through MCP. See [For AI agents with a shell](/mcp/cli#for-ai-agents-with-a-shell).
@@ -99,24 +99,24 @@ The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Lo
   ::div{label="Codex" icon="i-heroicons-command-line"}
   Run the copied command once in a terminal.
 
-  ```powershell
-  codex mcp add talkbar --env TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  codex mcp add talkbar --env "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
   ::
 
   ::div{label="agy CLI" icon="i-heroicons-command-line"}
   Run the copied command once in a terminal. agy takes its options before the server name.
 
-  ```powershell
-  agy mcp add --env TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar talkbar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  agy mcp add --env "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" talkbar -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
   ::
 
   ::div{label="Grok CLI" icon="i-heroicons-command-line"}
   Run the copied command once in a terminal.
 
-  ```powershell
-  grok mcp add talkbar -e TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  grok mcp add talkbar -e "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
   ::
 
@@ -130,13 +130,13 @@ The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Lo
       "talkbar": {
         "type": "local",
         "command": [
-          "C:/path/to/talkbar-cli.exe",
+          "PATH_TO_TALKBAR_CLI",
           "serve",
           "--transport",
           "stdio"
         ],
         "environment": {
-          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+          "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
         },
         "enabled": true
       }
@@ -151,14 +151,14 @@ The examples below use `C:/path/to/talkbar-cli.exe` and `C:/Users/you/AppData/Lo
   ```json
   {
     "type": "stdio",
-    "command": "C:/path/to/talkbar-cli.exe",
+    "command": "PATH_TO_TALKBAR_CLI",
     "args": [
       "serve",
       "--transport",
       "stdio"
     ],
     "env": {
-      "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+      "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
     }
   }
   ```
@@ -169,30 +169,19 @@ After you add TalkBar, restart your app or reload its MCP servers. Then ask it s
 
 ## Copy the serve command
 
-**Copy CLI MCP Serve Command** copies one line that starts the MCP server by hand, for testing or for a client that wants a single command. On Windows it is a PowerShell line:
-
-```powershell
-$env:TALKBAR_DATA_ROOT = 'C:/Users/you/AppData/Local/TalkBar'; & 'C:/path/to/talkbar-cli.exe' serve --transport stdio
-```
+**Copy CLI MCP Serve Command** copies the platform-specific command to start the MCP server manually. Run the copied command in a terminal for testing or for a client that needs one command.
 
 The server then waits for an MCP client on standard input. Press `Ctrl+C` to stop it.
 
 ## Where talkbar-cli is installed
 
-`talkbar-cli.exe` is installed with TalkBar, in the same folder as the app. The **Server Settings** card on **MCP Access** shows:
+`talkbar-cli` is installed with TalkBar. The **Server Settings** card on **MCP Access** shows:
 
 | Setting | What it shows |
 | --- | --- |
-| **Executable path** | The full path to `talkbar-cli.exe`. **Copy** copies it. |
-| **Add to PATH** | Copies a PowerShell command that adds that folder to your user PATH. Run it in PowerShell, then open a new terminal to use `talkbar-cli` by name. |
+| **Executable path** | The full path to `talkbar-cli`. **Copy** copies it. |
+| **Add to PATH** | Copies a command to add the executable folder to your PATH. Follow the command shown for your system, then open a new terminal to use `talkbar-cli` by name. |
 | **Data root** | Your TalkBar data folder. **Copy** copies it. |
-
-The PATH command looks like this, with your folder in place of `C:\path\to`:
-
-```powershell
-$currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
-[Environment]::SetEnvironmentVariable("PATH", "$currentPath;C:\path\to", "User")
-```
 
 ::screenshot{src="/screenshots/mcp/mcp-server-settings.png" alt="The Server Settings card at the bottom of Settings → MCP Access showing the Audit logging and Allow deletes without confirmation switches, the Executable path box with Copy and Add to PATH buttons, and the Data root box with its Copy button" caption="Server Settings: where talkbar-cli is and which data folder it uses"}
 ::
@@ -201,7 +190,12 @@ $currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
 
 `TALKBAR_DATA_ROOT` tells `talkbar-cli` which TalkBar data folder to open. TalkBar's ready-made setups always set it to the folder the app uses, shown as **Data root**.
 
-- On Windows, TalkBar keeps its data in `%LOCALAPPDATA%\TalkBar`. When `TALKBAR_DATA_ROOT` is not set, `talkbar-cli` uses that folder too.
+::platform-tabs
+#windows
+The default data folder is `%LOCALAPPDATA%\TalkBar`. Check **Data root** for the path in use.
+#macos
+Check **Data root** for the data folder on your Mac.
+::
 - Point it only at a TalkBar data folder. A folder without TalkBar data gets a new, empty database, and the assistant would see an empty workspace.
 - To open a database file directly from the command line, use `--db` instead. See [talkbar-cli](/mcp/cli#global-options).
 
@@ -217,7 +211,7 @@ Installing a TalkBar update closes any `talkbar-cli` that is running from the ap
 | The assistant says an operation "is turned off in TalkBar" | Turn that operation on in **MCP Access**. See [Access and permissions](/mcp/access-and-permissions). |
 | The assistant sees an empty workspace | Check that `TALKBAR_DATA_ROOT` in your app's setup matches **Data root** in **MCP Access**. Copy the setup again if you moved your data. |
 | Deletes are refused with `confirmation_unavailable` | Your app cannot ask you to confirm. See [Confirming deletes](/mcp/access-and-permissions#confirming-deletes). |
-| The badge shows **Missing** | `talkbar-cli` is not next to the app. Reinstall TalkBar. |
+| The badge shows **Missing** | TalkBar cannot find `talkbar-cli`. Reinstall TalkBar. |
 | The page is locked with a notice from your organization | An administrator turned off the MCP server or the command-line tool on this computer. |
 
 ## Related

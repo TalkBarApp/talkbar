@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-document-text
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 **Documents** are files you add to TalkBar: briefs, contracts, specs, slides, notes from other apps. TalkBar reads the text on this computer and indexes it, so your chats, session preparation and knowledge scans can use the documents as sources.
 
 Open **Knowledge → Documents** to see your document library.

@@ -44,7 +44,7 @@ When you add a provider there, TalkBar asks how you want to connect:
 
 ### Where your API key is stored
 
-TalkBar never writes your API key in plain text. Keys, passwords and tokens are encrypted inside TalkBar's own data on this computer. The key that unlocks them is kept in the Windows system keyring (Credential Manager).
+TalkBar never writes your API key in plain text. Keys, passwords and tokens are encrypted inside TalkBar's own data on this computer. The key that unlocks them is kept in the system keyring.
 
 To change a key, edit the provider and paste a new one; it replaces the old key.
 
@@ -68,7 +68,7 @@ CLI tools are never used while [Private AI Mode](/ai/private-ai-mode) is on.
 
 ::tabs
   ::div{label="On this computer" icon="i-heroicons-computer-desktop"}
-  1. Install Ollama from ollama.com/download, or run `winget install Ollama.Ollama` in PowerShell.
+  1. Install Ollama for your system from ollama.com/download.
   2. Pull a model in a terminal. TalkBar recommends Gemma 4: `ollama pull gemma4:e4b`.
   3. In **Set up AI**, choose **Local AI (Ollama)** → **Local installation** → **Detect Ollama**. TalkBar looks for Ollama at `http://127.0.0.1:11434`.
   4. Select the models you have pulled to register them with TalkBar.

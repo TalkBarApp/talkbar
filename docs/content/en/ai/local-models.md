@@ -103,7 +103,7 @@ Disk space adds up quickly:
 
 - The **Local AI models** tab shows how much space your downloaded models use (**… on disk**).
 - During first-run setup, TalkBar checks free space before it downloads the models you need for your first session.
-- Models are stored in TalkBar's data folder, by default `%LOCALAPPDATA%\TalkBar\voice\models`.
+- Models are stored in TalkBar's data folder, in its `voice/models` subfolder. Open the data folder from **Settings → Data & Backup**.
 
 ## Download and remove models
 

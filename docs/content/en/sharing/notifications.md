@@ -9,7 +9,7 @@ TalkBar tells you about reminders and activity with desktop notifications on thi
 
 ## Desktop notifications
 
-**Desktop Notifications** is on by default. While it is on, TalkBar shows reminders and activity as Windows notifications, for example:
+**Desktop Notifications** is on by default. While it is on, TalkBar shows reminders and activity as system notifications, for example:
 
 - reminders for scheduled sessions (new scheduled sessions start with the reminders chosen in **Settings → General → Calendar → Default reminders**), and the countdown before a session starts automatically;
 - a warning before an unattended session ends on its own (**Notify before a session auto-ends** in [Voice settings](/settings/voice)).
@@ -20,12 +20,12 @@ In **Settings → Notifications → Desktop Notifications**:
 
 | Control | What it does |
 | --- | --- |
-| **Desktop Notifications** switch | Turns Windows notifications from TalkBar on or off. |
-| **System Settings** | Opens the Windows notification settings, where you can also allow or block TalkBar. |
-| **Send Test** | Shows a test notification so you can check that Windows displays it. |
+| **Desktop Notifications** switch | Turns desktop notifications from TalkBar on or off. |
+| **System Settings** | Opens the system notification settings, where you can also allow or block TalkBar. |
+| **Send Test** | Shows a test notification so you can check that the system displays it. |
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-If the test notification doesn't appear, check that notifications for TalkBar are allowed in Windows and that Do not disturb is off.
+If the test notification doesn't appear, check that notifications for TalkBar are allowed in your system settings and that Do not disturb is off.
 ::
 
 Reminders for scheduled sessions are set on each session or series. See [Scheduling and preparing](/sessions/scheduling-and-preparing).

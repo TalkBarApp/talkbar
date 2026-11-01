@@ -12,7 +12,7 @@ navigation:
 
 ## This device
 
-Your TalkBar workspace data stays on this computer unless you turn on an external AI provider or a notification channel. On Windows, the data folder is `%LOCALAPPDATA%\TalkBar`.
+Your TalkBar workspace data stays on this computer unless you turn on an external AI provider or a notification channel. Open the data folder using **Open data folder** on this page.
 
 | Control | What it does |
 | --- | --- |
@@ -38,7 +38,7 @@ For step-by-step instructions, see [Backup and restore](/data/backup-and-restore
 
 ## Recovery code
 
-TalkBar encrypts your saved API keys, passwords and tokens in its own data, and keeps the key that unlocks them in the Windows keyring (Credential Manager). A recovery code lets you restore them if the keyring loses TalkBar's key, or after you copy TalkBar's data to another computer.
+TalkBar encrypts your saved API keys, passwords and tokens in its own data, and keeps the key that unlocks them in the system keyring. A recovery code lets you restore them if the keyring loses TalkBar's key, or after you copy TalkBar's data to another computer.
 
 When you click **Set up**, choose **Generate a code** (safer), **Use my own password** (at least 12 characters) or **Use a code I already have**. Keep the code or password somewhere safe outside TalkBar.
 

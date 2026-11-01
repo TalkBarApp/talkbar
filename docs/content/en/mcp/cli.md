@@ -9,15 +9,17 @@ navigation:
 
 ## Before you start
 
-- `talkbar-cli.exe` is in the same folder as TalkBar. **Settings → MCP Access → Executable path** shows where. Use **Add to PATH** there to run it by name from any terminal. See [Where talkbar-cli is installed](/mcp/setup#where-talkbar-cli-is-installed).
-- It opens your TalkBar data folder (`%LOCALAPPDATA%\TalkBar`), or the folder in `TALKBAR_DATA_ROOT` when that is set. The app can be open or closed.
+- `talkbar-cli` ships with TalkBar. **Settings → MCP Access → Executable path** shows where. Use **Add to PATH** there to run it by name from any terminal. See [Where talkbar-cli is installed](/mcp/setup#where-talkbar-cli-is-installed).
+- It opens your TalkBar data folder, or the folder in `TALKBAR_DATA_ROOT` when that is set. Find the actual path in **Settings → MCP Access → Data root**. The app can be open or closed.
 - It does what you type, as you. The MCP Access switches do not apply to it, but administrator rules and plan limits do. See [What the command line ignores](/mcp/access-and-permissions#what-the-command-line-ignores).
 
-```powershell
+```shell
 talkbar-cli --version
 talkbar-cli --help
 talkbar-cli tools --help
 ```
+
+Examples use a POSIX shell on macOS or PowerShell on Windows. If a shell handles JSON quotes differently, use `--args-file`.
 
 ## Commands
 
@@ -45,7 +47,7 @@ These work before or after the command:
 
 ## List and inspect operations
 
-```powershell
+```shell
 talkbar-cli tools list
 talkbar-cli tools list --compact
 talkbar-cli tools info notes.create
@@ -62,7 +64,7 @@ The list holds every operation an administrator has not blocked. For each operat
 
 Pass the arguments as a JSON object:
 
-```powershell
+```shell
 talkbar-cli tools call sessions.list --args '{"limit":5}'
 talkbar-cli tools call notes.get --args '{"noteId":"note-k2v9w8x7c6b5n4m3l2j1h0g9"}'
 ```
@@ -79,9 +81,19 @@ Long text, such as a note body, is easier to pass through standard input or a fi
 | `--args -` | Standard input |
 | `--args-file <path>` | A file. `--args-file -` also means standard input. |
 
+::platform-tabs
+#windows
 ```powershell
-Get-Content .\note.json -Raw | talkbar-cli tools call notes.create --args -
-talkbar-cli tools call notes.create --args-file .\note.json
+Get-Content note.json -Raw | talkbar-cli tools call notes.create --args -
+```
+#macos
+```shell
+cat note.json | talkbar-cli tools call notes.create --args -
+```
+::
+
+```shell
+talkbar-cli tools call notes.create --args-file note.json
 ```
 
 ```json [note.json]
@@ -101,9 +113,9 @@ PowerShell and `cmd` treat quotes in JSON differently. If `--args '{...}'` gives
 
 `tools batch` runs many operations in one process, in order. It is faster than one command per operation, and the open app refreshes once for all of them.
 
-```powershell
+```shell
 '[{"tool":"notes.list","args":{"limit":3}},{"tool":"sessions.list","args":{"limit":5}}]' | talkbar-cli tools batch
-talkbar-cli tools batch --file .\calls.json --stop-on-error
+talkbar-cli tools batch --file calls.json --stop-on-error
 ```
 
 - Input is a JSON array of `{"tool", "args"}`, or the MCP form `{"calls": [...], "stopOnError": true}`. It comes from `--file`, or from standard input when `--file` is left out or is `-`.
@@ -124,7 +136,7 @@ The command exits with 1 when any operation failed, after printing every result.
 
 `search` is the app's universal search from the terminal, transcript snippets included:
 
-```powershell
+```shell
 talkbar-cli search pricing review
 talkbar-cli search "renewal date" --kinds session,note --limit 10
 talkbar-cli search budget --match any --output json
@@ -147,7 +159,7 @@ The table output groups matches by kind, each with its title, a snippet and its 
 
 ## Serve MCP
 
-```powershell
+```shell
 talkbar-cli serve --transport stdio
 ```
 
@@ -157,7 +169,7 @@ Starts the MCP server on standard input and output. `stdio` is the only transpor
 
 The `exports` command delivers queued exports, the same work the app does while it runs. Set up destinations in the app first; see [Exports](/sharing/exports).
 
-```powershell
+```shell
 talkbar-cli exports run --workspace WORKSPACE_ID --batch BATCH_ID --wait
 talkbar-cli exports worker
 talkbar-cli exports worker --drain
@@ -174,9 +186,14 @@ talkbar-cli exports worker --drain
 
 `exports` commands need `--workspace` (find it with `tools call workspace.list`). `exports notion connect` refuses to read the token from the keyboard, so it is never shown on screen; pipe it from your password manager instead:
 
+::platform-tabs
+#windows
 ```powershell
 Get-Secret -Name TalkBarNotionToken -AsPlainText | talkbar-cli exports notion connect --workspace WORKSPACE_ID --destination DESTINATION_ID
 ```
+#macos
+Pipe your password manager’s token output to `talkbar-cli exports notion connect --workspace WORKSPACE_ID --destination DESTINATION_ID`.
+::
 
 To queue an export in the first place, use `tools call exports.enqueue`. See [Export a session](/mcp/examples#export-a-session).
 

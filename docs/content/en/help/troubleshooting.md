@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-wrench-screwdriver
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 Most problems have a quick fix. Start with Settings Doctor, then look for your problem below. If you're still stuck, contact the TalkBar team from inside the app.
 
 ## Start with Settings Doctor
@@ -30,7 +32,7 @@ See [Help and Doctor settings](/settings/help-and-doctor).
 
 - Turn on or connect a microphone. TalkBar picks it up automatically and shows **Microphone connected**.
 - In **Settings → Voice → Recording**, check the selected microphone and click **Start test** under **Test audio input**.
-- If Windows blocks microphone access for desktop apps, allow it in the microphone section of your Windows privacy settings.
+- Allow TalkBar microphone access in your system privacy settings.
 - Pressed `Ctrl+Shift+M`? That shortcut mutes all microphone input to TalkBar. Press it again to unmute.
 
 ### "No audio detected yet — check your microphone or audio source."
@@ -64,7 +66,7 @@ These recordings were cut off before a session could be created, so they can't b
 
 ### "Microphone not available" in the dictation panel
 
-Dictation needs a microphone. Connect one, or allow microphone access in your Windows privacy settings, then close the panel and dictate again.
+Dictation needs a microphone. Connect one, or allow TalkBar microphone access in your system privacy settings, then close the panel and dictate again.
 
 ### A keyboard shortcut doesn't respond
 
@@ -126,7 +128,7 @@ If part of the file was transcribed, it was kept: open the session. Otherwise tr
 - **An export failed.** Check that the destination folder exists and you can write to it, or reconnect Notion. **Settings → Export & Share → Export Session → Export history** has **Retry failed deliveries**.
 - **A share failed, or shows "Delivery unconfirmed".** Open **Manage links** or **Sharing history**, then use **Retry failed deliveries**, **Resend failed invitations** or **Send content instead**.
 - **Email or Telegram messages don't arrive.** In **Settings → Notifications**, click **Send Test** on the channel and fix any **Missing credentials**.
-- **No desktop notifications.** In **Settings → Notifications → Desktop Notifications**, click **Send Test**. **System Settings** opens the Windows notification settings, where TalkBar notifications may be turned off.
+- **No desktop notifications.** In **Settings → Notifications → Desktop Notifications**, click **Send Test**. **System Settings** opens the system notification settings, where TalkBar notifications may be turned off.
 
 See [Share links](/sharing/share-links), [Exports](/sharing/exports) and [Notifications](/sharing/notifications).
 
@@ -150,7 +152,7 @@ Logs help the TalkBar team find the cause of a problem. They are off by default 
 1. Open **Settings → General → Application Logs**.
 2. Turn on **Enable application logs**. For problems with built-in AI, also turn on **Enable Local AI logs**.
 3. Reproduce the problem.
-4. Click **Open logs folder**. Log files are in the `logs` folder inside the TalkBar data folder, `%LOCALAPPDATA%\TalkBar\logs`.
+4. Click **Open logs folder**. Log files are in the `logs` folder inside the TalkBar data folder.
 
 You can also open the logs folder from **Settings → Data & Backup → This device**. Turn logging off again when you're done.
 

@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-map
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 This page shows where everything is in the TalkBar main window and how to move around quickly. For a guided version, take the *Find your way around* tour from **Help → Take a tour**.
 
 ::screenshot{src="/screenshots/getting-started/main-window-layout.png" alt="TalkBar main window on Home with the sidebar expanded on the left (Home, Recording, Sessions, Chats, Notes, Knowledge, Projects, Settings and the account card), the title bar with the TalkBar logo, New session, Upcoming and Help, and the round Quick Actions button in the bottom-right corner" caption="The main window"}
@@ -107,7 +109,7 @@ While a tour runs, only the highlighted part of the screen responds to clicks.
 | `A` / `E` / `D` / `S` | On the **Review** page, approve, edit, dismiss or snooze the current suggestion. |
 | `Space` | On the **Review** page, select the current suggestion. |
 
-### Anywhere in Windows
+### Anywhere on your computer
 
 These shortcuts work even when TalkBar is in the background. You can change each one, or turn it off, in Settings.
 

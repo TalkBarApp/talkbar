@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-microphone
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 TalkBar records your microphone, your computer's audio, or both, and turns speech into a transcript on this computer. No audio is sent to an AI provider. This page explains the recording sources, the speech models, the transcription languages and what happens to the audio afterwards.
 
 ## Recording sources
@@ -30,13 +32,13 @@ If no microphone is connected, the microphone options are unavailable and TalkBa
 
 ### Microphone and test recording
 
-- **Microphone**: the default microphone for sessions and dictation. **System default** follows the Windows default device.
+- **Microphone**: the default microphone for sessions and dictation. **System default** follows the system default device.
 - **Test audio input**: records up to 30 seconds from the selected source and plays it back, so you can check levels before a real session.
 - **Show all audio devices**: lists every microphone and system-audio device TalkBar can see. Useful when the device you expect is missing.
 
 ### Mute shortcut
 
-**Mute microphone shortcut** (default `Ctrl+Shift+M`) mutes all microphone input to TalkBar. Dictation and recordings hear silence until you press it again. Other apps and the Windows microphone are not affected. You can change the keys or turn the shortcut off.
+**Mute microphone shortcut** (default `Ctrl+Shift+M`) mutes all microphone input to TalkBar. Dictation and recordings hear silence until you press it again. Other apps and the system microphone are not affected. You can change the keys or turn the shortcut off.
 
 ### Audio processing
 

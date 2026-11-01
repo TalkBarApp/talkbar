@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-microphone
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 When you click **Start session**, TalkBar opens the recording screen. The transcript appears by speaker as people talk, the timeline adds short AI notes every few minutes, and you can take notes, mark moments and ask questions while you record.
 
 ## Before the transcript starts

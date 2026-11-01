@@ -15,7 +15,7 @@ No. TalkBar records from your own computer, using your microphone and your compu
 
 ### Where is my data stored?
 
-On your computer, in the TalkBar data folder: `%LOCALAPPDATA%\TalkBar`. It holds your sessions, recordings, notes, knowledge and downloaded models. Open it from **Settings → Data & Backup → Open data folder**. See [Privacy and your data](/data/privacy-and-your-data).
+On your computer, in the TalkBar data folder. It holds your sessions, recordings, notes, knowledge and downloaded models. Open it from **Settings → Data & Backup → Open data folder**. See [Privacy and your data](/data/privacy-and-your-data).
 
 ### Does TalkBar send my recordings or transcripts anywhere?
 
@@ -85,7 +85,7 @@ There is a Free plan, and paid plans named Personal, Plus, Pro and Business. The
 
 ### Is there a Mac version?
 
-TalkBar runs on 64-bit Windows. A Mac version is in progress.
+TalkBar supports Windows and macOS. Check the release for available downloads and system requirements.
 
 ### How do updates work?
 

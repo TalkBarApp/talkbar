@@ -123,8 +123,8 @@ With `"format": "json"`, the transcript comes back as `turns` instead, each with
 
 The same read from a terminal:
 
-```powershell
-talkbar-cli tools call sessions.transcript --args-file .\read.json
+```shell
+talkbar-cli tools call sessions.transcript --args-file read.json
 ```
 
 ## Create a note and an action item
@@ -317,7 +317,7 @@ The assistant looks up your destinations:
       "workspaceId": "…",
       "name": "Obsidian vault",
       "format": "obsidian",
-      "location": "C:/Users/you/Documents/Vault/Meetings",
+      "location": "PATH_TO_VAULT/Meetings",
       "enabled": true,
       "layout": "flat",
       "credentialRef": null

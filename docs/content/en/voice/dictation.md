@@ -5,6 +5,8 @@ navigation:
   icon: i-heroicons-pencil-square
 ---
 
+Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+
 **Dictation** lets you speak instead of typing. Hold the dictation shortcut, talk, and TalkBar turns your words into text on this computer. In a TalkBar note the text goes straight into the note; anywhere else a small floating panel shows your words and then pastes them into the app you are using.
 
 ## Dictate anywhere

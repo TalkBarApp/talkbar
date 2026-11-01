@@ -22,7 +22,7 @@ navigation:
 | Значок | Что означает |
 | --- | --- |
 | **Готово** | TalkBar нашёл `talkbar-cli`, и программа ответила. Можно подключать приложение. |
-| **Отсутствует** | TalkBar не нашёл `talkbar-cli` рядом с приложением. Переустановите TalkBar. |
+| **Отсутствует** | TalkBar не нашёл `talkbar-cli`. Переустановите TalkBar. |
 | **Ошибка** | `talkbar-cli` найден, но не запустился. Над страницей показано предупреждение с текстом ошибки. |
 | **Отключено** | MCP выключен. Подключённые приложения не видят инструментов TalkBar. |
 
@@ -38,7 +38,7 @@ navigation:
 Все варианты настроек делают одно и то же: говорят приложению запускать `talkbar-cli` с аргументами `serve --transport stdio` и задают в `TALKBAR_DATA_ROOT` вашу папку данных TalkBar.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-В примерах ниже используются пути `C:/path/to/talkbar-cli.exe` и `C:/Users/you/AppData/Local/TalkBar`. В копии из TalkBar будут реальные пути на вашем компьютере, поэтому копируйте настройки из раздела **Доступ по MCP**, а не с этой страницы. В путях используются прямые косые черты — Windows их понимает.
+В примерах указаны условные пути к программе и папке данных. Замените их путями из раздела **Доступ по MCP** или скопируйте готовые настройки из TalkBar. Имя программы и пути зависят от операционной системы. В путях JSON экранируйте обратные косые черты или используйте прямые, если они поддерживаются.
 ::
 
 ::tabs
@@ -49,14 +49,14 @@ navigation:
   {
     "mcpServers": {
       "talkbar": {
-        "command": "C:/path/to/talkbar-cli.exe",
+        "command": "PATH_TO_TALKBAR_CLI",
         "args": [
           "serve",
           "--transport",
           "stdio"
         ],
         "env": {
-          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+          "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
         }
       }
     }
@@ -71,14 +71,14 @@ navigation:
   {
     "mcpServers": {
       "talkbar": {
-        "command": "C:/path/to/talkbar-cli.exe",
+        "command": "PATH_TO_TALKBAR_CLI",
         "args": [
           "serve",
           "--transport",
           "stdio"
         ],
         "env": {
-          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+          "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
         }
       }
     }
@@ -89,8 +89,8 @@ navigation:
   ::div{label="Claude Code" icon="i-heroicons-command-line"}
   Один раз выполните скопированную команду в терминале. `-s user` добавляет TalkBar для всех ваших проектов.
 
-  ```powershell
-  claude mcp add talkbar -s user -e TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  claude mcp add talkbar -s user -e "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
 
   Claude Code может также запускать `talkbar-cli` напрямую, без MCP. См. [Для ИИ-агентов с доступом к командной строке](/mcp/cli#для-ии-агентов-с-доступом-к-командной-строке).
@@ -99,24 +99,24 @@ navigation:
   ::div{label="Codex" icon="i-heroicons-command-line"}
   Один раз выполните скопированную команду в терминале.
 
-  ```powershell
-  codex mcp add talkbar --env TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  codex mcp add talkbar --env "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
   ::
 
   ::div{label="agy CLI" icon="i-heroicons-command-line"}
   Один раз выполните скопированную команду в терминале. В agy параметры указываются перед именем сервера.
 
-  ```powershell
-  agy mcp add --env TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar talkbar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  agy mcp add --env "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" talkbar -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
   ::
 
   ::div{label="Grok CLI" icon="i-heroicons-command-line"}
   Один раз выполните скопированную команду в терминале.
 
-  ```powershell
-  grok mcp add talkbar -e TALKBAR_DATA_ROOT=C:/Users/you/AppData/Local/TalkBar -- C:/path/to/talkbar-cli.exe serve --transport stdio
+  ```shell
+  grok mcp add talkbar -e "TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA" -- "PATH_TO_TALKBAR_CLI" serve --transport stdio
   ```
   ::
 
@@ -130,13 +130,13 @@ navigation:
       "talkbar": {
         "type": "local",
         "command": [
-          "C:/path/to/talkbar-cli.exe",
+          "PATH_TO_TALKBAR_CLI",
           "serve",
           "--transport",
           "stdio"
         ],
         "environment": {
-          "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+          "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
         },
         "enabled": true
       }
@@ -151,14 +151,14 @@ navigation:
   ```json
   {
     "type": "stdio",
-    "command": "C:/path/to/talkbar-cli.exe",
+    "command": "PATH_TO_TALKBAR_CLI",
     "args": [
       "serve",
       "--transport",
       "stdio"
     ],
     "env": {
-      "TALKBAR_DATA_ROOT": "C:/Users/you/AppData/Local/TalkBar"
+      "TALKBAR_DATA_ROOT": "PATH_TO_TALKBAR_DATA"
     }
   }
   ```
@@ -169,30 +169,19 @@ navigation:
 
 ## Копирование команды запуска сервера
 
-Кнопка **Копировать команду запуска сервера MCP** копирует одну строку, которая запускает MCP-сервер вручную, — для проверки или для клиента, которому нужна одна команда. В Windows это строка PowerShell:
-
-```powershell
-$env:TALKBAR_DATA_ROOT = 'C:/Users/you/AppData/Local/TalkBar'; & 'C:/path/to/talkbar-cli.exe' serve --transport stdio
-```
+**Копировать команду запуска сервера MCP** копирует команду для вашей операционной системы. Выполните её в терминале для проверки или для клиента, которому нужна одна команда.
 
 После запуска сервер ждёт MCP-клиента на стандартном вводе. Чтобы остановить его, нажмите `Ctrl+C`.
 
 ## Где установлен talkbar-cli
 
-`talkbar-cli.exe` устанавливается вместе с TalkBar в ту же папку, что и приложение. Карточка **Настройки сервера** в разделе **Доступ по MCP** показывает:
+`talkbar-cli` устанавливается вместе с TalkBar. Карточка **Настройки сервера** в разделе **Доступ по MCP** показывает:
 
 | Параметр | Что показывает |
 | --- | --- |
-| **Путь к исполняемому файлу** | Полный путь к `talkbar-cli.exe`. **Копировать** копирует его. |
-| **Добавить в PATH** | Копирует команду PowerShell, которая добавляет эту папку в ваш пользовательский PATH. Выполните её в PowerShell, затем откройте новый терминал, чтобы запускать `talkbar-cli` по имени. |
+| **Путь к исполняемому файлу** | Полный путь к `talkbar-cli`. **Копировать** копирует его. |
+| **Добавить в PATH** | Копирует команду для добавления папки программы в PATH. Выполните команду для вашей системы и откройте новый терминал, чтобы запускать `talkbar-cli` по имени. |
 | **Папка данных** | Ваша папка данных TalkBar. **Копировать** копирует путь к ней. |
-
-Команда для PATH выглядит так (вместо `C:\path\to` будет ваша папка):
-
-```powershell
-$currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
-[Environment]::SetEnvironmentVariable("PATH", "$currentPath;C:\path\to", "User")
-```
 
 ::screenshot{src="/screenshots/mcp/mcp-server-settings.png" alt="Карточка «Настройки сервера» внизу раздела «Настройки → Доступ по MCP»: переключатели «Журнал аудита» и «Разрешить удаление без подтверждения», поле «Путь к исполняемому файлу» с кнопками «Копировать» и «Добавить в PATH» и поле «Папка данных» с кнопкой «Копировать»" caption="Настройки сервера: где находится talkbar-cli и какую папку данных он использует"}
 ::
@@ -201,7 +190,12 @@ $currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
 
 `TALKBAR_DATA_ROOT` сообщает `talkbar-cli`, какую папку данных TalkBar открыть. Готовые настройки TalkBar всегда указывают в ней папку, которую использует приложение, — она показана в поле **Папка данных**.
 
-- В Windows TalkBar хранит данные в `%LOCALAPPDATA%\TalkBar`. Если `TALKBAR_DATA_ROOT` не задана, `talkbar-cli` тоже использует эту папку.
+::platform-tabs
+#windows
+Папка данных по умолчанию — `%LOCALAPPDATA%\TalkBar`. Текущий путь указан в поле **Папка данных**.
+#macos
+Путь к папке данных на Mac указан в поле **Папка данных**.
+::
 - Указывайте в ней только папку данных TalkBar. В папке без данных TalkBar будет создана новая пустая база данных, и ассистент увидит пустое пространство.
 - Чтобы открыть файл базы данных напрямую из командной строки, используйте `--db`. См. [talkbar-cli](/mcp/cli#глобальные-параметры).
 
@@ -217,7 +211,7 @@ $currentPath = [Environment]::GetEnvironmentVariable("PATH", "User")
 | Ассистент сообщает, что операция «is turned off in TalkBar» | Включите эту операцию в разделе **Доступ по MCP**. См. [Доступ и разрешения](/mcp/access-and-permissions). |
 | Ассистент видит пустое пространство | Проверьте, что `TALKBAR_DATA_ROOT` в настройках приложения совпадает с полем **Папка данных** в разделе **Доступ по MCP**. Если вы перемещали данные, скопируйте настройки заново. |
 | Удаление отклоняется с `confirmation_unavailable` | Ваше приложение не умеет запрашивать подтверждение. См. [Подтверждение удаления](/mcp/access-and-permissions#подтверждение-удаления). |
-| Значок показывает **Отсутствует** | `talkbar-cli` нет рядом с приложением. Переустановите TalkBar. |
+| Значок показывает **Отсутствует** | TalkBar не может найти `talkbar-cli`. Переустановите TalkBar. |
 | Страница заблокирована с уведомлением от вашей организации | Администратор отключил MCP-сервер или инструмент командной строки на этом компьютере. |
 
 ## См. также

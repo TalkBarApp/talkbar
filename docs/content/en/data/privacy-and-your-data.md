@@ -9,7 +9,7 @@ TalkBar is local-first. Your recordings, transcripts, summaries, notes, chats an
 
 ## What stays on your computer
 
-Everything you create in TalkBar lives in its data folder, `%LOCALAPPDATA%\TalkBar` on Windows:
+Everything you create in TalkBar lives in its data folder, which you can open from **Settings → Data & Backup → Open data folder**:
 
 - session recordings, transcripts, timelines and summaries;
 - notes, chats with Ask TalkBar, knowledge cards, documents, people and companies;

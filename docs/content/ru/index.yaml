@@ -1,5 +1,5 @@
 title: 'Документация TalkBar'
-description: 'Документация TalkBar — приватного ИИ-помощника для заметок в Windows. Записывайте встречи и звонки без бота, расшифровывайте речь на своём компьютере и превращайте каждый разговор в локальную память с поиском.'
+description: 'Документация TalkBar — приватного ИИ-помощника для заметок на Windows и macOS. Записывайте встречи и звонки без бота, расшифровывайте речь на своём компьютере и превращайте каждый разговор в локальную память с поиском.'
 navigation: false
 hero:
   title: 'Документация TalkBar'
@@ -23,7 +23,7 @@ platforms:
   items:
     - title: 'Приложение TalkBar'
       cta: 'Открыть руководство'
-      description: 'Записывайте, расшифровывайте и подводите итоги разговоров на компьютере с Windows, а важное сохраняйте как знания с поиском.'
+      description: 'Записывайте, расшифровывайте и подводите итоги разговоров на вашем компьютере, а важное сохраняйте как знания с поиском.'
       icon: 'i-heroicons-chat-bubble-bottom-center-text'
       id: 'app'
       to: '/getting-started/introduction'
@@ -54,7 +54,7 @@ quickstart:
   title: 'Разделы документации'
   items:
     - title: 'Установка и обновление'
-      description: 'Скачайте TalkBar для Windows и поддерживайте его в актуальном состоянии'
+      description: 'Скачайте TalkBar и поддерживайте его в актуальном состоянии'
       icon: 'i-heroicons-arrow-down-tray'
       to: '/getting-started/install-and-update'
     - title: 'Первая сессия'
@@ -82,7 +82,7 @@ resources:
   title: 'Ресурсы'
   items:
     - title: 'Скачать TalkBar'
-      description: 'Последняя версия для Windows'
+      description: 'Последняя версия для вашего компьютера'
       icon: 'i-heroicons-arrow-down-tray'
       to: 'https://github.com/TalkBarApp/talkbar/releases/latest'
       target: '_blank'

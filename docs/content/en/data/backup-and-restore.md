@@ -9,7 +9,7 @@ TalkBar keeps your sessions, recordings, notes and knowledge on this computer. B
 
 ## The data folder
 
-On Windows, TalkBar stores its data in `%LOCALAPPDATA%\TalkBar`. Under **This device**:
+Open the data folder from **Settings → Data & Backup → Open data folder**. Under **This device**:
 
 - **Open data folder** opens it in File Explorer.
 - **Open logs folder** opens the log files, which support may ask for.
@@ -35,7 +35,7 @@ A backup can be large because it includes every recording. Keep at least one rec
 
 ### Passwords, API keys and tokens
 
-TalkBar stores your API keys, email passwords, bot tokens, webhook URLs and Notion tokens encrypted. The key that unlocks them is kept in this computer's system keyring (Windows Credential Manager), not in the data folder. A backup therefore carries them only in encrypted form.
+TalkBar stores your API keys, email passwords, bot tokens, webhook URLs and Notion tokens encrypted. The key that unlocks them is kept in this computer's system keyring, not in the data folder. A backup therefore carries them only in encrypted form.
 
 To be able to use them on another computer, or if this computer's keyring is ever reset, set up a **Recovery code** first:
 

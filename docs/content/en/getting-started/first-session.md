@@ -10,7 +10,7 @@ This walkthrough takes you from an empty workspace to a finished session with a 
 ## Before you start
 
 - **Microphone.** Connect the microphone you want to use. In **Settings → Voice → Recording** you can pick it and click **Start test** under **Test audio input** to hear how it sounds.
-- **Windows microphone access.** If Windows blocks microphone access for desktop apps, TalkBar can't hear you. Allow it in the microphone section of your Windows privacy settings.
+- **Microphone access.** Allow TalkBar to use the microphone in your system privacy settings.
 - **Speech model.** Transcription runs on this computer. If the model is missing when you start, TalkBar tells you to download it in **Settings → Voice**.
 - **AI.** Summaries and titles need an AI model. You chose one during setup; to change it, click the TalkBar logo and choose **Set up AI…**.
 

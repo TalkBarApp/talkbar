@@ -123,8 +123,8 @@ navigation:
 
 То же чтение из терминала:
 
-```powershell
-talkbar-cli tools call sessions.transcript --args-file .\read.json
+```shell
+talkbar-cli tools call sessions.transcript --args-file read.json
 ```
 
 ## Создать заметку и задачу
@@ -317,7 +317,7 @@ talkbar-cli tools call sessions.transcript --args-file .\read.json
       "workspaceId": "…",
       "name": "Obsidian vault",
       "format": "obsidian",
-      "location": "C:/Users/you/Documents/Vault/Meetings",
+      "location": "PATH_TO_VAULT/Meetings",
       "enabled": true,
       "layout": "flat",
       "credentialRef": null

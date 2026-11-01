@@ -1,21 +1,24 @@
 ---
 title: Install and update
-description: Download TalkBar for Windows, install it, keep it up to date automatically, choose beta updates, and uninstall it.
+description: Download TalkBar, install it, keep it up to date automatically, choose beta updates, and uninstall it.
 navigation:
   icon: i-heroicons-arrow-down-tray
 ---
 
-TalkBar is a Windows desktop app. You download the installer from GitHub, run it once, and TalkBar keeps itself up to date after that.
+Download TalkBar for your computer from GitHub, install it, and keep it up to date.
 
 ## Download and install
 
+::platform-tabs
+#windows
 1. Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) on GitHub.
 2. Under **Assets**, download `TalkBar_<version>_x64-setup.exe`.
 3. Run the installer and follow the steps.
 
-The installer is digitally signed. If the Microsoft Edge WebView2 Runtime that TalkBar needs is missing on your computer, the installer sets it up, which needs an internet connection.
-
-TalkBar runs on 64-bit Windows. A Mac version is in progress.
+The installer is digitally signed. If Microsoft Edge WebView2 Runtime is missing, the installer sets it up using an internet connection.
+#macos
+Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) and select the macOS download if one is available. Follow the instructions provided with that release.
+::
 
 ## First launch
 
@@ -81,11 +84,16 @@ Every update is signed, and TalkBar checks the signature before installing it. I
 
 ## Uninstall TalkBar
 
-Uninstall TalkBar like any other Windows app, from the **Apps** section of Windows Settings.
+::platform-tabs
+#windows
+Uninstall TalkBar from the **Apps** section of Windows Settings.
+#macos
+Quit TalkBar and remove the app using the usual macOS app removal method.
+::
 
 Before you uninstall, make a backup if you might want your sessions later: **Settings → Data & Backup → Create backup** saves your data into a ZIP file. See [Backup and restore](/data/backup-and-restore).
 
-Your sessions, recordings, notes and downloaded models live in the TalkBar data folder, `%LOCALAPPDATA%\TalkBar`. To remove all of your TalkBar data from the computer, check that this folder is gone after uninstalling, and delete it if it is still there.
+Your sessions, recordings, notes and downloaded models live in the TalkBar data folder. Before uninstalling, locate it with **Settings → Data & Backup → Open data folder**. To remove all of your TalkBar data from the computer, check that this folder is gone after uninstalling, and delete it if it is still there.
 
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
 Deleting the data folder permanently removes your sessions, recordings, notes and knowledge. Create a backup first if you are not sure.

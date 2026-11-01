@@ -22,7 +22,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     websiteUrl: { production: 'https://www.talkbar.app', preview: 'https://preview.talkbar.app' },
     siteName: 'TalkBar Documentation',
     description:
-      'Documentation for TalkBar, the private AI note taker for Windows: capture meetings and calls, dictate voice notes, and keep every conversation as searchable local memory.',
+      'Documentation for TalkBar, the private AI note taker for Windows and macOS: capture meetings and calls, dictate voice notes, and keep every conversation as searchable local memory.',
     strings: {
       docsTitle: 'TalkBar Docs',
       mcpTitle: 'TalkBar MCP',
@@ -58,7 +58,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     websiteUrl: { production: 'https://www.talkbar.ru', preview: 'https://preview.talkbar.ru' },
     siteName: 'Документация TalkBar',
     description:
-      'Документация TalkBar — приватного ИИ-помощника для заметок в Windows: записывайте встречи и звонки, диктуйте голосовые заметки и храните каждый разговор как локальную память с поиском.',
+      'Документация TalkBar — приватного ИИ-помощника для заметок для Windows и macOS: записывайте встречи и звонки, диктуйте голосовые заметки и храните каждый разговор как локальную память с поиском.',
     strings: {
       docsTitle: 'TalkBar Docs',
       mcpTitle: 'TalkBar MCP',

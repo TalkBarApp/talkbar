@@ -9,15 +9,17 @@ navigation:
 
 ## Перед началом
 
-- `talkbar-cli.exe` находится в той же папке, что и TalkBar. Где именно — показано в поле **Настройки → Доступ по MCP → Путь к исполняемому файлу**. Кнопка **Добавить в PATH** там же позволяет запускать программу по имени из любого терминала. См. [Где установлен talkbar-cli](/mcp/setup#где-установлен-talkbar-cli).
-- Программа открывает вашу папку данных TalkBar (`%LOCALAPPDATA%\TalkBar`) или папку из `TALKBAR_DATA_ROOT`, если эта переменная задана. Приложение может быть как открыто, так и закрыто.
+- `talkbar-cli` поставляется вместе с TalkBar. Где именно — показано в поле **Настройки → Доступ по MCP → Путь к исполняемому файлу**. Кнопка **Добавить в PATH** там же позволяет запускать программу по имени из любого терминала. См. [Где установлен talkbar-cli](/mcp/setup#где-установлен-talkbar-cli).
+- Программа открывает папку данных TalkBar или папку из `TALKBAR_DATA_ROOT`, если эта переменная задана. Фактический путь указан в **Настройки → Доступ по MCP → Папка данных**. Приложение может быть как открыто, так и закрыто.
 - Программа выполняет то, что вы ввели, от вашего имени. Переключатели раздела «Доступ по MCP» на неё не действуют, а правила администратора и лимиты тарифа — действуют. См. [Что игнорирует командная строка](/mcp/access-and-permissions#что-игнорирует-командная-строка).
 
-```powershell
+```shell
 talkbar-cli --version
 talkbar-cli --help
 talkbar-cli tools --help
 ```
+
+В примерах используются оболочка POSIX в macOS или PowerShell в Windows. Если оболочка иначе обрабатывает кавычки в JSON, используйте `--args-file`.
 
 ## Команды
 
@@ -45,7 +47,7 @@ talkbar-cli tools --help
 
 ## Список и описание операций
 
-```powershell
+```shell
 talkbar-cli tools list
 talkbar-cli tools list --compact
 talkbar-cli tools info notes.create
@@ -62,7 +64,7 @@ talkbar-cli --output json tools info notes.create
 
 Передайте аргументы в виде объекта JSON:
 
-```powershell
+```shell
 talkbar-cli tools call sessions.list --args '{"limit":5}'
 talkbar-cli tools call notes.get --args '{"noteId":"note-k2v9w8x7c6b5n4m3l2j1h0g9"}'
 ```
@@ -79,9 +81,19 @@ talkbar-cli tools call notes.get --args '{"noteId":"note-k2v9w8x7c6b5n4m3l2j1h0g
 | `--args -` | Из стандартного ввода |
 | `--args-file <path>` | Из файла. `--args-file -` тоже означает стандартный ввод. |
 
+::platform-tabs
+#windows
 ```powershell
-Get-Content .\note.json -Raw | talkbar-cli tools call notes.create --args -
-talkbar-cli tools call notes.create --args-file .\note.json
+Get-Content note.json -Raw | talkbar-cli tools call notes.create --args -
+```
+#macos
+```shell
+cat note.json | talkbar-cli tools call notes.create --args -
+```
+::
+
+```shell
+talkbar-cli tools call notes.create --args-file note.json
 ```
 
 ```json [note.json]
@@ -101,9 +113,9 @@ PowerShell и `cmd` по-разному обрабатывают кавычки 
 
 `tools batch` выполняет много операций в одном процессе, по порядку. Это быстрее, чем отдельная команда на каждую операцию, а открытое приложение обновляется один раз для всех.
 
-```powershell
+```shell
 '[{"tool":"notes.list","args":{"limit":3}},{"tool":"sessions.list","args":{"limit":5}}]' | talkbar-cli tools batch
-talkbar-cli tools batch --file .\calls.json --stop-on-error
+talkbar-cli tools batch --file calls.json --stop-on-error
 ```
 
 - На вход подаётся массив JSON из `{"tool", "args"}` или форма MCP `{"calls": [...], "stopOnError": true}`. Данные берутся из `--file` или из стандартного ввода, если `--file` не указан или равен `-`.
@@ -124,7 +136,7 @@ talkbar-cli tools batch --file .\calls.json --stop-on-error
 
 `search` — это универсальный поиск приложения в терминале, включая фрагменты транскриптов:
 
-```powershell
+```shell
 talkbar-cli search pricing review
 talkbar-cli search "renewal date" --kinds session,note --limit 10
 talkbar-cli search budget --match any --output json
@@ -147,7 +159,7 @@ talkbar-cli search budget --match any --output json
 
 ## Запуск MCP-сервера
 
-```powershell
+```shell
 talkbar-cli serve --transport stdio
 ```
 
@@ -157,7 +169,7 @@ talkbar-cli serve --transport stdio
 
 Команда `exports` доставляет экспорт из очереди — то же, что делает приложение, пока оно запущено. Сначала настройте места экспорта в приложении; см. [Экспорт](/sharing/exports).
 
-```powershell
+```shell
 talkbar-cli exports run --workspace WORKSPACE_ID --batch BATCH_ID --wait
 talkbar-cli exports worker
 talkbar-cli exports worker --drain
@@ -174,9 +186,14 @@ talkbar-cli exports worker --drain
 
 Командам `exports` нужен `--workspace` (его можно узнать с помощью `tools call workspace.list`). `exports notion connect` не читает токен с клавиатуры, чтобы он никогда не появлялся на экране; передайте его по конвейеру из менеджера паролей:
 
+::platform-tabs
+#windows
 ```powershell
 Get-Secret -Name TalkBarNotionToken -AsPlainText | talkbar-cli exports notion connect --workspace WORKSPACE_ID --destination DESTINATION_ID
 ```
+#macos
+Передайте токен из менеджера паролей через конвейер в `talkbar-cli exports notion connect --workspace WORKSPACE_ID --destination DESTINATION_ID`.
+::
 
 Чтобы сначала поставить экспорт в очередь, используйте `tools call exports.enqueue`. См. [Экспортировать сессию](/mcp/examples#экспортировать-сессию).
 

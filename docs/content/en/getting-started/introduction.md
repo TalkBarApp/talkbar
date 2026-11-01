@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: TalkBar is a private AI note taker for Windows that records meetings and calls from your desktop and keeps your data on your computer.
+description: TalkBar is a private AI note taker for Windows and macOS that records meetings and calls from your desktop and keeps your data on your computer.
 navigation:
   icon: i-heroicons-sparkles
 ---
@@ -25,7 +25,7 @@ TalkBar removes the meeting bot, not your responsibilities. Telling people they 
 - **Transcription runs on your computer.** Speech-to-text uses a speech model downloaded to this device.
 - **AI runs where you choose.** Use **Built-in AI** (a model downloaded to this computer), Ollama, an AI tool installed on this computer, or a cloud provider with your own API key. Each AI feature can use its own model.
 - **Private AI Mode** keeps AI on local models only. One switch blocks cloud and CLI providers.
-- **Your data stays in one folder** on your computer: `%LOCALAPPDATA%\TalkBar`. You can open it, back it up to a ZIP file and restore it.
+- **Your data stays in one folder** on your computer. Open it from **Settings → Data & Backup → Open data folder**. You can open it, back it up to a ZIP file and restore it.
 
 Apart from what you start or set up yourself, such as exports, share links, notifications and requests to your own AI provider, TalkBar uses the network for model downloads, update checks and anonymous usage statistics. You can turn usage statistics off in **Settings → General → Share usage statistics**. Recordings, transcripts, notes and chats are never included.
 
@@ -45,7 +45,7 @@ Between conversations you can also write notes, chat with your sessions and docu
 
 | Requirement | Details |
 | --- | --- |
-| Operating system | 64-bit Windows. A Mac version is in progress. |
+| Operating system | Windows or macOS. Check the release for supported versions and hardware. |
 | Disk space | Room for the speech, speaker and AI models you download, plus your recordings. First-run setup shows the size of each download and the free space on the drive. |
 | Internet | Needed to download the installer and models, and for cloud AI providers, sharing and updates. Transcription and Built-in AI run on this computer once their models are downloaded. |
 | Audio | A microphone to record your own voice. Without one you can still record system audio. |

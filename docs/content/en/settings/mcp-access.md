@@ -59,7 +59,7 @@ The header shows how many read and write operations are on. Permissions can't be
 | **Audit logging** | Logs every tool call and resource read to the server's error output (stderr), for debugging and compliance review. Your MCP client decides where that output is saved. | Off |
 | **Allow deletes without confirmation** | Lets AI tools that can't ask you first move items to the Trash, archive or delete them. When off, those requests are refused. | Off |
 | **Executable path** | Where the `talkbar-cli` program used by the MCP server is. **Copy** copies the path. | — |
-| **Add to PATH** | Copies a PowerShell command that adds the `talkbar-cli` folder to your user PATH. Run it in PowerShell to use `talkbar-cli` from any terminal. | — |
+| **Add to PATH** | Copies a command for your system that adds the `talkbar-cli` folder to PATH. Run it to use `talkbar-cli` from a terminal. | — |
 | **Data root** | The folder where TalkBar stores its database and files. **Copy** copies the path. | — |
 
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
