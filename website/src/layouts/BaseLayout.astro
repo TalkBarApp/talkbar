@@ -55,14 +55,15 @@ const publisher = {
   logo: new URL('/web-app-manifest-512x512.png', siteUrl).href,
 };
 
-// Only claim the platform that ships today; the Mac version is in progress.
+// Same platforms as the docs (docs/composables/useDocsSeo.ts), so the product
+// description stays the same as Mac support arrives.
 const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
   name: 'TalkBar',
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'AI meeting notes',
-  operatingSystem: 'Windows',
+  operatingSystem: 'Windows, macOS',
   downloadUrl: DOWNLOAD_LINK_WINDOWS,
   description: jsonLdDescription,
   url: canonical,

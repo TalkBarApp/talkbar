@@ -92,11 +92,10 @@ describe("homepage search metadata", () => {
     expect(enValue(translations, "meta.jsonLdDescription")).toBeTruthy();
   });
 
-  test("shares a social image and claims only the shipping platform", () => {
+  test("shares a social image and names both desktop platforms", () => {
     expect(layout).toContain('property="og:image"');
     expect(layout).toContain('name="twitter:image"');
     expect(existsSync(resolve(cwd(), "public/og/talkbar-og.png"))).toBe(true);
-    expect(layout).toContain("operatingSystem: 'Windows'");
-    expect(layout).not.toContain("macOS");
+    expect(layout).toContain("operatingSystem: 'Windows, macOS'");
   });
 });
