@@ -1,5 +1,5 @@
 title: 'MCP и CLI для TalkBar'
-description: 'Подключайте ИИ-ассистентов к рабочему пространству TalkBar через локальный MCP-сервер или управляйте им из скриптов с помощью talkbar-cli. Настройка, переключатели доступа, инструменты и полный справочник операций.'
+description: 'Подключайте ИИ-ассистентов к TalkBar через локальный MCP-сервер или talkbar-cli: настройка, доступ, инструменты и полный справочник операций.'
 navigation: false
 hero:
   title: 'MCP и CLI для TalkBar'
@@ -59,3 +59,16 @@ features:
       description: 'Практические сценарии с настоящими запросами'
       icon: 'i-heroicons-light-bulb'
       to: '/mcp/examples'
+
+machineReference:
+  title: 'Документация для ИИ-ассистентов'
+  description: 'Передайте ассистенту эти ссылки, чтобы он изучил работу с TalkBar через MCP или CLI.'
+  items:
+    - title: 'Указатель документации MCP'
+      description: 'Настройка, разрешения, инструменты, команды CLI, примеры и справочник операций в порядке изучения.'
+      icon: 'i-heroicons-book-open'
+      to: '/mcp/llms.txt'
+    - title: 'Полный справочник MCP и CLI'
+      description: 'Все руководства MCP и справочники операций в одном текстовом файле с именами аргументов и примерами кода.'
+      icon: 'i-heroicons-document-text'
+      to: '/mcp/llms-full.txt'

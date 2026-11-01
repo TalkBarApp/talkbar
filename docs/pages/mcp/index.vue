@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, useAsyncData, useSeoMeta } from '#imports';
+import { definePageMeta, queryContent, useAsyncData, useSeoMeta, useDocsSeo } from '#imports';
 
 definePageMeta({
   layout: 'home',
 });
 
 const { data: page } = await useAsyncData('mcp-index', () => queryContent('mcp').findOne());
+
+useDocsSeo(page);
 
 useSeoMeta({
   titleTemplate: '',
@@ -37,6 +39,7 @@ useSeoMeta({
         >
           <NuxtLink
             :to="page.hero.headline.to"
+            :aria-label="page.hero.headline.label"
             class="focus:outline-none"
             tabindex="-1"
           >
@@ -75,6 +78,21 @@ useSeoMeta({
       <UPageGrid>
         <ULandingCard
           v-for="(item, index) of page.features.items"
+          :key="index"
+          v-bind="item"
+        />
+      </UPageGrid>
+    </ULandingSection>
+
+    <ULandingSection
+      v-if="page.machineReference"
+      :title="page.machineReference.title"
+      :description="page.machineReference.description"
+      class="py-16 sm:py-12"
+    >
+      <UPageGrid>
+        <ULandingCard
+          v-for="(item, index) of page.machineReference.items"
           :key="index"
           v-bind="item"
         />

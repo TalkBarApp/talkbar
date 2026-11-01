@@ -11,7 +11,7 @@ export default defineAppConfig({
     description: 'Documentation for TalkBar, the private AI note taker for Windows and macOS',
     ogImage: {
       type: 'image/png',
-      url: '/apple-touch-icon.png'
+      url: '/og/talkbar-og.png'
     },
   },
   search: {},

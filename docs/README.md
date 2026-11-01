@@ -40,7 +40,73 @@ connected to the `main` branch of this repository:
 | Environment | `NODE_VERSION=22` | `NODE_VERSION=22` |
 
 `NUXT_SITE_ENV=production` (set by the `generate:*` scripts) makes the site indexable by
-search engines; other builds are marked `noindex`.
+search engines; other builds are marked `noindex`. Cloudflare Pages branch previews
+remain `noindex`, including when they use these commands. The production branch defaults
+to `main`; set `DOCS_PRODUCTION_BRANCH` if the Pages project uses another branch.
+
+## Search and AI discovery
+
+Every page has a canonical URL, localized metadata, a 1200×630 social image
+(`public/og/talkbar-og.png`, the website's image) and structured data: the site,
+TalkBar as publisher and app, the page as a `TechArticle` with `dateModified`, a
+breadcrumb, and `FAQPage` on `/help/faq`. English and Russian pages link to each other
+with `hreflang` (plus `x-default` to English) when both translations exist. All
+published content pages are explicitly prerendered and included in the sitemap with
+`lastmod`, taken from the last git commit of each content file (or an `updated` front
+matter value). Descriptions must stay at 160 characters or fewer.
+
+Both languages are built from the same code and produce the same file structure; only
+the content, interface strings and domain differ. Production builds leave out
+screenshots that don't exist yet; dev and preview builds show a placeholder.
+
+`robots.txt` allows all crawlers, names the main AI crawlers explicitly and states
+`Content-Signal: search=yes, ai-input=yes, ai-train=yes`
+([contentsignals.org](https://contentsignals.org)). Preview builds keep `Disallow: /`.
+
+The build generates discovery files from public documentation only, into `.discovery/`
+(served from the site root and ignored by git):
+
+- `/llms.txt`: the documentation index, with links to web pages and Markdown copies.
+- `/llms-full.txt`: every documentation page in one text file.
+- `/<page-path>.md` (`/index.md` for the home page): readable Markdown with the
+  canonical page URL. Each doc page links to it, and to ChatGPT and Claude with it, under
+  "Use with AI". These copies have a `noindex` response header to keep HTML as the
+  search result.
+- `/mcp/llms.txt`: the MCP and CLI learning index, starting with overview, setup,
+  permissions, tools and CLI, then the operation reference and examples.
+- `/mcp/llms-full.txt`: all MCP guides and operation references in one file. Argument
+  names, field types, client labels and fenced code examples are preserved.
+
+These files are retrieval aids for assistants that support them; `llms.txt` is not a
+guarantee of search indexing, model training or citations. Runtime operation discovery
+through `talkbar_tools` or `talkbar-cli tools info` remains the source for the installed
+version's schemas. Do not put private workspace data in any discovery file.
+
+After generating a site, verify the generated HTML and discovery files:
+
+```fish
+npm run generate:en
+npm run check:seo -- en
+npm run generate:ru
+npm run check:seo -- ru
+```
+
+Run builds sequentially: both languages write to `dist/` and the same `.discovery/`
+folder. `npm run discovery:generate` regenerates only discovery files for `DOCS_LOCALE`.
+
+Before launch, confirm that the production deployment returns HTTP 200 for the home
+page, a deep MCP operation page, `/robots.txt`, `/sitemap.xml`, `/llms.txt`,
+`/llms-full.txt`, a `.md` page copy and both MCP text files.
+Check that production HTML has no `noindex`, the sitemap uses the correct domain, an
+unknown URL returns HTTP 404, and Cloudflare bot rules allow search crawlers. In
+Cloudflare **AI Crawl Control** for both zones, make sure AI crawlers are allowed and
+the managed `robots.txt` is off, so it matches the policy above (new Cloudflare zones
+block AI crawlers by default). Verify both domains in Google Search Console and Bing
+Webmaster Tools, and `docs.talkbar.ru` also in Yandex Webmaster; submit each site's
+`/sitemap.xml`, and inspect representative app, MCP setup and operation URLs.
+Optionally, notify IndexNow (Bing, Yandex) of changed URLs after each deploy. Keep
+preview deployments out of indexing. These account and hosting checks happen after
+deployment; a local build cannot verify them.
 
 ## Project structure
 

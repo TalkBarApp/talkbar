@@ -1,6 +1,6 @@
 ---
 title: Ссылки для общего доступа
-description: Публикуйте страницу сессии, заметки, чата или ответа только для чтения на talkbar.link или отправляйте материалы по email, в Telegram, Slack, Teams или через вебхук.
+description: Публикуйте сессию, заметку, чат или ответ только для чтения на talkbar.link или отправляйте их по email, в Telegram, Slack, Teams и через вебхук.
 navigation:
   icon: i-heroicons-link
 ---

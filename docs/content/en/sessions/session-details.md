@@ -1,6 +1,6 @@
 ---
 title: Session details
-description: The session page for a completed session, with its summary, action items, transcript, notes, documents and knowledge, and how to edit speakers, regenerate the summary and manage audio.
+description: 'The page of a finished session: summary, action items, transcript, notes and knowledge, plus how to edit speakers, redo the summary and manage audio.'
 navigation:
   icon: i-heroicons-document-text
 ---

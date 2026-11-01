@@ -1,5 +1,5 @@
 title: 'TalkBar MCP & CLI'
-description: 'Connect AI assistants to your TalkBar workspace with the local MCP server, or script it with talkbar-cli. Setup, access switches, tools and the full operations reference.'
+description: 'Connect AI assistants to TalkBar with the local MCP server or script it with talkbar-cli: setup, access switches, tools and the full operations reference.'
 navigation: false
 hero:
   title: 'TalkBar MCP & CLI'
@@ -59,3 +59,16 @@ features:
       description: 'Practical walkthroughs with real requests'
       icon: 'i-heroicons-light-bulb'
       to: '/mcp/examples'
+
+machineReference:
+  title: 'Documentation for AI assistants'
+  description: 'Give your assistant these links to learn how to use TalkBar through MCP or the CLI.'
+  items:
+    - title: 'MCP learning index'
+      description: 'Setup, permissions, gateway tools, CLI commands, examples and operation references in reading order.'
+      icon: 'i-heroicons-book-open'
+      to: '/mcp/llms.txt'
+    - title: 'Complete MCP & CLI reference'
+      description: 'All MCP guides and operation references in one text file, including argument names and code examples.'
+      icon: 'i-heroicons-document-text'
+      to: '/mcp/llms-full.txt'

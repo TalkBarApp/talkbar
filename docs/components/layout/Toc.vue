@@ -22,6 +22,18 @@ const externalLinks = computed(() => [
     target: '_blank',
   },
 ]);
+
+// The Markdown copy of this page, for reading it in or handing it to an assistant.
+const markdownUrl = computed(() => {
+  const path = (props.page?._path || '/').replace(/\/+$/, '') || '/';
+  return `${siteUrl}${path === '/' ? '/index' : path}.md`;
+});
+const aiPrompt = computed(() => encodeURIComponent(t('aiPrompt').replace('{url}', markdownUrl.value)));
+const aiLinks = computed(() => [
+  { icon: 'i-heroicons-document-text', label: t('viewMarkdown'), to: markdownUrl.value, target: '_blank' },
+  { icon: 'i-simple-icons-openai', label: t('openInChatGpt'), to: `https://chatgpt.com/?q=${aiPrompt.value}`, target: '_blank' },
+  { icon: 'i-simple-icons-claude', label: t('openInClaude'), to: `https://claude.ai/new?q=${aiPrompt.value}`, target: '_blank' },
+]);
 </script>
 
 <template>
@@ -40,6 +52,11 @@ const externalLinks = computed(() => [
         <UDivider
           v-if="page.body?.toc?.links?.length"
           type="dashed"
+        />
+
+        <UPageLinks
+          :title="t('useWithAi')"
+          :links="aiLinks"
         />
 
         <UPageLinks

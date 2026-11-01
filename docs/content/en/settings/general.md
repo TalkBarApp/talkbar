@@ -1,6 +1,6 @@
 ---
 title: General
-description: Reference for Settings → General, covering appearance, session defaults and detection, cleanup, knowledge scans, language, updates, startup, time, calendar and logs.
+description: 'Settings → General: appearance, session defaults and detection, cleanup, knowledge scans, language, updates, startup, time, calendar and logs.'
 navigation:
   icon: i-heroicons-adjustments-horizontal
 ---

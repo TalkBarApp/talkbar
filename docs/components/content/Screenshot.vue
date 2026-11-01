@@ -9,7 +9,11 @@ const props = defineProps({
 })
 
 const { t, locale } = useDocsStrings()
-const available = (useRuntimeConfig().public.docsScreenshots || []) as string[]
+const config = useRuntimeConfig().public
+const available = (config.docsScreenshots || []) as string[]
+// Production builds leave out screenshots that don't exist yet; dev and preview
+// builds show a placeholder so missing images stay visible to writers.
+const showPlaceholder = Boolean(config.docsShowScreenshotPlaceholders)
 
 // A localized copy (screenshots/ru/...) wins over the English one.
 const resolvedSrc = computed(() => {
@@ -20,7 +24,7 @@ const resolvedSrc = computed(() => {
 </script>
 
 <template>
-  <figure class="screenshot not-prose my-6">
+  <figure v-if="resolvedSrc || showPlaceholder" class="screenshot not-prose my-6">
     <a v-if="resolvedSrc" :href="resolvedSrc" target="_blank" rel="noopener" class="block">
       <img
         :src="resolvedSrc"
@@ -32,6 +36,7 @@ const resolvedSrc = computed(() => {
     </a>
     <div
       v-else
+      data-screenshot-placeholder
       class="rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900/60 px-6 py-10 text-center"
       role="img"
       :aria-label="alt"

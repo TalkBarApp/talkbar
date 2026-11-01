@@ -1,6 +1,6 @@
 ---
 title: Templates and skills
-description: Session templates decide how TalkBar captures and summarizes each kind of session. Skills are reusable AI prompts for chat. Learn the built-ins and how to make your own.
+description: Session templates decide how TalkBar captures and summarizes each kind of session; skills are reusable AI chat prompts. Use the built-ins or make your own.
 navigation:
   icon: i-heroicons-squares-2x2
 ---

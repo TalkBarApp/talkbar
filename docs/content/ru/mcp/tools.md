@@ -1,6 +1,6 @@
 ---
 title: Пять инструментов MCP
-description: Как работают talkbar_find, talkbar_read, talkbar_change, talkbar_delete и talkbar_tools — их аргументы, пакеты, аннотации, постраничное чтение и формат сообщений.
+description: 'Как работают talkbar_find, talkbar_read, talkbar_change, talkbar_delete и talkbar_tools: аргументы, пакеты, аннотации, страницы и сообщения.'
 navigation:
   icon: i-heroicons-squares-2x2
 ---

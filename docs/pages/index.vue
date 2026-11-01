@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { definePageMeta, queryContent, useAsyncData, useDocsStrings, useSeoMeta } from '#imports';
+import { definePageMeta, queryContent, useAsyncData, useDocsStrings, useSeoMeta, useDocsSeo } from '#imports';
 
 definePageMeta({
   layout: 'home',
@@ -8,6 +8,8 @@ definePageMeta({
 const { siteName, description } = useDocsStrings();
 
 const { data: page } = await useAsyncData('index', () => queryContent('/').findOne());
+
+useDocsSeo(page);
 
 useSeoMeta({
   titleTemplate: '',

@@ -4,7 +4,7 @@ import FooterComponent from './components/FooterComponent.vue';
 import type { ParsedContent } from '@nuxt/content';
 import { computed, fetchContentNavigation, provide, queryContent, ref, useAsyncData, useDocsStrings, useFetch, useHead, useRoute, useSeoMeta, watch } from '#imports';
 
-const { t, locale, siteName, description, siteUrl } = useDocsStrings();
+const { t, locale, siteName, description } = useDocsStrings();
 
 const { data: navigationRaw } = await useAsyncData('navigation', () => fetchContentNavigation());
 const navigation = computed(() => {
@@ -88,14 +88,6 @@ useHead({
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     { name: 'theme-color', content: '#054df6' },
   ],
-  link: [
-    // Favicons of www.talkbar.app, with the dark set for dark system themes
-    { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg', media: '(prefers-color-scheme: light)' },
-    { rel: 'icon', type: 'image/svg+xml', href: '/dark/favicon.svg', media: '(prefers-color-scheme: dark)' },
-    { rel: 'icon', type: 'image/png', href: '/favicon-96x96.png', sizes: '96x96' },
-    { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-    { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-  ],
   htmlAttrs: {
     lang: locale,
   },
@@ -112,14 +104,9 @@ useHead({
 useSeoMeta({
   titleTemplate: `%s - ${siteName}`,
   ogSiteName: siteName,
-  ogUrl: siteUrl,
-  ogImageAlt: siteName,
   ogDescription: description,
   description,
   twitterDescription: description,
-  twitterTitle: `%s`,
-  twitterCard: 'summary_large_image',
-  twitterImageAlt: siteName,
 });
 </script>
 

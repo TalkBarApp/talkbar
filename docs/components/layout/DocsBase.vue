@@ -13,7 +13,8 @@ import {
   useCategory,
   mapContentNavigation,
   findPageBreadcrumb,
-  useDocsStrings
+  useDocsStrings,
+  useDocsSeo
 } from '#imports';
 import type { Ref } from 'vue';
 
@@ -22,7 +23,7 @@ const category = useCategory();
 const navigation = inject<Ref<NavItem[]>>('navigation', ref([]));
 
 // Ensure category has a default value
-const { t, siteName } = useDocsStrings();
+const { t, siteName, locale } = useDocsStrings();
 const categoryValue = computed(() => category?.value || t('docsTitle'));
 const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne());
 
@@ -41,9 +42,17 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () =>
     .findSurround(withoutTrailingSlash(route.path))
 );
 
+useDocsSeo(page);
+const seoSiteName = computed(() => {
+  const area = route.path.startsWith('/mcp/') ? 'MCP & CLI'
+    : route.path.startsWith('/settings/') ? (locale === 'ru' ? 'Настройки' : 'Settings') : '';
+  return area ? `${siteName} · ${area}` : siteName;
+});
+
 useSeoMeta({
   title: page.value.title,
-  ogTitle: `${page.value.title} - ${siteName}`,
+  titleTemplate: () => `%s - ${seoSiteName.value}`,
+  ogTitle: () => `${page.value?.title} - ${seoSiteName.value}`,
   description: page.value.description,
   ogDescription: page.value.description,
   twitterDescription: page.value.description,
