@@ -36,6 +36,26 @@ navigation:
 
 Встреча может иметь статус `planned`, `started`, `completed`, `missed`, `skipped`, `cancelled` или `unscheduled`. Время указывается в миллисекундах эпохи Unix.
 
+## Встречи из подключённых календарей
+
+Встречи, импортированные из календаря, подключённого в разделе [Настройки → Календари](/settings/calendar-sync), здесь считаются обычными встречами. `calendar.upcoming` показывает их, и операции на этой странице с ними работают.
+
+Ни одна операция не добавляет, не изменяет, не синхронизирует и не удаляет подключённый календарь. Это остаётся в приложении, а синхронизация идёт только пока приложение открыто.
+
+У каждой встречи есть дополнительные поля. У встречи, созданной в TalkBar, они равны `null`:
+
+| Поле | Что содержит |
+| --- | --- |
+| `sourceId` | Подключённый календарь, из которого пришла встреча. |
+| `externalUid` | Идентификатор события в этом календаре. |
+| `joinUrl` | Ссылка на встречу, найденная в событии. |
+| `location`, `description` | Место и описание события. |
+| `syncState` | `synced`, `local_override` или `remote_removed`. |
+
+- `calendar.move` или новое название через `calendar.prepare` переводят встречу в `local_override`: при следующей синхронизации она сохранит ваше время и название.
+- Встреча, событие которой удалено или отменено, получает `remote_removed` и статус `cancelled`. `calendar.upcoming` показывает её, только если в `statuses` указан `cancelled`.
+- `quiet` равен `true` у встречи, для которой вы отключили напоминания. См. [Встречи без напоминаний](/settings/calendar-sync#встречи-без-напоминаний).
+
 ## `calendar.upcoming`
 
 Постранично выводит отдельные встречи и встречи серий в заданном интервале времени, начиная с ближайших.
@@ -85,7 +105,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`.
 
 ```json
 {"tool": "calendar.get", "args": {"occurrenceId": "occ_1"}}
@@ -174,7 +194,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `planned`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `planned`.
 
 - Создаёт напоминания так же, как приложение. Повторяющийся `occurrenceId` отклоняется с кодом `failed`.
 
@@ -211,7 +231,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`.
 
 - Работает с запланированными, несостоявшимися и незапланированными встречами; для остальных запрос отклоняется с кодом `failed`. Подготовка несостоявшейся встречи снова делает её запланированной.
 - Встреча, время начала которой прошло, всегда получает режим `prompt`.
@@ -267,7 +287,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `planned`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `planned`.
 
 - Работает с запланированными, несостоявшимися и незапланированными встречами.
 
@@ -292,7 +312,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`.
 
 - Отложить можно только запланированную встречу.
 - После откладывания режим запуска встречи становится `prompt`.
@@ -311,7 +331,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `cancelled`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `cancelled`.
 
 - Отменить можно только запланированную встречу; иначе ответ `failed` называет её текущий статус.
 - Выполняется через `talkbar_delete`: [требует вашего подтверждения](/mcp/access-and-permissions#подтверждение-удаления), если ваше ИИ-приложение умеет его запрашивать; запросы приложений, которые не умеют, отклоняются, если не включён параметр **Разрешить удаление без подтверждения**.
@@ -330,7 +350,7 @@ navigation:
   ::
 ::
 
-**Возвращает:** встречу: `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `skipped`.
+**Возвращает:** встречу: `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (сохранённые настройки запуска в виде строки JSON), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false для встречи, подготовленной без запланированного времени), `sessionTitle` (название связанной сессии, когда оно появится), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (см. [Встречи из подключённых календарей](#встречи-из-подключённых-календарей)), `quiet` (в приложении выбрано «Не напоминать»: встреча видна в календаре, но не напоминает о себе и не начинается автоматически), `createdAt`, `updatedAt`. Её статус — `skipped`.
 
 - Пропустить можно только запланированную встречу; иначе ответ `failed` называет её текущий статус.
 - Выполняется через `talkbar_delete`: [требует вашего подтверждения](/mcp/access-and-permissions#подтверждение-удаления), если ваше ИИ-приложение умеет его запрашивать; запросы приложений, которые не умеют, отклоняются, если не включён параметр **Разрешить удаление без подтверждения**.

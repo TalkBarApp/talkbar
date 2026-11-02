@@ -38,7 +38,7 @@ Click a person to open their details:
 | **Company** | Their current company and role, and earlier ones. Old sessions keep the role and company from the time of the call. |
 | **Projects and series** | Projects and session series the person was added to. |
 | **Sessions** | Every session they took part in, and the speaker name they spoke as. |
-| **Related** | Linked knowledge items, such as memory cards. |
+| **Related** | Linked knowledge items, such as memory cards. **Add relation** links another one. |
 | **Timeline** | Changes to this person over time. |
 
 To change a person, click **Edit**:
@@ -86,7 +86,7 @@ Click a company to open its details:
 | **Details** | Website, relationship and notes. **Edit** changes them and lets you upload a logo. |
 | **People** | Everyone linked to the company. **Add person** lets you pick someone you have (**Add an existing person…**) or **Name a new person**. |
 | **Projects and series** | Projects and session series the company was added to. |
-| **Related** | Linked knowledge items. |
+| **Related** | Linked knowledge items. **Add relation** links another one. |
 | **Timeline** | Changes to this company over time. |
 
 You can also link a project to a company in the project's settings. See [Projects](/knowledge/projects).

@@ -1,6 +1,6 @@
 ---
 title: Getting around
-description: The TalkBar layout, the sidebar, Home, universal search, Quick Actions, the session bar, guided tours, keyboard shortcuts and the interface language.
+description: The TalkBar layout, sidebar, Home, search, Quick Actions, system tray, session bar, reminders, tours, keyboard shortcuts and the interface language.
 navigation:
   icon: i-heroicons-map
 ---
@@ -28,20 +28,45 @@ The sidebar on the left holds the main areas of the app.
 | **Settings** | All settings. A red badge means something needs your attention. |
 | Account card | At the very bottom: your profile and the active workspace. Click it to switch workspace or manage your account. |
 
-Collapse the sidebar to a narrow rail with the button at its top. To pin icon links to Knowledge pages, such as **Documents** or **People**, under Knowledge, turn on **Show Knowledge shortcuts** in **Settings → General → Appearance**.
+Collapse the sidebar to a narrow rail with the button at its top. To pin icon links to Knowledge pages, such as **Documents** or **People**, under Knowledge, turn on **Knowledge shortcuts** in **Settings → General → Appearance**.
 
 ## The title bar
 
 | Control | What it does |
 | --- | --- |
-| **TalkBar logo** | Opens the TalkBar menu: **About TalkBar**, **Check for updates**, a **Settings** submenu, **Set up AI…**, **Turn on Private AI Mode** (or **Turn off Private AI Mode**), **Show Session Bar** (or **Hide Session Bar**), **Close Window** and **Quit TalkBar**. |
+| **TalkBar logo** | Opens the TalkBar menu: **About TalkBar** (with your version and plan), **Upgrade to {plan}** (when a higher plan is available), **Check for updates**, a **Settings** submenu with every tab, **Set up AI…**, **Turn on Private AI Mode** or **Turn off Private AI Mode** (once the mode is available), **Show Session Bar** (or **Hide Session Bar**), **Close Window** and **Quit TalkBar**. |
 | **New session** | Opens the New session window to start a recording. |
 | **Upcoming** | Lists your scheduled sessions. A session that is starting soon gets a **Start** button. |
 | **Help** | **Take a tour**, **Documentation** and **Contact us**. |
 
 When Private AI Mode is on, the logo becomes a green shield to remind you that all AI features run on local models only. See [Private AI Mode](/ai/private-ai-mode).
 
-**Close Window** hides TalkBar to the system tray, and so does the window's close button. TalkBar keeps running there. Use **Quit TalkBar** to exit completely.
+**Close Window** hides TalkBar to the system tray, and so does the window's close button. TalkBar keeps running there. **Quit TalkBar** asks whether to exit completely (**Quit App**) or keep running in the tray (**Hide to Tray**).
+
+## The system tray
+
+TalkBar keeps an icon in the system tray while it runs, even when the main window is closed. The icon changes while a session records or is paused.
+
+::platform-tabs
+#windows
+Click the icon to open the main window. Right-click it to open the menu.
+#macos
+Click the icon in the menu bar to open the menu.
+::
+
+| Menu item | What it does |
+| --- | --- |
+| **Start session** | Starts recording right away. |
+| **New session…** | Opens the New session window. |
+| Session status, **Pause session** or **Resume session**, **Stop session** | Shown instead of the two items above while you record. Click the status to open the live session. |
+| **Schedule new session…** | Opens the schedule window. |
+| **Upcoming sessions** | Your next scheduled sessions, and **View all upcoming sessions**. |
+| **Recent Sessions** | Your last 10 sessions, and **View all sessions**. |
+| **Quick Actions** | The same items as the [Quick Actions](#quick-actions) button. |
+| **Settings** | **All settings…**, and links to the settings tabs. |
+| **Private AI Mode** | Turns [Private AI Mode](/ai/private-ai-mode) on or off, once the mode is available. It is locked while a session is in progress. |
+| **Open TalkBar** | Opens the main window. |
+| **Quit** | Exits TalkBar. |
 
 ## Home
 
@@ -59,7 +84,7 @@ Home is your start page for the active workspace.
 
 ## Universal search
 
-Press `Ctrl+K`, or click the search box at the top of the sidebar, to search everything in the workspace. Outside text fields, `/` opens search too.
+Press `Ctrl+K` (`Cmd+K` on macOS), or click the search box at the top of the sidebar, to search everything in the workspace. Outside text fields, `/` opens search too.
 
 Search finds sessions, notes, chats, action items, documents, memory cards, people, companies, projects and series. Matches inside a transcript, summary or document text are marked as such.
 
@@ -81,6 +106,12 @@ The session bar is a small floating window that stays on top of your other apps.
 - When session detection is on and your microphone is free, TalkBar listens on this computer for a conversation and offers to start a session from the bar. Audio and text never leave this device, and nothing is saved until you start.
 
 Show or hide it from the TalkBar logo menu, or with `Ctrl+Alt+B`. You can drag the bar anywhere. Configure detection, the shortcut, its position, how many lines it shows and the **Skip duration** (how long the bar's Skip button pauses detection) in **Settings → General → Session detection**. Session detection is on by default.
+
+## Reminders
+
+You don't open the reminder panel yourself. When a scheduled session reaches one of its reminder times, the panel pops up on its own in the bottom-right corner of TalkBar, over the Quick Actions button, and a desktop notification appears too.
+
+The panel shows the session's title and time. **Start** starts the session, **Snooze 10m** reminds you again later (the arrow next to it has other times), **Skip** skips this session, and the **X** closes the panel. For a session that starts on its own, the panel counts down instead. See [Reminders and auto-start](/sessions/scheduling-and-preparing#reminders-and-auto-start).
 
 ## Guided tours
 
@@ -128,7 +159,7 @@ If a shortcut is already used by another app, TalkBar tells you and asks you to 
 
 TalkBar's interface is available in 15 languages: English, Español, Deutsch, Français, Italiano, Русский, Türkçe, Polski, Українська, 简体中文, Português (Brasil), Português (Portugal), 日本語, 한국어 and 繁體中文.
 
-Choose it during first-run setup, or later in **Settings → General → Application UI Language**. The change applies right away, including in the session bar and the dictation panel.
+Choose it during first-run setup, or later in **Settings → General → Application UI Language**. The change applies right away, including in the session bar and the dictation panel. To change specific wording, see [Custom translations](/settings/general#custom-translations).
 
 ::callout{icon="i-heroicons-information-circle" color="gray"}
 Some regional licenses include only certain interface languages. If a language is unavailable, TalkBar explains why and links to **Settings → License**.
@@ -141,4 +172,5 @@ The interface language is separate from the language TalkBar transcribes. Set th
 - [Your first session](/getting-started/first-session)
 - [Settings overview](/settings/overview)
 - [General settings](/settings/general)
-- [Help and Doctor](/settings/help-and-doctor)
+- [Scheduling and preparing](/sessions/scheduling-and-preparing)
+- [Help & Tours and Doctor](/settings/help-and-doctor)

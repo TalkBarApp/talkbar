@@ -21,7 +21,7 @@ For what projects, topics and action items are and how to use them day to day, s
 | **New project** | Opens the **New project** dialog. If your plan's project limit is reached, TalkBar shows your plan limits instead. |
 | Row menu (⋮) → **Pin project** / **Unpin project** | Pins the project so it sorts first and stays in the sidebar. |
 | Row menu (⋮) → **Edit project** | Opens the same dialog to change the project. |
-| Row menu (⋮) → **Move to Trash** | Moves the project to Trash after you confirm. Its sessions, documents and memories stay, and published session links stay live. |
+| Row menu (⋮) → **Move to Trash** | Moves the project to Trash after you confirm. Its sessions, documents and knowledge cards stay, and published session links stay live. |
 | **Show deleted (*n*)** / **Hide deleted (*n*)** | Shows or hides the **Deleted projects** list. Appears only when at least one project is in Trash. |
 
 ### New project and Edit project dialog
@@ -49,7 +49,7 @@ In the **Delete permanently** dialog:
 
 | Control | What it does | Default |
 | --- | --- | --- |
-| **Delete everything** / **Keep contents** | **Delete everything** erases the project's sessions, documents, memories and extracted items, and takes down their published links. **Keep contents** deletes only the project; its contents move to **No project** and their published links keep working. | Delete everything |
+| **Delete everything** / **Keep contents** | **Delete everything** erases the project's sessions, documents, knowledge cards and extracted items, and takes down their published links. **Keep contents** deletes only the project; its contents move to **No project** and their published links keep working. | Delete everything |
 | **Create a backup first** | Makes a backup before deleting. | On |
 | **Type the full project name … to confirm** | You must type the exact project name before the delete button turns on. | — |
 

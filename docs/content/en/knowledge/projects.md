@@ -102,7 +102,7 @@ In a chat, open **Answer using** and choose **Project only** to get answers from
 
 ## Move a project to Trash
 
-From a project's menu (on the Projects page or in **Settings → Projects**), choose **Move to Trash**. The project disappears from pickers and the sidebar. Its sessions, documents and memories stay until you delete the project permanently from **Deleted projects** in **Settings → Projects**. Published session links stay live.
+From a project's menu (on the Projects page or in **Settings → Projects**), choose **Move to Trash**. The project disappears from pickers and the sidebar. Its sessions, documents and knowledge cards stay until you delete the project permanently from **Deleted projects** in **Settings → Projects**. Published session links stay live.
 
 From **Deleted projects** you can **Restore** a project or delete it permanently. A permanent delete lets you choose **Delete everything** or **Keep contents**. See [Projects, topics and keywords settings](/settings/projects-and-topics#deleted-projects).
 

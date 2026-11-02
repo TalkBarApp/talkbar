@@ -17,17 +17,19 @@ Two tabs in the **System** group of Settings help you learn TalkBar and fix prob
 
 A guided tour points at the real screen and explains it step by step. Use **Search tours…** to filter the list by title or description.
 
+You can also start a tour from any screen: open the **Help** menu and choose **Take a tour**. The tour for the current screen is already selected. Pick another one, or click **All tours** to come here.
+
 Tours are grouped by category. Each category shows how many of its tours you've completed. Each tour has a **Start** button, or **Run Again** once it shows **Completed** or **Skipped**.
 
 | Category | Tours |
 | --- | --- |
 | Getting started | Find your way around, Home, How TalkBar uses AI |
-| Sessions | Sessions, Starting a session, Recording a session, Session details, Upcoming sessions, Scheduling a session, Prepare sessions, Preparing a session, Series, Session series |
+| Sessions | Sessions, Starting a session, Recording a session, Session details, Upcoming sessions, Session reminders, Scheduling a session, Prepare sessions, Preparing a session, Series, Session series |
 | Chats and notes | Chats, Asking TalkBar, Notes, Writing a note |
 | Knowledge and projects | Knowledge, Review suggestions, Documents, People, Companies, Projects, Inside a project, Topics |
 | Settings: workspace | Settings overview, General settings, Projects settings, Topics, keywords and action items, Templates and skills, Quick Actions |
 | Settings: AI and voice | AI providers and models, Private Local AI, Recording and transcription, Dictation |
-| Settings: connections | Notifications, MCP Access, Export and share |
+| Settings: connections | Notifications, Calendar sync, MCP Access, Export and share |
 | Settings: system | Account and workspaces, Plan and license, Data and backup, Help & Tours, Settings Doctor |
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}

@@ -34,7 +34,7 @@ AI settings group the features into four **feature groups**. You can give each g
 | | Timeline | Writes the short live timeline bullets during a session |
 | **Dictation & voice commands** | Dictation polish | Cleans up dictated text before it is inserted ([Dictation](/voice/dictation#polish-with-ai)) |
 | | Command interpretation | Understands natural-language commands in chat and maps them to actions |
-| **Knowledge & titles** | Knowledge extraction | Finds memories, people and companies in sessions and documents during [knowledge scans](/knowledge/review-and-scans) |
+| **Knowledge & titles** | Knowledge extraction | Finds knowledge cards, people and companies in sessions and documents during [knowledge scans](/knowledge/review-and-scans) |
 | | Title generation | Writes short titles for notes and sessions when automatic titles are on |
 
 A model has to support what a feature needs. Every feature needs a text model. Dictation polish, title generation and the timeline need nothing more, so small fast models work well there. The other features also need **structured output**. TalkBar only lets you pick models that can serve a feature.
@@ -53,7 +53,9 @@ One **Default model** powers every feature you have not customized. There are tw
 - **Standard**: your everyday choice, used while Private AI Mode is off.
 - **Private AI**: must be a local model. Used while [Private AI Mode](/ai/private-ai-mode) is on.
 
-**Test** sends a tiny request to check that the default model answers.
+A default model has to serve every feature, so text-only models are not offered here. You can still assign them to the features that need only text.
+
+**Test** sends a short request for every enabled feature and lists the result, the model used and the response time for each one.
 
 ### Per-feature models
 
@@ -95,13 +97,13 @@ You can also keep one person's words out of AI with [Ignore speaker](/voice/spea
 
 ## Setting up AI
 
-The quickest start is **Set up AI** (logo menu → **Set up AI…**, or **Settings → AI Providers → Setup AI**). It walks you through providers and default models, and you can open it again at any time. Details are in [Providers and models](/ai/providers-and-models) and [Local models](/ai/local-models).
+The quickest start is the **Set up AI** window. Open it from the logo menu (**Set up AI…**) or with the **Setup AI** button in **Settings → AI Providers**. It covers providers, local models and default models, and you can open it again at any time. Details are in [Providers and models](/ai/providers-and-models) and [Local models](/ai/local-models).
 
 ## When AI does not work
 
 1. Open **Settings → Doctor** and click **Run all checks**. Each finding links to the setting that fixes it.
 2. In **Settings → AI Providers**, use **Test** on the provider, and check **Advanced → Diagnostics** for recent errors.
-3. If a cloud provider fails, an alert may offer **Fix now** or **Use Private AI** to switch to local models.
+3. When AI requests fail, an alert names the feature and the model and offers **Fix now** and **Details**. Once [Private AI Mode](/ai/private-ai-mode#when-it-is-available) is available, it also offers **Use Private AI** to switch to local models.
 4. For local models, check that they are downloaded under **Settings → Private Local AI**.
 
 See also [Troubleshooting](/help/troubleshooting).

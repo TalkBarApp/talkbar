@@ -162,6 +162,9 @@ body:
       - title: Уведомления
         to: /settings/notifications
         icon: i-heroicons-bell-alert
+      - title: Синхронизация календарей
+        to: /settings/calendar-sync
+        icon: i-heroicons-calendar-days
       - title: Экспорт и отправка
         to: /settings/export-and-share
         icon: i-heroicons-arrow-down-tray
@@ -174,6 +177,9 @@ body:
       - title: Лицензия
         to: /settings/license
         icon: i-heroicons-key
+      - title: Политика администратора
+        to: /settings/admin-policy
+        icon: i-heroicons-building-office-2
       - title: Помощь и туры, диагностика
         to: /settings/help-and-doctor
         icon: i-heroicons-lifebuoy

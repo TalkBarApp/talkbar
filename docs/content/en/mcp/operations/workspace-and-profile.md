@@ -170,7 +170,7 @@ Reads your TalkBar plan: its limits and how much of each this workspace and data
 
 **Arguments:** none besides `workspaceId`.
 
-**Returns:** `plan` (`{id, name}`, the plan in effect), `licensedPlan`, `previewTrialActive`, `previewTrialExpiresAt`, `environment`, `license` (`plan`, `status`, `paid`, `updatesUntil`, `onlineServicesUntil`, `renewalOpen`), `limits`, `features`, `upgrades` (`[{id, name, adds, limits}]`, empty on the top plan) and `upgradeUrl` (`null` when there is no plan above).
+**Returns:** `workspaceId`, `plan` (`{id, name}`, the plan in effect), `licensedPlan`, `previewTrialActive`, `previewTrialExpiresAt`, `environment`, `license` (`plan`, `status`, `paid`, `updatesUntil`, `onlineServicesUntil`, `renewalOpen`), `limits`, `features`, `upgrades` (`[{id, name, adds, limits}]`, empty on the top plan) and `upgradeUrl` (`null` when there is no plan above).
 
 - `limits` holds `projects` and `sessions` (per workspace), `workspaces`, `profiles` and `shareLinks` (per data folder) and `devices` (per license), each as `{max, used, per}`; `max: null` means unlimited. Other limits, such as `recordingMinutes`, have no `used`.
 - During an active Preview trial, `plan` is the trial plan and `licensedPlan` keeps the plan of your license.

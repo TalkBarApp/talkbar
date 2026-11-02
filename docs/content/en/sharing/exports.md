@@ -121,7 +121,7 @@ Each destination's menu has **Edit…**, **Open folder** or **Open in Notion**, 
 Rules export future completed sessions once their final summary is ready. Set them up in **Settings → Export & Share → Export Session → Automatic export rules**.
 
 1. Click **Add rule…**.
-2. Under **Apply to**, choose the **Workspace**, a project or a series. Series rules override project rules, which override the workspace rule.
+2. Under **Apply to**, choose **Whole workspace**, a project or a series. Series rules override project rules, which override the workspace rule.
 3. Choose **Use this rule**, **Inherit** (follow the project or workspace rule) or **Disabled** (no automatic export for this scope).
 4. Pick the **Destinations** and the content to export.
 5. Under **When to export**, choose **When ready**, **After a delay** (5, 15, 30, 60 or 120 minutes), or **Daily** at a **Local time** in a **Timezone**.

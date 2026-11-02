@@ -51,13 +51,13 @@ The **Importing audio file** window shows each stage and how long it has taken:
 6. **Writing the summary**.
 7. **Naming the session**: suggests a title.
 
-You can keep the window open. When the import finishes, click **View session** to open it. Imported sessions are completed sessions, and their header shows **From audio file**.
+You can keep the window open. When the import finishes, the session opens by itself on the recording screen; click **Details** in its header for the full [details page](/sessions/session-details). Imported sessions are completed sessions, and their details page shows **From audio file**.
 
 Click **Process in background** to keep working while it runs. The session shows **Importing** in the Sessions list, and a notification says **Audio import complete** when it's done. Click **View session** in the notification to open it.
 
 ## Cancel an import
 
-Click **Cancel import**. If some of the file was already transcribed, TalkBar keeps that part as a session. If nothing was transcribed yet, the empty session is removed.
+Click **Cancel import**. If some of the file was already transcribed, TalkBar keeps that part as a session; click **View session** to open it. If nothing was transcribed yet, the empty session is removed.
 
 ## Things to know
 

@@ -28,9 +28,11 @@ An Ollama server that counts as local can still be another computer, and it rece
 
 ## When it is available
 
-Private AI Mode is a restriction switch, so it only appears once there is something to restrict: a provider other than Built-in AI (including Ollama) that is turned on and has a model turned on.
+Private AI Mode is a restriction switch, so it only appears once there is something to restrict: a provider other than Built-in AI (including Ollama) that is turned on and has a model turned on. Ollama alone is enough, even on this computer.
 
-If you only use Built-in AI, all AI already runs on this computer. **Settings → Private Local AI** then says **Private AI Mode is not available**, and the switch is hidden.
+If you only use Built-in AI, all AI already runs on this computer. **Settings → Private Local AI** then says **Private AI Mode is not available**, the switch and the logo menu item are hidden, and the **Private AI** default model can't be changed.
+
+If you turn off or remove the last such provider while the mode is on, TalkBar turns the mode off.
 
 ## Turn it on or off
 
@@ -39,14 +41,14 @@ You can switch it from several places:
 - **Logo menu**: click the TalkBar logo and choose **Turn on Private AI Mode** or **Turn off Private AI Mode**.
 - **Settings → AI Providers**: the **Private AI Mode** switch at the top.
 - **Settings → Private Local AI**: the **Private AI Mode** switch at the top.
-- **System tray menu**: **Private AI Mode**.
+- **System tray menu** (the menu bar icon on macOS): **Private AI Mode**.
 
 ::screenshot{src="/screenshots/ai/private-ai-mode-switch.png" alt="Settings → Private Local AI with the Private AI Mode card at the top switched On, reading All AI runs on this computer. Any external providers you have connected are turned off." caption="The Private AI Mode switch"}
 ::
 
 ### While a session is recording
 
-You cannot change the mode while a session records. The switch is locked with the message **Session in progress. Stop the session to change Private AI Mode.** Stop the session first, or use a private session (below).
+You cannot change the mode while a session records. The switch is locked with the message **Session in progress. Stop the session to change Private AI Mode.** In the tray menu the item reads **Private AI Mode (session in progress)**. Stop the session first, or use a private session (below).
 
 ### If local models are missing
 
@@ -64,7 +66,9 @@ If you turn the mode on before the needed built-in models are downloaded, TalkBa
 
 ### Not fully local
 
-If a Private AI choice points at a provider TalkBar cannot confirm as local, the Private AI Mode card shows **Not fully local** and TalkBar tells you how many features use a non-local provider. Those features do not run while the mode is on. Reassign them to a local model in **Settings → AI Providers → AI Features** (Private AI tab).
+TalkBar only lets you choose local models for Private AI, but a choice can stop being local later: for example, you turn off **Treat host as local** for an Ollama server, or change its address. The Private AI Mode card then shows **Not fully local**, and when you turn the mode on, TalkBar tells you how many features use a non-local provider.
+
+TalkBar blocks those features: they do not run while the mode is on, and nothing is sent to that provider. To get them working, assign a local model in **Settings → AI Providers → AI Features** (**Per-feature models → Customize → Private AI**).
 
 ## Private AI for one session
 
@@ -76,7 +80,7 @@ You can keep a single session private without changing your everyday setup.
 
 The session runs on built-in local models only, and its summaries stay private. TalkBar turns Private AI Mode on while the session runs and restores your previous choice after the final summary is done. The session is marked **Private session**.
 
-**Private AI** needs at least one downloaded built-in model. If none is downloaded, the option is unavailable and points you to **Settings → Private Local AI**.
+The **Private AI** option appears once Private AI Mode is [available](#when-it-is-available). It needs at least one downloaded built-in model. If none is downloaded, the option is unavailable and its tooltip points you to **Settings → Private Local AI**.
 
 ::screenshot{src="/screenshots/ai/new-session-intelligence-private.png" alt="New session dialog with the Intelligence row showing the Default pill and the Private AI pill selected, with the note This session runs on built-in local models only, and its summaries stay private forever." caption="A private session"}
 ::
@@ -91,7 +95,7 @@ Private AI for a session only controls where AI runs. Sharing and export still w
 - Your Standard choices are kept and come back when you turn the mode off.
 - Model downloads still use the internet.
 
-If your organization manages TalkBar, it can keep Private AI Mode on. The switch then says **Your organization keeps Private AI Mode on.**
+If your organization manages TalkBar with an [admin policy](/settings/admin-policy), it can keep Private AI Mode on. The switch then says **Your organization keeps Private AI Mode on.**
 
 ## Related
 

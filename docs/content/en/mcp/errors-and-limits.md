@@ -42,6 +42,7 @@ Some codes add fields, listed below. Only a call to a tool name other than the [
 
 - `invalid_arguments` means change the request: a bad value, an unknown type or color, an empty name.
 - `failed` means the request was fine, but the current state of the item refuses it: "A topic with this name already exists", "A series with this id already exists; use another id or change the existing one", "Archived series cannot take new sessions".
+- An [administrator rule](/mcp/access-and-permissions#administrator-rules) also answers `failed`. Its message starts with `ADMIN_POLICY_LOCKED:` and ends "This setting is managed by your organization." Asking again will not help; only the administrator can change it.
 
 ### `busy` and retrying
 
@@ -130,11 +131,12 @@ Creating is not repeatable: two `notes.create` calls make two notes. After a `bu
 
 ## Things that are never available
 
-Whatever you switch on, an assistant cannot record or control a live session, edit a transcript, generate a summary, run TalkBar's AI features, change settings, delete anything permanently, empty a Trash, or add or re-index documents. There is no error code for these: the operations do not exist.
+Whatever you switch on, an assistant cannot record or control a live session, edit a transcript, generate a summary, run TalkBar's AI features, change settings, connect or sync calendars, delete anything permanently, empty a Trash, or add or re-index documents. There is no error code for these: the operations do not exist.
 
 ## Related
 
 - [The five MCP tools](/mcp/tools)
 - [Access and permissions](/mcp/access-and-permissions)
+- [Admin policy](/settings/admin-policy)
 - [talkbar-cli](/mcp/cli)
 - [Operations reference](/mcp/operations)

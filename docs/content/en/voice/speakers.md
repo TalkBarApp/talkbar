@@ -61,7 +61,7 @@ During or after a session, click a speaker chip to open its menu.
 | **Label** | Adds a role such as Client or Manager. See [Speaker labels](#speaker-labels). |
 | **Combine speakers…** | Moves all speech from this speaker to another one, when TalkBar split one person into two. |
 | **Color** | Changes the speaker's color. |
-| **Remove name** | Clears a name you gave, so the speaker goes back to its default label. |
+| **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
 
 When you name a speaker, that person appears in [People and companies](/knowledge/people-and-companies), linked to the session. Names can be up to 40 characters, and two speakers in one session cannot share the same name.
 

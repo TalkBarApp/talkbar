@@ -42,7 +42,7 @@ If **Start session** doesn't work, check for a **Recording in progress** notice 
 - The screen shows **Getting audio ready…**, then **Waiting for someone to speak** until the transcript starts. If it says **No audio detected yet — check your microphone or audio source.**, check that the right microphone and audio source are selected.
 - The live transcript appears by speaker. Click a speaker chip to rename the speaker, so the transcript and summary use real names.
 - The timeline sums up the conversation as it goes. Use **Ask AI** to ask about what has been said so far.
-- **Pause** and **Stop** are in the recording controls at the top.
+- The pause button (**Pause recording**) and **Stop** are in the recording controls at the top.
 
 ::screenshot{src="/screenshots/getting-started/recording-screen.png" alt="Recording screen during a live session: the session title and recording controls with timer, Pause and Stop at the top, the live transcript split by speaker with speaker chips in the main panel, and the timeline in the sidebar" caption="Recording a session"}
 ::

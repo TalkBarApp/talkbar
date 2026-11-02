@@ -25,7 +25,7 @@ The Settings sidebar groups the tabs into four sections.
 
 | Group | Tab | What you set there | Reference |
 | --- | --- | --- | --- |
-| Workspace | **General** | Appearance, session defaults, session detection, cleanup, knowledge scans, language, updates, startup, time, calendar, logs | [General](/settings/general) |
+| Workspace | **General** | Appearance, session defaults, session detection, cleanup, knowledge scans, language and custom translations, updates, startup, time, logs | [General](/settings/general) |
 | Workspace | **Projects** | Create, edit, pin and restore projects | [Projects, topics and keywords](/settings/projects-and-topics) |
 | Workspace | **Topics & Keywords** | Topics, AI keywords and action item labels | [Projects, topics and keywords](/settings/projects-and-topics) |
 | Workspace | **Templates & Skills** | Session templates, summary sections, note templates, skills and knowledge skills | [Templates & Skills](/settings/templates-and-skills) |
@@ -34,10 +34,12 @@ The Settings sidebar groups the tabs into four sections.
 | AI & Voice | **Private Local AI** | Private AI Mode and the models that run on your computer | [Private Local AI](/settings/private-local-ai) |
 | AI & Voice | **Voice** | Microphone, recording, transcription, dictation and speakers | [Voice](/settings/voice) |
 | Connections | **Notifications** | Email, Telegram, Slack, Teams and webhook channels, and desktop notifications | [Notifications](/settings/notifications) |
+| Connections | **Calendar sync** | Bring meetings from your calendars into Upcoming sessions, and set up the calendar view | [Calendar sync](/settings/calendar-sync) |
 | Connections | **MCP Access** | Let other AI apps on this computer work with your TalkBar data | [MCP Access](/settings/mcp-access) |
 | Connections | **Export & Share** | Export destinations and rules, share links, custom branding | [Export & Share](/settings/export-and-share) |
 | System | **Account** | Your profiles and workspaces | [Account and workspaces](/settings/account-and-workspaces) |
 | System | **License** | Your plan, license key and upgrades | [License](/settings/license) |
+| System | **Admin policy** | Lock settings for everyone on this computer. Shown only when an administrator turns it on, on the Business plan | [Admin policy](/settings/admin-policy) |
 | System | **Data & Backup** | Data folder, backups, transfer between computers, recovery code, reset | [Data & Backup](/settings/data-and-backup) |
 | System | **Help & Tours** | Replay onboarding and guided tours | [Help & Tours and Doctor](/settings/help-and-doctor) |
 | System | **Doctor** | Check your setup and jump to fixes | [Help & Tours and Doctor](/settings/help-and-doctor) |
@@ -98,12 +100,14 @@ If your organization manages TalkBar, some settings may be locked. A tab with lo
 - **Your organization manages some of these settings.** Some controls on the page are locked, and the others work as usual.
 - **Your organization locked these settings. They keep working as set up.** The whole setup on the page is locked. What's already configured keeps working, but you can't change it.
 
-Locked controls are greyed out. A **Managed by your organization** label marks them, and its tooltip reads **Your organization manages this setting.** Notices can appear on **General**, **AI Providers**, **Private Local AI**, **Notifications**, **MCP Access**, **Export & Share**, **Data & Backup** and **License**. To change a locked setting, contact your administrator.
+Locked controls are greyed out. A **Managed by your organization** label marks them, and its tooltip reads **Your organization manages this setting.** Notices can appear on **General**, **AI Providers**, **Private Local AI**, **Notifications**, **Calendar sync**, **MCP Access**, **Export & Share**, **Data & Backup** and **License**. To change a locked setting, contact your administrator. **Settings → License → Admin policy** lists the rules in force on your computer. Administrators set them up in [Admin policy](/settings/admin-policy).
 
 ## Related
 
 - [Getting around](/getting-started/getting-around)
 - [First-run setup](/getting-started/first-run-setup)
 - [General](/settings/general)
+- [Calendar sync](/settings/calendar-sync)
+- [Admin policy](/settings/admin-policy)
 - [Help & Tours and Doctor](/settings/help-and-doctor)
 - [Troubleshooting](/help/troubleshooting)

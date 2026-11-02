@@ -16,7 +16,7 @@ Your TalkBar workspace data stays on this computer unless you turn on an externa
 
 | Control | What it does |
 | --- | --- |
-| **Open data folder** | Opens TalkBar's data folder in File Explorer. |
+| **Open data folder** | Opens TalkBar's data folder in your file manager. |
 | **Open logs folder** | Opens the folder with TalkBar's application logs. Support may ask you for these. |
 
 To learn what is stored and where it goes, see [Privacy and your data](/data/privacy-and-your-data).
@@ -79,7 +79,7 @@ A transfer file moves chosen data to TalkBar on another computer. Unlike a backu
 
 If the file has more sessions than your plan allows, choose **Stop; I will free up space first** (default) or **Import anyway and move the oldest extra sessions to Trash**. If it needs another workspace or more projects than your plan allows, the dialog tells you before you import.
 
-After an import, **Reconnect these services** lists anything you need to set up again, such as an AI provider, a notification channel, an export destination or share branding, each with an **Open settings** button.
+After an import, **Reconnect these services** lists anything you need to set up again, such as an AI provider, a notification channel, an export destination, a calendar or share branding, each with an **Open settings** button. A calendar subscription's address isn't in the file, so you add it again.
 
 ## Danger zone
 

@@ -26,6 +26,7 @@ TalkBar has five plans: **Free**, **Personal**, **Plus**, **Pro** and **Business
 | **Private share links** | No | No | Yes | Yes | Yes |
 | **Share with specific people** | No | No | No | Up to 10 per link | Up to 50 per link |
 | **Custom branding** | No | Add-on | Add-on | Add-on | Included |
+| **Admin policy for company computers** | No | No | No | No | Yes |
 | **Priority support** | No | No | No | No | Yes |
 
 **Devices** is how many computers can use one license at the same time. More sharing details are in [Share links](/sharing/share-links#sharing-limits-by-plan).
@@ -119,9 +120,14 @@ TalkBar reminds you before your updates end.
 
 Custom branding puts your own name, logo and colors on shared pages and invitation emails. It is included in Business while its share link service is active. For Personal, Plus and Pro it is a yearly add-on: each purchase adds 12 months. Click **Add custom branding** in **Settings → License → Custom branding** to buy it, then set it up as described in [Share links](/sharing/share-links#custom-branding).
 
+## Admin policy
+
+The Business plan lets an administrator lock TalkBar settings for everyone on a company computer. **Settings → License → Admin policy** shows the policy on this computer on every plan. On Business, **Enable admin policy** turns it on or off, and **Show Admin policy page** adds the **Admin policy** tab to Settings, where you set the rules. Both switches need the computer's administrator password. See [License settings](/settings/license#admin-policy) and [Admin policy](/settings/admin-policy).
+
 ## Related
 
 - [License settings](/settings/license)
+- [Admin policy](/settings/admin-policy)
 - [Share links](/sharing/share-links)
 - [Account and workspaces](/settings/account-and-workspaces)
 - [Backup and restore](/data/backup-and-restore)

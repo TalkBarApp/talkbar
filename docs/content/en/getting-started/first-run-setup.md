@@ -111,7 +111,7 @@ You can revisit your profile, starter packs and AI setup at any time. Existing s
 
 When you run it again, setup opens on **Welcome** and can be closed at any time. Starter packs you choose are added; existing templates and skills remain unchanged. You can't start it while a recording is running.
 
-To change just the AI setup, click the TalkBar logo and choose **Set up AI…**, or open **Settings → AI Providers** and click **Setup AI**.
+To change just the AI setup, click the TalkBar logo and choose **Set up AI…**, or open **Settings → AI Providers** and click **Setup AI**. Both open the same **Set up AI** window.
 
 ## Related
 

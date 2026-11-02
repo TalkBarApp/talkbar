@@ -8,7 +8,7 @@ navigation:
 **Settings → Templates & Skills** holds the reusable building blocks TalkBar uses with AI. It has five inner tabs: **Session templates**, **Summary sections**, **Note templates**, **Skills** and **Knowledge**. This page lists what each tab shows and the actions available. For what templates and skills do in a session, see [Templates and skills](/sessions/templates-and-skills).
 
 ::callout{icon="i-heroicons-lock-closed" color="amber"}
-Creating, editing, duplicating and importing session templates, summary sections and note templates needs the Plus, Pro or Business plan. Creating, editing, duplicating and importing skills and knowledge skills needs the Pro or Business plan. On other plans you can still view, turn on or off, pin and export the built-ins. See [Plans and license](/data/plans-and-license).
+Creating, editing, duplicating and importing session templates, summary sections and note templates needs the Plus, Pro or Business plan. Creating, editing, duplicating and importing skills and knowledge skills needs the Pro or Business plan. On every plan you can view items, turn them on or off, pin them, set the default, export them, restore built-ins and delete your own. See [Plans and license](/data/plans-and-license).
 ::
 
 ## Common controls

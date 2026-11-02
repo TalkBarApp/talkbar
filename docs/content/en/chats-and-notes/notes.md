@@ -34,7 +34,11 @@ You can also bring an existing note into a session as context, from the session'
 
 ## Write a note
 
-The editor saves as you type. The top bar shows the save status (**Saving…**, **Saved**), a **Pin** button and the **⋮** menu.
+A note starts with its title. Below the title are the [links row](#link-a-note) and then the text. Type a title first, or come back to it later.
+
+The editor saves as you type. The bar above the title shows **Back**, the save status (**Unsaved changes**, **Saving…**, **Saved**), a **Pin** button and the **⋮** menu.
+
+The **⋮** menu has **Insert template**, **Formatting toolbar**, **Bubble menu**, **Ask AI bar**, **Dictate**, **Share**, **Copy as markdown**, **Export as markdown**, **Keyboard shortcuts** and **Move to trash**.
 
 ::screenshot{src="/screenshots/chats-and-notes/note-editor.png" alt="Note editor with a title, the links row showing a linked session, project and topic, a few paragraphs and a checklist, the slash menu open listing Text, Heading 1, Bullet List, Task List, Table and more, and the Ask AI bar at the bottom" caption="The note editor"}
 ::
@@ -57,7 +61,7 @@ Type **/** to insert a block:
 | **Audio** | Uploads an audio file (up to 50 MB). |
 | **Voice memo** | Records a voice memo (see below). |
 | **Quick poll** | A question with **Yes / No** or **Yes / Neutral / No** answers. |
-| **Ask AI** | Writes or generates content with AI at that spot. |
+| **Ask AI** | Writes or generates content with AI at that spot. See [the Ask AI block](#the-ask-ai-block). |
 | **Memory** | Embeds a snapshot of a saved memory card. |
 | **Timeline** | Embeds a section from a session timeline. |
 | **Action item** | Embeds an action item you can check off in the note. |
@@ -66,7 +70,7 @@ Type **/** to insert a block:
 | **Template** | Inserts a note template. |
 | **Dictate** | Speaks into the note at the cursor. |
 
-Select text to see the formatting bubble (**Bold**, **Italic**, **Underline**, **Highlight**, **Link**). From the **⋮** menu you can also show a **Formatting toolbar** and see **Keyboard shortcuts**.
+Select text to see the formatting bubble (**Bold**, **Italic**, **Underline**, **Highlight**, **Link**). In the **⋮** menu, **Bubble menu** turns this bubble on or off, **Formatting toolbar** shows a toolbar above the note, and **Keyboard shortcuts** lists the editor's shortcuts.
 
 ### Markdown
 
@@ -92,19 +96,55 @@ Click **Add link** to add one, and **Remove link** to take it off.
 ## Voice notes and dictation
 
 - **Voice memo**: type **/** and choose **Voice memo** to record up to 5 minutes from your microphone. The memo is saved in the note with a player. You can pause and resume while recording.
-- **Dictation**: choose **Dictate** in the **⋮** menu, use the microphone in the Ask AI bar, or hold your dictation shortcut. Your speech is typed into the note at the cursor. The dictation bar lets you pause, stop and change the **Language**, and **Polish on stop** cleans up the text when you finish. See [Dictation](/voice/dictation).
+- **Dictation**: type **/** and choose **Dictate**, click **Dictate into the note** in the Ask AI bar, or hold your dictation shortcut. Your speech is typed into the note at the cursor. The dictation bar lets you pause, stop and change the **Language**, and **Polish on stop** cleans up the text when you finish. **Dictate** in the **⋮** menu shows or hides the dictate button. See [Dictation](/voice/dictation).
 - **Audio files**: paste, drop or upload audio files up to 50 MB.
 
 ## Ask AI in a note
 
-The **Ask AI** bar at the bottom of the note writes or changes text for you. Turn it on or off from the **⋮** menu (**Ask AI bar**).
+A note has two ways to use AI: the **Ask AI bar** at the bottom of the note, and the **Ask AI** block you insert with **/**. Both need an AI model. If none is assigned, the bar tells you to assign a provider in **Settings → AI Providers**. See [Providers and models](/ai/providers-and-models).
 
-- Type what you want, for example "Turn this into an agenda", and press `Enter`.
-- Choose what the AI sees with **Share with AI**: **No context**, **Selected text**, **Previous paragraphs** or **Full note**.
-- Select text first for quick actions: **Polish** (reads more naturally, same meaning), **Fix grammar**, **Shorter** and **Expand**.
-- Review the result, then **Insert at cursor**, **Insert below**, **Replace selection**, **Regenerate** or **Discard**.
+### The Ask AI bar
 
-The Ask AI bar needs an AI model. If none is assigned, it tells you to assign a provider in **Settings → AI Providers**. See [Providers and models](/ai/providers-and-models).
+The **Ask AI bar** writes or changes text for you. Turn it on or off from the **⋮** menu (**Ask AI bar**). To jump to it from anywhere in the note, press `Ctrl+J`, or `Cmd+J` on macOS.
+
+- Type what you want, for example "Turn this into an agenda", and press `Enter`. `Shift+Enter` starts a new line.
+- With text selected, the request is about that text, and the bar shows **Replace selection**. With nothing selected, the AI reads the note's title and text, and the bar shows **Insert at cursor**. In a session note, it also reads that session's summary or timeline so far and the latest transcript.
+- Click an [AI command](#ai-commands) to run a ready-made request.
+- Review the result. With selected text, choose **Replace selection** or **Insert below**. Otherwise choose **Insert at cursor**. **Regenerate** asks again, and **Discard** drops the result.
+
+### AI commands
+
+AI commands are one-click requests. The first four sit in the Ask AI bar, and the rest are under **More**. TalkBar includes nine:
+
+| Command | What it does | Needs selected text |
+| --- | --- | --- |
+| **Polish** | Makes the text read more naturally, with the same meaning and tone. | Yes |
+| **Fix grammar** | Fixes spelling, grammar and punctuation only. | Yes |
+| **Shorter** | Makes the text much shorter and keeps every key point. | Yes |
+| **Expand** | Adds detail, examples and clearer structure. | Yes |
+| **Summarize** | Summarizes the selected text, or the whole note, in a few sentences. | No |
+| **Bullet points** | Turns the text into a bulleted list. | Yes |
+| **Action items** | Lists the action items in the selected text, or the whole note, as a checklist. | No |
+| **Simplify** | Rewrites the text in plain language. | Yes |
+| **Continue writing** | Adds one or two paragraphs from the cursor. | No |
+
+**More** also has a search box that covers every command, **Add command** and **Manage AI commands**.
+
+**Manage AI commands** opens the **AI commands** window:
+
+- Drag a command to change the order. The first four shown commands are marked **In the bar**.
+- Use the switch to show or hide a command.
+- The pencil button edits a command: its **Title** (up to 40 characters), its **Prompt (optional)** (up to 1,000 characters; when empty, the title is sent as the request) and **Needs selected text**.
+- **Reset to default** restores a built-in command you edited. Built-in commands can be hidden but not deleted.
+- **Add command** creates your own, up to 30. You can delete your own commands.
+
+### Which language the AI writes in
+
+The AI keeps the language of the text it works on: the selected text, or the note. In an empty note, it uses your [**Response Language**](/settings/ai-providers#response-language) setting. With **Auto**, the default, an empty note uses the language of your request. To get another language, ask for it in the request.
+
+### The Ask AI block
+
+Type **/** and choose **Ask AI** to open a prompt at that spot in the note. **Share with AI** chooses what the AI sees: **No context**, **Selected text**, **Previous paragraphs** (the default) or **Full note**. Press `Enter` to generate, then choose **Accept**, **Reject** or **Regenerate**.
 
 ## Note templates
 
@@ -143,9 +183,9 @@ Manage note templates in **Settings → Templates & Skills → Note templates**.
 
 - **Pin** keeps a note at the top of your list.
 - **Share** publishes the note as a link. See [Share links](/sharing/share-links).
-- **Move to trash** moves the note to **Trash**. If you leave a note empty, TalkBar asks whether to keep it or move it to Trash.
+- **Move to trash** moves the note to **Trash**. If you leave a note empty, TalkBar asks whether to **Keep note** or **Move to trash**.
 
-In **Trash**, **Restore** brings a note back and **Delete permanently** removes it. **Empty trash** permanently deletes every note in Trash.
+In **Trash**, **Restore** brings a note back. **Delete** removes it for good after you confirm with **Delete permanently**. **Empty trash** permanently deletes every note in Trash after you confirm.
 
 ## Related
 

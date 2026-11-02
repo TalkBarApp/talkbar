@@ -17,12 +17,12 @@ TalkBar can record three kinds of audio. You set the default in **Settings → V
 | --- | --- | --- |
 | **Microphone** | Your own voice | Voice notes, in-person conversations |
 | **System audio** | What your computer plays, such as the other people on a call | Webinars, videos, calls where you mostly listen |
-| **Microphone + system audio** (**Mic + System** in New session) | Both at once | Online meetings and calls |
+| **Microphone + system audio** (**Mic + System** in New session and the session bar) | Both at once | Online meetings and calls |
 
 No bot joins the call. TalkBar listens on your computer, so it works with Zoom, Microsoft Teams, Google Meet, other meeting apps and browser calls.
 
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
-Recording-consent rules vary by region. To be reminded each time a session starts that informing participants is your responsibility, turn on **Recording notice** in **Settings → General**.
+Recording-consent rules vary by region. To be reminded each time a session starts that informing participants is your responsibility, turn on **Recording notice** in **Settings → General → Session defaults**.
 ::
 
 If no microphone is connected, the microphone options are unavailable and TalkBar says **Connect a microphone to use Microphone or Microphone + system audio.** Use the refresh button next to **Audio source** after you plug one in.

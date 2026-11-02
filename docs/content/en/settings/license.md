@@ -1,6 +1,6 @@
 ---
 title: License
-description: Reference for Settings → License — your current plan and usage, activating and managing a license key, upgrades and the custom branding add-on.
+description: Reference for Settings → License — your plan and usage, activating and managing a license key, upgrades, custom branding and the admin policy.
 navigation:
   icon: i-heroicons-key
 ---
@@ -72,9 +72,23 @@ A yearly add-on that lets you share sessions, notes and chats under your own bra
 
 **Set up custom branding** opens **Settings → Export & Share → Custom branding**. See [Export and share settings](/settings/export-and-share).
 
+## Admin policy
+
+This section is on the page on every plan. It shows the rules your organization sets for everyone who uses TalkBar on this computer, with a status: **In force**, **Disabled**, **Could not be read** or **Not set**. Setting up rules needs a Business license. Without one, the section has a **Business** badge.
+
+| Control | What it does |
+| --- | --- |
+| **Enable admin policy** | Enforces the rules on this computer. Turning it off, after you confirm, keeps the rules but stops enforcing them. Changing it needs the Business plan, a policy on this computer and the computer's administrator password. |
+| **Show Admin policy page** | Adds the [Admin policy](/settings/admin-policy) tab to Settings for everyone on this computer. Shown on the Business plan only. Changing it needs the computer's administrator password. |
+| **Open admin policy** | Opens that tab. Shown once the tab is turned on. |
+| **Remove policy** | Removes the policy from this computer, after you confirm and approve the administrator prompt. People on this computer can then change every setting again. This doesn't need a Business license. |
+
+If the section shows **The policy could not be read**, TalkBar uses the strictest settings until your administrator fixes the policy on this computer.
+
 ## Related
 
 - [Plans and license](/data/plans-and-license)
+- [Admin policy](/settings/admin-policy)
 - [Account and workspaces](/settings/account-and-workspaces)
 - [Export and share settings](/settings/export-and-share)
 - [Share links](/sharing/share-links)

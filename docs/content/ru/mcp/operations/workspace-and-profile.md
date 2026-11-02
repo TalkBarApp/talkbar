@@ -170,7 +170,7 @@ navigation:
 
 **Аргументы:** только `workspaceId`.
 
-**Возвращает:** `plan` (`{id, name}`, действующий тариф), `licensedPlan`, `previewTrialActive`, `previewTrialExpiresAt`, `environment`, `license` (`plan`, `status`, `paid`, `updatesUntil`, `onlineServicesUntil`, `renewalOpen`), `limits`, `features`, `upgrades` (`[{id, name, adds, limits}]`, пустой на самом старшем тарифе) и `upgradeUrl` (`null`, если тарифа выше нет).
+**Возвращает:** `workspaceId`, `plan` (`{id, name}`, действующий тариф), `licensedPlan`, `previewTrialActive`, `previewTrialExpiresAt`, `environment`, `license` (`plan`, `status`, `paid`, `updatesUntil`, `onlineServicesUntil`, `renewalOpen`), `limits`, `features`, `upgrades` (`[{id, name, adds, limits}]`, пустой на самом старшем тарифе) и `upgradeUrl` (`null`, если тарифа выше нет).
 
 - `limits` содержит `projects` и `sessions` (на рабочее пространство), `workspaces`, `profiles` и `shareLinks` (на папку данных) и `devices` (на лицензию), каждый в виде `{max, used, per}`; `max: null` означает «без ограничений». У других лимитов, например `recordingMinutes`, нет `used`.
 - Во время пробного периода тестовой версии `plan` — тариф пробного периода, а `licensedPlan` сохраняет тариф вашей лицензии.

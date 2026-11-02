@@ -11,7 +11,7 @@ TalkBar tells you about reminders and activity with desktop notifications on thi
 
 **Desktop Notifications** is on by default. While it is on, TalkBar shows reminders and activity as system notifications, for example:
 
-- reminders for scheduled sessions (new scheduled sessions start with the reminders chosen in **Settings → General → Calendar → Default reminders**), and the countdown before a session starts automatically;
+- reminders for scheduled sessions (new scheduled sessions start with the reminders chosen in [**Settings → Calendar sync → Default reminders**](/settings/calendar-sync)), and the countdown before a session starts automatically;
 - a warning before an unattended session ends on its own (**Notify before a session auto-ends** in [Voice settings](/settings/voice)).
 
 When the TalkBar window is in front, TalkBar shows these in the app instead, so you don't get the same notice twice.
@@ -40,7 +40,7 @@ A delivery channel is a place outside TalkBar that can receive messages. Channel
 
 | Channel type | What you need |
 | --- | --- |
-| **Email (SMTP)** | An email account to send from. Presets for **Gmail**, **Outlook** and **Yahoo** need an app password from that provider. **Custom SMTP** works with any other server (host, port, security, username, password). |
+| **Email (SMTP)** (**Email** in the **Create channel** form) | An email account to send from. Presets for **Gmail**, **Outlook** and **Yahoo** need an app password from that provider. **Custom SMTP** works with any other server (host, port, security, username, password). |
 | **Telegram** | A bot you create with @BotFather, and the chats or channels it should post to. Add the bot to the group or channel, send any message there, then click **Detect chat IDs**, or paste the chat IDs yourself. |
 | **Slack** | An incoming webhook URL from a Slack app. |
 | **Microsoft Teams** | A Teams Workflows webhook URL, using the trigger *When a Teams webhook request is received* with authentication set to *Anyone*. Older Office 365 connector URLs are not supported. |
@@ -51,9 +51,9 @@ You can create several channels of any type and turn each one on or off.
 ### Add a channel
 
 1. Open **Settings → Notifications** and click **Add Channel** (or **Create channel** in **Delivery Channels**).
-2. Choose the channel type and follow the steps. Slack, Teams and custom webhooks have a short help link with step-by-step instructions.
+2. Choose the channel type and follow the steps. Slack, Teams and custom webhooks fit on one page, with a short help link that has step-by-step instructions.
 3. Optionally choose the [automatic notifications](#automatic-notifications) this channel receives.
-4. Use **Send test** to check delivery, then click **Create channel**.
+4. Use **Send test** (**Send Test** in the **Create channel** form) to check delivery, then click **Create channel**.
 
 ::screenshot{src="/screenshots/sharing/add-channel-type.png" alt="The Set up a channel wizard on its first step, asking Which kind of channel would you like to set up, with cards for Email (SMTP), Telegram, Slack, Microsoft Teams and Custom webhook" caption="Choosing a channel type"}
 ::

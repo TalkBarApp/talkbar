@@ -33,7 +33,7 @@ The window has four parts. Use the step bar at the top to jump between them. **T
 | --- | --- |
 | **Template cards** | A [session template](/sessions/templates-and-skills) is a type of session, such as *Meeting*, *1:1*, *Interview* or *Voice Note*. It sets the summary sections, AI instructions and default audio and speaker settings. Pinned templates come first. Click **More…** to search every enabled template by category, or **Manage templates…** to open template settings. |
 | **Sections** | The summary sections this template writes. Click **Customize** to switch sections on or off, or **Add section** to borrow a section from another template. These changes apply to this session only. Click **Done** when finished. |
-| **Audio** | **Microphone** (your voice), **System audio** (the sound your computer plays, such as the other side of a call) or **Mic + System** (both). |
+| **Audio** | **Microphone** (your voice), **System audio** (the sound your computer plays, such as the other side of a call) or **Mic + System** (both; **Microphone + system audio** in **Settings → Voice**). |
 | **Upload audio file** | Builds the session from an existing recording instead. See [Importing recordings](/sessions/importing-recordings). |
 | **Speakers** | How many people you expect: **Just you**, **You + 1**, **Small (2–4)** or **Large (5–8)**. This helps TalkBar tell voices apart. |
 | **Speakers at start** | The expected voices as slots, starting with **You**. Use the buttons next to it to add or remove slots. Click a slot to type a name, or type `@` to pick a saved person. New voices fill free slots in order; you can rename or combine speakers later. |

@@ -16,6 +16,8 @@ There are two ways to add a channel:
 - **Add Channel** at the top of the page opens a step-by-step setup that explains where to get each credential and lets you send a test before you finish.
 - **Create channel** in the Delivery Channels section opens the same fields as a single form.
 
+While you have no channels, the section also shows **Set up a channel**, which opens the step-by-step setup.
+
 Passwords, bot tokens, webhook URLs and header values are stored encrypted on this computer.
 
 ::screenshot{src="/screenshots/settings/notifications-delivery-channels.png" alt="Settings → Notifications showing the Delivery Channels list with an email channel and a Telegram channel, each with a provider badge, an on/off switch and Send Test, Edit and Delete buttons, and the Desktop Notifications section below" caption="Delivery channels and desktop notifications"}
@@ -25,7 +27,7 @@ Passwords, bot tokens, webhook URLs and header values are stored encrypted on th
 
 | Channel type | What you need |
 | --- | --- |
-| **Email** | An email account that can send through SMTP. Choose **Gmail**, **Outlook**, **Yahoo** or **Custom SMTP**. Gmail, Outlook and Yahoo need an app password, and the setup links to where you create one. |
+| **Email** (**Email (SMTP)** in the step-by-step setup) | An email account that can send through SMTP. Choose **Gmail**, **Outlook**, **Yahoo** or **Custom SMTP**. Gmail, Outlook and Yahoo need an app password, and the setup links to where you create one. |
 | **Telegram** | A bot token from @BotFather. The setup can verify the token and detect the chats the bot can post to. |
 | **Slack** | An incoming webhook URL from Slack. |
 | **Microsoft Teams** | A webhook URL from a Teams Workflows webhook trigger. |

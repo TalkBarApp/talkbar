@@ -14,7 +14,7 @@ New to recording? Start with [Your first session](/getting-started/first-session
 | Part | What it is |
 | --- | --- |
 | Transcript | What was said, split by speaker, with times. |
-| Timeline | Short AI notes written every few minutes while you record. |
+| Timeline | Short AI notes written while you record, every 10 seconds by default. |
 | Summary | The final write-up, organized into the sections of the session's [template](/sessions/templates-and-skills). |
 | Notes | Your own rich-text note for the session. |
 | Action items | Tasks, follow-ups, questions and decisions from the session. |

@@ -49,7 +49,7 @@ The table has one row per kind of data: **Sessions**, **Notes**, **Projects**, *
 
 The header shows how many read and write operations are on. Permissions can't be changed while the MCP server is off. Operations blocked by your organization show **Blocked by your organization**.
 
-::screenshot{src="/screenshots/settings/mcp-permissions.png" alt="The Permissions card on Settings → MCP Access with the Read and Write columns, the Sessions row expanded to show its single read and write operations with On/Off switches, and the Reset to Default, Enable All and Disable All buttons in the header"}
+::screenshot{src="/screenshots/settings/mcp-permissions.png" alt="The Permissions card on Settings → MCP Access with the Read and Write columns, the Sessions row expanded to show its single read and write operations with On/Off switches, and the Reset to Default, Enable All and Disable All buttons in the header" caption="The Permissions card"}
 ::
 
 ## Server Settings

@@ -116,7 +116,7 @@ In both places, switch sections on or off, or **Add section** to borrow one from
 
 ## Skills
 
-A **skill** is a reusable prompt that helps the AI write or analyze your sessions and notes. You pick a skill in a chat: click **Skills** in the chat box and choose one. The skill applies to that request, and the result is the chat reply. Skills don't run on their own and don't change the session summary. See [Ask TalkBar](/chats-and-notes/ask-talkbar).
+A **skill** is a reusable prompt that helps the AI write or analyze your sessions and notes. You pick a skill in a chat: click **Skills** in the message box, or type **/** in an empty box, and choose one. The skill applies to that request, and the result is the chat reply. Skills don't run on their own and don't change the session summary. See [Use a skill](/chats-and-notes/ask-talkbar#use-a-skill).
 
 TalkBar includes 24 built-in skills, all turned on:
 
@@ -152,7 +152,7 @@ TalkBar also includes **44 note templates** for structured notes, in categories 
 | Plus | Yes | Yes | No |
 | Pro, Business | Yes | Yes | Yes |
 
-On every plan, you can turn templates and skills on or off, pin them, set the default, export them, restore built-ins and delete your own. See [Plans and license](/data/plans-and-license).
+Custom skills include knowledge skills. On every plan, you can view templates and skills, turn them on or off, pin them, set the default, export them, restore built-ins and delete your own. See [Plans and license](/data/plans-and-license).
 
 ## Related
 

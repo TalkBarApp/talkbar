@@ -35,7 +35,7 @@ The **⋮** menu:
 
 | Action | What it does |
 | --- | --- |
-| **Record follow-up** | Starts recording a linked follow-up right away, with the same series, project, title and template. |
+| **Record follow-up** | Starts recording a linked follow-up right away, with the same series, project, title and template. On the recording screen, this is **Follow-up** in the **New session** menu. |
 | **Schedule follow-up** | Opens the Schedule window, filled in with the series, project and title. |
 | **Scan for knowledge** | Scans this session for knowledge cards. Hidden when the session's privacy mode doesn't allow it. See [Review and scans](/knowledge/review-and-scans). |
 | **Export session** | Exports the session. After the first export, it becomes a submenu with **Export again…**, a way to open the exported files, and **View export history**. See [Exports](/sharing/exports). |
@@ -142,6 +142,7 @@ Click a speaker's chip, in **Participants** or in the transcript, to open its me
 | **Label** | Gives the speaker a role label, such as *Client* or *Manager*. **Manage labels** opens **Settings → Voice → Speakers**. |
 | **Combine speakers…** | Moves all speech from this speaker to another one, when TalkBar split one person in two. |
 | **Color** | Changes the speaker's color. |
+| **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
 
 Names carry into the transcript and summary. See [Speakers](/voice/speakers) for how TalkBar recognizes voices.
 

@@ -1,6 +1,6 @@
 ---
 title: Troubleshooting
-description: Fix common problems with recording, transcripts, AI providers, model downloads, imports, sharing and updates, and find out how to get help.
+description: Fix common problems with recording, transcripts, AI providers, model downloads, imports, sharing, calendars and updates, and find out how to get help.
 navigation:
   icon: i-heroicons-wrench-screwdriver
 ---
@@ -24,7 +24,7 @@ Open **Settings → Doctor** and click **Run all checks**. Settings Doctor check
 ::screenshot{src="/screenshots/help/settings-doctor.png" alt="Settings → Doctor page after Run all checks: the check groups AI, Local Models, Voice, Notifications and Application, each check with an OK, Needs a look or Issue badge and a fix button" caption="Settings Doctor"}
 ::
 
-See [Help and Doctor settings](/settings/help-and-doctor).
+See [Help & Tours and Doctor](/settings/help-and-doctor).
 
 ## Recording
 
@@ -54,7 +54,7 @@ Another session is recording. Open it and stop it, or use **Schedule for later**
 
 ### "Recording interrupted"
 
-TalkBar stopped unexpectedly, for example because the app or computer closed. Everything transcribed so far was kept. Choose **Continue** to keep recording, **Complete** to close the session and generate the summary, or **Decide later**.
+TalkBar stopped unexpectedly, for example because the app or computer closed. Everything transcribed so far was kept. Choose **Continue** to keep recording, or **Complete** to close the session and generate the summary. Under **More**, **Stop for now** saves what was recorded so you can continue later, and **Decide later** keeps the session interrupted for now.
 
 ### "Session audio still needs to be saved"
 
@@ -132,6 +132,47 @@ If part of the file was transcribed, it was kept: open the session. Otherwise tr
 
 See [Share links](/sharing/share-links), [Exports](/sharing/exports) and [Notifications](/sharing/notifications).
 
+## Calendar sync
+
+### A calendar shows "Last sync failed"
+
+- Check your internet connection, then choose **Sync now** in the calendar's menu in **Settings → Calendar sync**.
+- If you reset your calendar's secret address, paste the new one with **Edit…**.
+- A calendar larger than 4 MB is refused.
+- **Your organization turned off calendar subscriptions.** means subscriptions are locked on this computer. Importing an `.ics` file still works.
+
+### Meetings from a calendar don't appear
+
+- TalkBar imports timed events from 7 days back to 90 days ahead. All-day events and events marked as free time are left out, and so are meetings you declined, if you entered **Your calendar email (optional)**.
+- Each calendar belongs to one workspace. Check that you are in the right one.
+- A calendar marked **Paused** doesn't sync. Choose **Resume syncing** in its menu.
+- An imported `.ics` file stays as it was. To update it, choose **Import a newer file…** in its menu.
+
+### A meeting from a calendar has no reminder
+
+**Remind me about** decides which meetings get reminders. By default, only meetings with a video link do. To change one meeting, click **Remind me** on its row. See [Muted meetings](/settings/calendar-sync#muted-meetings).
+
+## Settings managed by your organization
+
+### A setting is greyed out or marked "Managed by your organization"
+
+An administrator set an admin policy on this computer. You can't change the locked settings, and what is already set up keeps working. Ask your administrator if you need a change. See [Settings managed by your organization](/settings/overview#settings-managed-by-your-organization).
+
+### "The policy could not be read"
+
+TalkBar uses the strictest settings until your administrator fixes the policy on this computer. See [Admin policy](/settings/admin-policy).
+
+## Custom translations
+
+### Your custom wording doesn't appear
+
+- In **Settings → General → Application UI Language → Custom translations**, check that the switch next to **Custom translations** is on.
+- Custom translations apply to one language on this computer. Check that you are using the language you changed.
+
+### "Could not send your suggestions."
+
+Check your internet connection and try again. If the message says there are too many translations, select fewer and send them in smaller batches. If you sent many messages in a short time, try again in a few minutes. See [Custom translations](/settings/general#custom-translations).
+
 ## Updates
 
 - **"Could not check for updates"**: check your internet connection and try again from the TalkBar logo menu (**Check for updates**) or **Settings → Check for Update**.
@@ -174,6 +215,6 @@ The form doesn't attach log files. If the team asks for logs, send them by email
 ## Related
 
 - [FAQ](/help/faq)
-- [Help and Doctor settings](/settings/help-and-doctor)
+- [Help & Tours and Doctor](/settings/help-and-doctor)
 - [Backup and restore](/data/backup-and-restore)
 - [Your first session](/getting-started/first-session)

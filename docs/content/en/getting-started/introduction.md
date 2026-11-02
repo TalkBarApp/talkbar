@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: TalkBar is a private AI note taker for Windows and macOS that records meetings and calls from your desktop and keeps your data on your computer.
+description: TalkBar is a private AI note taker for Windows that records meetings and calls from your desktop and keeps your data on your computer.
 navigation:
   icon: i-heroicons-sparkles
 ---
@@ -27,7 +27,7 @@ TalkBar removes the meeting bot, not your responsibilities. Telling people they 
 - **Private AI Mode** keeps AI on local models only. One switch blocks cloud and CLI providers.
 - **Your data stays in one folder** on your computer. Open it from **Settings → Data & Backup → Open data folder**. You can open it, back it up to a ZIP file and restore it.
 
-Apart from what you start or set up yourself, such as exports, share links, notifications and requests to your own AI provider, TalkBar uses the network for model downloads, update checks and anonymous usage statistics. You can turn usage statistics off in **Settings → General → Share usage statistics**. Recordings, transcripts, notes and chats are never included.
+Apart from what you start or set up yourself, such as exports, share links, notifications, calendar subscriptions and requests to your own AI provider, TalkBar uses the network for model downloads, update checks and anonymous usage statistics. You can turn usage statistics off in **Settings → General → Share usage statistics**. Recordings, transcripts, notes and chats are never included.
 
 Read more in [How TalkBar uses AI](/ai/how-talkbar-uses-ai), [Private AI Mode](/ai/private-ai-mode) and [Privacy and your data](/data/privacy-and-your-data).
 
@@ -45,9 +45,9 @@ Between conversations you can also write notes, chat with your sessions and docu
 
 | Requirement | Details |
 | --- | --- |
-| Operating system | Windows or macOS. Check the release for supported versions and hardware. |
+| Operating system | 64-bit Windows. A Mac version is in progress. Check the release for supported versions and hardware. |
 | Disk space | Room for the speech, speaker and AI models you download, plus your recordings. First-run setup shows the size of each download and the free space on the drive. |
-| Internet | Needed to download the installer and models, and for cloud AI providers, sharing and updates. Transcription and Built-in AI run on this computer once their models are downloaded. |
+| Internet | Needed to download the installer and models, and for cloud AI providers, sharing, calendar subscriptions and updates. Transcription and Built-in AI run on this computer once their models are downloaded. |
 | Audio | A microphone to record your own voice. Without one you can still record system audio. |
 
 Local AI models run faster on more capable computers. During setup, the **Model Advisor** measures this computer and marks the model it recommends.

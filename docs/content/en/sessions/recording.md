@@ -7,7 +7,7 @@ navigation:
 
 Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
 
-When you click **Start session**, TalkBar opens the recording screen. The transcript appears by speaker as people talk, the timeline adds short AI notes every few minutes, and you can take notes, mark moments and ask questions while you record.
+When you click **Start session**, TalkBar opens the recording screen. The transcript appears by speaker as people talk, the timeline adds short AI notes as the conversation goes (every 10 seconds by default), and you can take notes, mark moments and ask questions while you record.
 
 ## Before the transcript starts
 
@@ -60,19 +60,23 @@ Live speech, split by speaker. New lines appear at the bottom; click **Jump to l
 
 - open the **Action items** and **Bookmarks** menus for this session;
 - change the order (**Oldest first** or **Newest first**) and how the transcript looks;
-- choose **Original**, **Both** or **Translation** when [live translation](/voice/live-translation) is on.
+- choose **Original**, **Both** or the target language (for example **Russian**) when [live translation](/voice/live-translation) is on.
 
 Right-click a line, or select text in it, to **Set Action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker with **Assign to…**.
 
 ### Notes
 
-Your own rich-text note for the session, saved as you type (**Saving…**, **Saved**). Notes are pinned to the timeline, so you can see when you wrote them. The panel menu offers **Dictate**, **Ask AI**, **Expand notes**, and **View** options such as **Show toolbar** and **Bubble menu**.
+Your own rich-text note for the session, saved as you type (**Saving…**, **Saved**). Notes are pinned to the timeline, so you can see when you wrote them. Type `/` and choose **Timestamp** to insert the current session time.
 
-If you prepared the session, your prep notes open here. See [Notes](/chats-and-notes/notes).
+If you prepared the session, your prep notes open here.
+
+The **Ask AI** bar at the bottom of the note writes for you, and it sees the live session. With no text selected, it works from the session's summary or timeline so far and the latest transcript, so you can ask for "the decisions so far" while people talk. Review the result, then **Insert at cursor**, **Regenerate** or **Discard**. Speakers you chose to ignore are left out. In a private session, or with the **Sensitive** privacy mode, the bar doesn't read the session.
+
+**Expand notes** gives the note more room. The **View** menu turns **Show toolbar**, **Bubble menu**, **Ask AI** and **Dictate** on or off. See [Notes](/chats-and-notes/notes) and [Ask AI in a note](/chats-and-notes/notes#ask-ai-in-a-note).
 
 ### Timeline
 
-The AI summary while you record: short notes added every few minutes once people talk. Each entry links back to the transcript (**Show in transcript**). The panel menu sets the order, bullet style, the **Timeline language** and the AI model used for the timeline. It also has **Action items** and **Bookmarks** menus.
+The AI summary while you record: short notes added once people talk. The timeline refreshes every 10 seconds by default; change this with [**Timeline frequency**](/settings/voice#timelines). Each entry links back to the transcript (**Show in transcript**). The panel menu sets the order, bullet style, the **Timeline language** and the AI model used for the timeline. It also has **Action items** and **Bookmarks** menus.
 
 If the timeline can't be written for a while, TalkBar shows **Live summary is temporarily unavailable** and keeps trying. Your transcript keeps recording.
 
@@ -85,6 +89,8 @@ Knowledge cards, mentions and action items for the session, in three tabs:
 | **Mentions** | Cards and action items that came up in the conversation, with the time they were heard. Mark one **Not relevant** to stop flagging it in this session. |
 | **Cards** | The session's knowledge deck: cards you attached, and relevant cards TalkBar recalls as you talk (unless the privacy mode turns this off). Cards you attached light up when they are mentioned. |
 | **Action items** | Open items brought in from earlier sessions or prep, and items you add now. Mark them done as you go. |
+
+A tab appears once it has something to show, and the tabs are hidden while only one does. When something is mentioned, the panel switches to **Mentions**. If you just picked another tab, it stays there and **Mentions** shows a dot instead.
 
 Use **Add** in the panel header for a **New card**, **Add from knowledge**, a **New action item** or **Add existing action item**. A card's menu can pin it, **Convert to task**, **Add to note**, confirm it is **Still true**, or **Remove from session** (the card stays in your knowledge). See [Knowledge cards](/knowledge/knowledge-cards) and [Action items](/knowledge/action-items).
 
@@ -117,7 +123,7 @@ Click **Layout** to arrange the panels:
 
 ## Pause and breaks
 
-Click the pause button (**Pause recording**) to stop capturing for a while, for example during a private side conversation. While paused, nothing is recorded or transcribed, and the timer stops. Click **Resume** to continue. The transcript shows the gap, such as **Paused for 5 min**.
+Click the pause button (**Pause recording**) to stop capturing for a while, for example during a private side conversation. While paused, nothing is recorded or transcribed, and the timer stops. Click **Resume** to continue.
 
 TalkBar can also pause and stop on its own. In **Settings → Voice → Recording → Session end**:
 
@@ -128,6 +134,18 @@ TalkBar can also pause and stop on its own. In **Settings → Voice → Recordin
 | **Notify before a session auto-ends** | Shows a desktop notification when an unattended session is about to auto-stop. | On |
 
 Before an auto-stop, a **Session inactive** banner counts down (**Auto ending the session in**). Click **Continue** to keep recording, **Stop Session** to stop now, or **Ignore for this session** to turn auto-stop off for this session.
+
+### Markers in the transcript
+
+The transcript marks each break with a line between the turns, so you can see where the gaps are:
+
+| Marker | What it means |
+| --- | --- |
+| **Paused** / **Paused (auto)** | The session is paused right now, by you or by Auto-pause. |
+| **Paused for …** | You paused the session, then resumed it. The marker gives the length, such as **Paused for 5 min**. |
+| **Auto-paused for …** | Auto-pause paused the session during silence, and it resumed when someone spoke. |
+| **Stopped for …** | You stopped the recording, then used **Continue session**. |
+| **Interrupted for …** | The recording stopped unexpectedly, then you continued it. |
 
 ## The session bar
 
@@ -148,7 +166,7 @@ Hiding the bar doesn't stop the recording. On the Free plan, the bar also shows 
 
 ## After you stop
 
-When you click **Stop**, the recording ends and the session is **In progress**: it is saved, but not completed. TalkBar now:
+When you click **Stop**, the recording ends and the session is **In progress**: it is saved, but not completed. You stay on this screen, and TalkBar now:
 
 1. saves the full transcript and the audio;
 2. writes the summary, organized into the template's sections, in the **Summary** panel (**Summary — in progress**);
@@ -162,12 +180,14 @@ The header shows when the session ended and its total length, plus these actions
 | **Complete session** | Finishes the session and opens its [details page](/sessions/session-details). Wait for the summary to finish, or cancel it, first. |
 | **New session** | Starts a new session that isn't linked to this one. Its menu also offers **Follow-up** (record a linked follow-up of this session), **Schedule for later**, and **Share session** (after you complete it). |
 
+If you come back to a stopped session later from the Sessions list, the header shows the **In progress** badge, with **Start new session** in place of the **New session** menu. Once a session is completed, this screen's header has **Details**, which opens its details page.
+
 The **Summary** panel's **AI** menu lets you change the summary language, length or model, and **Regenerate summary**. See [Session details](/sessions/session-details#summary).
 
 When you complete the session, TalkBar fills in the summary if it is still missing. If **Auto-scan finished sessions** is on, it also scans the session for knowledge cards for you to review. See [Review and scans](/knowledge/review-and-scans).
 
 ::callout{icon="i-heroicons-information-circle" color="gray"}
-A completed session can't be reopened for recording. To keep talking about the same subject, use **Follow-up**. It starts a new session in the same [series](/sessions/series), and creates a series if there isn't one.
+A completed session can't be reopened for recording. To keep talking about the same subject, use **Follow-up** (**Record follow-up** on the details page). It starts a new session in the same [series](/sessions/series), and creates a series if there isn't one.
 ::
 
 ### Very short sessions
