@@ -106,6 +106,10 @@ The list depends on the models you chose:
 Canary models do not detect the language reliably. If you use a Canary model for non-English speech, pick the spoken language instead of Auto-detect.
 ::
 
+### Which model for your language
+
+The interface language doesn't decide what TalkBar can transcribe. Turkish, Japanese, Korean, Chinese, Arabic and Hindi need a Whisper model, for example. See [Supported languages](/voice/languages) for the full table of languages and models, and which model to choose.
+
 ## Saved audio
 
 TalkBar keeps the session audio on this computer so you can play it back and run **Enhance transcript** later. Settings are under **Settings → Voice → Recording → Saved recording**.

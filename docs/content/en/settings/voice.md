@@ -64,7 +64,7 @@ Speech-to-text runs on this computer. A model downloads when you select it; a st
 | **Transcription language** | The spoken language for live and enhanced transcripts. Leave it on auto-detect, or pick a language if words come out wrong. The list only offers languages your selected models support, and it is locked when both models detect the language on their own. | **Auto-detect** |
 | **Speaker detection model** | The model that separates speakers in new sessions, imported audio and Enhance. Options: **Automatic (Sortformer up to 4 speakers, Nemotron 3 for more)**, **Sortformer (4 or 8 speakers)**, **Nemotron 3 (up to 8 speakers)**. For more than 4 speakers, **Automatic** uses Nemotron 3 when it is installed, otherwise the 8-speaker Sortformer model. | **Automatic (Sortformer up to 4 speakers, Nemotron 3 for more)** |
 
-The model lists include Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo, GigaAM v3, Canary 180M Flash and Canary 1B v2. Each entry shows a short hint and its download size. See [Local models](/ai/local-models) for more about them.
+The model lists include Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo, GigaAM v3, Canary 180M Flash and Canary 1B v2. See [Supported languages](/voice/languages) for which model to choose for your language. Each entry shows a short hint and its download size. See [Local models](/ai/local-models) for more about them.
 
 ### Timelines
 

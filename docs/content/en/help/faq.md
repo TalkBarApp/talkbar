@@ -67,11 +67,11 @@ Yes, one way. In **Settings → Calendar sync**, subscribe to your calendar's ad
 
 ### Which languages can TalkBar transcribe?
 
-It depends on the speech model you choose in **Settings → Voice → Transcription**. Parakeet V3, the recommended model, detects the language automatically and covers European languages, including Russian and Ukrainian. Other models cover other languages, and the setting shows what each one supports. See [Recording and transcription](/voice/recording-and-transcription).
+It depends on the speech model you choose in **Settings → Voice → Transcription**. Parakeet V3, the recommended model, detects the language automatically and covers European languages, including Russian and Ukrainian. Other models cover other languages, and the setting shows what each one supports. See [Recording and transcription](/voice/recording-and-transcription). See [Supported languages](/voice/languages) for every language and model.
 
 ### Which languages is the app available in?
 
-The interface is available in 15 languages, including English, Spanish, German, French, Italian, Russian, Japanese, Korean and Chinese. Change it in **Settings → General → Application UI Language**. See [Getting around](/getting-started/getting-around#interface-language).
+The interface is available in 15 languages, including English, Spanish, German, French, Italian, Russian, Japanese, Korean and Chinese. Change it in **Settings → General → Application UI Language**. See [Getting around](/getting-started/getting-around#interface-language). An interface language doesn't mean TalkBar can transcribe that language with every speech model. See [Supported languages](/voice/languages).
 
 ### Can I change the wording of a translation?
 

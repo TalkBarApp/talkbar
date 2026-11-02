@@ -169,7 +169,7 @@ Choose it during first-run setup, or later in **Settings → General → Applica
 Some regional licenses include only certain interface languages. If a language is unavailable, TalkBar explains why and links to **Settings → License**.
 ::
 
-The interface language is separate from the language TalkBar transcribes. Set that in **Settings → Voice → Transcription**. See [Recording and transcription](/voice/recording-and-transcription).
+The interface language doesn't decide what TalkBar can transcribe. Not every interface language can be transcribed by every speech model: Turkish, Japanese, Korean and Chinese need a Whisper model. See [Supported languages](/voice/languages).
 
 ## Related
 
