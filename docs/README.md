@@ -175,10 +175,13 @@ the patch and set the variable in the build environment.
 ## Links to the website and license portal
 
 The header's About menu and the footer link to the TalkBar website and license portal.
-Production builds (`generate:en`, `generate:ru`) use www.talkbar.app (www.talkbar.ru for
-Russian) and license.talkbar.app; every other build uses the preview sites
-(preview.talkbar.app, preview.talkbar.ru, license.preview.talkbar.app). The domains are in
-`docs.locales.ts`; the menu items are in `content/<locale>/about-menu.yaml`.
+Production builds (`generate:en`, `generate:ru`) use www.talkbar.app and
+license.talkbar.app (www.talkbar.ru and license.talkbar.ru for Russian); every other build
+uses the preview sites (preview.talkbar.app and license.preview.talkbar.app, or
+preview.talkbar.ru and license.preview.talkbar.ru). The domains are in `docs.locales.ts`;
+the menu items are in `content/<locale>/about-menu.yaml`. Links written into page content,
+such as the pricing link in `data/plans-and-license.md`, always use the live site for that
+language; `npm run check:seo` fails if a Russian build links to a `.app` site or the reverse.
 
 ## License
 

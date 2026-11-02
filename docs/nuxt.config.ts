@@ -3,7 +3,7 @@ import { execFileSync } from "child_process";
 import { existsSync, mkdirSync, readdirSync, writeFileSync } from "fs";
 import { join, relative, resolve, sep } from "path";
 import type { Nuxt } from "nuxt/schema";
-import { docsLocales, licensePortalUrl, resolveDocsLocale } from "./docs.locales";
+import { docsLocales, resolveDocsLocale } from "./docs.locales";
 
 import { readDocsPages } from "./scripts/lib/docs-pages.mjs";
 
@@ -135,7 +135,7 @@ const config = {
       docsShowScreenshotPlaceholders: !isProduction,
       // Production builds link to the live sites; dev builds to the preview sites
       docsWebsiteUrl: isProduction ? localeConfig.websiteUrl.production : localeConfig.websiteUrl.preview,
-      docsLicenseUrl: isProduction ? licensePortalUrl.production : licensePortalUrl.preview,
+      docsLicenseUrl: isProduction ? localeConfig.licenseUrl.production : localeConfig.licenseUrl.preview,
       docsRepoUrl: "https://github.com/TalkBarApp/talkbar",
       docsScreenshots: listScreenshots(screenshotsDir),
       // Replaces the template's zkSync site links (unused by TalkBar components).

@@ -593,6 +593,8 @@ const en: Translations = {
   "footer.liveContextCards": "Knowledge",
   "footer.templates": "Templates & Skills",
   "footer.privacy": "Privacy",
+  "footer.pricing": "Pricing",
+  "footer.externalLink": "opens in a new tab",
   "footer.useCases": "Use cases",
   "footer.faq": "FAQ",
   "footer.download": "Download",

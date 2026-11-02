@@ -9,6 +9,8 @@ export interface DocsLocaleConfig {
   siteUrl: string
   /** www site for this language: production, and the preview used by dev builds */
   websiteUrl: { production: string; preview: string }
+  /** License portal for this language (pricing, contact): production, and the preview used by dev builds */
+  licenseUrl: { production: string; preview: string }
   siteName: string
   description: string
   strings: Record<string, string>
@@ -20,6 +22,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     label: 'English',
     siteUrl: 'https://docs.talkbar.app',
     websiteUrl: { production: 'https://www.talkbar.app', preview: 'https://preview.talkbar.app' },
+    licenseUrl: { production: 'https://license.talkbar.app', preview: 'https://license.preview.talkbar.app' },
     siteName: 'TalkBar Documentation',
     description:
       'Documentation for TalkBar, the private AI note taker for Windows and macOS: capture meetings and calls, dictate voice notes, and keep every conversation as searchable local memory.',
@@ -61,6 +64,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     label: 'Русский',
     siteUrl: 'https://docs.talkbar.ru',
     websiteUrl: { production: 'https://www.talkbar.ru', preview: 'https://preview.talkbar.ru' },
+    licenseUrl: { production: 'https://license.talkbar.ru', preview: 'https://license.preview.talkbar.ru' },
     siteName: 'Документация TalkBar',
     description:
       'Документация TalkBar — приватного ИИ-помощника для заметок для Windows и macOS: записывайте встречи и звонки, диктуйте голосовые заметки и храните каждый разговор как локальную память с поиском.',
@@ -97,12 +101,6 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
       switchToBlue: 'Включить синюю цветовую тему',
     },
   },
-}
-
-/** License portal (pricing, contact): production, and the preview used by dev builds */
-export const licensePortalUrl = {
-  production: 'https://license.talkbar.app',
-  preview: 'https://license.preview.talkbar.app',
 }
 
 export const resolveDocsLocale = (value: string | undefined): DocsLocale =>

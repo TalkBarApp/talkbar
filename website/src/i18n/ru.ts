@@ -597,6 +597,8 @@ const ru: Translations = {
   "footer.features": "Продукт",
   "footer.liveContextCards": "Знания",
   "footer.privacy": "Приватность",
+  "footer.pricing": "Цены",
+  "footer.externalLink": "откроется в новой вкладке",
   "footer.useCases": "Применение",
   "footer.faq": "Вопросы",
   "footer.download": "Скачать",

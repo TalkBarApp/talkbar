@@ -1,9 +1,10 @@
 ---
 import { t, LANGUAGE_FLAGS, type Language } from '../i18n';
-import { ENGLISH_CROSS_LINK } from '../i18n/domains';
+import { ENGLISH_CROSS_LINK, LICENSE_PRICING_URLS } from '../i18n/domains';
 import { DOWNLOAD_LINK_WINDOWS } from '../lib/download';
 import { SITE_CONFIG } from '../lib/siteConfig';
 import { logos } from '../lib/logos';
+import { Icon } from 'astro-icon/components';
 
 interface Props {
   lang: Language;
@@ -22,6 +23,8 @@ const columns = [
       { label: t(lang, 'footer.featuresLink'), href: '/#features' },
       { label: t(lang, 'footer.templates'), href: '/#templates' },
       { label: t(lang, 'footer.privacy'), href: '/privacy/' },
+      // Live license portal, in a new tab
+      { label: t(lang, 'footer.pricing'), href: LICENSE_PRICING_URLS[lang], external: true },
     ],
   },
   {
@@ -69,9 +72,17 @@ const columns = [
                   href={l.href}
                   data-download-link={l.download ? '' : undefined}
                   data-contact-link={l.contact ? '' : undefined}
-                  class="block py-[6px] text-[15px] text-white/[0.72] hover:text-white transition-colors"
+                  target={l.external ? '_blank' : undefined}
+                  rel={l.external ? 'noopener' : undefined}
+                  class="flex items-center gap-1.5 py-[6px] text-[15px] text-white/[0.72] hover:text-white transition-colors"
                 >
                   {l.label}
+                  {l.external && (
+                    <>
+                      <Icon name="lucide:external-link" width="13" height="13" aria-hidden="true" class="opacity-70" />
+                      <span class="sr-only">({t(lang, 'footer.externalLink')})</span>
+                    </>
+                  )}
                 </a>
               </li>
             ))}

@@ -28,6 +28,15 @@ export const LOCALE_DOMAINS: Record<Language, string> = {
   uk: 'https://www.talkbar.app',
 };
 
+// Pricing on the live license portal for each language. Preview builds link here too,
+// because the preview portals are not for customers.
+export const LICENSE_PRICING_URLS: Record<Language, string> = {
+  en: 'https://license.talkbar.app/pricing',
+  es: 'https://license.talkbar.app/pricing',
+  ru: 'https://license.talkbar.ru/pricing',
+  uk: 'https://license.talkbar.app/pricing',
+};
+
 export const BUILD_CONFIG: Record<BuildDomain, {
   site: string;
   defaultLocale: Language;

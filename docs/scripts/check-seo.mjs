@@ -98,7 +98,14 @@ for (const file of ['social-card.png', 'logos', 'katex.min.css', 'algolia-search
 const walk = dir => readdirSync(dir, { withFileTypes: true }).flatMap(entry =>
   entry.isDirectory() ? walk(join(dir, entry.name)) : [join(dir, entry.name)])
 for (const file of walk('dist').filter(file => /\.(html|css|txt|md|xml|json)$/.test(file))) {
-  assert(!/zksync|matterlabs|katex/i.test(readFileSync(file, 'utf8')), `${file}: template branding or KaTeX`)
+  const text = readFileSync(file, 'utf8')
+  assert(!/zksync|matterlabs|katex/i.test(text), `${file}: template branding or KaTeX`)
+  // Website and license portal links stay on this language's domain (docs.* hreflang links may cross)
+  for (const [, host] of text.matchAll(/https:\/\/((?:[\w-]+\.)*talkbar\.(?:app|ru))/g)) {
+    if (host.startsWith('docs.')) continue
+    assert(host.endsWith(locale === 'ru' ? '.ru' : '.app'), `${file}: links to ${host} from the ${locale} site`)
+    if (!preview) assert(!/(^|\.)preview\./.test(host), `${file}: links to the preview site ${host}`)
+  }
 }
 const locations = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(([, url]) => url)
 assert.equal(locations.length, pages.length, 'Sitemap contains only documentation pages')
