@@ -55,6 +55,9 @@ body:
       - title: Запись и распознавание речи
         to: /voice/recording-and-transcription
         icon: i-heroicons-microphone
+      - title: Поддерживаемые языки
+        to: /voice/languages
+        icon: i-heroicons-globe-alt
       - title: Участники
         to: /voice/speakers
         icon: i-heroicons-user-group

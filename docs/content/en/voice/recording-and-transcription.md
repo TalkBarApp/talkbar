@@ -81,13 +81,13 @@ Each model shows its download size in the dropdown. You can see and delete downl
 
 | Model | Download | Languages | Notes |
 | --- | --- | --- | --- |
-| **Parakeet V3** | about 456 MB | European languages, including Russian and Ukrainian; detects the language itself | Recommended for live transcription: fast and accurate. Default live model. |
+| **Parakeet V3** | about 456 MB | [25 languages](/voice/languages#languages-by-speech-model); detects the language itself | Recommended for live transcription: fast and accurate. Default live model. |
 | **Orukeet INT8** | about 641 MB | Same as Parakeet V3; detects the language itself | An updated Parakeet V3. Fast and accurate; an alternative to Parakeet V3. |
-| **Whisper Small** | about 465 MB | Many languages, with automatic detection | Light, lower accuracy |
-| **Whisper Turbo** | about 1.5 GB | Many languages, with automatic detection | Best quality, but slow for live use. Default enhancement model. |
+| **Whisper Small** | about 465 MB | [99 languages](/voice/languages#all-whisper-languages), with automatic detection | Light, lower accuracy |
+| **Whisper Turbo** | about 1.5 GB | [100 languages](/voice/languages#all-whisper-languages), with automatic detection | Best quality, but slow for live use. Default enhancement model. |
 | **GigaAM v3** | about 215 MB | Russian only | |
 | **Canary 180M Flash** | about 146 MB | English, German, Spanish, French | Smallest download |
-| **Canary 1B v2** | about 692 MB | European languages, including Russian and Ukrainian | |
+| **Canary 1B v2** | about 692 MB | [25 languages](/voice/languages#languages-by-speech-model) | |
 
 If you pick a model that is slow for live use, TalkBar warns: **This model is slow for live transcription; Parakeet V3 is recommended.**
 
@@ -105,6 +105,10 @@ The list depends on the models you chose:
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
 Canary models do not detect the language reliably. If you use a Canary model for non-English speech, pick the spoken language instead of Auto-detect.
 ::
+
+### Which model for your language
+
+The interface language doesn't decide what TalkBar can transcribe. Turkish, Japanese, Korean, Chinese, Arabic and Hindi need a Whisper model, for example. See [Supported languages](/voice/languages) for the full table of languages and models, and which model to choose.
 
 ## Saved audio
 

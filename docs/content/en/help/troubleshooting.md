@@ -104,6 +104,14 @@ Check **Transcription language** in **Settings → Voice → Transcription**. So
 
 See [Providers and models](/ai/providers-and-models) and [AI provider settings](/settings/ai-providers).
 
+### Ask AI on a recording session says "Not found in the attached sources."
+
+Ask AI on a session that is still recording can sometimes fail to read what has been said so far. The answer may then say it isn't found, or ask you to wait until the recording ends. Your recording isn't affected. Try one of these:
+
+- Use the [Ask AI bar in the Notes panel](/sessions/recording#notes), which sees the current session.
+- Ask in a normal chat from the **Chats** page, with **All workspace** selected in **Answer using**.
+- Ask again after you click **Stop**.
+
 ## Model downloads
 
 - **"Not enough free space"**: TalkBar shows how much space the download needs and how much is free. Free up space on the drive, then download again.

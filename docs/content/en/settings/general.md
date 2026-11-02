@@ -119,6 +119,8 @@ The default is your system language if TalkBar supports it, and English otherwis
 Some regional licenses cover only certain interface languages. With one of those, the other languages are greyed out, and a note links to **Settings → License**. See [Plans and license](/data/plans-and-license).
 ::
 
+This setting doesn't change which languages TalkBar can transcribe. See [Supported languages](/voice/languages).
+
 ### Custom translations
 
 Under the language buttons, **Custom translations** lets you change any phrase in the main window for the current language. Your wording applies right away and is saved on this computer, separately for each language. The tray menu, the session bar and the dictation panel keep the built-in text.

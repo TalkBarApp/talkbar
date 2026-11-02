@@ -30,7 +30,7 @@ export const groups = {
       id: 'voice',
       title: { en: 'Voice', ru: 'Голос' },
       icon: 'i-heroicons-speaker-wave',
-      pages: ['recording-and-transcription', 'speakers', 'live-translation', 'dictation'],
+      pages: ['recording-and-transcription', 'languages', 'speakers', 'live-translation', 'dictation'],
     },
     {
       id: 'knowledge',
