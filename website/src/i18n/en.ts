@@ -601,6 +601,7 @@ const en: Translations = {
   "footer.company": "Help",
   "footer.support": "Support",
   "footer.contact": "Contact",
+  "footer.licenses": "Licenses",
   "footer.copyright": "© 2026 TalkBar. Built for sensitive conversations.",
 
   "modal.close": "Close",

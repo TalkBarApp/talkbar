@@ -597,7 +597,7 @@ const ru: Translations = {
   "footer.features": "Продукт",
   "footer.liveContextCards": "Знания",
   "footer.privacy": "Приватность",
-  "footer.pricing": "Цены",
+  "footer.pricing": "Тарифы",
   "footer.externalLink": "откроется в новой вкладке",
   "footer.useCases": "Применение",
   "footer.faq": "Вопросы",
@@ -605,6 +605,7 @@ const ru: Translations = {
   "footer.company": "Помощь",
   "footer.support": "Поддержка",
   "footer.contact": "Контакты",
+  "footer.licenses": "Лицензии",
   "footer.copyright": "© 2026 TalkBar. Создан для деликатных разговоров.",
 
   "modal.close": "Закрыть",

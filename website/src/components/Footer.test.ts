@@ -27,6 +27,7 @@ describe("TalkBar footer", () => {
     expect(source).toContain("href: '/privacy/'");
     expect(source).toContain("href: '/#faq'");
     expect(source).toContain("footer.pricing");
+    expect(source).toContain("footer.licenses");
     expect(source).toContain("target={l.external ? '_blank' : undefined}");
     expect(source).toContain('lucide:external-link');
     expect(source).not.toContain("APP_LANGUAGE_OPTIONS");

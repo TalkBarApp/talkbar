@@ -56,10 +56,11 @@ describe("commercial pricing is hidden from public pages", () => {
     const footer = read("src/components/Footer.astro");
     const domains = read("src/i18n/domains.ts");
 
-    expect(footer).toContain("href: LICENSE_PRICING_URLS[lang], external: true");
-    expect(domains).toContain("en: 'https://license.talkbar.app/pricing'");
-    expect(domains).toContain("ru: 'https://license.talkbar.ru/pricing'");
-    expect(domains).not.toMatch(/license\.preview\.talkbar\.(app|ru)\/pricing/);
+    expect(footer).toContain("href: `${LICENSE_PORTAL_URLS[lang]}/pricing`, external: true");
+    expect(footer).toContain("href: LICENSE_PORTAL_URLS[lang], external: true");
+    expect(domains).toContain("en: 'https://license.talkbar.app'");
+    expect(domains).toContain("ru: 'https://license.talkbar.ru'");
+    expect(domains).not.toContain("license.preview");
   });
 
   test("removes public commercial pricing and subscription positioning", () => {

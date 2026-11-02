@@ -85,7 +85,7 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
       footerTagline: 'Приватный ИИ-помощник для заметок на встречах, звонках и в голосовых заметках.',
       footerProduct: 'Продукт',
       footerPrivacy: 'Приватность',
-      footerPricing: 'Цены',
+      footerPricing: 'Тарифы',
       footerContact: 'Связаться с нами',
       footerNavigation: 'Сайт TalkBar',
       loadingNavigation: 'Загрузка навигации…',
