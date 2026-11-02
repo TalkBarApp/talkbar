@@ -38,7 +38,7 @@ These options arrange the panels of the recording screen and apply right away. Y
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Default template** | The session template that is already selected when you start a session. You manage templates in [Templates & Skills](/settings/templates-and-skills). | Meeting |
+| **Default template** | The session template TalkBar uses when nothing else picks one, such as your last-used or a pinned template. See [Which template a session starts with](/sessions/templates-and-skills#which-template-a-session-starts-with). You manage templates in [Templates & Skills](/settings/templates-and-skills). | Meeting |
 | **Remember last template** | New and scheduled sessions start with the template you used last. When it's off, they start with your pinned or default template. | On |
 | **Delete confirmation** | How deletes inside a session are confirmed: moving a session to Trash from the list, and deleting transcript chunks, summaries, bookmarks, priorities or manual speakers. Choices: **Confirm with dialog**, **Confirm in menu (double-click)**, **No confirmation**. Notes, chats and other areas always use a dialog. | Confirm with dialog |
 | **Default privacy** | The privacy mode new sessions start with: **Normal**, **Session only**, **No auto cards** or **Sensitive**. The hint under the setting explains what the selected mode turns off. See [Starting a session](/sessions/starting-a-session). | Normal |

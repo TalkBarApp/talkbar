@@ -13,24 +13,31 @@ TalkBar has two ways to label your work. **Topics** are your own labels, with a 
 | Used on | Sessions and notes | Sessions |
 | Look | Name and color | Plain words |
 | Own page | Yes | No |
+| Limit per item | 20 | 20 per session |
 | Managed in | **Settings → Topics & Keywords → Topics** | **Settings → Topics & Keywords → Keywords** |
 
 ## Topics
 
-Topics belong to the workspace and are shared by sessions and notes. TalkBar never adds a topic on its own: a topic is on an item only because you put it there, or because a series you set up carries it to every meeting.
+Topics belong to the workspace and are shared by sessions and notes. TalkBar never adds or suggests a topic on its own: a topic is on an item only because you put it there, or because a series you set up carries it to every meeting.
+
+Topic names can have up to 80 characters and are unique in a workspace, ignoring case. Topics can't be merged. Create, rename, recolor and delete them in [settings](/settings/projects-and-topics#topics), or rename and delete them on their page.
 
 ### Add topics to a session
 
 - **When you start a session**: use **Topics and source** in the session setup.
-- **During or after a session**: use the topics row in the session's details. Click **Add**, then pick topics in **Assign topics**.
+- **During or after a session**: use the topics row in the session's details. Click the **Topic** button with the plus sign, then tick topics in the picker.
 - **For a series**: topics saved on a session series are added to each new meeting of that series.
 
 In the picker, type in **Find or create topic…**. If no topic has that name, choose **Create “name”** to make one on the spot. Click **Save** to apply.
 
+To take a topic off a session, untick it in the picker. In the session setup and in a live session's details, you can also click the **×** on its chip.
+
+Session lists show the first two topics and a count of the rest. The session page shows up to six.
+
 ### Add topics to a note
 
 - In the note editor, use **Add to topic…** in the note's links.
-- In the Notes list, open a note's menu and choose **Add to Topic**.
+- In the Notes list, open a note's menu and choose **Add to Topic**. This menu lists existing topics only. To create one, use the note's links.
 
 An item can have up to 20 topics.
 
@@ -44,7 +51,7 @@ Click a topic chip anywhere in the app to open its page. It lists everything tag
 | Action | What it does |
 | --- | --- |
 | **Edit** | Rename the topic or change its color. |
-| **Delete topic** | Deletes the topic. The sessions and notes are kept; only the topic is removed from them. |
+| Delete (trash) → **Delete topic** | Deletes the topic after showing how many sessions and notes use it, then opens the session list. The sessions and notes are kept; only the topic is removed from them. |
 | **Remove from topic** | In a row's menu: takes the topic off that one session or note. |
 
 You can also open a topic's page from **Settings → Topics & Keywords → Topics** by clicking its name.
@@ -55,23 +62,28 @@ You can also open a topic's page from **Settings → Topics & Keywords → Topic
 - **Notes**: filter by topic. See [Notes](/chats-and-notes/notes).
 - **Projects**: on a project's **Sessions** tab, filter by topic.
 
+If you pick several topics, you see items with any of them.
+
 ## Keywords
 
-When AI writes a session's summary, it also picks keywords: the important words of that conversation. They appear with the summary and in the session list.
+When AI writes a session's final summary, it also picks up to 12 keywords: the important words of that conversation. They appear with the summary and in the session list.
 
-- **Edit keywords** next to the keywords lets you add, change or remove them. If a session has none, click **Add keywords**.
-- A session can have up to 20 keywords.
-- When you remove a keyword, AI will not add it back to that session when the summary is written again. Keywords you add yourself are kept.
+- **Edit keywords** next to the keywords lets you add, change or remove them. If a session has none, click **Add keywords**. Click **Save** to apply. You can edit keywords once a session has a final summary.
+- A session can have up to 20 keywords, each up to 80 characters.
+- When the summary is written again, AI replaces its own keywords with new ones. Keywords you added or changed are kept.
+- When you remove a keyword, AI will not add it back to that session. If you add it back yourself, it counts as yours.
 
 ### Filter by keyword
 
-Filter the **Sessions** list, or a project's **Sessions** tab, by keyword. Searching sessions also matches their keywords.
+Filter the **Sessions** list, or a project's **Sessions** tab, by keyword with **Filter by keyword**. If you pick several keywords, you see sessions with any of them. On a project's tab, the list holds only that project's keywords. Notes have no keywords.
+
+In the **Sessions** list, click a keyword on a row to turn that filter on or off. Searching sessions also matches their keywords.
 
 ### Turn a keyword into a topic
 
 A keyword is often a good topic. Open **Settings → Topics & Keywords → Keywords** to see every keyword in the workspace and how many sessions carry it.
 
-- **Convert to topic** creates a topic with the keyword's name and assigns it to every session that carries the keyword. If a topic with that name already exists, you can **Assign topic** instead.
+- **Convert to topic** creates a topic with the keyword's name and assigns it to every session that carries the keyword. If a topic with that name already exists, you can **Assign topic** instead. To fold a keyword into a topic with a different name, type that topic's name in the dialog.
 - Select several keywords and use **Convert to topics** to convert them at once.
 - **View sessions** opens the session list filtered by the selected keywords.
 - **Delete** removes keywords from every session that carries them. AI will not restore them unless you add them back on a session.

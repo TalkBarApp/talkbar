@@ -60,7 +60,7 @@ In **All sessions**, the list is grouped:
 - **Search** matches words in the session title, project, series, keywords and speaker names. Every word you type must match. When a match comes from something the row doesn't show, the row says where, for example **With** a speaker's name.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-To search inside transcripts, summaries and notes across all your sessions, use the search in the title bar or ask [Ask TalkBar](/chats-and-notes/ask-talkbar).
+To search inside transcripts, summaries and notes across all your sessions, use [universal search](/getting-started/getting-around#universal-search) or ask [Ask TalkBar](/chats-and-notes/ask-talkbar).
 ::
 
 ### Row actions

@@ -48,6 +48,8 @@ TalkBar remembers the parts you chose last time. **Refresh preview** shows exact
 3. Under **Who can open it**, pick an audience and set the options below.
 4. Click **Publish**, then copy the link.
 
+The result offers **Copy link**, **Copy short link** (when the page also has a shorter address) and **Open link**. For a public link, **Share to…** starts a post or message with the link in Email, X, LinkedIn, Facebook, WhatsApp or Telegram.
+
 ### Who can open it
 
 | Option | Who can open the page | Plans |

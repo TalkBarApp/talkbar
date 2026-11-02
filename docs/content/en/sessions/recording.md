@@ -161,6 +161,17 @@ While a session records, the bar shows the latest transcript lines and lets you:
 
 Hiding the bar doesn't stop the recording. On the Free plan, the bar also shows when the recording will stop at the plan limit.
 
+The buttons at the top of the bar:
+
+| Button | What it does |
+| --- | --- |
+| **Show or hide TalkBar** | Shows or hides the main window. |
+| **Focus mode** | Only while recording. Hides the bar's header and controls and gives the transcript their space. Point at the top of the bar to bring the header back, then click **Exit focus mode**. TalkBar remembers your choice. This is separate from [Focus mode](#layouts) on the recording screen. |
+| **Bar settings** | Opens quick settings, listed below. |
+| **Hide session bar** | Hides the bar. |
+
+**Bar settings** lets you change these without opening Settings: **Detect conversations**, **Live translation**, **Translation view**, **Remember bar position**, **Speaker lines**, **Skip duration** and **Reset window position**. See [Session detection](/settings/general#session-detection) and [Live translation](/voice/live-translation#in-the-session-bar).
+
 ::screenshot{src="/screenshots/sessions/session-bar-live.png" alt="The session bar during a recording, showing the last transcript lines by speaker, the pause and microphone mute buttons and Stop session" caption="The session bar while recording"}
 ::
 

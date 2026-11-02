@@ -186,6 +186,16 @@ See [Install and update](/getting-started/install-and-update).
 
 **Settings → Data & Backup → Danger zone → Reset database** starts over with an empty database and restarts TalkBar. Your sessions, transcripts, notes and knowledge are moved to a backup folder inside the TalkBar data folder, not deleted. Downloaded voice models, voice settings and speaker profiles are kept. Create a backup first if you can. See [Backup and restore](/data/backup-and-restore) before you use any reset.
 
+### If TalkBar can't open at all
+
+If TalkBar fails while starting, it shows a dialog instead of the main window: **TalkBar needs to reset its database**, **TalkBar's database is damaged** or **TalkBar could not start**.
+
+- **Open Data Folder** opens the data folder so you can make your own backup. The dialog then comes back.
+- **Reset and Restart** creates a new, empty database. The current database moves to a backup folder inside the data folder. Downloaded voice models, voice settings and speaker profiles are kept.
+- **Quit** closes TalkBar and changes nothing.
+
+If your organization turned off resetting data, the dialog says so. Ask your administrator for help.
+
 ## Logs
 
 Logs help the TalkBar team find the cause of a problem. They are off by default and stay on your computer.

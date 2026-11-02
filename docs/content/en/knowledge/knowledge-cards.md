@@ -41,7 +41,7 @@ Click a card to open it. The card panel has these sections:
 
 | Section | What it shows |
 | --- | --- |
-| **Source** | The session, document or other source the card came from, with a link to open it. Cards you write yourself have no recorded source. If a cited document changed later, the card says **Source changed since this card was created.** |
+| **Source** | The session, document or other source the card came from, with a link to open it. Cards you write yourself have no recorded source. If a cited document changed later, the card says **Source changed since this card was created.** A badge shows the source's state: **Source verified**, **Not yet verified**, **Source changed** or **Source unavailable**. If a verified source doesn't back up the card, click **Dispute** to set it back to **Not yet verified**. |
 | **Organize** | The project the card is filed in, or **General**. |
 | **About** | People, companies, projects and documents the card is about. **Attach…** links another one; **Make primary** sets the main one. |
 | **Related** | Links to other knowledge items. **Add relation** connects the card to another item and lets you say why. Removing a relation removes only the link. |

@@ -9,14 +9,15 @@ A **project** groups everything about one piece of work, such as a client, a dea
 
 ## The Projects page
 
-Click **Projects** in the sidebar. Your projects also appear under it in the sidebar, so you can jump to one directly.
+Click **Projects** in the sidebar. Up to five of your projects also appear under it, pinned ones first, so you can jump to one directly. If you have more, **View all projects** opens this page. The arrow on a project's row shows its sessions.
 
 | Control | What it does |
 | --- | --- |
 | **New project** | Creates a project. |
 | **Manage** | Opens **Settings → Projects**. See [Projects, topics and keywords settings](/settings/projects-and-topics). |
-| **Group by company** / **No grouping** | Groups projects by the company they are linked to. |
+| **Group by company** / **No grouping** | Groups projects by the company they are linked to. Pinned projects stay on top, outside the groups, and projects with no company go under **No company**. |
 | Pin | **Pin project** keeps a project at the top and in the sidebar. |
+| ⋮ menu, or right-click a card | **Pin project** or **Unpin project**, **Edit project** and **Move to Trash**. |
 
 ::screenshot{src="/screenshots/knowledge/projects-page.png" alt="Projects page with the New project and Manage buttons, Group by company turned on, and project cards grouped under two company headings, one project pinned" caption="The Projects page"}
 ::
@@ -36,7 +37,7 @@ Click **New project** and fill in:
 | **Links** | Links to docs, boards or repos the project lives in. |
 | **Description** | What the project is about. |
 
-Click **Create project**. Use **Edit** on the project page to change these later. Click the project name on its page to rename it.
+Click **Create project**. Use **Edit** on the project page to change these later. Click the project name on its page to rename it. The name can't be empty.
 
 ## Project limits per plan
 
@@ -50,17 +51,17 @@ Your plan sets how many projects you can have in each workspace. Projects in Tra
 | Pro | Unlimited |
 | Business | Unlimited |
 
-When you reach the limit, TalkBar shows your plan limits instead of creating a project. See [Plans and license](/data/plans-and-license).
+When you reach the limit, TalkBar shows your plan limits instead of creating a project or restoring one from Trash. See [Plans and license](/data/plans-and-license).
 
 ## The project page
 
-The top of a project page shows its name, type, description and links, and any upcoming scheduled sessions. The buttons are:
+The top of a project page shows its name, type, description and links, and any upcoming scheduled sessions. A long description has **Show more**. On a pinned project, the pin next to the name unpins it. The buttons are:
 
 | Button | What it does |
 | --- | --- |
 | **Export** | Exports the project's sessions. See [Exports](/sharing/exports). |
 | **Edit** | Changes the project's details. |
-| **Add** | **Move sessions** into the project, or add an **Action item**, **Knowledge card**, **Scan for cards**, **Document**, **Person** or **Company**. |
+| **Add** | **Move sessions** into the project, or add an **Action item**, **Knowledge card**, **Scan for cards**, **Document**, **Person** or **Company**. Each item opens the matching tab or dialog. **Scan for cards** then opens the **Review** tab. |
 | **New session** | Starts recording a session filed in this project. |
 
 ::screenshot{src="/screenshots/knowledge/project-page.png" alt="A project page showing the header with Export, Edit, Add and New session buttons, and the Overview tab with Pinned sessions, Recent sessions, Pinned memory and Open Action items sections" caption="A project's Overview tab"}
@@ -70,7 +71,7 @@ The top of a project page shows its name, type, description and links, and any u
 
 | Tab | What it shows |
 | --- | --- |
-| **Overview** | Pinned and recent sessions, pinned memory cards, and open action items with due dates. |
+| **Overview** | Pinned and recent sessions, pinned memory cards, and up to five open action items with due dates. With no sessions yet, it offers **New session** and **Move sessions**. |
 | **Action items** | Action items, decisions and questions from all of the project's sessions, plus items added to the project itself. See [Action items](/knowledge/action-items). |
 | **Sessions** | The project's sessions. Switch between **All** and **Pinned**, filter by topic or keyword, and sort by **Recently updated**, **Session date** or **Title**. |
 | **Memory cards** | Cards filed in the project. See [Knowledge cards](/knowledge/knowledge-cards). |
@@ -92,9 +93,16 @@ The Memory cards, Documents, People, Companies and Review tabs work like the mat
 | A person or company | **Add to** → **Project** on their card. |
 | A note | Link the note to the project from the note's links. See [Notes](/chats-and-notes/notes). |
 
-When you move sessions, you can tick **Also move memory cards from this session** so their cards follow them.
-
 A session series can also be filed under a project. See [Series](/sessions/series).
+
+### Move sessions into a project
+
+1. On the project page, choose **Add** → **Move sessions**.
+2. Tick the sessions. Each row shows the project the session is in now, or **No project**. Sessions already in this project aren't listed.
+3. Keep **Also move memory cards from this session** on so their cards follow them. It is on by default and shows how many cards will move.
+4. Click **Move**, then confirm.
+
+Sessions keep their transcripts, summaries and action items. Only the project changes. To take a session out of a project, change the project in the session's details.
 
 ## Chat about a project
 

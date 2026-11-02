@@ -11,7 +11,7 @@ For what projects, topics and action items are and how to use them day to day, s
 
 ## Projects
 
-**Settings → Projects** lists every project in the workspace. Pinned projects come first, then the rest in their saved order, then by name. Each row shows the project icon, its name, its type and how many sessions it has. The project you are working in is marked **Active**.
+**Settings → Projects** lists every project in the workspace. Pinned projects come first, then the rest in their saved order, then by name. Each row shows the project icon, its name, its type and how many sessions it has. The project you are working in is marked **Active**. Hover over a row to see its ⋮ menu, or right-click the row.
 
 ::screenshot{src="/screenshots/settings/projects-tab.png" alt="Settings → Projects tab with several projects listed (one marked Active, one pinned), the New project button and the Show deleted button at the bottom" caption="Settings → Projects"}
 ::
@@ -42,7 +42,7 @@ For what projects, topics and action items are and how to use them day to day, s
 
 When you click **Show deleted**, the **Deleted projects** list shows each project in Trash and when it was moved there.
 
-- **Restore** brings the project back.
+- **Restore** brings the project back. If your plan's project limit is already reached, TalkBar shows your plan limits instead.
 - **Delete permanently** opens a confirmation dialog. It cannot be undone.
 
 In the **Delete permanently** dialog:
@@ -69,14 +69,16 @@ Topics are your own labels for sessions and notes. They apply to the whole works
 
 | Control | What it does |
 | --- | --- |
-| **New topic** | Opens a form with a color picker and a **Topic name** field (up to 80 characters). **Create** saves it. A new topic gets a random color unless you choose one. |
+| **New topic** | Opens a form with a color picker and a **Topic name** field (up to 80 characters). **Create** or Enter saves it, and Esc cancels. A new topic gets a random color unless you choose one. |
 | Topic name | Click a topic's name to open its page with the sessions and notes tagged with it. |
 | Edit (pencil) | Rename the topic or change its color, then **Save**. |
 | Delete (trash) | Deletes the topic after you confirm with **Delete Topic**. The dialog shows how many sessions and notes use it. Those sessions and notes are kept; only the topic is removed from them. |
 
+Topic names are unique in a workspace, ignoring case. If a name is taken, TalkBar says so and keeps the form open. Topics can't be merged. AI never creates or suggests topics.
+
 ### Keywords
 
-Keywords are picked by AI for each session when its summary is generated. They appear here after the first summary.
+Keywords are picked by AI for each session when its summary is generated. They appear here after the first summary. The number next to each keyword is how many sessions carry it.
 
 ::screenshot{src="/screenshots/settings/topics-keywords-tab.png" alt="Settings → Topics & Keywords with the Keywords inner tab open, a few keywords selected, and the selection bar showing Convert to topics, View sessions, Clear and Delete" caption="Keywords tab with a selection"}
 ::
@@ -85,14 +87,19 @@ Keywords are picked by AI for each session when its summary is generated. They a
 | --- | --- | --- |
 | **Search keywords** | Filters the list by text. | Empty |
 | **All** / **No topic** | **No topic** shows only keywords that don't yet match one of your topics. | All |
-| Click a keyword, **Select all** | Selects keywords for a bulk action. Click a selected keyword again to deselect it. | — |
-| Remove (×) on a keyword | Removes that one keyword, after you confirm. | — |
-| **Convert to topics** | Creates a topic for each selected keyword, or reuses a topic with the same name, and assigns it to the sessions that carry the keyword. Keywords stay on the sessions. | — |
+| Click a keyword, **Select all** | Selects keywords for a bulk action. **Select all** selects the keywords shown right now. Click a selected keyword again to deselect it, or press Esc to clear the selection. | — |
+| Remove (×) on a keyword | Appears when you hover over a keyword. Removes that one keyword, after you confirm with **Remove**. The dialog shows how many sessions carry it. | — |
+| **Convert to topics** | Creates a topic for each selected keyword, or reuses a topic with the same name, and assigns it to the sessions that carry the keyword. Keywords stay on the sessions. The dialog shows how many topics are new and how many already exist. Confirm with **Convert**. | — |
 | **View sessions** | Opens the session list filtered by the selected keywords. | — |
 | **Clear** | Clears the selection. | — |
-| **Delete** | Removes the selected keywords from every session that carries them. AI will not add them back unless you add them on a session yourself. | — |
-| Keyword menu → **Convert to topic** | Converts one keyword. If a topic with that name already exists, you are asked to **Assign topic**; otherwise you name the new topic and choose **Create and assign**. | — |
+| **Delete** | Removes the selected keywords from every session that carries them, after you confirm with **Remove**. AI will not add them back unless you add them on a session yourself. | — |
+| Right-click a keyword | Opens a menu for that keyword with **View sessions**, **Convert to topic** and **Delete**. | — |
+| **Convert to topic** | Converts one keyword. If a topic with that name already exists, you are asked to **Assign topic**; otherwise you name the new topic and choose **Create and assign**. If you type the name of an existing topic, TalkBar assigns that topic. | — |
 | **Load more** | Loads the next page of keywords when the list is long. | — |
+
+Keywords can't be renamed or merged on this tab. To change one keyword's wording, edit it on its session. See [Topics and keywords](/knowledge/topics-and-keywords#keywords).
+
+If a session that carries the keyword already has 20 topics, the conversion fails with an error. Remove a topic from that session and try again.
 
 ### Action Items
 
@@ -106,25 +113,36 @@ The **Action Items** inner tab manages **Action item labels**: the names, icons,
 | **Catalog** | Chooses which labels you are editing: **Workspace defaults** (available in every project and in sessions without a project) or one project. Project labels are added to the workspace labels and can have their own order. | Workspace defaults |
 | **Add label** | Creates a label in the selected catalog. | — |
 | Drag handle | Drag a row to change the order labels appear in capture menus. | — |
-| Label menu → **Edit** | Change the label's icon, name or color. | — |
+| Label menu (⋮, or right-click the row) → **Edit** | Change the label's icon, name or color. This also works for built-in labels. | — |
 | Label menu → **Hide from capture menus** / **Show in capture menus** | Hides a label without deleting it. Hidden labels move to **Disabled Action items**. | — |
-| Label menu → **Archive** | Removes a label you created from capture menus. Existing action items keep its name, icon and color. Built-in labels can't be archived. | — |
+| Label menu → **Archive** | Removes a label you created, or a ready-made one, from capture menus and from this tab. Existing action items keep its name, icon and color. You can't bring an archived label back. The four built-in labels can't be archived, only hidden. | — |
 | **Enable** (in **Disabled Action items**) | Turns on a ready-made or hidden label. | — |
 
-In a project catalog, labels marked **Managed in Workspace defaults** come from the workspace. You can reorder them for the project, but you edit them under **Workspace defaults**.
+In a project catalog, labels marked **Managed in Workspace defaults** come from the workspace. You can reorder them for the project, but you edit them, and turn ready-made ones on, under **Workspace defaults**.
+
+If every label is hidden, capture menus show **Configure action item labels**, which opens this tab.
+
+**Add label dialog.**
+
+| Field | What it does | Default |
+| --- | --- | --- |
+| **Icon** | The label's icon. | Set by the behavior |
+| **Label** | The name, up to 80 characters. Two labels in a catalog can't share a name. | Empty |
+| **Color** | The label's color. | Set by the behavior |
+| **Behavior** | How items with this label work. See the table below. Choosing a behavior resets the icon and color to its defaults. | Task |
 
 **Built-in labels.** Every workspace starts with four visible labels: **Task**, **Follow-up**, **Question** and **Decision**. It also includes ready-made labels that start under **Disabled Action items** until you enable them: Idea, Risk, Blocker, Commitment, Request, Waiting on, Delegated, Parking lot, Research, Agreement and Trade-off.
 
 **Behavior.** When you add a label, you pick its **Behavior**. It can't be changed after the label is created.
 
-| Behavior | Statuses | Due dates and assignees |
-| --- | --- | --- |
-| **Task** | Open → Done | Yes |
-| **Follow-up** | Open → Done | Yes |
-| **Question** | Open → Answered, with an answer field | No due dates |
-| **Decision** | Active → Superseded | No due dates |
+| Behavior | Statuses | Due dates and assignees | Ready-made labels |
+| --- | --- | --- | --- |
+| **Task** | Open → Done | Yes | Idea, Risk, Blocker, Commitment |
+| **Follow-up** | Open → Done | Yes | Request, Waiting on, Delegated |
+| **Question** | Open → Answered, with an answer field | No due dates | Parking lot, Research |
+| **Decision** | Active → Superseded | No due dates | Agreement, Trade-off |
 
-AI summaries capture tasks as action items, questions as open questions and decisions as decisions.
+AI summaries capture tasks as action items, questions as open questions and decisions as decisions. They always use the built-in labels, even hidden ones, and never your own labels. To change a label on an item, use **Convert**. See [Action items](/knowledge/action-items#change-or-remove-an-item).
 
 ## Related
 

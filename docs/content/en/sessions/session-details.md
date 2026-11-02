@@ -90,6 +90,10 @@ Each section has a **⋮** menu:
 | **Edit text** | Edits the section in place. |
 | **Delete section** | Removes the section from the summary. |
 
+Select text in the summary to get a small toolbar with **Copy to clipboard**, **Set Action item**, **Add bookmark**, **Add to notes** and **Delete selected text**.
+
+To check where a point came from, hover over it. When the AI recorded its source, an icon (**Show evidence**) appears at the right edge. Hover the icon to see the transcript lines behind the point, with the speaker and time, and click a line to jump to it in the transcript. Not every point has one, and lines from ignored speakers aren't shown.
+
 The card's **AI** menu changes how the summary is written:
 
 | Option | What it does |
@@ -162,6 +166,8 @@ Right-click a line, or use its **⋮** menu:
 | **Add to note** | Adds the line to your session note. |
 | **Edit text** | Corrects the wording. |
 | **Delete** | Removes the line. This can't be undone. |
+
+Select words in a line to get a small toolbar with **Copy to clipboard**, **Add bookmark**, **Export this transcript turn**, **Add to notes** and **Delete selected text**.
 
 The **View** menu switches between **Classic layout**, **Avatar layout** and **Chat layout**, sets the order, and opens **Previous transcripts**. If the session was translated, both the original and the translation are shown.
 

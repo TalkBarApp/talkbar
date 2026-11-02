@@ -20,13 +20,15 @@ The sidebar on the left holds the main areas of the app.
 | --- | --- |
 | **Home** | Your start page. |
 | **Recording** | The session you are recording now. After a session ends it is called **Last session** and opens the most recent one. A status indicator shows when you are recording, paused or on hold. |
-| **Sessions** | Every recorded session. Your recent sessions are listed underneath. |
+| **Sessions** | Every recorded session. A second **Sessions** group, below **Projects**, lists your recent sessions that aren't in a project. |
 | **Chats** | Your conversations with TalkBar. |
 | **Notes** | Your own notes. |
 | **Knowledge** | Memory cards, documents, people, companies and action items that TalkBar keeps for you. A **Review** item appears under it when AI suggestions are waiting. |
-| **Projects** | Your projects, one click away. Use **+** to create one, and pin the ones you use most. |
+| **Projects** | Your projects, one click away. The list shows up to five, pinned ones first; **View all projects** opens the rest. The arrow on a project's row shows its latest sessions. Use **+** to create a project. |
 | **Settings** | All settings. A red badge means something needs your attention. |
 | Account card | At the very bottom: your profile and the active workspace. Click it to switch workspace or manage your account. |
+
+Point at a session in the sidebar to see a small card with its template, date, length, speakers, project and source.
 
 Collapse the sidebar to a narrow rail with the button at its top. To pin icon links to Knowledge pages, such as **Documents** or **People**, under Knowledge, turn on **Knowledge shortcuts** in **Settings → General → Appearance**.
 
@@ -36,8 +38,10 @@ Collapse the sidebar to a narrow rail with the button at its top. To pin icon li
 | --- | --- |
 | **TalkBar logo** | Opens the TalkBar menu: **About TalkBar** (with your version and plan), **Upgrade to {plan}** (when a higher plan is available), **Check for updates**, a **Settings** submenu with every tab, **Set up AI…**, **Turn on Private AI Mode** or **Turn off Private AI Mode** (once the mode is available), **Show Session Bar** (or **Hide Session Bar**), **Close Window** and **Quit TalkBar**. |
 | **New session** | Opens the New session window to start a recording. |
-| **Upcoming** | Lists your scheduled sessions. A session that is starting soon gets a **Start** button. |
-| **Help** | **Take a tour**, **Documentation** and **Contact us**. |
+| **Record now** | Appears next to **New session** when a scheduled session has started and nothing is recording. Click it to start that session. |
+| **Upcoming** | Lists your scheduled sessions. A session that is starting soon gets a **Start** button. **View all** opens the Upcoming sessions page, and **Schedule new** opens the Schedule window. |
+| **Focus mode** | Shown on the recording screen. See [Layouts](/sessions/recording#layouts). |
+| **Help** | **Take a tour**, **Documentation** and **Contact us**. On the Free plan, a computer that never had a Preview trial also gets **Activate Invite**. See [Preview trial](/settings/license#preview-trial). |
 
 When Private AI Mode is on, the logo becomes a green shield to remind you that all AI features run on local models only. See [Private AI Mode](/ai/private-ai-mode).
 
@@ -77,7 +81,7 @@ Home is your start page for the active workspace.
 - Four tiles count your **Sessions**, **Chats**, **Notes** and **Documents**. Click a tile to open that list.
 - **Up next** appears when sessions are scheduled soon. Start one, or open its preparation.
 - The time range menu sets how far back the recent list goes, such as **Today** or **This week**. Click **Set as default** to keep your choice.
-- The recent list shows your latest sessions, notes and chats by day. Switch between **All** and **Pinned**, filter by type, and search.
+- The recent list shows your latest sessions, notes and chats by day. Switch between **All** and **Pinned**, filter by type, and search. The pin on a row pins or unpins it, and **Pinned on top** keeps pinned items first.
 
 ::screenshot{src="/screenshots/getting-started/home-dashboard.png" alt="TalkBar Home page with the greeting, the Add menu and New session buttons, the four count tiles for Sessions, Chats, Notes and Documents, the Up next strip with one scheduled session, and the recent activity list grouped by day" caption="Home"}
 ::

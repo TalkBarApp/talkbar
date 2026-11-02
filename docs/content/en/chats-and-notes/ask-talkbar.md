@@ -78,15 +78,31 @@ Attachments and **@** mentions share a limit of **three sources per message**. R
 
 ### Use a skill
 
-A skill is a set of ready-made instructions, such as **Catch me up** or **Draft a follow-up email**. **Choose a skill** lets you search skills or filter them by group. Pinned skills come first, then **Suggested for this chat**. **Manage skills** opens [Templates and skills settings](/settings/templates-and-skills).
+A skill is a set of ready-made instructions, such as **Catch me up** or **Draft a follow-up email**. TalkBar includes [24 built-in skills](/sessions/templates-and-skills#skills), and you can write your own.
+
+1. Click **Skills** in the message box, or type **/** in an empty box.
+2. In **Choose a skill**, search by name, description or instructions, or filter with **All**, **Before**, **During**, **After**, **Across** or **Writing**. Click a skill, or use the arrow keys and `Enter`.
+3. Add details if you want, and press `Enter`. You can also send the skill with no text.
+
+Pinned skills come first, then **Suggested for this chat**. The suggestions depend on the chat: **Across sessions** when several sessions are attached, **During a session** in a live session, **After a session** for a session, and **Writing & editing** for a note or document. Only skills that are turned on appear. **Manage skills** opens [Templates and skills settings](/settings/templates-and-skills), where **Use in chat** also starts a new chat with a skill selected.
 
 The skill you pick appears above the message box:
 
 - **Change** picks another skill, and **Remove skill** takes it off.
-- **Edit instructions** changes the instructions for this message only. The saved skill stays the same.
-- Add details if you want, and press `Enter`. The skill runs on what **Answer using** is set to. With **Attached sources**, attach a source first.
+- **Edit instructions** changes the instructions for this message only, up to 4,000 characters. The saved skill stays the same.
 
-Your sent message shows the skill it used. Click it to see the instructions, or choose **Use skill again**.
+The skill runs on what **Answer using** is set to:
+
+| **Answer using** | What the skill works on |
+| --- | --- |
+| **All workspace** | Your recent sessions and notes. Add a question or details to narrow it. |
+| **Project only** | That project's sessions and notes. |
+| **Attached sources** | Every attached source, read in full when it fits the model. With nothing attached, TalkBar shows **Attach a source first, or change Answer using.** and an **Add sources** button. |
+| **General chat & TalkBar help** | Only the text or question you type. |
+
+Your sent message shows the skill it used. A message with no text reads **Skill:** and the skill's name. Click the skill to see the instructions used for that message, or choose **Use skill again**. **Edit** and **New chat with this prompt** keep the skill. Changing or deleting a skill later leaves earlier messages as they are.
+
+If TalkBar says your message and skill exceed the model's context, shorten them, choose fewer sources, or select a larger model.
 
 ## Sources and citations
 

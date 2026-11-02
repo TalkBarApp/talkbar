@@ -66,7 +66,7 @@ Click a document to open it in the reader. The reader shows the text TalkBar ext
 
 - **Search in** the document, and step through matches with **Previous match** and **Next match**. Matches are highlighted.
 - Open up to **five** documents as tabs. Use **Preview** → **Upload file** or **From document library** to add more tabs, and search across all open documents at once.
-- **File Info** shows the type, size, source and when the document was added. For a document imported with **Add folder**, it also shows the **Imported folder**.
+- **File Info** shows the type, size, source and when the document was added. For a document imported with **Add folder**, it also shows the **Imported folder**. Under **Knowledge**, it says how many memory cards came from the document and how many may be stale.
 - **Related** lists linked knowledge items.
 - **Ask AI** opens a chat about the document in the side panel.
 - **Scan for knowledge** asks AI to find memory cards, people and companies in the document. See [Review and scans](/knowledge/review-and-scans).

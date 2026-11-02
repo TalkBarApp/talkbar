@@ -124,6 +124,10 @@ Custom branding puts your own name, logo and colors on shared pages and invitati
 
 The Business plan lets an administrator lock TalkBar settings for everyone on a company computer. **Settings → License → Admin policy** shows the policy on this computer on every plan. On Business, **Enable admin policy** turns it on or off, and **Show Admin policy page** adds the **Admin policy** tab to Settings, where you set the rules. Both switches need the computer's administrator password. See [License settings](/settings/license#admin-policy) and [Admin policy](/settings/admin-policy).
 
+## Preview trial
+
+With an invitation, you can try every feature with no plan limits for a limited time. Your own plan applies again when the trial ends. See [Preview trial](/settings/license#preview-trial).
+
 ## Related
 
 - [License settings](/settings/license)

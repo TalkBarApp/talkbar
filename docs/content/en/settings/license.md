@@ -85,6 +85,32 @@ This section is on the page on every plan. It shows the rules your organization 
 
 If the section shows **The policy could not be read**, TalkBar uses the strictest settings until your administrator fixes the policy on this computer.
 
+## Preview trial
+
+A Preview trial is a free 14-day trial that unlocks all features with no plan limits. It needs an invitation link or code.
+
+On a computer that never had a trial, the **Preview invitation** section sits at the bottom of this page. **Not interested** hides it. On the Free plan, **Activate Invite** is also in the **Help** menu.
+
+To activate:
+
+1. Click **Activate Invite** to open **Activate Preview**.
+2. Open your invitation and confirm your email. On your Preview page, select **Open TalkBar**. Or enter your code or email under **Invitation code or email**.
+3. If you entered an email, open the confirmation link TalkBar sends you, then click **Check activation**.
+
+Each computer can have one trial, and an invitation works on one computer.
+
+While the trial runs, a **Preview** tag shows in the logo menu and a row in the sidebar shows its end date. The **Preview trial** section moves to the top of this page:
+
+| Control | What it does |
+| --- | --- |
+| **Preview details** | Shows the end date and the days left. |
+| **Turn off Preview** | Your own plan applies again right away. You can use **Turn Preview back on** until the end date; the trial keeps that date and doesn't start over. |
+| **Remove Preview** | Shown while the trial is off. Removes the trial and its invitation from this computer. Activating the same invitation again continues the trial until the same date. |
+
+A license you have stays on this computer during the trial and applies again when the trial ends. If you activate a license during a trial, TalkBar asks whether to turn off Preview now, or **Keep Preview**.
+
+When the trial ends, TalkBar says **Your Preview trial has ended. Your plan is back.**
+
 ## Related
 
 - [Plans and license](/data/plans-and-license)
