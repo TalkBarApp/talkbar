@@ -25,9 +25,20 @@ TalkBar's menus and screens are available in English, Español, Deutsch, França
 
 ## Transcription languages
 
-The speech model decides which spoken languages TalkBar can transcribe. All speech models run on your computer, and each is a separate download.
+The speech model decides which spoken languages TalkBar can transcribe. All speech models run on your computer, and each is a separate download. Sizes and notes are in [Speech models](/voice/recording-and-transcription#speech-models).
 
-In this table, ● means you can pick the language in **Transcription language**. ○ means the model works with this language, but you can't pick it, so leave the setting on **Auto-detect**. A dash means the model doesn't support the language.
+| Speech model | Spoken languages | Choosing the language |
+| --- | --- | --- |
+| **Whisper Turbo** | 100 | **Auto-detect**, or pick from 16 |
+| **Whisper Small** | 99: the same as Whisper Turbo, without Cantonese | **Auto-detect**, or pick from 16 |
+| **Parakeet V3**, **Orukeet INT8** | 25 | Detects the language itself. You can't pick one. |
+| **Canary 1B v2** | 25 | Pick from 10 |
+| **Canary 180M Flash** | 4 | Pick from 4 |
+| **GigaAM v3** | 1 | Russian only, so there is nothing to pick |
+
+### Languages by speech model
+
+This table covers every language with more than Whisper's automatic detection. ● means you can pick the language in **Transcription language**. ○ means the model works with this language but you can't pick it. A dash means the model doesn't support it.
 
 | Spoken language | Parakeet V3, Orukeet INT8 | Whisper Small, Whisper Turbo | Canary 1B v2 | Canary 180M Flash | GigaAM v3 |
 | --- | --- | --- | --- | --- | --- |
@@ -63,25 +74,28 @@ In this table, ● means you can pick the language in **Transcription language**
 | Turkish | — | ● | — | — | — |
 | Ukrainian | ○ | ● | ● | — | — |
 
-Parakeet V3, Orukeet INT8 and Canary 1B v2 cover the 25 languages in the table, including Russian and Ukrainian. Whisper's **Auto-detect** can recognize more languages than the table lists.
-
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
-Canary models don't detect the language reliably. Use one for a language you can pick in **Transcription language**, and pick it, instead of relying on **Auto-detect**.
+Canary models don't detect the language reliably. Use one for a language you can pick, and pick it, instead of relying on **Auto-detect**.
 ::
+
+### All Whisper languages
+
+Whisper models can recognize these languages with **Auto-detect**. All of them work with Whisper Turbo, and all except Cantonese work with Whisper Small. Quality varies by language, so try a short recording first.
+
+Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, Bashkir, Basque, Belarusian, Bengali, Bosnian, Breton, Bulgarian, Burmese, Cantonese, Catalan, Chinese, Croatian, Czech, Danish, Dutch, English, Estonian, Faroese, Finnish, French, Galician, Georgian, German, Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, Hungarian, Icelandic, Indonesian, Italian, Japanese, Javanese, Kannada, Kazakh, Khmer, Korean, Lao, Latin, Latvian, Lingala, Lithuanian, Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, Marathi, Mongolian, Nepali, Norwegian, Norwegian Nynorsk, Occitan, Pashto, Persian, Polish, Portuguese, Punjabi, Romanian, Russian, Sanskrit, Serbian, Shona, Sindhi, Sinhala, Slovak, Slovenian, Somali, Spanish, Sundanese, Swahili, Swedish, Tagalog, Tajik, Tamil, Tatar, Telugu, Thai, Tibetan, Turkish, Turkmen, Ukrainian, Urdu, Uzbek, Vietnamese, Welsh, Yiddish, Yoruba.
 
 ### Which speech model to choose
 
-TalkBar uses one model during the recording and another for **Enhance transcript** afterwards, so you can choose each separately. Sizes and notes for each model are in [Speech models](/voice/recording-and-transcription#speech-models).
+TalkBar uses one model during the recording and another for **Enhance transcript** afterwards, so you can choose each separately.
 
 | You speak | Live transcription model | After-recording enhancement model |
 | --- | --- | --- |
-| English or another language Parakeet V3 covers | **Parakeet V3** (the default), or **Orukeet INT8**, an updated version | **Whisper Turbo** (the default) |
-| Russian | **Parakeet V3**, or **GigaAM v3** for Russian only | **Whisper Turbo**, or **GigaAM v3** |
-| Turkish, Japanese, Korean, Chinese, Arabic or Hindi | **Whisper Small**. It's light, with lower accuracy. **Whisper Turbo** is more accurate but slow for live use. | **Whisper Turbo** |
+| A language Parakeet V3 covers (see the table above) | **Parakeet V3** (the default) or **Orukeet INT8**, an updated version | **Whisper Turbo** (the default) |
+| Any other language, including Turkish, Japanese, Korean, Chinese, Arabic and Hindi | **Whisper Small**. It's light, with lower accuracy. **Whisper Turbo** is more accurate but slow for live use. | **Whisper Turbo** |
 | Only English, German, Spanish or French, and you want the smallest download | **Canary 180M Flash** | **Canary 180M Flash** or **Whisper Turbo** |
 
 ::callout{icon="i-heroicons-information-circle" color="gray"}
-Interface languages such as 日本語, 한국어, 简体中文, 繁體中文 and Türkçe need a Whisper model for transcription. The default live model doesn't cover them, and changing the interface language doesn't switch the model for you.
+The interface languages 日本語, 한국어, 简体中文, 繁體中文 and Türkçe need a Whisper model for transcription. The default live model doesn't cover them, and changing the interface language doesn't switch the model for you.
 ::
 
 With a Whisper model for live transcription, the [timeline](/settings/voice#timelines) refreshes every 30 seconds at the fastest.
