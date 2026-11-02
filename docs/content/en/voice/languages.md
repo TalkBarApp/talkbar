@@ -38,7 +38,7 @@ The speech model decides which spoken languages TalkBar can transcribe. All spee
 
 ### Languages by speech model
 
-This table covers every language with more than Whisper's automatic detection. ● means you can pick the language in **Transcription language**. ○ means the model works with this language but you can't pick it. A dash means the model doesn't support it.
+This table lists every language you can pick, and every language Parakeet V3 and Canary 1B v2 cover. ● means you can pick the language in **Transcription language**. ○ means the model works with this language but you can't pick it. A dash means the model doesn't support it.
 
 | Spoken language | Parakeet V3, Orukeet INT8 | Whisper Small, Whisper Turbo | Canary 1B v2 | Canary 180M Flash | GigaAM v3 |
 | --- | --- | --- | --- | --- | --- |
