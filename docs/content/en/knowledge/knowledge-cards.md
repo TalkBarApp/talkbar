@@ -24,7 +24,7 @@ Open **Knowledge** in the sidebar. The page has six tabs:
 ::
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-You can pin icon-only shortcuts to the Knowledge tabs under **Knowledge** in the sidebar. Turn them on in **Settings → General → Knowledge shortcuts**. They are all off by default.
+You can pin icon-only shortcuts to the Knowledge tabs under **Knowledge** in the sidebar. Turn them on in **Settings → General → Appearance → Knowledge shortcuts**. They are all off by default.
 ::
 
 ## What a card shows
@@ -41,10 +41,10 @@ Click a card to open it. The card panel has these sections:
 
 | Section | What it shows |
 | --- | --- |
-| **Source** | The session, document or other source the card came from, with a link to open it. Cards you write yourself have no recorded source. If a cited document changed later, the card says **Source changed since this card was created.** |
+| **Source** | The session, document or other source the card came from, with a link to open it. Cards you write yourself have no recorded source. If a cited document changed later, the card says **Source changed since this card was created.** A badge shows the source's state: **Source verified**, **Not yet verified**, **Source changed** or **Source unavailable**. If a verified source doesn't back up the card, click **Dispute** to set it back to **Not yet verified**. |
 | **Organize** | The project the card is filed in, or **General**. |
 | **About** | People, companies, projects and documents the card is about. **Attach…** links another one; **Make primary** sets the main one. |
-| **Related** | Links to other knowledge items. **Add relation** connects the card to another item and lets you say why. |
+| **Related** | Links to other knowledge items. **Add relation** connects the card to another item and lets you say why. Removing a relation removes only the link. |
 | **History** | Every change to the card, in plain language. |
 
 If a newer card replaced this one, the card shows **Replaced by a newer memory card** with a link.
@@ -128,7 +128,7 @@ Open a card's **⋮** menu, or open the card and use its buttons. Only the actio
 | **Mark outdated** | Moves the card to **Outdated**. |
 | **Archive** | Hides the card from search. It stays in **Archived**. |
 | **Restore** | Brings an archived card back to **Approved**. |
-| **Mark duplicate** | In the open card: marks this card as a duplicate of another card you pick. This card is marked outdated and replaced by the one you pick. |
+| **Mark as duplicate of…** | In the open card: marks this card as a duplicate of another card you pick. This card is marked outdated and replaced by the one you pick. |
 | **Keep beyond this session** | For a card that belongs to one session only: makes it available everywhere. |
 | **Forget** | Permanently removes the card, its links and its history details. The original session transcript is not affected. This cannot be undone. |
 
@@ -166,12 +166,12 @@ To take a card off the deck, open its menu and choose **Remove from session**. T
 
 While you record, TalkBar listens for the cards on the session's deck. When the conversation names a card, the card is flagged **Mentioned just now**. This is called live recall. It runs on your computer and does not send anything to an AI model.
 
-The live **Knowledge** panel has three views:
+The live **Knowledge** panel has three views. Each one appears when it has something to show:
 
 | View | What it shows |
 | --- | --- |
-| **Cards** | The cards on this session's deck. |
 | **Mentions** | Cards and action items that came up in the conversation, newest first. **Heard** shows what was said. **Not relevant** stops flagging that item in this session. |
+| **Cards** | The cards on this session's deck. |
 | **Action items** | Action items brought into this meeting. |
 
 From a live card's menu you can **Pin** it, mark it **Still true**, **Add to note**, **Copy** it, **Convert to task** (save it as an action item), open it in Knowledge, or **Remove from session**.

@@ -35,18 +35,20 @@ Each operation has its own section, headed by its name (for example `sessions.ge
 | **Kind** | **Read** operations only read. **Write** operations change something. |
 | **Runs with** | The MCP tool that runs it. Reads run with [`talkbar_read`](/mcp/tools#talkbar_read). Writes run with [`talkbar_change`](/mcp/tools#talkbar_change), except the 15 that move items to the Trash, archive or delete them, or call off a planned meeting: those run only with [`talkbar_delete`](/mcp/tools#talkbar_delete). They are [confirmed with you](/mcp/access-and-permissions#confirming-deletes) when your AI app can ask; apps that cannot ask are refused, unless you turn on **Allow deletes without confirmation**. |
 | **MCP switch** | Whether the operation is on when you first set up MCP. You turn each one on or off in **Settings → MCP Access**. 81 operations start on and 63 start off: reads start on; changes to your items start off, while most calendar, series, scheduler and export operations start on. A switched-off operation answers `turned_off`. The CLI ignores these switches. |
-| **Policy group** | The group an administrator's policy can allow or block. If your organization manages TalkBar, a blocked group is refused for MCP and the CLI alike. See [Access and permissions](/mcp/access-and-permissions). |
+| **Policy group** | The group an administrator's policy can allow or block. If your organization manages TalkBar, a blocked group is refused for MCP and the CLI alike. See [Access and permissions](/mcp/access-and-permissions#administrator-rules) and [Admin policy](/settings/admin-policy). |
 
 ### Policy groups
 
-| Group | What it covers | Operations |
-| --- | --- | --- |
-| `metadata` | Names, counts, lists and schedules, with no meeting text: workspaces, plan, session lists and figures, the recording session, project lists, and calendar and series reads. | 14 |
-| `content` | Reads that return meeting text: summaries, transcripts, notes, chats, cards, people, search snippets, meeting prep and export previews. | 35 |
-| `contentChanges` | Every change to sessions, projects, notes, action items, knowledge, people, topics, markers, chats, documents, your profile and workspace names. | 62 |
-| `scheduling` | Changes to planned meetings and session series. | 14 |
-| `scheduler` | Reading and managing scheduled jobs. | 5 |
-| `exports` | Export settings, batches and deliveries (except `exports.preview`, which is `content`). | 14 |
+The **Allowed MCP tools** rule on the [Admin policy](/settings/admin-policy) page shows these groups by name.
+
+| Group | In Admin policy | What it covers | Operations |
+| --- | --- | --- | --- |
+| `metadata` | Lists and counts | Names, counts, lists and schedules, with no meeting text: workspaces, plan, session lists and figures, the recording session, project lists, and calendar and series reads. | 14 |
+| `content` | Meeting content | Reads that return meeting text: summaries, transcripts, notes, chats, cards, people, search snippets, meeting prep and export previews. | 35 |
+| `contentChanges` | Changes to items | Every change to sessions, projects, notes, action items, knowledge, people, topics, markers, chats, documents, your profile and workspace names. | 62 |
+| `scheduling` | Scheduling changes | Changes to planned meetings and session series. | 14 |
+| `scheduler` | Background jobs | Reading and managing scheduled jobs. | 5 |
+| `exports` | Exports | Export settings, batches and deliveries (except `exports.preview`, which is `content`). | 14 |
 
 ### Arguments
 
@@ -54,6 +56,7 @@ Each argument is listed with its type, and required ones are marked. Ranges, all
 
 - **`workspaceId` is optional everywhere** and is left out of the argument lists. Without it, the workspace open in the app is used. `workspace.list` takes no arguments at all and lists the workspaces you can name.
 - An argument an operation does not take is refused by name, never ignored. A value outside the allowed range is refused, never clamped.
+- Many calendar, series and scheduler writes also accept `nowMs`, a clock override for testing. Leave it out; these pages list it only where it is required.
 - Time fields ending in `Ms` are epoch milliseconds (or, where noted, milliseconds from the session start). Transcript and timeline text show times as `mm:ss` or `h:mm:ss`.
 - Where an argument accepts `null`, `null` clears the value, while leaving the argument out keeps it.
 
@@ -77,7 +80,7 @@ Run up to 20 operations in order with `{"calls": [...]}`. Calls continue past an
 
 ## What assistants cannot do
 
-No operation records or controls recording, edits a transcript, generates a summary, changes your app settings (export destinations and rules are the exception, through the `exports.*` operations), empties the Trash, permanently deletes an item that has a Trash, or adds documents. Those stay in the app.
+No operation records or controls recording, edits a transcript, generates a summary, changes your app settings (export destinations and rules are the exception, through the `exports.*` operations), connects or syncs a calendar, empties the Trash, permanently deletes an item that has a Trash, or adds documents. Those stay in the app.
 
 ## Related
 

@@ -29,12 +29,12 @@ Each file can be up to **64 MB**.
 
 ## Import documents
 
-1. Open **Knowledge → Documents** and click **Add documents**. (On the **Memory cards** tab, the same button is called **Import documents**.)
-2. Choose **Add files**, **Add folder**, or drag files onto the dialog. **Add folder** imports the supported files in a folder.
+1. Open **Knowledge → Documents** and click **Add documents**. (On the **Memory cards** tab, **Import documents** takes you here.)
+2. Choose **Add files**, **Add folder**, or drag files onto the dialog. You can add many files at once. **Add folder** imports the supported files in a folder and its subfolders.
 3. Under **File into**, pick a project, or leave the documents in **General**.
-4. Start the import.
+4. Click **Add documents**.
 
-TalkBar reads each file, adds it to your library and builds its search index. You can close the dialog while indexing runs.
+TalkBar reads each file, adds it to your library and builds its search index. The dialog shows how many files are imported and how many failed. You can close the dialog while indexing runs.
 
 Files with an unsupported type are skipped, and the dialog tells you how many.
 
@@ -65,18 +65,18 @@ To search your documents:
 Click a document to open it in the reader. The reader shows the text TalkBar extracted from the file.
 
 - **Search in** the document, and step through matches with **Previous match** and **Next match**. Matches are highlighted.
-- Open up to **five** documents as tabs. Use **Open from library** to add more tabs, and search across all open documents at once.
-- **File Info** shows the type, size, source and when the document was added.
+- Open up to **five** documents as tabs. Use **Preview** → **Upload file** or **From document library** to add more tabs, and search across all open documents at once.
+- **File Info** shows the type, size, source and when the document was added. For a document imported with **Add folder**, it also shows the **Imported folder**. Under **Knowledge**, it says how many memory cards came from the document and how many may be stale.
 - **Related** lists linked knowledge items.
-- **Ask AI about this document** opens a chat about it in the side panel.
+- **Ask AI** opens a chat about the document in the side panel.
 - **Scan for knowledge** asks AI to find memory cards, people and companies in the document. See [Review and scans](/knowledge/review-and-scans).
 
-::screenshot{src="/screenshots/knowledge/document-reader.png" alt="Document reader with two documents open as tabs, a search term highlighted in the text, and the Ask AI about this document and Scan for knowledge buttons visible" caption="Reading and searching a document"}
+::screenshot{src="/screenshots/knowledge/document-reader.png" alt="Document reader with two documents open as tabs, a search term highlighted in the text, and the Ask AI and Scan for knowledge buttons visible" caption="Reading and searching a document"}
 ::
 
 ## Organize documents
 
-- **Kind tabs**: **All**, **Markdown**, **PDF**, **Docs** and **Other** (text, spreadsheets, slides, e-books).
+- **Kind tabs**: **All**, **Markdown**, **PDF**, **Docs** and **Other** (text, spreadsheets, slides, e-books). **Filter views** chooses which kind tabs you see, and **Set as default** keeps your choice.
 - **Sort** by date added or by title. **Pinned on top** keeps pinned documents first.
 - The scope switcher at the top right of Knowledge shows documents for the whole workspace, for **General**, or for one project or series.
 
@@ -86,12 +86,14 @@ Each document's menu has:
 | --- | --- |
 | **Open** | Opens the reader. |
 | **Pin** / **Unpin** | Keeps the document at the top. |
-| **Related…** | Links the document to another knowledge item. |
+| **Move** | Files the document in a project, in **General** or in a series. |
 | **Scan for knowledge** | Scans the document for suggestions. |
+| **Related…** | Shows linked knowledge items. **Add relation** links the document to another one. |
 | **Update from file** | Re-reads the original file from disk. |
+| **Show in File Explorer** (Windows), **Show in Finder** (macOS) | Shows the original file. Only for documents imported from a file on disk. |
 | **Delete** | Removes the document from your library and from search. This cannot be undone. |
 
-**Select documents** lets you **Move** many documents to a project, **General** or a series, or **Delete** them.
+**Select documents** lets you **Open** several documents as tabs, **Move** them to a project, **General** or a series, or **Delete** them.
 
 ## Use documents in sessions
 

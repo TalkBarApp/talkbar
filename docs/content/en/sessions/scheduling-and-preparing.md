@@ -16,12 +16,12 @@ Open **Sessions → Upcoming** to see your scheduled sessions. The header has **
 
 ### Views
 
-- **Upcoming** and **Past** tabs. **Past** shows missed, cancelled and recorded sessions from the last 90 days.
+- **Upcoming** and **Past** tabs. **Past** shows missed, cancelled and recorded sessions from the last 90 days. Sessions you cancel or skip before their start time are listed last, under **Cancelled or skipped**.
 - **List** or **Week** layout. The week view has **Previous week**, **Next week**, **Today** and **Jump to week**, and can switch between **Working hours** and **All hours**. Click a block to start or open it; hover it for **Prepare**, **Edit schedule** and **Start**.
 - **Sort** (list only): **Soonest first**, **Latest first** or **Recently changed**.
-- **Filters**: series, project and **Start mode** (**Auto-start** or **Reminder**), plus search.
+- **Filters**: series, project, **Start mode** (**Auto-start** or **Reminder**) and **Origin** (**From calendar** or **Scheduled in TalkBar**), plus search.
 
-Set the week start, visible hours, weekends, slot size, default layout, week numbers, default duration and default reminders in **Settings → General → Calendar**. See [General settings](/settings/general).
+Set the week start, visible hours, weekends, slot size, default layout, week numbers, default duration and default reminders in **Settings → Calendar sync**. See [Calendar sync](/settings/calendar-sync).
 
 ### Statuses
 
@@ -50,7 +50,15 @@ Each row has a **Start** button (**Record now** once it's under way or missed). 
 | **Skip this one** | For a repeating session: skips this one, and the series continues. |
 | **Cancel session** | Cancels it and removes its reminders. This can't be undone. |
 
-For past sessions, the menu offers **Open session** and **Schedule again**.
+For past sessions, the menu offers **Open session** and **Schedule again**. For a prep without a time, it offers **Open prep**, **Start now**, **Schedule…** and **Discard**.
+
+### Events from your calendar
+
+Events from a calendar you connect in [Calendar sync](/settings/calendar-sync) appear in **Upcoming sessions** as scheduled sessions, with a few extras:
+
+- A calendar icon after the title means **From a connected calendar**. The tooltip adds **edited here** once you change the event in TalkBar.
+- A **Join** button opens the event's meeting link in your browser, when it has one. The **⋮** menu has the same action as **Join meeting**.
+- **Mute** in the **⋮** menu turns off TalkBar's reminders for that meeting, and the row shows **Muted**. **Remind me** turns them back on. See [Muted meetings](/settings/calendar-sync#muted-meetings).
 
 ## Schedule a session
 
@@ -76,9 +84,11 @@ The window is titled **Schedule for later**. Its first part, **Schedule**, sets 
 | **Repeats** | **Does not repeat**, **Daily**, weekly on the chosen day, **Every weekday (Mon–Fri)**, monthly on the same date or weekday, or **Custom…** (see below). |
 | **Auto-start recording** | Starts recording by itself after a countdown of 10, 30 or 60 seconds, instead of asking you. Off by default. |
 
-The other parts — **Template**, **Prep & context** and **AI & privacy** — are the same as in the [New session window](/sessions/starting-a-session), so you can set up everything in advance. The session uses your computer's time zone.
+The other parts — **Template**, **Prep & context** and **AI & privacy** — are the same as in the [New session window](/sessions/starting-a-session), so you can set up everything in advance.
 
-If the new time overlaps another scheduled session, TalkBar warns you. Both can stay on the calendar, but only one can record at a time.
+The Schedule window uses your computer's time zone. **Custom timezone override (optional)** in **Settings → General** doesn't change it. To schedule in another time zone, use the [**Series schedule**](/sessions/series#schedules-and-occurrences) window, which has its own **Timezone** field.
+
+If the new time overlaps another scheduled session, TalkBar warns you. Click **Schedule anyway** to keep both on the calendar, or **Pick another time**. Only one session can record at a time.
 
 Click **Schedule session** to save, or **Schedule and prepare** to save and open its prep page.
 
@@ -99,16 +109,26 @@ When you reschedule a repeating session, TalkBar asks whether to move **This ses
 
 ## Reminders and auto-start
 
-At reminder time, a panel appears in the corner of TalkBar with the session's title, time and template, and a desktop notification appears too.
+### The reminder panel
+
+At reminder time, a panel appears in the bottom-right corner of the TalkBar window, and a desktop notification appears too. The panel shows the template (for example *Meeting reminder*, or **Session reminder**), the session's title, its project and workspace, the time, and how close it is, such as **Starting now**.
 
 | Button | What it does |
 | --- | --- |
 | **Start** | Starts recording now, with the prepared setup. Unavailable while another session is recording. |
-| **Snooze 10m** | Reminds you again in 10 minutes. The arrow next to it offers 5, 10, 15 or 30 minutes, or until 5 minutes before the start. |
-| **Skip** | Skips this session. |
-| **Dismiss** | Hides the panel. |
+| **Snooze 10m** | Reminds you again in 10 minutes. The arrow next to it offers 5, 10, 15 or 30 minutes, and **Until 5 min before start** while that moment is still ahead. |
+| **Skip** | Skips this session. It moves to the **Past** tab, and a series continues with its next session. |
+| **Dismiss** (×) | Hides the panel. The session stays scheduled. |
 
-For an **Auto-start** session, the panel shows **Automatic recording** and counts down (**Recording starts in**). Recording starts when the countdown ends. **Snooze** turns this one session back into a reminder.
+Only one panel shows at a time: the one for the latest meeting. Every session stays listed in **Upcoming sessions**.
+
+### The auto-start countdown
+
+For an **Auto-start** session, the panel shows **Automatic recording** and counts down (**Recording starts in**) for the 10, 30 or 60 seconds you chose. Recording starts when the countdown ends.
+
+- **Start** records right away, and **Skip** skips the session.
+- **Snooze** turns this one session back into a reminder. Automatic start stays on for the rest of a series.
+- If TalkBar restarts during the countdown, it picks up where it was and says **Countdown resumed after TalkBar restarted**.
 
 Auto-start becomes a normal reminder when:
 
@@ -139,12 +159,12 @@ The header shows when the session starts, with **Session setup** (choose the tem
 
 | Step | What you do |
 | --- | --- |
-| **Prep notes** | Write the agenda, questions and what you want to learn. This note opens with the session when it starts. |
+| **Prep notes** (the step bar says **Notes**) | Write the agenda, questions and what you want to learn. This note opens with the session when it starts. |
 | **Action items** | Review what's still open **From earlier meetings** in the series, and add more with **Add action items**. Each item's menu can **Skip for this meeting**, **Stop carrying over**, **Remove from this meeting** or **Add to prep notes**. |
 | **Documents** | **Upload files** or add documents **From the knowledge hub**. Up to 3 documents, such as a brief, a CV or a proposal. Click **Scan for cards** on a document to draft knowledge cards from it. |
 | **Knowledge cards** | The facts, numbers, names and questions you want in front of you. Add a **New card**, **Scan for cards** or **Add from knowledge**. Review scan results in **Drafts to review**. |
 
-**Done preparing** takes you back to the Prepare list. For a prep without a time, the menu also has **Discard prep**.
+**Done preparing** takes you back to the Prepare list. **Discard prep** exists only for a prep without a time; it is in the page's menu. To drop a scheduled session, use **Cancel session** in its row menu.
 
 When the session starts, the prep comes with it: the prep note opens in the **Notes** panel, documents and cards are attached, and the action items show in the **Knowledge** panel. Once the session has started, the prep page says **This meeting has started. Its prep is now part of the session.** with a link to the session.
 

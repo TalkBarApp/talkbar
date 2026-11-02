@@ -194,7 +194,7 @@ The operation index. Call it with no arguments to see every operation you can ru
 }
 ```
 
-The example is shortened. `off` lists operations you switched off, so the assistant can ask you to turn one on. Operations an administrator blocked are not listed.
+The example is shortened. `off` lists operations you switched off, so the assistant can ask you to turn one on. Operations an [administrator blocked](/mcp/access-and-permissions#administrator-rules) are not listed.
 
 Call it with `{"tool": "<id>"}` to get one operation's arguments:
 

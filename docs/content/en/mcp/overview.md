@@ -16,7 +16,7 @@ TalkBar ships one small program, `talkbar-cli`, installed next to the app. It gi
 | **MCP server** | AI apps that speak MCP. **MCP Access** has ready-made setups for ChatGPT, Claude Desktop, Claude Code, Codex, agy CLI, Grok CLI and OpenCode; other clients, such as Cursor, use **Generic JSON**. | The AI app starts `talkbar-cli serve --transport stdio` and talks to it over standard input and output. It obeys every switch in **Settings → MCP Access**. |
 | **Command line** | You, your scripts, and AI agents that can run commands | You run `talkbar-cli tools call`, `tools batch` or `search` in a terminal. It ignores the MCP Access switches, because it only does what you type. |
 
-Both use the same data, the same ownership checks and the same administrator rules. Both work while the TalkBar app is open or closed. When the app is open, it refreshes the screens that show anything an assistant or script changed.
+Both use the same data, the same ownership checks and the same [administrator rules](/settings/admin-policy). Both work while the TalkBar app is open or closed. When the app is open, it refreshes the screens that show anything an assistant or script changed.
 
 ## What an assistant can do
 
@@ -45,6 +45,7 @@ Some things an assistant can never do, whatever you switch on:
 - Delete anything permanently, or empty the Trash.
 - Add documents or re-index them.
 - Create, switch or trash workspaces (renaming one is allowed).
+- Connect, sync or remove calendars in [Calendar sync](/settings/calendar-sync). An assistant can still read and prepare the meetings they import.
 
 An assistant can still work alongside a live recording: it can read the transcript as it grows and add bookmarks, action items and knowledge cards that show up on the recording screen right away.
 

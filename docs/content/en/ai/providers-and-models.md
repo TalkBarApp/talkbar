@@ -20,17 +20,21 @@ Cloud providers and CLI tools use your own account with that service, so any usa
 
 ## Set up AI
 
-The easiest way to connect a provider is **Set up AI**. Open it from the logo menu (**Set up AI…**) or with **Setup AI** in **Settings → AI Providers**. It shows your **Providers** and **Default models**, guides you through each step, and ends with **Review everything**. Nothing in it is required to start, and you can run it again at any time.
+The easiest way to connect a provider is **Set up AI**. Open it from the logo menu (**Set up AI…**) or with the **Setup AI** button in **Settings → AI Providers**. Two other buttons open the same window on one step: **Set up via wizard** on the **Providers** tab opens **Providers**, and **Quick Apply Wizard** on the **AI Features** tab opens **Default models**.
 
-When you add a provider there, TalkBar asks how you want to connect:
+The window lists **Providers**, **Language models**, **Speech recognition**, **Documents**, **Translation**, **System models** and **Default models**. Click a row to set it up, or click **Review everything** to see what TalkBar will use. Nothing in it is required to start, and you can run it again at any time.
 
-- **Local AI (Ollama)**: runs on this machine. Private and free.
+When you click **Providers**, TalkBar asks how you want to connect:
+
+- **Local AI (Ollama)**, marked **Recommended**: runs on this machine. Private and free.
 - **CLI tools**: use Claude Code, Codex, Agy, Grok CLI or OpenCode.
 - **Bring your own API key**: Anthropic, OpenAI, Gemini, Groq and others.
 
+After you add a provider, the window moves on to **Default models**. Pick a provider and a model, then click **Apply** to make it your **Standard** or **Private AI** default.
+
 ## Add a cloud provider with your API key
 
-1. Open **Set up AI** and choose **Bring your own API key**, or click **Add Provider** in **Settings → AI Providers → Providers**.
+1. Open **Set up AI**, click **Providers** and choose **Bring your own API key**, or click **Add Provider** in **Settings → AI Providers → Providers**.
 2. Pick the provider.
 3. Paste your **API key**. **Endpoint (optional)** can stay blank to use the provider's default address.
 4. Select the models you want to use. TalkBar lists the provider's models and shows what each can do (**Text**, **Vision**, **Structured**). To use a model that is not listed, use **Add custom model**; TalkBar sends it a quick test request before adding it.
@@ -54,11 +58,13 @@ If the keyring ever loses TalkBar's key, or you move TalkBar's data to another c
 
 If you already have an AI command-line tool installed and signed in, TalkBar can drive it.
 
-1. Open **Set up AI** and choose **CLI tools**, or use **Detect Local CLI Tools** when adding a provider.
-2. TalkBar scans your computer for Claude Code, Codex, Agy, Grok CLI and OpenCode and marks each one **Detected** or **Not detected**.
-3. Pick the tool you want.
+1. Open **Set up AI**, click **Providers** and choose **CLI tools**.
+2. TalkBar scans your computer for Claude Code, Codex, Agy, Grok CLI and OpenCode and marks each one **Detected** or **Not detected**. A tool you already connected is marked **Already added**.
+3. Pick the tool you want and click **Add and select model**.
 
-Installed a tool later? Click **Rescan** in **Local CLI Tools**.
+If TalkBar finds no tool, click **Show install steps**, install one, then click **Recheck CLI tools**.
+
+You can also do this in **Settings → AI Providers → Providers**, in the **Local CLI Tools** card or in the **Detect Local CLI Tools** section of **Add Provider**. Those places mark a missing tool **Not found**. Installed a tool later? Click **Rescan** there.
 
 CLI tools are never used while [Private AI Mode](/ai/private-ai-mode) is on.
 
@@ -70,27 +76,32 @@ CLI tools are never used while [Private AI Mode](/ai/private-ai-mode) is on.
   ::div{label="On this computer" icon="i-heroicons-computer-desktop"}
   1. Install Ollama for your system from ollama.com/download.
   2. Pull a model in a terminal. TalkBar recommends Gemma 4: `ollama pull gemma4:e4b`.
-  3. In **Set up AI**, choose **Local AI (Ollama)** → **Local installation** → **Detect Ollama**. TalkBar looks for Ollama at `http://127.0.0.1:11434`.
-  4. Select the models you have pulled to register them with TalkBar.
+  3. In **Set up AI**, click **Providers** and choose **Local AI (Ollama)**, then **Local installation**. TalkBar looks for Ollama at `http://127.0.0.1:11434` by itself. If it finds nothing, click **Show install steps**, then **Recheck Ollama**.
+  4. Select the models you have pulled to register them with TalkBar, then click **Add and select model**.
   ::
   ::div{label="On another computer" icon="i-heroicons-server"}
   1. Start Ollama on the other computer and allow incoming connections (set `OLLAMA_HOST=0.0.0.0` there).
-  2. In **Set up AI**, choose **Local AI (Ollama)** → **Remote URL**.
-  3. Type the server address, including the port, and click **Detect Ollama**.
-  4. Select the models to register.
+  2. In **Set up AI**, click **Providers** and choose **Local AI (Ollama)**, then **Remote URL**.
+  3. Type the server address, including the port, in **Ollama URL** and click **Detect Ollama**.
+  4. Select the models to register, then click **Add and select model**.
   ::
 ::
 
 ::screenshot{src="/screenshots/ai/ollama-setup.png" alt="Set up AI wizard on the Ollama step with Local installation selected, showing Ollama detected with its version and endpoint, and a list of pulled models with gemma4:e4b marked Recommended" caption="Setting up Ollama"}
 ::
 
+You can also add Ollama with **Add Provider** in **Settings → AI Providers → Providers**. There it is called **Ollama (Local)** and is listed under **Cloud API**, even though it runs on hardware you control. Its API key is optional.
+
 ### Local or remote?
 
 [Private AI Mode](/ai/private-ai-mode) only uses Ollama servers that TalkBar counts as local:
 
 - Ollama on this computer, and addresses written as an IP address, a name ending in `.local`, or a single name without dots, count as local automatically.
-- For any other server name, TalkBar asks **Treat "…" as a private local host?** Choose **Treat as local** or **Keep as remote**. You can change this later on the provider.
+- For any other server name, TalkBar asks **Treat "…" as a private local host?** Choose **Treat as local** or **Keep as remote**. You can change this later with **Treat host as local** on the provider's card.
 - Ollama cloud models (tags ending in `cloud`) never count as local.
+- With an [admin policy](/settings/admin-policy) in place, an IP address counts as local only if it is a private address.
+
+Private AI Mode does not use a server that does not count as local. Features assigned to it [do not run](/ai/private-ai-mode#not-fully-local) while the mode is on.
 
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
 A server that counts as local can still be another computer, and it receives the text you send it. Only treat servers you control as local.
@@ -128,7 +139,7 @@ Once a provider is connected, choose what powers your AI features in **Settings 
 - **Default model → Private AI**: a local model used while Private AI Mode is on.
 - **Per-feature models → Customize**: give a feature group its own model.
 
-With Built-in AI, TalkBar's defaults are **Qwen3.5 4B** for summaries and general features and **Qwen3 0.6B** for dictation polish. You can change both.
+With Built-in AI, **Qwen3.5 4B** is the default model for both Standard and Private AI. In the Private AI set, **Dictation polish** starts on the smaller **Qwen3 0.6B**. You can change all of these. Text-only models, such as Qwen3 0.6B, can't be a default model, but you can assign them to the features that need only text.
 
 ## Related
 

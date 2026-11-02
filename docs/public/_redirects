@@ -4,5 +4,17 @@
 /mcp/reference   /mcp/operations   301
 /download        https://github.com/TalkBarApp/talkbar/releases/latest   302
 
+# Group paths from the sidebar have no page of their own
+/getting-started   /getting-started/introduction   301
+/sessions   /sessions/overview   301
+/voice   /voice/recording-and-transcription   301
+/knowledge   /knowledge/knowledge-cards   301
+/chats-and-notes   /chats-and-notes/ask-talkbar   301
+/ai   /ai/how-talkbar-uses-ai   301
+/sharing   /sharing/share-links   301
+/settings   /settings/overview   301
+/data   /data/privacy-and-your-data   301
+/help   /help/troubleshooting   301
+
 # Everything else that does not exist
 /* /404.html  404

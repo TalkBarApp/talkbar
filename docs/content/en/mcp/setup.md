@@ -11,7 +11,7 @@ Connecting an AI app to TalkBar takes two steps: turn MCP on in **Settings → M
 
 - TalkBar is installed on this computer.
 - Your AI app supports local MCP servers (the kind that start a program on your computer, often called "stdio" servers).
-- If your organization manages TalkBar, MCP may be turned off for you. See [Administrator rules](/mcp/access-and-permissions#administrator-rules).
+- If your organization manages TalkBar, MCP may be turned off for you. See [Administrator rules](/mcp/access-and-permissions#administrator-rules) and [Admin policy](/settings/admin-policy).
 
 ## Turn on MCP
 
@@ -33,7 +33,7 @@ When MCP is on, reading is allowed and most changes are not. You can change that
 
 ## Copy the setup for your app
 
-The **MCP Connect** card shows one button per app. Pick yours, then use **Copy *app* MCP Connect** under the code box. Depending on the app, you get either a JSON block to paste into its settings or a command to run in a terminal.
+The **MCP Connect** card shows one button per app, with **ChatGPT** selected first. While MCP is off the buttons are greyed out and there is nothing to copy. If the card is folded, open it with the chevron at its top right. Pick your app, then use **Copy *app* MCP Connect** under the code box. Depending on the app, you get either a JSON block to paste into its settings or a command to run in a terminal.
 
 Every setup does the same thing: it tells your app to start `talkbar-cli` with `serve --transport stdio`, and sets `TALKBAR_DATA_ROOT` to your TalkBar data folder.
 
@@ -169,7 +169,20 @@ After you add TalkBar, restart your app or reload its MCP servers. Then ask it s
 
 ## Copy the serve command
 
-**Copy CLI MCP Serve Command** copies the platform-specific command to start the MCP server manually. Run the copied command in a terminal for testing or for a client that needs one command.
+**Copy CLI MCP Serve Command** copies the command to start the MCP server manually, with your real paths filled in. Run it in a terminal for testing or for a client that needs one command.
+
+::platform-tabs
+#windows
+It is a PowerShell command:
+
+```powershell
+$env:TALKBAR_DATA_ROOT = 'PATH_TO_TALKBAR_DATA'; & 'PATH_TO_TALKBAR_CLI' serve --transport stdio
+```
+#macos
+```shell
+TALKBAR_DATA_ROOT=PATH_TO_TALKBAR_DATA PATH_TO_TALKBAR_CLI serve --transport stdio
+```
+::
 
 The server then waits for an MCP client on standard input. Press `Ctrl+C` to stop it.
 
@@ -180,8 +193,17 @@ The server then waits for an MCP client on standard input. Press `Ctrl+C` to sto
 | Setting | What it shows |
 | --- | --- |
 | **Executable path** | The full path to `talkbar-cli`. **Copy** copies it. |
-| **Add to PATH** | Copies a command to add the executable folder to your PATH. Follow the command shown for your system, then open a new terminal to use `talkbar-cli` by name. |
+| **Add to PATH** | Opens **Add talkbar-cli to PATH**, where **Copy Command** copies the command for your system. See below. |
 | **Data root** | Your TalkBar data folder. **Copy** copies it. |
+
+To run `talkbar-cli` by name from any terminal:
+
+::platform-tabs
+#windows
+The copied command is for PowerShell. It adds the program's folder to your user PATH. Paste it into PowerShell, run it, then open a new terminal.
+#macos
+The copied command creates a symlink in `/usr/local/bin`. It uses `sudo`, so Terminal asks for your password. Paste it into Terminal and run it.
+::
 
 ::screenshot{src="/screenshots/mcp/mcp-server-settings.png" alt="The Server Settings card at the bottom of Settings → MCP Access showing the Audit logging and Allow deletes without confirmation switches, the Executable path box with Copy and Add to PATH buttons, and the Data root box with its Copy button" caption="Server Settings: where talkbar-cli is and which data folder it uses"}
 ::
@@ -194,14 +216,20 @@ The server then waits for an MCP client on standard input. Press `Ctrl+C` to sto
 #windows
 The default data folder is `%LOCALAPPDATA%\TalkBar`. Check **Data root** for the path in use.
 #macos
-Check **Data root** for the data folder on your Mac.
+The default data folder is `~/Library/Application Support/TalkBar`. Check **Data root** for the path in use.
 ::
+
 - Point it only at a TalkBar data folder. A folder without TalkBar data gets a new, empty database, and the assistant would see an empty workspace.
 - To open a database file directly from the command line, use `--db` instead. See [talkbar-cli](/mcp/cli#global-options).
 
 ## After a TalkBar update
 
-Installing a TalkBar update closes any `talkbar-cli` that is running from the app folder, including MCP servers your AI apps started. If an app loses its TalkBar tools after an update, restart the app or reconnect its TalkBar server.
+::platform-tabs
+#windows
+Installing a TalkBar update closes any `talkbar-cli` you are running from the app folder, including MCP servers your AI apps started. If one cannot be closed, the installer stops and asks you to close it and retry. If an app loses its TalkBar tools after an update, restart the app or reconnect its TalkBar server.
+#macos
+After an update, restart your AI app or reconnect its TalkBar server, so that it starts the updated `talkbar-cli`.
+::
 
 ## Troubleshooting
 
@@ -211,13 +239,15 @@ Installing a TalkBar update closes any `talkbar-cli` that is running from the ap
 | The assistant says an operation "is turned off in TalkBar" | Turn that operation on in **MCP Access**. See [Access and permissions](/mcp/access-and-permissions). |
 | The assistant sees an empty workspace | Check that `TALKBAR_DATA_ROOT` in your app's setup matches **Data root** in **MCP Access**. Copy the setup again if you moved your data. |
 | Deletes are refused with `confirmation_unavailable` | Your app cannot ask you to confirm. See [Confirming deletes](/mcp/access-and-permissions#confirming-deletes). |
-| The badge shows **Missing** | TalkBar cannot find `talkbar-cli`. Reinstall TalkBar. |
-| The page is locked with a notice from your organization | An administrator turned off the MCP server or the command-line tool on this computer. |
+| The badge shows **Missing** | TalkBar cannot find `talkbar-cli`. **MCP Connect** then says "TalkBar executable not found." Reinstall TalkBar. |
+| The page is locked with a notice from your organization | An administrator turned off the MCP server or the command-line tool on this computer. See [Admin policy](/settings/admin-policy). |
+| Operations show **Blocked by your organization** | An administrator limited **Allowed MCP tools**. Your switches cannot turn those operations on. See [Administrator rules](/mcp/access-and-permissions#administrator-rules). |
 
 ## Related
 
 - [MCP overview](/mcp/overview)
 - [Access and permissions](/mcp/access-and-permissions)
 - [MCP Access settings](/settings/mcp-access)
+- [Admin policy](/settings/admin-policy)
 - [talkbar-cli](/mcp/cli)
 - [Examples](/mcp/examples)

@@ -24,7 +24,7 @@ The audio must be in the source language you pick. Text that is already in the t
 ## Turn on translation
 
 1. Open **Settings → Voice → Speakers**.
-2. In the **Translation** section, turn on **Translate transcript**.
+2. Turn on the switch in the **Translation** section header.
 3. Pick the languages in **From** and **To**.
 4. If the model for that pair is not installed, click **Download**. A pair's model is roughly 400 MB. Translation is unavailable until the model is downloaded; the row then shows **Translation model ready**.
 
@@ -55,7 +55,7 @@ The switch in the same section turns translation on or off for that panel.
 
 ### In the session bar
 
-The floating session bar has its own quick settings: **Live translation** turns translation on or off, and **Translation view** picks **Original**, **Both** or **Translation** for the bar.
+The floating session bar has its own quick settings: **Live translation** turns translation on or off, and **Translation view** picks **Original**, **Both** or **Translation** (the target language) for the bar.
 
 ## After the session
 

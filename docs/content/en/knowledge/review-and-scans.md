@@ -25,7 +25,7 @@ TalkBar only scans sessions recorded in the **Normal** privacy mode. Sessions re
 
 ## Start a scan yourself
 
-Click **Scan for cards** on the Review tab, or choose **Add card** → **Scan for cards** anywhere you can add cards. You can also use **Scan for knowledge** on a document, or on a finished session.
+Choose **Add card** → **Scan for cards** anywhere you can add cards. You can also use **Scan for knowledge** on a document or a finished session, or **Scan for cards** on the Review tab when it is empty.
 
 In the **Add knowledge cards** dialog, with **Scan for cards** selected:
 
@@ -39,6 +39,8 @@ In the **Add knowledge cards** dialog, with **Scan for cards** selected:
 | **Focus instructions (optional)** | Extra guidance for this scan, for example "Pricing, deadlines, and who owns each deliverable." |
 
 Click **Scan for cards**. The scan runs in the background, and its drafts appear in **Review** when it finishes.
+
+On a session's **Knowledge** tab and while you prepare a session, drafts from that session's scans also appear under **Drafts to review**. There you can **Confirm**, **Edit** or **Dismiss** each draft, or **Confirm all**.
 
 ::screenshot{src="/screenshots/knowledge/scan-for-cards-dialog.png" alt="Add knowledge cards dialog with Scan for cards selected and Session chosen, showing the session picker, the Scan in chips (Summary, Action items, Transcript), the What to look for skill pills and the Focus instructions box" caption="Scanning a session for cards"}
 ::
@@ -83,7 +85,7 @@ Badges help you decide:
 ### Filter and act on many suggestions
 
 - Filter tabs: **All**, **Memories**, **People**, **Companies**.
-- **Needs attention** appears when scans failed or were skipped, or when an update points to an item that no longer exists. Use **Retry scan** to run a failed scan again.
+- **Needs attention** appears when scans failed or were skipped, or when an update points to an item that no longer exists. Use **Retry scan** to run a failed scan again. **Remove** takes one scan off the list, and **Clear all** removes them all.
 - **Snoozed** lists snoozed suggestions. **Review now** brings one back.
 - **Search** finds suggestions by text.
 - **Select suggestions** lets you **Add to knowledge** or **Dismiss** several at once. When you approve memory cards in bulk, you choose where they go: **This session only**, a **Project**, or **All knowledge**.

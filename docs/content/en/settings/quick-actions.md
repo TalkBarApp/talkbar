@@ -12,6 +12,21 @@ For a tour of the main window, see [Getting around](/getting-started/getting-aro
 ::screenshot{src="/screenshots/settings/quick-actions-tab.png" alt="Settings → Quick Actions tab with Enable Quick Actions turned on and the Menu items list showing the default five shortcuts (Home, New session, Sessions, Chat, Settings) with drag handles and remove buttons" caption="Settings → Quick Actions"}
 ::
 
+## Use the menu
+
+Click the round button to open the menu, and click it again to close it. The button stays in the bottom-right corner. You can't move it, and it has no keyboard shortcut.
+
+| Part of the menu | What it does |
+| --- | --- |
+| Back and forward arrows | Appear to the left of the button while the menu is open. They move through the pages you visited, and the menu stays open so you can go several steps. An arrow is dimmed when there is nowhere to go. |
+| Shortcuts | Your **Menu items**, in your order. Click one to open it. The menu then closes. |
+
+The menu holds the same items on every page.
+
+**While you record.** The button is hidden on the recording screen and the session setup screen. On other pages it stays available. If **Recording** is in your menu, it shows a pulsing red dot while a session records, and an amber pause mark while the session is paused or on hold.
+
+**In the tray menu.** The same shortcuts appear under **Quick Actions** in the [system tray menu](/getting-started/getting-around#the-system-tray). Turning off **Enable Quick Actions** removes them from there too.
+
 ## Enable Quick Actions
 
 | Setting | What it does | Default |
@@ -34,6 +49,8 @@ The gear icon at the top of the open Quick Actions menu brings you straight to t
 | Drag handle | Drag a row up or down to change the order. |
 | Remove (trash) | Removes the shortcut from the menu after you confirm with **Remove shortcut**. You can add it back later. |
 
+If you remove every shortcut, the list shows **No shortcuts yet**, and the menu has no items until you add one.
+
 ### Available shortcuts
 
 | Shortcut | What it opens | In the menu by default |
@@ -44,9 +61,9 @@ The gear icon at the top of the open Quick Actions menu brings you straight to t
 | **Sessions** | The session list. | Yes |
 | **Calendar** | Upcoming sessions on a calendar. | No |
 | **Chats** | The chat list. | No |
-| **Knowledge** | Knowledge cards. | No |
+| **Knowledge** | **Knowledge**, on its **Memory cards** tab. | No |
 | **Notes** | The note list. | No |
-| **Documents** | Imported documents. | No |
+| **Documents** | **Knowledge → Documents**. | No |
 | **Projects** | The project list. | No |
 | **Chat** | Opens the chat panel ("Ask TalkBar") on the current page. | Yes |
 | **Settings** | Settings. | Yes |

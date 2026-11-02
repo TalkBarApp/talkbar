@@ -1,6 +1,6 @@
 ---
 title: General
-description: 'Settings → General: appearance, session defaults and detection, cleanup, knowledge scans, language, updates, startup, time, calendar and logs.'
+description: 'Settings → General: appearance, session defaults and detection, cleanup, knowledge scans, language, updates, startup, time and logs.'
 navigation:
   icon: i-heroicons-adjustments-horizontal
 ---
@@ -38,7 +38,7 @@ These options arrange the panels of the recording screen and apply right away. Y
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Default template** | The session template that is already selected when you start a session. You manage templates in [Templates & Skills](/settings/templates-and-skills). | Meeting |
+| **Default template** | The session template TalkBar uses when nothing else picks one, such as your last-used or a pinned template. See [Which template a session starts with](/sessions/templates-and-skills#which-template-a-session-starts-with). You manage templates in [Templates & Skills](/settings/templates-and-skills). | Meeting |
 | **Remember last template** | New and scheduled sessions start with the template you used last. When it's off, they start with your pinned or default template. | On |
 | **Delete confirmation** | How deletes inside a session are confirmed: moving a session to Trash from the list, and deleting transcript chunks, summaries, bookmarks, priorities or manual speakers. Choices: **Confirm with dialog**, **Confirm in menu (double-click)**, **No confirmation**. Notes, chats and other areas always use a dialog. | Confirm with dialog |
 | **Default privacy** | The privacy mode new sessions start with: **Normal**, **Session only**, **No auto cards** or **Sensitive**. The hint under the setting explains what the selected mode turns off. See [Starting a session](/sessions/starting-a-session). | Normal |
@@ -90,7 +90,7 @@ These settings apply to sessions and notes in Trash. If a permanent delete fails
 
 ## Knowledge scanning
 
-Knowledge scans look for memories, people and companies in your sessions and documents. See [Review and scans](/knowledge/review-and-scans).
+Knowledge scans look for knowledge cards, people and companies in your sessions and documents. See [Review and scans](/knowledge/review-and-scans).
 
 | Setting | What it does | Default |
 | --- | --- | --- |
@@ -103,9 +103,9 @@ Knowledge scans look for memories, people and companies in your sessions and doc
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Review after days** | Approved memories that haven't been confirmed for this many days move to **Needs review**. | 90 |
-| **Exclude from live recall after days** | Unpinned memories older than this stop appearing in live recall during sessions. Pinned cards stay. | 180 |
-| **Knowledge health nudges** | Shows reminders in the app when approved memories have gone too long without confirmation. | Off |
+| **Review after days** | Approved cards that haven't been confirmed for this many days move to **Needs review**. | 90 |
+| **Exclude from live recall after days** | Unpinned cards older than this stop appearing in live recall during sessions. Pinned cards stay. | 180 |
+| **Knowledge health nudges** | Shows reminders in the app when approved cards have gone too long without confirmation. | Off |
 
 See [Knowledge cards](/knowledge/knowledge-cards) for how review and live recall work.
 
@@ -121,18 +121,45 @@ Some regional licenses cover only certain interface languages. With one of those
 
 ### Custom translations
 
-Under the language buttons, **Custom translations** lets you change specific wording for the current language. These changes apply only on this computer.
+Under the language buttons, **Custom translations** lets you change any phrase in the main window for the current language. Your wording applies right away and is saved on this computer, separately for each language. The tray menu, the session bar and the dictation panel keep the built-in text.
 
-| Control | What it does |
-| --- | --- |
-| **Improve translation** / **Edit overrides** | Opens **Improve translation for** *language*, where you search phrases and type your own wording. The button reads **Edit overrides** once you have at least one. |
-| **Clear all overrides** | Removes all your custom wording for the current language, after you confirm. |
+| Control | What it does | Default |
+| --- | --- | --- |
+| Switch next to **Custom translations** | Turns your wording on or off for every language. While it's off, TalkBar shows the built-in text. Your wording stays on this computer and applies again when you turn the switch back on. | On |
+| **Improve translation** / **Edit overrides** | Opens **Improve translation for** *language*, where you change phrases. The button reads **Edit overrides** once you have at least one. | — |
+| **Submit custom translations** | Sends your wording to the TalkBar team. It appears when you have phrases you haven't sent, and shows how many. | — |
+| **Clear all overrides** | Removes all your wording for the current language, after you confirm. The built-in text comes back. | — |
+
+#### Change a phrase
+
+1. Click **Improve translation**.
+2. In **Search phrases**, search by the English text, the current translation or the phrase's key, or filter by category.
+3. Click **Add override** on the phrase, type your wording and click **Save**. The change shows at once.
+
+Each phrase shows its **Original** English text and its **Current** text. A phrase you changed also shows the **Bundled** text that came with TalkBar.
+
+- Once you have changes, the **Custom** tab lists them and **Browse all phrases** lists everything. **Edit** and **Revert** work on one phrase, and **Revert all custom translations** removes them all.
+- Saving an empty field, or the same text as the bundled translation, removes your change.
+- Keep variables such as `{{count}}`. If you remove one, TalkBar warns you with **Heads up — your override is missing variable(s)**.
+- Phrases that change with a number are listed once for each form your language uses.
+
+#### Send your translations to the TalkBar team
+
+If you think your wording would help everyone, send it for review. Nothing is sent until you do this.
+
+1. Click **Submit custom translations**, or **Send suggestions** in the editor.
+2. Choose the phrases. Phrases you haven't sent are already selected, and ones you sent before are marked **Sent**. You can send up to 500 at a time.
+3. Enter your name and email. You can also add a comment and up to 5 screenshots.
+4. Leave **Include app version and system details** on, or turn it off. With a license, this option reads **Include license and app details**.
+5. Check **I confirm these translations are accurate.** and click **Send suggestions**.
+
+Your wording keeps working on this computer after you send it. If you edit a phrase later, it counts as not sent again. The team reviews every suggestion, and accepted ones can be built into a future version of TalkBar. See [Privacy and your data](/data/privacy-and-your-data#custom-translations) for what is sent.
 
 ## Updates
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Automatic updates** | Downloads updates automatically and installs them the next time TalkBar starts. On the Free plan and on preview versions, this is always on and can't be turned off. If your license covers updates only until a certain date, a note shows that date, and TalkBar asks before installing a version released after it. | On |
+| **Automatic updates** | Downloads updates automatically and installs them the next time TalkBar starts. On the Free plan, this is always on and can't be turned off. If your license covers updates only until a certain date, a note shows that date, and TalkBar asks before installing a version released after it. | On |
 | **Beta updates** | Gets only beta releases, so you can try new features early. Turn it off to get only production releases. | Off |
 | **Return to production** | Appears only when you run a beta version, have turned **Beta updates** off, and an older production version is available. It shows a data compatibility warning before downloading. | — |
 
@@ -151,25 +178,14 @@ You can also check for an update at any time with **Check for Update** at the bo
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Custom timezone override (optional)** | The timezone used for schedules and dashboard dates. Leave it on **Auto (System timezone)** to follow the system, or search for any timezone and click **Save Timezone**. **Reset to Auto** goes back to the system timezone. The line under the setting shows the timezone in use. | Auto (System timezone) |
+| **Custom timezone override (optional)** | The timezone TalkBar uses for dates in exports, for the current date it gives AI, and for some date labels. Scheduled sessions keep using your computer's time zone. Leave it on **Auto (System timezone)** to follow the system, or search for any timezone and click **Save Timezone**. **Reset to Auto** goes back to the system timezone. The line under the setting shows the timezone in use. | Auto (System timezone) |
 | **Time format** | Shows times as **12-hour** (AM/PM) or **24-hour**. | Follows the app language (12-hour for US English) |
 
 Until you pick a time format, TalkBar uses the usual one for your app language, so US English shows 12-hour time and Russian shows 24-hour time. Your choice stays if you change the language later.
 
 ## Calendar
 
-These settings control how the [Upcoming sessions](/sessions/scheduling-and-preparing) calendar looks, and what a new scheduled session starts with.
-
-| Setting | What it does | Default |
-| --- | --- | --- |
-| **Week starts on** | The first day of the week in every calendar: **Sunday** or **Monday**. AI chat uses the same week for questions such as "this week". | Follows the app language (Sunday for US English) |
-| **Visible hours** | The hours the week grid opens on. Sessions outside these hours still show. | 7:00 AM to 7:00 PM |
-| **Show weekends** | Turn it off to show a five-day work week in the grid. | On |
-| **Time slot size** | How finely the week grid divides time when you pick a slot: **15 min**, **30 min** or **1 hour**. | 30 min |
-| **Default view** | How Upcoming sessions opens: **List** or **Week**. Switching the view on that page updates this setting. | List |
-| **Show week numbers** | Shows the ISO week number next to each week in the grid. | Off |
-| **Default duration** | The length that is already selected when you schedule a session, from 15 min to 3 h. | 30 min |
-| **Default reminders** | The reminders a new scheduled session starts with: **At start**, 5, 10, 15 or 30 minutes before, 1 hour before or **1 day before**. You can pick up to 6, or **None**. | 10 min before |
+The calendar view, default duration and default reminders are in [**Settings → Calendar sync**](/settings/calendar-sync).
 
 ## Application Logs
 
@@ -189,7 +205,7 @@ A read-only panel showing the **Profile user name** and **Machine name** of this
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Share usage statistics** | Sends basic usage statistics to help improve TalkBar: app starts and quits, daily use, which main sidebar sections you open, when you start or schedule a session, the app version, preview status, and a random device ID created by TalkBar. | On |
+| **Share usage statistics** | Sends basic usage statistics to help improve TalkBar: app starts and quits, daily use, which main sidebar sections you open, when you start or schedule a session, when your plan is upgraded, the app version, your plan and release channel, preview status, and a random device ID created by TalkBar. | On |
 
 Your name, email and account are never sent with these statistics. Recordings, transcripts, notes and chats are never included, and no statistics come from their content. When the switch is off, nothing is sent. See [Privacy and your data](/data/privacy-and-your-data).
 
@@ -202,5 +218,6 @@ If your organization manages TalkBar, it can lock **Automatic updates**, **Beta 
 - [Settings overview](/settings/overview)
 - [Voice](/settings/voice): recording, transcription and dictation
 - [Templates & Skills](/settings/templates-and-skills): manage the templates behind **Default template**
+- [Calendar sync](/settings/calendar-sync): the calendar view and connected calendars
 - [Data & Backup](/settings/data-and-backup)
 - [Getting around](/getting-started/getting-around)

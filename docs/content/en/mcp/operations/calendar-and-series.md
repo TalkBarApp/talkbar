@@ -36,6 +36,26 @@ Calendar operations work with planned meetings (occurrences), the same ones the 
 
 A meeting is `planned`, `started`, `completed`, `missed`, `skipped`, `cancelled` or `unscheduled`. Times are epoch milliseconds.
 
+## Meetings from connected calendars
+
+Meetings imported from a calendar you connected in [Settings → Calendar sync](/settings/calendar-sync) are ordinary meetings here. `calendar.upcoming` lists them, and the operations on this page work on them.
+
+No operation adds, edits, syncs or removes a connected calendar. That stays in the app, and syncing runs only while the app is open.
+
+Each meeting has these extra fields. For a meeting made in TalkBar, they are `null`:
+
+| Field | What it holds |
+| --- | --- |
+| `sourceId` | The connected calendar the meeting came from. |
+| `externalUid` | The event's id in that calendar. |
+| `joinUrl` | The meeting link found on the event. |
+| `location`, `description` | The event's location and description. |
+| `syncState` | `synced`, `local_override` or `remote_removed`. |
+
+- `calendar.move`, or a new title through `calendar.prepare`, makes the meeting `local_override`: it keeps your time and title at the next sync.
+- A meeting whose event was deleted or cancelled becomes `remote_removed` with the status `cancelled`. `calendar.upcoming` lists it only when `statuses` asks for `cancelled`.
+- `quiet` is `true` for a meeting you muted. See [Muted meetings](/settings/calendar-sync#muted-meetings).
+
 ## `calendar.upcoming`
 
 Lists standalone and series meetings in a time window, soonest first, in pages.
@@ -85,7 +105,7 @@ Reads one planned meeting.
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`.
 
 ```json
 {"tool": "calendar.get", "args": {"occurrenceId": "occ_1"}}
@@ -174,7 +194,7 @@ Schedules a standalone or series meeting. It never starts recording.
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `planned`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `planned`.
 
 - Creates reminders as the app does. A duplicate `occurrenceId` is refused with `failed`.
 
@@ -211,7 +231,7 @@ Changes a meeting's title, start setup, reminders or start mode. Fields left out
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`.
 
 - Works on planned, missed and unscheduled meetings; others are refused with `failed`. Preparing a missed meeting makes it planned again.
 - A meeting whose start has passed always gets `prompt`.
@@ -267,7 +287,7 @@ Reschedules one meeting and updates its reminders and automatic start. Other mee
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `planned`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `planned`.
 
 - Works on planned, missed and unscheduled meetings.
 
@@ -292,7 +312,7 @@ Snoozes a planned meeting's reminder and cancels any automatic start countdown. 
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`.
 
 - Only a planned meeting can be snoozed.
 - Snoozing sets the meeting's start mode to `prompt`.
@@ -311,7 +331,7 @@ Cancels one planned meeting, with its reminders and automatic start. It does not
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `cancelled`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `cancelled`.
 
 - Only a planned meeting can be cancelled; otherwise `failed` names its current status.
 - Runs with `talkbar_delete`: [confirmed with you](/mcp/access-and-permissions#confirming-deletes) when your AI app can ask; apps that cannot ask are refused unless **Allow deletes without confirmation** is on.
@@ -330,7 +350,7 @@ Skips one planned meeting and cancels its reminders and countdown. The series an
   ::
 ::
 
-**Returns:** The meeting (occurrence): `occurrenceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `skipped`.
+**Returns:** The meeting (occurrence): `occurrenceId`, `workspaceId`, `seriesId`, `scheduleId`, `plannedStartAtMs`, `originalStartAtMs`, `durationMinutes`, `timezone`, `status`, `sessionId`, `title`, `preparedSetupJson` (the saved start setup, as a JSON string), `reminderOffsetsMinutes`, `startMode`, `autoStartCountdownSeconds`, `moved`, `wasScheduled` (false for a meeting prepared without a planned time), `sessionTitle` (the linked session's name, once it has one), `sourceId`, `externalUid`, `joinUrl`, `location`, `description`, `syncState` (see [Meetings from connected calendars](#meetings-from-connected-calendars)), `quiet` (muted in the app: shown on the calendar, but never reminded or started automatically), `createdAt`, `updatedAt`. Its status is `skipped`.
 
 - Only a planned meeting can be skipped; otherwise `failed` names its current status.
 - Runs with `talkbar_delete`: [confirmed with you](/mcp/access-and-permissions#confirming-deletes) when your AI app can ask; apps that cannot ask are refused unless **Allow deletes without confirmation** is on.

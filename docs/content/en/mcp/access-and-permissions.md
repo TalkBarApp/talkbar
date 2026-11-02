@@ -123,15 +123,15 @@ With this setting on, an app that cannot ask runs every delete you switched on w
 
 ## Administrator rules
 
-If your organization manages TalkBar on this computer, an administrator can limit MCP and the command line. You see it on **MCP Access**:
+If your organization manages TalkBar on this computer, an administrator can limit MCP and the command line with the rules under **AI assistants and command line** on the [Admin policy](/settings/admin-policy) page. You see it on **MCP Access**:
 
 | Rule | What you see | Effect |
 | --- | --- | --- |
-| MCP server turned off | The MCP switch is locked, with "Your organization turned off the MCP server." | `talkbar-cli serve` refuses to start. The command line's other commands still work. |
-| Command-line tool turned off | The MCP switch is locked, with "Your organization turned off the command-line tool." | Every `talkbar-cli` command is refused, including the MCP server. Only `--help` and `--version` work. |
-| Allowed MCP tools limited | "Your organization limits which tools AI assistants can use." Blocked operations show a lock and **Blocked by your organization**. | Blocked operations stay off whatever your switches say, for MCP and the command line alike. |
+| **MCP server** set to **Deny** | The MCP switch is locked, with "Your organization turned off the MCP server." | `talkbar-cli serve` refuses to start. The command line's other commands still work. |
+| **Command-line tool** set to **Deny** | The MCP switch is locked, with "Your organization turned off the command-line tool." | Every `talkbar-cli` command is refused, including the MCP server. Only `--help` and `--version` work. |
+| **Allowed MCP tools** set to **Only these** | "Your organization limits which tools AI assistants can use." Blocked operations show a lock and **Blocked by your organization**. | Blocked operations stay off whatever your switches say, for MCP and the command line alike. `talkbar-cli search` needs **Meeting content**; `talkbar-cli exports run` and `exports worker` need **Exports**. |
 
-An administrator allows or blocks operations in groups:
+**Allowed MCP tools** allows operations in groups. With no group selected, nothing can run:
 
 | Group | Covers |
 | --- | --- |
@@ -143,6 +143,17 @@ An administrator allows or blocks operations in groups:
 | Changes to items | Every other write: sessions, notes, projects, action items, knowledge, people, topics, markers, chats, documents, workspace and profile |
 
 A blocked operation is left out of the tool list and of `talkbar_tools`. If an assistant calls it anyway, it gets `failed` with a message saying the setting is managed by your organization.
+
+The export rules apply on top of these groups, to MCP and the command line alike. They refuse with `failed` even when **Exports** is allowed:
+
+| Rule | What it refuses |
+| --- | --- |
+| **Session exports** | **Deny** refuses queuing and delivering exports. **Local folders only** refuses Notion destinations. |
+| **Allowed export folders** | Saving, queuing or delivering to a folder outside the list. |
+| **Automatic exports** | **Deny** refuses `exports.rule.save` for a rule that exports, and stops automatic deliveries. |
+| **Prevent changes to export settings** | Saving or deleting destinations and rules. Exports to the existing destinations keep working. |
+
+TalkBar picks up a rule change within about 30 seconds, so a running MCP server or export worker follows it without a restart. An export in progress stops before its next step.
 
 ## What the command line ignores
 
@@ -160,4 +171,5 @@ A blocked operation is left out of the tool list and of `talkbar_tools`. If an a
 - [The five MCP tools](/mcp/tools)
 - [Errors and limits](/mcp/errors-and-limits)
 - [MCP Access settings](/settings/mcp-access)
+- [Admin policy](/settings/admin-policy)
 - [Operations reference](/mcp/operations)

@@ -5,7 +5,7 @@ navigation:
   icon: i-heroicons-clock
 ---
 
-TalkBar runs timed work, such as meeting reminders, automatic starts and exports, as scheduled jobs. These operations let an assistant see that queue for a workspace, and cancel or retry a single job. They are all on by default in MCP Access. Every operation also takes an optional `workspaceId`. See [How to read this reference](/mcp/operations#how-to-read-this-reference) for the conventions.
+TalkBar runs timed work, such as meeting reminders, automatic starts, calendar syncs and exports, as scheduled jobs. These operations let an assistant see that queue for a workspace, and cancel or retry a single job. They are all on by default in MCP Access. Every operation also takes an optional `workspaceId`. See [How to read this reference](/mcp/operations#how-to-read-this-reference) for the conventions.
 
 | Operation | Kind | Tool | On | Group |
 | --- | --- | --- | --- | --- |

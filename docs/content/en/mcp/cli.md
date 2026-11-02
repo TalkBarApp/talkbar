@@ -11,7 +11,7 @@ navigation:
 
 - `talkbar-cli` ships with TalkBar. **Settings → MCP Access → Executable path** shows where. Use **Add to PATH** there to run it by name from any terminal. See [Where talkbar-cli is installed](/mcp/setup#where-talkbar-cli-is-installed).
 - It opens your TalkBar data folder, or the folder in `TALKBAR_DATA_ROOT` when that is set. Find the actual path in **Settings → MCP Access → Data root**. The app can be open or closed.
-- It does what you type, as you. The MCP Access switches do not apply to it, but administrator rules and plan limits do. See [What the command line ignores](/mcp/access-and-permissions#what-the-command-line-ignores).
+- It does what you type, as you. The MCP Access switches do not apply to it, but administrator rules and plan limits do. See [What the command line ignores](/mcp/access-and-permissions#what-the-command-line-ignores) and [When your organization limits the command line](#when-your-organization-limits-the-command-line).
 
 ```shell
 talkbar-cli --version
@@ -33,7 +33,9 @@ Examples use a POSIX shell on macOS or PowerShell on Windows. If a shell handles
 | `serve [--transport stdio]` | Starts the MCP server. Your AI app runs this for you. |
 | `exports run`, `exports worker`, `exports notion connect` | Delivers queued exports and connects Notion. See [Exports](#exports). |
 
-`talkbar-cli call …` (without `tools`) is a usage error that suggests `talkbar-cli tools call`.
+`talkbar-cli call`, `batch`, `list` and `info` (without `tools`) are usage errors that suggest the `tools` form, such as `talkbar-cli tools call`.
+
+There are no commands for recording, voice, settings or connected calendars. Those stay in the app; see [Calendar sync](/settings/calendar-sync) for calendars.
 
 ## Global options
 
@@ -54,9 +56,9 @@ talkbar-cli tools info notes.create
 talkbar-cli --output json tools info notes.create
 ```
 
-- `tools list` prints a table of id, kind (`read` or `mutation`), category and description, then a total. With `--output json`, each operation comes with its title, description, category, kind, default MCP switch and full input schema.
-- `tools list --compact` prints one line per operation: id, kind (`read` or `change`) and summary, separated by tabs. It is the cheapest index for scripts and AI agents.
-- `tools info <id>` prints the operation's description, whether it is on by default in MCP, a usage line, and the arguments it accepts as a JSON Schema. Arguments are camelCase JSON.
+- `tools list` prints a table of id, kind (`read` or `mutation`), category and description, then a total. With `--output json`, each operation comes with its title, description, category, kind, default MCP switch, confirmation hint, safety note and full input schema.
+- `tools list --compact` prints one line per operation: id, kind (`read` or `change`) and summary, separated by tabs. It is the cheapest index for scripts and AI agents. With `--output json`, it prints an array of `{tool, kind, summary}`, where `kind` is `read` or `mutation`.
+- `tools info <id>` prints the operation's title, description, category, kind, whether it is on by default in MCP, a safety note, a usage line, and the arguments it accepts as a JSON Schema. Arguments are camelCase JSON.
 
 The list holds every operation an administrator has not blocked. For each operation's arguments and results, see the [operations reference](/mcp/operations).
 
@@ -113,8 +115,18 @@ PowerShell and `cmd` treat quotes in JSON differently. If `--args '{...}'` gives
 
 `tools batch` runs many operations in one process, in order. It is faster than one command per operation, and the open app refreshes once for all of them.
 
-```shell
+::platform-tabs
+#windows
+```powershell
 '[{"tool":"notes.list","args":{"limit":3}},{"tool":"sessions.list","args":{"limit":5}}]' | talkbar-cli tools batch
+```
+#macos
+```shell
+echo '[{"tool":"notes.list","args":{"limit":3}},{"tool":"sessions.list","args":{"limit":5}}]' | talkbar-cli tools batch
+```
+::
+
+```shell
 talkbar-cli tools batch --file calls.json --stop-on-error
 ```
 
@@ -130,7 +142,7 @@ talkbar-cli tools batch --file calls.json --stop-on-error
 ]
 ```
 
-The command exits with 1 when any operation failed, after printing every result. Standard error then says how many failed, for example `1 of 2 operations failed`.
+The command exits with 1 when any operation failed, after printing every result. Standard error then says how many failed, for example `1 of 2 operations failed`. When `--stop-on-error` leaves operations unrun, it says which one failed and how many did not run.
 
 ## Search
 
@@ -151,7 +163,7 @@ talkbar-cli search budget --match any --output json
 | `--match all\|any` | `all`: every word must match. `any`: reads the words as a natural-language request. | `all` |
 | `--include-archived` | Also finds archived series, people, companies and knowledge cards | Off |
 
-The table output groups matches by kind, each with its title, a snippet and its app link. `--output json` prints the same object as [`talkbar_find`](/mcp/tools#talkbar_find).
+The table output groups matches by kind, each with its title, a snippet and its app link. It prints `No matches` when nothing is found, and ends with a line such as `(content search: keywordOnly)` when content search did not run in full. `--output json` prints the same object as [`talkbar_find`](/mcp/tools#talkbar_find).
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
 `search` requires every word by default, like the search box in the app. `talkbar_find` over MCP defaults to `any`.
@@ -181,10 +193,10 @@ talkbar-cli exports worker --drain
 | `… --wait` | Keeps going while any delivery in the batch is scheduled or exporting. |
 | `… --timeout <seconds>` | With `--wait`, gives up after this many seconds and exits with 1. Default 600. |
 | `exports worker` | Runs automatic and other due exports until you stop it with `Ctrl+C`. |
-| `exports worker --drain` | Runs the exports due now, then exits. |
+| `exports worker --drain` | Runs the exports due now, then exits. It prints nothing; check the results with `tools call exports.history`. |
 | `exports notion connect --workspace <id> --destination <id>` | Reads a Notion token from standard input and saves it, encrypted, for that Notion destination. |
 
-`exports` commands need `--workspace` (find it with `tools call workspace.list`). `exports notion connect` refuses to read the token from the keyboard, so it is never shown on screen; pipe it from your password manager instead:
+`exports run` and `exports notion connect` need `--workspace` (find it with `tools call workspace.list`); `exports worker` does not take one. `exports notion connect` refuses to read the token from the keyboard, so it is never shown on screen; pipe it from your password manager instead. It prints `Notion connected` when it is done:
 
 ::platform-tabs
 #windows
@@ -199,7 +211,7 @@ To queue an export in the first place, use `tools call exports.enqueue`. See [Ex
 
 ## Output and errors
 
-- **Standard output holds only results.** Results are JSON: pretty-printed at a terminal, compact when piped to another program or an AI agent.
+- **Standard output holds only results.** Results are JSON: pretty-printed at a terminal, compact when piped to another program or an AI agent. `exports run` always prints pretty-printed JSON.
 - **Errors go to standard error** as a line starting with `Error:`. For a wrong argument, it also suggests `tools info <id>`; for an unknown operation, `tools list`.
 - **With `--output json`**, a failed command also prints the error on standard output, in the same shape MCP uses:
 
@@ -216,6 +228,19 @@ To queue an export in the first place, use `tools call exports.enqueue`. See [Ex
 | `0` | Done |
 | `1` | Refused or failed. For `tools batch`, at least one operation failed. |
 | `2` | Usage error: an unknown command or option, or a missing argument |
+
+## When your organization limits the command line
+
+An administrator can limit `talkbar-cli` with the rules on the [Admin policy](/settings/admin-policy) page. A refused command exits with `1`, and `--output json` reports `"code": "failed"`.
+
+| Rule | What is refused | Message on standard error |
+| --- | --- | --- |
+| **Command-line tool** set to **Deny** | Every command, `serve` included. Only `--help` and `--version` still work. | "Your organization's admin policy turns off the TalkBar command-line tool on this computer." |
+| **MCP server** set to **Deny** | `serve`. The other commands still work. | "Your organization's admin policy turns off the TalkBar MCP server on this computer." |
+| **Allowed MCP tools** without **Exports** | `exports run` and `exports worker`. | "Your organization's admin policy does not allow this command's tool group." |
+| **Allowed MCP tools**, any blocked group | The operations in that group, through `tools call`, `tools batch` and `search`. `tools list` leaves them out. `search` needs **Meeting content**. | "This setting is managed by your organization." |
+
+See [Administrator rules](/mcp/access-and-permissions#administrator-rules) for which operations each group holds and for the export rules that also apply. `exports worker` and `exports run --wait` check the rules as they run, so a new rule stops them.
 
 ## For AI agents with a shell
 
@@ -235,6 +260,7 @@ After a successful write, `talkbar-cli` (and the MCP server) tells the running T
 
 - [MCP overview](/mcp/overview)
 - [Access and permissions](/mcp/access-and-permissions)
+- [Admin policy](/settings/admin-policy)
 - [Errors and limits](/mcp/errors-and-limits)
 - [Examples](/mcp/examples)
 - [Operations reference](/mcp/operations)

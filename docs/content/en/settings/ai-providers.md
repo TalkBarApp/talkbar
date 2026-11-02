@@ -16,13 +16,13 @@ These controls sit above the inner tabs and stay visible on every tab.
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Setup AI** | Opens the guided AI setup, which walks you through providers, local models and feature assignments. | — |
+| **Setup AI** | Opens the **Set up AI** window, where you set up providers, local models and default models. See [Set up AI](/ai/providers-and-models#set-up-ai). | — |
 | Issue count (for example **1 issue**) | Appears only when an AI feature is failing. Click it to jump to the problem. | — |
-| **Private AI Mode** | Keeps all AI on this computer and turns off any external providers you connected. Shown only after you add a cloud or CLI provider. You can't change it while a session is in progress. See [Private AI Mode](/ai/private-ai-mode). | Off |
+| **Private AI Mode** | Keeps AI on Built-in AI and on Ollama servers TalkBar counts as local, and turns off cloud and CLI providers. Shown once a provider other than Built-in AI, including Ollama, is turned on with a model turned on. You can't change it while a session is in progress. See [Private AI Mode](/ai/private-ai-mode). | Off |
 
 When an AI feature fails, a red card appears under the header with the affected provider and model and the latest error. **Retry** tests the connection again. **Clear this error** removes the error for that provider or model.
 
-If an Ollama provider uses a host name, TalkBar can't tell whether it's on this computer, so it asks. Choose **Treat as local** or **Keep as remote**. Trusted hosts count as local in Private AI Mode; otherwise the feature shows a "Not local" warning, but nothing is blocked. You can change this later with **Treat host as local** when you edit the provider.
+If an Ollama provider uses a host name, TalkBar can't tell whether it's on this computer, so it asks. Choose **Treat as local** or **Keep as remote**. Trusted hosts count as local in Private AI Mode. Other hosts don't: while the mode is on, features assigned to them [do not run](/ai/private-ai-mode#not-fully-local). You can change this later with the **Treat host as local** switch on the provider's card.
 
 ## AI Features
 
@@ -31,7 +31,7 @@ The **AI Features** tab (search entry: **AI Features**) shows which model powers
 | Setting | What it does | Default |
 | --- | --- | --- |
 | **Test** | Sends a short test request for every enabled feature and lists the result, the model used and the response time. | — |
-| **Quick Apply Wizard** | Opens the AI setup on its feature step, where you can assign models to features in one pass. | — |
+| **Quick Apply Wizard** | Opens the **Set up AI** window on its **Default models** step, where you pick a provider and a model and apply it as the **Standard** or **Private AI** default. | — |
 
 ### Default model
 
@@ -39,14 +39,14 @@ The **AI Features** tab (search entry: **AI Features**) shows which model powers
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Standard** | The model features use while Private AI Mode is off. Any model from any provider. | Qwen3.5 4B (Built-in AI) |
-| **Private AI** | The model features use while Private AI Mode is on. Only models that run on this computer are listed. Disabled until you add a cloud or CLI provider, because until then all AI already runs locally. | Qwen3.5 4B (Built-in AI) |
+| **Standard** | The model features use while Private AI Mode is off. Any model from any provider that can serve every feature. Text-only models aren't listed. | Qwen3.5 4B (Built-in AI) |
+| **Private AI** | The model features use while Private AI Mode is on. Only built-in and Ollama models are listed, and TalkBar refuses an Ollama server it doesn't count as local. Disabled until a provider other than Built-in AI, including Ollama, is turned on with a model turned on, because until then all AI already runs locally. | Qwen3.5 4B (Built-in AI) |
 
-If you haven't added a cloud or CLI provider yet, a **Set up a provider** button takes you to the **Providers** tab.
+If you have no provider other than Built-in AI yet, a **Set up a provider** button takes you to the **Providers** tab.
 
 ### Per-feature models
 
-**Per-feature models** lets individual features use their own model instead of the default. Click **Customize** to show the controls (and **Hide** to collapse them). A **Standard** / **Private AI** switch picks which set of assignments you're editing. The two sets are kept separately.
+**Per-feature models** lets individual features use their own model instead of the default. Click **Customize** to show the controls (and **Hide** to collapse them). A **Standard** / **Private AI** switch picks which set of assignments you're editing. The two sets are kept separately. **Private AI** can't be selected until Private AI Mode is available.
 
 Features are grouped. Each group row has an on/off switch, a model dropdown and a **Reset** button. **Show features** expands a group so you can set each feature on its own.
 
@@ -60,10 +60,10 @@ Features are grouped. Each group row has an on/off switch, a model dropdown and 
 | Control | What it does | Default |
 | --- | --- | --- |
 | Group or feature switch | Turns that AI feature on or off. | On |
-| Model dropdown | Picks a model for the group or feature. **Use default** follows the default model. Only models that can do the job are listed. | **Use default** |
-| **Reset** | Returns the group or feature to the default model. | — |
+| Model dropdown | Picks a model for the group or feature. Until you choose one, it reads **Select custom model** and the group or feature follows the default model. Only models that can do the job are listed. | **Select custom model** |
+| **Reset** | Appears on a customized group or feature. Returns it to the default model. | — |
 
-A badge next to each feature shows its status: **Ready**, **Disabled**, **Invalid** or **Needs config**. **Customized** or **Inherited** tells you whether a group has its own model. **Model not downloaded** means the chosen local model still needs to be downloaded on **Settings → Private Local AI**.
+In the **Standard** set, while Private AI Mode is off, a badge next to each feature shows its status: **Ready**, **Disabled**, **Invalid** or **Needs config**. **Customized** or **Inherited** tells you whether a group has its own model; **Mixed** means its features use different models. **Model not downloaded** means the chosen local model still needs to be downloaded on **Settings → Private Local AI**.
 
 In the Private AI set, **Dictation polish** starts out assigned to the small Qwen3 0.6B model instead of the default.
 
@@ -73,12 +73,12 @@ The **Providers** tab (search entry: **Providers**) lists every AI provider Talk
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Set up via wizard** | Opens the guided AI setup on its providers step. | — |
+| **Set up via wizard** | Opens the **Set up AI** window on its **Providers** step. | — |
 | **Add Provider** | Opens **Add AI Provider**, where you connect a cloud API or a command-line AI tool. | — |
 
 ### Each provider
 
-Each provider card shows its type (**API / BYOK**, **Installed CLI** or **Built-in (on-device)**), how many models it has, and warnings such as **No API key**, **Invalid key** or **Validation failed**.
+Each provider card shows its type (**API / BYOK**, **Installed CLI** or **Built-in (on-device)**), how many models it has, and warnings such as **No API key**, **Invalid key** or **Validation failed**. An Ollama provider that uses a host name also has a **Treat host as local** switch.
 
 | Control | What it does | Default |
 | --- | --- | --- |
@@ -92,8 +92,8 @@ Each provider card shows its type (**API / BYOK**, **Installed CLI** or **Built-
 
 In **Add AI Provider**, choose a **Provider Type**:
 
-- **Cloud API**: pick a provider and enter your API key. The list includes Anthropic, OpenAI, Google Gemini, Ollama (Local), Groq, xAI (Grok), DeepSeek, Cohere, Fireworks AI, Together AI, OpenRouter and AWS Bedrock. **Custom...** lets you enter any compatible endpoint.
-- **CLI Tool**: pick an AI command-line tool that's installed on this computer. **Scan** detects installed tools; **Use** fills in a detected one. You can also set the **Executable path** yourself.
+- **Cloud API**: pick a provider and enter your API key. The list includes Anthropic, OpenAI, Google Gemini, Ollama (Local), Groq, xAI (Grok), DeepSeek, Cohere, Fireworks AI, Together AI, OpenRouter and AWS Bedrock. **Custom...** lets you enter any compatible endpoint. **Ollama (Local)** is in this list even though it runs on hardware you control, and its API key is optional. See [Set up Ollama](/ai/providers-and-models#set-up-ollama) for the guided way to add it.
+- **CLI Tool**: pick an AI command-line tool that's installed on this computer. In **Detect Local CLI Tools**, **Scan** (or **Rescan**) detects installed tools and marks each one **Detected** or **Not found**; **Use** fills in a detected one. You can also set the **Executable path** yourself.
 
 **Advanced settings...** shows extra fields such as **Display name** and **Endpoint override (optional)**. Then click **Connect & Select Models**, tick the models you want and add them.
 
@@ -101,7 +101,7 @@ For command-line tools, the edit screen also has **CLI prompt controls**, includ
 
 ### Local CLI Tools
 
-The **Local CLI Tools** card detects AI command-line tools installed on this computer. Supported tools are Claude Code, Codex, Agy, Grok CLI and OpenCode (marked **Experimental**). Click **Scan** (or **Rescan**) to check again. Each tool shows **Detected** or **Not found**.
+The **Local CLI Tools** card detects AI command-line tools installed on this computer. Supported tools are Claude Code, Codex, Agy, Grok CLI and OpenCode (marked **Experimental**). Click **Scan** (or **Rescan**) to check again. Each tool shows **Detected** or **Not found**. **Add Provider** connects a detected tool, and **Installed** marks one you already connected. The **Set up AI** window marks a missing tool **Not detected** instead.
 
 ## Models
 
@@ -174,7 +174,7 @@ Gives built-in and local Ollama models more time on slower computers before a re
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Auto** | Sets the limits from the measured speed of your computer. Until a built-in model has run, Auto doubles the limits. Under the control, TalkBar shows the measured speed for each model. | Selected |
+| **Auto** | Sets the limits from the measured speed of your computer. Until a built-in model has run, Auto doubles the limits; run the speed test in [Model Advisor](/ai/local-models#find-my-best-model) to measure now. Under the control, TalkBar shows the measured speed for each model. | Selected |
 | **Standard** | Keeps the default limits. | — |
 | **Longer** | Doubles the limits. | — |
 | **Longest** | Allows four times as long. | — |
@@ -187,13 +187,13 @@ Runs built-in and Ollama requests one after another, so tasks don't compete for 
 | --- | --- | --- |
 | **Queue built-in and Ollama** | Turns the queue on. Cloud providers and command-line tools always run outside it. | On |
 | **Concurrent local requests** | How many local requests run at the same time (1–8). Use 1 to fully serialize GPU work. | 1 |
-| **Pending local requests** | How many requests can wait in line (up to 512). | 32 |
+| **Pending local requests** | How many requests can wait in line (0–512). This counts waiting requests only, so total local work can reach concurrent plus pending. | 32 |
 
 ### Response Language
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Response Language** | The language AI writes in, including chat replies. A chat can override it with **Reply language** in its **Answer using** menu. In Auto, chat replies follow the language of your question. Ask AI in notes keeps the language of the selected text or note and uses this setting only for an empty note. **Custom...** lets you type any language (up to 30 characters). | **Auto (Application UI Language)** |
+| **Response Language** | The language AI writes in, including chat replies. A chat can override it with **Reply language** in its **Answer using** menu. In Auto, chat replies follow the language of your question. Ask AI in notes keeps the language of the selected text or note. For an empty note it uses this setting or, with Auto, the language of your request. **Custom...** lets you type any language (up to 30 characters). | **Auto (Application UI Language)** |
 
 ### Custom AI Instructions
 
@@ -209,7 +209,7 @@ A shortcut card. **Open Voice settings** takes you to [Settings → Voice](/sett
 ::
 
 ::callout{icon="i-heroicons-lock-closed" color="gray"}
-If your organization manages TalkBar, some of these controls may be locked and show a notice. Locked settings keep working as your administrator set them up.
+If your organization manages TalkBar with an [admin policy](/settings/admin-policy), some of these controls may be locked and show a notice. Locked settings keep working as your administrator set them up.
 ::
 
 ## Related

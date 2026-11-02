@@ -11,7 +11,7 @@ TalkBar keeps your sessions, recordings, notes and knowledge on this computer. B
 
 Open the data folder from **Settings → Data & Backup → Open data folder**. Under **This device**:
 
-- **Open data folder** opens it in File Explorer.
+- **Open data folder** opens it in your file manager.
 - **Open logs folder** opens the log files, which support may ask for.
 
 The data folder holds TalkBar's database, your recordings and session files, note media, and downloaded models. Don't move or edit files in it by hand; use a backup instead.
@@ -66,7 +66,7 @@ You have two options:
 
 | | Backup and restore | Transfer file |
 | --- | --- | --- |
-| What moves | Everything | Only what you choose: workspaces, settings, sessions, notes, knowledge or chats |
+| What moves | Everything | Only what you choose: workspaces, settings, series and calendars, sessions, notes, knowledge or chats |
 | On the new computer | Replaces all data there | Adds to what is already there; nothing is deleted |
 | Session audio | Always included | Optional |
 | Saved keys and passwords | Included encrypted; readable with your recovery code | Never included |
@@ -96,9 +96,9 @@ Use **Transfer to another device** when you want to copy only some of your data,
 
 If the file holds more sessions than the new computer's plan allows, TalkBar asks whether to stop, or to import anyway and move the oldest extra sessions to Trash.
 
-Passwords and API keys never travel in a transfer file. After the import, TalkBar lists the services to reconnect (AI providers, notification channels, export destinations, share branding) with a link to each one's settings. Shared links and export history stay with the old computer.
+Passwords and API keys never travel in a transfer file. After the import, TalkBar lists the services to reconnect (AI providers, notification channels, export destinations, calendars, share branding) with a link to each one's settings. A calendar subscription's address isn't in the file, so you add it again. Shared links and export history stay with the old computer.
 
-::screenshot{src="/screenshots/data/transfer-export-dialog.png" alt="The Export data to a transfer file dialog, with workspace checkboxes, the What to include list (Workspaces and projects; Settings, templates and AI setup; Knowledge, documents and people; Sessions and transcripts; Notes; AI chats), Which sessions options and the Include session audio checkbox" caption="Choosing what goes into a transfer file"}
+::screenshot{src="/screenshots/data/transfer-export-dialog.png" alt="The Export data to a transfer file dialog, with workspace checkboxes, the What to include list (Workspaces and projects; Settings, templates and AI setup; Knowledge, documents and people; Session series and calendars; Sessions and transcripts; Notes; AI chats), Which sessions options and the Include session audio checkbox" caption="Choosing what goes into a transfer file"}
 ::
 
 ## Resets
@@ -108,7 +108,7 @@ All resets are in the **Danger zone**. Create a backup first.
 | Reset | What it deletes | What stays |
 | --- | --- | --- |
 | **Reset workspace data** | The sessions, notes, documents and files of one workspace. You choose the workspace and type its name to confirm; a safety backup is offered first. This cannot be undone. | The workspace name and profile, and all other workspaces. |
-| **Reset database** | Starts over with an empty database and restarts TalkBar. Meant for when TalkBar will not start after an update. | Downloaded voice models, voice settings and speaker profiles. The old database, workspace files and recordings are moved into a `backups\reset-…` folder in the data folder, not deleted. |
+| **Reset database** | Starts over with an empty database and restarts TalkBar. Meant for when TalkBar will not start after an update. | Downloaded voice models, voice settings and speaker profiles. The old database, workspace files and recordings are moved into a `reset-…` folder inside the `backups` folder in the data folder, not deleted. |
 | **Reset all data** | All local workspace data and settings. TalkBar restarts with a fresh database. You type this computer's device name to confirm. | Downloaded models, logs and the `backups` folder. |
 
 After **Reset database**, **Reset all data** and **Restore backup**, TalkBar keeps the previous data in the `backups` folder inside the data folder. It keeps the two most recent copies of each kind and removes older ones. These copies can take a lot of space; delete the folders you don't need once you are sure.

@@ -28,14 +28,16 @@ These models power **Built-in AI**. Each row shows the download size, **speed** 
 
 | Model | Download | Memory | Good to know |
 | --- | --- | --- | --- |
-| **Qwen3 0.6B** | 380 MB | Small | Tiny and fast. The default for dictation polish. |
+| **Qwen3 0.6B** | 380 MB | Small | Tiny and fast, text only: for polish, titles and timelines, not for summaries or chat. Starts on **Dictation polish** in the Private AI set. |
 | **Qwen3.5 2B** | 1.2 GB | About 2 GB | Compact model for summaries on smaller computers |
-| **Qwen3.5 4B** | 2.6 GB | About 3.5 GB | The default for summaries and other features |
+| **Qwen3.5 4B** | 2.6 GB | About 3.5 GB | The default model for Standard and Private AI |
 | **Qwen3.5 9B** | 5.3 GB | About 7 GB | Stronger quality than 4B when you have the graphics memory; slower |
 | **Gemma 4 E4B** | 5 GB | About 6 GB | Highest-quality Gemma 4 |
 | **Ministral 3 3B** | 2 GB | About 4 GB | Compact multilingual model with strong structured output |
 | **LFM2.5 1.2B Thinking** | 697 MB | Small | Fast, text only: for polish, titles and timelines, not for summaries or chat |
 | **LFM2.5 2.6B** | 1.6 GB | | Suited to computers with an 8 GB graphics card |
+
+Text-only models can't be a default model. Assign them to the features that need only text: **Dictation polish**, **Title generation** and **Timeline**.
 
 Larger models usually write better but need more memory and run slower. Speed depends a lot on your computer, so the best way to choose is to test.
 
@@ -43,14 +45,15 @@ Links at the top of the tab take you to **Manage models** (the Models tab in AI 
 
 ### Find my best model
 
-**Find my best model** opens the **Model Advisor**. It runs a short test of each downloaded model on this computer, measures real speed and quality, and recommends the best default. It takes about a minute per model.
+**Find my best model** opens the **Model Advisor**. It runs a short test of each downloaded model on this computer, measures real speed and quality, and recommends the best default. Tick the models to test and click **Start test**. It takes about a minute per model, and **Cancel test** stops it.
 
 - The advisor shows your computer, for example **Your system: 16 GB RAM · 8 cores**.
-- **Download to test** fetches a model you do not have yet.
-- **Best for your system** names the recommended model. Click **Make default** to use it for AI features.
-- If your hardware changed since the last test, the advisor asks you to run it again.
+- Models you have not downloaded are dimmed and marked **Download to test**. Download them from the model list first.
+- **Best for your system** names the recommended model: the highest-quality model that passed every check and runs fast on your computer or, failing that, the fastest one that passed the quality check. Click **Set as default** to make it your **Standard** default model.
+- Each tested model shows its speed and check results. **Make default** on a model's row picks that model instead. If it is not the recommended one, TalkBar asks you to confirm.
+- **Test again** returns to the list of models. If your hardware changed since the last test, the advisor asks you to run it again.
 
-::screenshot{src="/screenshots/ai/model-advisor.png" alt="The Model Advisor dialog after a test run, showing the Your system line with RAM and cores, per-model speed and check results, and the Best for your system recommendation with a Make default button" caption="Model Advisor"}
+::screenshot{src="/screenshots/ai/model-advisor.png" alt="The Model Advisor dialog after a test run, showing the Your system line with RAM and cores, per-model speed and check results, and the Best for your system recommendation with a Set as default button" caption="Model Advisor"}
 ::
 
 ### Local AI acceleration
@@ -90,8 +93,8 @@ System models are small helpers. TalkBar downloads them automatically when a fea
 | **Sortformer diarizer** | about 470 MB | Separates speakers live during meetings |
 | **Sortformer diarizer (large meetings)** | about 470 MB | Optional. Separates up to 8 speakers. |
 | **Nemotron 3 speaker detection (up to 8 speakers)** | about 99 MB | Optional. Preferred by Automatic speaker detection for sessions with more than 4 speakers. |
-| **Translation models** | about 400 MB per language pair | [Live translation](/voice/live-translation) |
-| **BGE-M3** | about 417 MB | Semantic document search |
+| **Translation models** | about 400 to 430 MB per language pair | [Live translation](/voice/live-translation) |
+| **BGE-M3 Q4_K_M** | about 417 MB | Semantic document search |
 
 ## Hardware and disk space
 
@@ -108,10 +111,11 @@ Disk space adds up quickly:
 ## Download and remove models
 
 - **Download** fetches a model. You can keep working while it downloads, and **Cancel** stops it.
+- **Retry** starts a failed download again.
 - **Re-download** replaces a damaged or incomplete copy.
 - **Delete** removes a model and tells you how much space it frees. If a feature still uses the model, TalkBar warns you that the feature will need the model downloaded again to work.
 
-You can download any deleted model again at any time.
+You can download any deleted model again at any time. TalkBar downloads **Silero VAD** and **WeSpeaker speaker embeddings** again by itself the next time a feature needs them.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
 Local AI on a slow computer may need more time. **Settings → AI Providers → Advanced → AI time limits on this computer** gives built-in and local Ollama models longer before a request times out, and **Local AI request queue** controls how many local requests run at once.

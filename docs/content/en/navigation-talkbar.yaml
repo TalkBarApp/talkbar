@@ -162,6 +162,9 @@ body:
       - title: Notifications
         to: /settings/notifications
         icon: i-heroicons-bell-alert
+      - title: Calendar sync
+        to: /settings/calendar-sync
+        icon: i-heroicons-calendar-days
       - title: Export & Share
         to: /settings/export-and-share
         icon: i-heroicons-arrow-down-tray
@@ -174,6 +177,9 @@ body:
       - title: License
         to: /settings/license
         icon: i-heroicons-key
+      - title: Admin policy
+        to: /settings/admin-policy
+        icon: i-heroicons-building-office-2
       - title: Help & Tours and Doctor
         to: /settings/help-and-doctor
         icon: i-heroicons-lifebuoy

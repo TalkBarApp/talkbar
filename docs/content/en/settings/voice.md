@@ -20,7 +20,7 @@ For how recording works end to end, see [Recording and transcription](/voice/rec
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Audio source** | What TalkBar records: **Microphone**, **System audio** (what plays through your speakers or headphones), or **Microphone + system audio**. Options only appear when the device is available. The refresh button next to it checks for devices again. | **Microphone** |
+| **Audio source** | What TalkBar records: **Microphone**, **System audio** (what plays through your speakers or headphones), or **Microphone + system audio** (**Mic + System** in New session and the session bar). Options only appear when the device is available. The refresh button next to it checks for devices again. | **Microphone** |
 | **Microphone** | The default microphone for sessions, dictation (when dictation follows it) and the audio test. Disabled when **Audio source** is **System audio**. | **System default** |
 | **Test audio input** | **Start test** records a short sample from the current source so you can see the level and play it back. **Stop test** ends it. | — |
 | **Mute microphone shortcut** | A global shortcut that mutes all microphone input to TalkBar. Dictation and recordings hear silence until you press it again. Other apps and the system microphone are not affected. The switch turns the shortcut on or off. | `Ctrl+Shift+M`, on |
@@ -70,7 +70,7 @@ The model lists include Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo,
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Timeline frequency** | How often the live timeline (short bullets about what was said) refreshes during a session. Options: 10, 20 or 30 seconds, or **1 min**. | 10 seconds |
+| **Timeline frequency** | How often the live timeline (short bullets about what was said) refreshes during a session. Options: 10, 20 or 30 seconds, or **1 min**. With a Whisper model as the **Live transcription model**, it refreshes every 30 seconds at the fastest. | 10 seconds |
 
 ### Summaries
 

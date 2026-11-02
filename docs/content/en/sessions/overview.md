@@ -14,7 +14,7 @@ New to recording? Start with [Your first session](/getting-started/first-session
 | Part | What it is |
 | --- | --- |
 | Transcript | What was said, split by speaker, with times. |
-| Timeline | Short AI notes written every few minutes while you record. |
+| Timeline | Short AI notes written while you record, every 10 seconds by default. |
 | Summary | The final write-up, organized into the sections of the session's [template](/sessions/templates-and-skills). |
 | Notes | Your own rich-text note for the session. |
 | Action items | Tasks, follow-ups, questions and decisions from the session. |
@@ -60,7 +60,7 @@ In **All sessions**, the list is grouped:
 - **Search** matches words in the session title, project, series, keywords and speaker names. Every word you type must match. When a match comes from something the row doesn't show, the row says where, for example **With** a speaker's name.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-To search inside transcripts, summaries and notes across all your sessions, use the search in the title bar or ask [Ask TalkBar](/chats-and-notes/ask-talkbar).
+To search inside transcripts, summaries and notes across all your sessions, use [universal search](/getting-started/getting-around#universal-search) or ask [Ask TalkBar](/chats-and-notes/ask-talkbar).
 ::
 
 ### Row actions

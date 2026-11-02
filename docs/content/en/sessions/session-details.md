@@ -35,7 +35,7 @@ The **⋮** menu:
 
 | Action | What it does |
 | --- | --- |
-| **Record follow-up** | Starts recording a linked follow-up right away, with the same series, project, title and template. |
+| **Record follow-up** | Starts recording a linked follow-up right away, with the same series, project, title and template. On the recording screen, this is **Follow-up** in the **New session** menu. |
 | **Schedule follow-up** | Opens the Schedule window, filled in with the series, project and title. |
 | **Scan for knowledge** | Scans this session for knowledge cards. Hidden when the session's privacy mode doesn't allow it. See [Review and scans](/knowledge/review-and-scans). |
 | **Export session** | Exports the session. After the first export, it becomes a submenu with **Export again…**, a way to open the exported files, and **View export history**. See [Exports](/sharing/exports). |
@@ -90,6 +90,10 @@ Each section has a **⋮** menu:
 | **Edit text** | Edits the section in place. |
 | **Delete section** | Removes the section from the summary. |
 
+Select text in the summary to get a small toolbar with **Copy to clipboard**, **Set Action item**, **Add bookmark**, **Add to notes** and **Delete selected text**.
+
+To check where a point came from, hover over it. When the AI recorded its source, an icon (**Show evidence**) appears at the right edge. Hover the icon to see the transcript lines behind the point, with the speaker and time, and click a line to jump to it in the transcript. Not every point has one, and lines from ignored speakers aren't shown.
+
 The card's **AI** menu changes how the summary is written:
 
 | Option | What it does |
@@ -142,6 +146,7 @@ Click a speaker's chip, in **Participants** or in the transcript, to open its me
 | **Label** | Gives the speaker a role label, such as *Client* or *Manager*. **Manage labels** opens **Settings → Voice → Speakers**. |
 | **Combine speakers…** | Moves all speech from this speaker to another one, when TalkBar split one person in two. |
 | **Color** | Changes the speaker's color. |
+| **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
 
 Names carry into the transcript and summary. See [Speakers](/voice/speakers) for how TalkBar recognizes voices.
 
@@ -161,6 +166,8 @@ Right-click a line, or use its **⋮** menu:
 | **Add to note** | Adds the line to your session note. |
 | **Edit text** | Corrects the wording. |
 | **Delete** | Removes the line. This can't be undone. |
+
+Select words in a line to get a small toolbar with **Copy to clipboard**, **Add bookmark**, **Export this transcript turn**, **Add to notes** and **Delete selected text**.
 
 The **View** menu switches between **Classic layout**, **Avatar layout** and **Chat layout**, sets the order, and opens **Previous transcripts**. If the session was translated, both the original and the translation are shown.
 

@@ -13,7 +13,8 @@ Everything you create in TalkBar lives in its data folder, which you can open fr
 
 - session recordings, transcripts, timelines and summaries;
 - notes, chats with Ask TalkBar, knowledge cards, documents, people and companies;
-- your settings, templates and skills;
+- your settings, templates, skills and custom translations;
+- meetings imported from your calendars, and copies of imported `.ics` files;
 - downloaded speech and AI models.
 
 There is no TalkBar account that stores your content. To keep a copy, make a [backup](/data/backup-and-restore). Saved API keys, passwords and tokens are stored encrypted, with the key in your system's keyring.
@@ -29,9 +30,11 @@ There is no TalkBar account that stores your content. To keep a copy, make a [ba
 | Exports | Your folder, or Notion for a Notion page destination | When you or an export rule export a session |
 | Update checks | TalkBar's update server: your TalkBar version and system type | When TalkBar checks for updates |
 | Model downloads | A download request to the site that hosts the model (Hugging Face for TalkBar's built-in models) | When you download a speech or local AI model |
+| Calendar subscriptions | A read request to the calendar address you added, and nothing else | When TalkBar checks a subscribed calendar for changes |
 | License checks | TalkBar's license service: license and device details | Only with an activated license, at startup and about once a week |
 | Anonymous usage statistics | TalkBar's statistics server | While **Share usage statistics** is on |
 | Messages to support | TalkBar's team | When you send **Contact us**, with the details you choose to include |
+| Translation suggestions | TalkBar's team | Only when you send your custom translations with **Send suggestions** |
 
 TalkBar never uploads your session recordings on its own. Audio leaves your computer only if you include it in an export to a Notion page, or if a note you share contains audio clips.
 
@@ -46,7 +49,7 @@ Each AI feature uses the route you set, so you decide where it runs:
 | Ollama on another computer | That computer | The text of each request, over your network |
 | Your own API key | The provider you chose | Only the text the request needs |
 
-**Private AI Mode** allows only the first two, with one switch. Speech-to-text always runs on your computer. See [How TalkBar uses AI](/ai/how-talkbar-uses-ai) and [Private AI Mode](/ai/private-ai-mode).
+**Private AI Mode** allows the first two, with one switch. It also allows an Ollama server on another computer when TalkBar counts it as local: an IP address, a `.local` name, a name without dots, or a host you chose **Treat as local** for. Requests to that server still travel over your network. Cloud providers and CLI tools are blocked. Speech-to-text always runs on your computer. See [How TalkBar uses AI](/ai/how-talkbar-uses-ai) and [Private AI Mode](/ai/private-ai-mode).
 
 You can also keep parts of a conversation away from AI:
 
@@ -69,6 +72,7 @@ To help improve TalkBar, the app can send anonymous usage statistics. This is on
 - app starts and quits, and daily use;
 - which main sidebar sections you open;
 - when you start or schedule a session;
+- when your plan is upgraded;
 - your TalkBar version, plan and release channel, and whether it is a Preview version;
 - a random device ID created by TalkBar.
 
@@ -82,6 +86,20 @@ Your name, email and account are never sent with them. Recordings, transcripts, 
 ## Updates
 
 TalkBar checks for new versions and, with **Automatic updates** on, downloads them and applies them the next time it starts. Every update is signed, and TalkBar checks the signature before installing it. On a paid plan you can turn **Automatic updates** off in **Settings → General → Updates**; on the Free plan they are always on. See [Install and update](/getting-started/install-and-update).
+
+## Calendar sync
+
+Calendar sync is one-way. For a [subscribed calendar](/settings/calendar-sync), TalkBar contacts only the address you add, on the schedule you set, and downloads the calendar. It never writes to your calendar and sends none of your sessions or notes to it. **Your calendar email (optional)** is used on this computer to skip meetings you declined; it isn't sent anywhere.
+
+Importing an `.ics` file uses no network at all. The address of a subscribed calendar is left out of transfer files, so you add it again after an import.
+
+## Custom translations
+
+[Custom translations](/settings/general#custom-translations) stay on this computer. Nothing is sent unless you click **Submit custom translations** and then **Send suggestions**. If you do, TalkBar's team receives:
+
+- the language, and for each phrase you select, the English text, the shipped translation and your wording;
+- your name and email, and your comment and screenshots if you add them;
+- with the include-details box on (it is on by default): your app version, system and device ID, plus your license ID if you have a license.
 
 ## Retention controls
 
@@ -103,8 +121,8 @@ To delete the audio of one session, open its menu and choose **Audio Player → 
 Sessions, notes and chats each have a Trash view. Items in Trash can be restored until they are deleted for good.
 
 - **Restore** brings an item back.
-- **Delete permanently** (**Delete forever** for chats) removes one item.
-- **Empty Trash** permanently deletes everything in that Trash.
+- **Delete** removes one session or note, after you confirm with **Delete permanently**. For a chat, the button is **Delete forever**.
+- **Empty Trash** (**Empty trash** on the Notes page) permanently deletes everything in that Trash.
 
 Permanently deleting a session removes its transcript, audio, session files and session-only data. Its knowledge cards, action items and drafts to review are kept. Action items don't go to Trash; deleting one is permanent.
 
@@ -114,7 +132,7 @@ Deleted workspaces and projects work the same way: they are hidden first, and th
 
 | To remove | Do this |
 | --- | --- |
-| One item | Move it to Trash, then **Delete permanently**, or let Trash cleanup do it. |
+| One item | Move it to Trash, then delete it there, or let Trash cleanup do it. |
 | A recording, keeping the transcript | **Audio Player → Delete Audio** in the session's menu. |
 | A shared page | Revoke the link in **Manage links**. Search engines may keep a copy of pages you allowed them to list. See [Share links](/sharing/share-links#update-or-revoke-a-link). |
 | One workspace's content | **Settings → Data & Backup → Reset workspace data**. |

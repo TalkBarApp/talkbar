@@ -29,7 +29,7 @@ There are several ways to create a series:
 - Click **New series** on the Series page. Enter a **Series name**, and optionally a **Series type**, **Project** and **Description (optional)**.
 - Choose **New series…** in the **Series** field of the [New session window](/sessions/starting-a-session) or the Schedule window.
 - Schedule a session that repeats. If you don't pick a series, TalkBar creates one named after the session.
-- Click **Record follow-up** on a completed session that isn't in a series. TalkBar creates a series named after it, adds the original session, and starts recording the follow-up in it.
+- Click **Record follow-up** on a completed session that isn't in a series (**Follow-up** on the recording screen). TalkBar creates a series named after it, adds the original session, and starts recording the follow-up in it.
 
 ### Series types
 
@@ -66,7 +66,7 @@ Click **Add a schedule** or **Edit schedule** to open **Series schedule**:
 | Field | What it does |
 | --- | --- |
 | **Repeat** | **One time** or **Recurring**. |
-| **Date**, **Time**, **Timezone** | When the first session starts. |
+| **Date**, **Time**, **Timezone** | When the first session starts. **Timezone** starts on your computer's time zone, and you can pick another. |
 | **Duration** | How long each session runs. |
 | **Frequency**, **Every**, **On days** | How often it repeats: daily, weekly on chosen days, or monthly. |
 | **Ends** | **Never**, **On date**, or after a number of sessions. |

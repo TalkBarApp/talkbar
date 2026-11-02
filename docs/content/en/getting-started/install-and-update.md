@@ -17,7 +17,7 @@ Download TalkBar for your computer from GitHub, install it, and keep it up to da
 
 The installer is digitally signed. If Microsoft Edge WebView2 Runtime is missing, the installer sets it up using an internet connection.
 #macos
-Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) and select the macOS download if one is available. Follow the instructions provided with that release.
+A Mac version is in progress. When it is ready, its download and instructions will be on the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) page.
 ::
 
 ## First launch
@@ -35,12 +35,15 @@ A banner at the top of the window keeps you informed:
 | Banner | What it means |
 | --- | --- |
 | **TalkBar {version} is available** | A new version was found. Click **Download update** to get it now, or **Release notes** to see what changed. |
-| **Restart TalkBar to finish updating to {version}** | The update is downloaded and ready. Click **Restart to update**, or keep working and it installs the next time TalkBar starts. |
+| **TalkBar {version} is available**, with **Restart TalkBar to finish updating to {version}** | The update is downloaded and ready. Click **Restart to update**, or keep working and it installs the next time TalkBar starts. |
+| **TalkBar {version} is available**, with a note that your license includes versions released until a certain date | This version would use the Free plan. Click **Renew updates** to keep your plan in it, or **Install anyway** to install it now. **Release notes** shows what changed. |
 | **TalkBar has been updated** | The update was installed. Click **Release notes** to see what is new. |
+
+If preparing the update fails, the banner says why and offers **Retry preparing update**.
 
 You can't restart to update while a recording, dictation or transcript processing is running. TalkBar asks you to finish first.
 
-::screenshot{src="/screenshots/getting-started/update-banner.png" alt="Update banner at the top of the TalkBar main window reading 'TalkBar x.y.z is available' with the Restart to update and Release notes buttons" caption="The update banner"}
+::screenshot{src="/screenshots/getting-started/update-banner.png" alt="Update banner at the top of the TalkBar main window reading 'TalkBar x.y.z is available' and 'Restart TalkBar to finish updating to x.y.z', with the Restart to update and Release notes buttons" caption="The update banner"}
 ::
 
 ### Check for updates yourself
@@ -62,7 +65,7 @@ The **Automatic updates** setting is in **Settings → General → Updates**.
 If your license includes updates released up to a certain date, the Updates section shows that date. For a newer version, TalkBar asks before installing it, even with automatic updates on, because that version would use the Free plan. See [Plans and license](/data/plans-and-license).
 
 ::callout{icon="i-heroicons-information-circle" color="gray"}
-If your organization manages TalkBar, some update settings may be locked and show **Your organization manages this setting.**
+If your organization manages TalkBar, update settings may be locked and show **Your organization manages this setting.** It can also force automatic updates on or off, or turn off manual update checks. See [Admin policy](/settings/admin-policy).
 ::
 
 ## Release channels

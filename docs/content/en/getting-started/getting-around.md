@@ -1,6 +1,6 @@
 ---
 title: Getting around
-description: The TalkBar layout, the sidebar, Home, universal search, Quick Actions, the session bar, guided tours, keyboard shortcuts and the interface language.
+description: The TalkBar layout, sidebar, Home, search, Quick Actions, system tray, session bar, reminders, tours, keyboard shortcuts and the interface language.
 navigation:
   icon: i-heroicons-map
 ---
@@ -20,28 +20,57 @@ The sidebar on the left holds the main areas of the app.
 | --- | --- |
 | **Home** | Your start page. |
 | **Recording** | The session you are recording now. After a session ends it is called **Last session** and opens the most recent one. A status indicator shows when you are recording, paused or on hold. |
-| **Sessions** | Every recorded session. Your recent sessions are listed underneath. |
+| **Sessions** | Every recorded session. A second **Sessions** group, below **Projects**, lists your recent sessions that aren't in a project. |
 | **Chats** | Your conversations with TalkBar. |
 | **Notes** | Your own notes. |
 | **Knowledge** | Memory cards, documents, people, companies and action items that TalkBar keeps for you. A **Review** item appears under it when AI suggestions are waiting. |
-| **Projects** | Your projects, one click away. Use **+** to create one, and pin the ones you use most. |
+| **Projects** | Your projects, one click away. The list shows up to five, pinned ones first; **View all projects** opens the rest. The arrow on a project's row shows its latest sessions. Use **+** to create a project. |
 | **Settings** | All settings. A red badge means something needs your attention. |
 | Account card | At the very bottom: your profile and the active workspace. Click it to switch workspace or manage your account. |
 
-Collapse the sidebar to a narrow rail with the button at its top. To pin icon links to Knowledge pages, such as **Documents** or **People**, under Knowledge, turn on **Show Knowledge shortcuts** in **Settings → General → Appearance**.
+Point at a session in the sidebar to see a small card with its template, date, length, speakers, project and source.
+
+Collapse the sidebar to a narrow rail with the button at its top. To pin icon links to Knowledge pages, such as **Documents** or **People**, under Knowledge, turn on **Knowledge shortcuts** in **Settings → General → Appearance**.
 
 ## The title bar
 
 | Control | What it does |
 | --- | --- |
-| **TalkBar logo** | Opens the TalkBar menu: **About TalkBar**, **Check for updates**, a **Settings** submenu, **Set up AI…**, **Turn on Private AI Mode** (or **Turn off Private AI Mode**), **Show Session Bar** (or **Hide Session Bar**), **Close Window** and **Quit TalkBar**. |
+| **TalkBar logo** | Opens the TalkBar menu: **About TalkBar** (with your version and plan), **Upgrade to {plan}** (when a higher plan is available), **Check for updates**, a **Settings** submenu with every tab, **Set up AI…**, **Turn on Private AI Mode** or **Turn off Private AI Mode** (once the mode is available), **Show Session Bar** (or **Hide Session Bar**), **Close Window** and **Quit TalkBar**. |
 | **New session** | Opens the New session window to start a recording. |
-| **Upcoming** | Lists your scheduled sessions. A session that is starting soon gets a **Start** button. |
-| **Help** | **Take a tour**, **Documentation** and **Contact us**. |
+| **Record now** | Appears next to **New session** when a scheduled session has started and nothing is recording. Click it to start that session. |
+| **Upcoming** | Lists your scheduled sessions. A session that is starting soon gets a **Start** button. **View all** opens the Upcoming sessions page, and **Schedule new** opens the Schedule window. |
+| **Focus mode** | Shown on the recording screen. See [Layouts](/sessions/recording#layouts). |
+| **Help** | **Take a tour**, **Documentation** and **Contact us**. On the Free plan, a computer that never had a Preview trial also gets **Activate Invite**. See [Preview trial](/settings/license#preview-trial). |
 
 When Private AI Mode is on, the logo becomes a green shield to remind you that all AI features run on local models only. See [Private AI Mode](/ai/private-ai-mode).
 
-**Close Window** hides TalkBar to the system tray, and so does the window's close button. TalkBar keeps running there. Use **Quit TalkBar** to exit completely.
+**Close Window** hides TalkBar to the system tray, and so does the window's close button. TalkBar keeps running there. **Quit TalkBar** asks whether to exit completely (**Quit App**) or keep running in the tray (**Hide to Tray**).
+
+## The system tray
+
+TalkBar keeps an icon in the system tray while it runs, even when the main window is closed. The icon changes while a session records or is paused.
+
+::platform-tabs
+#windows
+Click the icon to open the main window. Right-click it to open the menu.
+#macos
+Click the icon in the menu bar to open the menu.
+::
+
+| Menu item | What it does |
+| --- | --- |
+| **Start session** | Starts recording right away. |
+| **New session…** | Opens the New session window. |
+| Session status, **Pause session** or **Resume session**, **Stop session** | Shown instead of the two items above while you record. Click the status to open the live session. |
+| **Schedule new session…** | Opens the schedule window. |
+| **Upcoming sessions** | Your next scheduled sessions, and **View all upcoming sessions**. |
+| **Recent Sessions** | Your last 10 sessions, and **View all sessions**. |
+| **Quick Actions** | The same items as the [Quick Actions](#quick-actions) button. |
+| **Settings** | **All settings…**, and links to the settings tabs. |
+| **Private AI Mode** | Turns [Private AI Mode](/ai/private-ai-mode) on or off, once the mode is available. It is locked while a session is in progress. |
+| **Open TalkBar** | Opens the main window. |
+| **Quit** | Exits TalkBar. |
 
 ## Home
 
@@ -52,14 +81,14 @@ Home is your start page for the active workspace.
 - Four tiles count your **Sessions**, **Chats**, **Notes** and **Documents**. Click a tile to open that list.
 - **Up next** appears when sessions are scheduled soon. Start one, or open its preparation.
 - The time range menu sets how far back the recent list goes, such as **Today** or **This week**. Click **Set as default** to keep your choice.
-- The recent list shows your latest sessions, notes and chats by day. Switch between **All** and **Pinned**, filter by type, and search.
+- The recent list shows your latest sessions, notes and chats by day. Switch between **All** and **Pinned**, filter by type, and search. The pin on a row pins or unpins it, and **Pinned on top** keeps pinned items first.
 
 ::screenshot{src="/screenshots/getting-started/home-dashboard.png" alt="TalkBar Home page with the greeting, the Add menu and New session buttons, the four count tiles for Sessions, Chats, Notes and Documents, the Up next strip with one scheduled session, and the recent activity list grouped by day" caption="Home"}
 ::
 
 ## Universal search
 
-Press `Ctrl+K`, or click the search box at the top of the sidebar, to search everything in the workspace. Outside text fields, `/` opens search too.
+Press `Ctrl+K` (`Cmd+K` on macOS), or click the search box at the top of the sidebar, to search everything in the workspace. Outside text fields, `/` opens search too.
 
 Search finds sessions, notes, chats, action items, documents, memory cards, people, companies, projects and series. Matches inside a transcript, summary or document text are marked as such.
 
@@ -81,6 +110,12 @@ The session bar is a small floating window that stays on top of your other apps.
 - When session detection is on and your microphone is free, TalkBar listens on this computer for a conversation and offers to start a session from the bar. Audio and text never leave this device, and nothing is saved until you start.
 
 Show or hide it from the TalkBar logo menu, or with `Ctrl+Alt+B`. You can drag the bar anywhere. Configure detection, the shortcut, its position, how many lines it shows and the **Skip duration** (how long the bar's Skip button pauses detection) in **Settings → General → Session detection**. Session detection is on by default.
+
+## Reminders
+
+You don't open the reminder panel yourself. When a scheduled session reaches one of its reminder times, the panel pops up on its own in the bottom-right corner of TalkBar, over the Quick Actions button, and a desktop notification appears too.
+
+The panel shows the session's title and time. **Start** starts the session, **Snooze 10m** reminds you again later (the arrow next to it has other times), **Skip** skips this session, and the **X** closes the panel. For a session that starts on its own, the panel counts down instead. See [Reminders and auto-start](/sessions/scheduling-and-preparing#reminders-and-auto-start).
 
 ## Guided tours
 
@@ -128,7 +163,7 @@ If a shortcut is already used by another app, TalkBar tells you and asks you to 
 
 TalkBar's interface is available in 15 languages: English, Español, Deutsch, Français, Italiano, Русский, Türkçe, Polski, Українська, 简体中文, Português (Brasil), Português (Portugal), 日本語, 한국어 and 繁體中文.
 
-Choose it during first-run setup, or later in **Settings → General → Application UI Language**. The change applies right away, including in the session bar and the dictation panel.
+Choose it during first-run setup, or later in **Settings → General → Application UI Language**. The change applies right away, including in the session bar and the dictation panel. To change specific wording, see [Custom translations](/settings/general#custom-translations).
 
 ::callout{icon="i-heroicons-information-circle" color="gray"}
 Some regional licenses include only certain interface languages. If a language is unavailable, TalkBar explains why and links to **Settings → License**.
@@ -141,4 +176,5 @@ The interface language is separate from the language TalkBar transcribes. Set th
 - [Your first session](/getting-started/first-session)
 - [Settings overview](/settings/overview)
 - [General settings](/settings/general)
-- [Help and Doctor](/settings/help-and-doctor)
+- [Scheduling and preparing](/sessions/scheduling-and-preparing)
+- [Help & Tours and Doctor](/settings/help-and-doctor)
