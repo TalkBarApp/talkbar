@@ -29,7 +29,7 @@ body:
         icon: "i-heroicons-shield-check"
       - label: "Помощь"
         to: "/help/troubleshooting"
-        icon: "i-heroicons-lifebuoy"
+        icon: "i-heroicons-question-mark-circle"
 
   - label: "Настройки"
     to: "/settings/overview"

@@ -2,7 +2,7 @@
 title: Help & Tours and Doctor
 description: Reference for Settings → Help & Tours (guided tours and onboarding replay) and Settings → Doctor (checks your TalkBar setup and points to fixes).
 navigation:
-  icon: i-heroicons-lifebuoy
+  icon: i-heroicons-question-mark-circle
 ---
 
 Two tabs in the **System** group of Settings help you learn TalkBar and fix problems. **Settings → Help & Tours** replays guided tours and onboarding. **Settings → Doctor** checks your setup and points each finding at the place that fixes it.

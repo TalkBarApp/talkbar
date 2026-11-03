@@ -1,20 +1,34 @@
 import { useCallback, useEffect, useState } from "react";
 import {
+  AudioLines,
+  BookOpenText,
   Building2,
   ChevronDown,
+  CircleHelp,
+  Cpu,
+  Database,
+  ExternalLink,
   Globe,
   Handshake,
+  LifeBuoy,
+  Lightbulb,
   LineChart,
   Menu,
+  MessagesSquare,
   Mic,
   PhoneCall,
   Podcast,
   Presentation,
+  Rocket,
   Scale,
+  Settings,
+  Share2,
   Sparkles,
+  Terminal,
   UserRoundCheck,
   UserSearch,
   Voicemail,
+  Wrench,
   X,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -22,6 +36,7 @@ import ThemeToggle from "./ThemeToggle";
 import ColorThemeToggle from "./ColorThemeToggle";
 import type { Language, Translations } from "../i18n";
 import { LANGUAGE_FLAGS } from "../i18n";
+import { docsUrl } from "../lib/docs";
 import { getDownloadLink } from "../lib/download";
 import { logos } from "../lib/logos";
 
@@ -75,11 +90,12 @@ const Logo = ({ className = "", alt }: { className?: string; alt: string }) => (
   </span>
 );
 
-const Navbar = ({ translations, englishUrl }: NavbarProps) => {
+const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [useCasesMobileOpen, setUseCasesMobileOpen] = useState(false);
   const [industriesMobileOpen, setIndustriesMobileOpen] = useState(false);
+  const [guidesMobileOpen, setGuidesMobileOpen] = useState(false);
   const [showStickyCta, setShowStickyCta] = useState(false);
   const [downloadLink, setDownloadLink] = useState("#cta");
 
@@ -194,6 +210,70 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
       label: "nav.industry.research.label",
       desc: "nav.industry.research.desc",
       href: "/product-research/",
+    },
+  ];
+
+  const guideTopics: Array<{ Icon: LucideIcon; label: string; path: string }> = [
+    {
+      Icon: Rocket,
+      label: "nav.guides.gettingStarted",
+      path: "/getting-started/introduction",
+    },
+    { Icon: Mic, label: "nav.guides.sessions", path: "/sessions/overview" },
+    {
+      Icon: AudioLines,
+      label: "nav.guides.voice",
+      path: "/voice/recording-and-transcription",
+    },
+    {
+      Icon: Lightbulb,
+      label: "nav.guides.knowledge",
+      path: "/knowledge/knowledge-cards",
+    },
+    {
+      Icon: MessagesSquare,
+      label: "nav.guides.chatsAndNotes",
+      path: "/chats-and-notes/ask-talkbar",
+    },
+    { Icon: Cpu, label: "nav.guides.ai", path: "/ai/how-talkbar-uses-ai" },
+    { Icon: Share2, label: "nav.guides.sharing", path: "/sharing/share-links" },
+    {
+      Icon: Database,
+      label: "nav.guides.data",
+      path: "/data/privacy-and-your-data",
+    },
+    { Icon: LifeBuoy, label: "nav.guides.help", path: "/help/troubleshooting" },
+  ];
+
+  const guideReferences: Array<{
+    Icon: LucideIcon;
+    label: string;
+    desc: string;
+    path: string;
+  }> = [
+    {
+      Icon: Settings,
+      label: "nav.guides.settings.label",
+      desc: "nav.guides.settings.desc",
+      path: "/settings/overview",
+    },
+    {
+      Icon: Terminal,
+      label: "nav.guides.mcp.label",
+      desc: "nav.guides.mcp.desc",
+      path: "/mcp",
+    },
+    {
+      Icon: Wrench,
+      label: "nav.guides.troubleshooting.label",
+      desc: "nav.guides.troubleshooting.desc",
+      path: "/help/troubleshooting",
+    },
+    {
+      Icon: CircleHelp,
+      label: "nav.guides.faq.label",
+      desc: "nav.guides.faq.desc",
+      path: "/help/faq",
     },
   ];
 
@@ -372,6 +452,138 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
     </div>
   );
 
+  const newTabNote = (
+    <span className="sr-only"> ({t("footer.externalLink")})</span>
+  );
+
+  const renderDesktopGuides = () => (
+    <li className="group relative flex items-center">
+      <button
+        type="button"
+        className={`${desktopNavItemClass} gap-1.5 group-hover:bg-foreground/5`}
+        aria-haspopup="menu"
+      >
+        {t("nav.guides")}
+        <ChevronDown
+          size={14}
+          className="transition-transform duration-200 group-hover:rotate-180"
+          strokeWidth={2.5}
+        />
+      </button>
+      <div className="guides-panel hidden group-hover:block group-focus-within:block absolute top-full pt-3 z-50">
+        <div
+          className="nav-panel-pro nav-dropdown-panel overflow-hidden w-[min(720px,calc(100vw-2rem))]"
+          role="menu"
+        >
+          <div className="grid grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+            <div className="p-3 border-r border-border">
+              {guideTopics.map(({ Icon, label, path }) => (
+                <a
+                  key={label}
+                  href={docsUrl(lang, path)}
+                  target="_blank"
+                  rel="noopener"
+                  role="menuitem"
+                  className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-semibold text-foreground hover:bg-foreground/5 transition-colors"
+                >
+                  <Icon className="size-4 flex-shrink-0 text-primary" />
+                  {t(label)}
+                  {newTabNote}
+                </a>
+              ))}
+            </div>
+            <div className="p-3 flex flex-col gap-1">
+              {guideReferences.map(({ Icon, label, desc, path }) => (
+                <a
+                  key={label}
+                  href={docsUrl(lang, path)}
+                  target="_blank"
+                  rel="noopener"
+                  role="menuitem"
+                  className="group/item flex flex-1 gap-3 items-center px-3 py-2.5 rounded-lg hover:bg-foreground/5 transition-colors"
+                >
+                  <div className="bg-accent-soft text-primary border border-primary/15 rounded-lg size-10 flex items-center justify-center flex-shrink-0 group-hover/item:bg-primary/15 transition-colors">
+                    <Icon className="size-5" />
+                  </div>
+                  <div className="text-sm flex-1 min-w-0">
+                    <div className="font-semibold text-foreground leading-tight mb-0.5">
+                      {t(label)}
+                    </div>
+                    <div className="text-muted-foreground text-[12px] leading-snug">
+                      {t(desc)}
+                    </div>
+                  </div>
+                  {newTabNote}
+                </a>
+              ))}
+            </div>
+          </div>
+          <a
+            href={docsUrl(lang)}
+            target="_blank"
+            rel="noopener"
+            role="menuitem"
+            className="flex items-center gap-3 px-6 py-3.5 border-t border-border text-sm font-semibold text-foreground hover:bg-foreground/5 transition-colors"
+          >
+            <BookOpenText className="size-4 flex-shrink-0 text-primary" />
+            {t("nav.guides.all")}
+            <ExternalLink
+              className="size-3.5 ml-auto text-muted-foreground"
+              aria-hidden="true"
+            />
+            {newTabNote}
+          </a>
+        </div>
+      </div>
+    </li>
+  );
+
+  const renderMobileGuides = () => (
+    <div className="border-b border-border/50">
+      <button
+        onClick={() => setGuidesMobileOpen(!guidesMobileOpen)}
+        aria-expanded={guidesMobileOpen}
+        className="flex items-center justify-between w-full py-4 px-6 text-base font-medium text-foreground hover:bg-muted transition-colors"
+      >
+        <span>{t("nav.guides")}</span>
+        <ChevronDown
+          size={16}
+          className={`transition-transform duration-200 ${guidesMobileOpen ? "rotate-180" : ""}`}
+          strokeWidth={2.5}
+        />
+      </button>
+      {guidesMobileOpen && (
+        <div className="bg-sunken/55">
+          {[...guideTopics, ...guideReferences].map(({ Icon, label, path }) => (
+            <a
+              key={label}
+              href={docsUrl(lang, path)}
+              target="_blank"
+              rel="noopener"
+              onClick={closeDrawer}
+              className="flex items-center gap-3 py-3 px-10 text-sm text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+            >
+              <Icon className="size-4 text-primary" />
+              {t(label)}
+              {newTabNote}
+            </a>
+          ))}
+          <a
+            href={docsUrl(lang)}
+            target="_blank"
+            rel="noopener"
+            onClick={closeDrawer}
+            className="flex items-center gap-3 py-3 px-10 text-sm font-semibold text-foreground hover:bg-muted transition-colors"
+          >
+            <BookOpenText className="size-4 text-primary" />
+            {t("nav.guides.all")}
+            {newTabNote}
+          </a>
+        </div>
+      )}
+    </div>
+  );
+
   return (
     <>
       <nav
@@ -390,7 +602,7 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
             <Logo alt={t("footer.brand")} />
           </a>
 
-          <ul className="hidden md:flex items-center gap-0 lg:gap-1 text-foreground flex-nowrap">
+          <ul className="hidden min-[1200px]:flex items-center gap-0 lg:gap-1 text-foreground flex-nowrap">
             {navItems.map((item) => (
               <li key={item.href} className="flex items-center">
                 <a href={item.href} className={desktopNavItemClass}>
@@ -407,10 +619,11 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
             ))}
             {renderDesktopDropdown(t("nav.useCases"), useCases)}
             {renderDesktopDropdown(t("nav.industries"), industries)}
+            {renderDesktopGuides()}
           </ul>
 
           <div className="flex items-center gap-2 lg:gap-3 shrink-0">
-            <div className="hidden md:flex items-center gap-1.5 lg:gap-2">
+            <div className="hidden min-[1200px]:flex items-center gap-1.5 lg:gap-2">
               <ThemeToggle {...themeToggleLabels} />
               <ColorThemeToggle {...colorThemeToggleLabels} />
             </div>
@@ -423,7 +636,7 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
               {t("nav.downloadFree")}
             </a>
             {englishUrl && (
-              <div className="relative group hidden md:flex items-center">
+              <div className="relative group hidden min-[1200px]:flex items-center">
                 <button
                   type="button"
                   className="cursor-pointer flex items-center justify-center w-9 h-9 rounded-full bg-muted text-muted-foreground hover:text-foreground hover:bg-foreground/10 transition-colors duration-200"
@@ -456,7 +669,7 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
               </div>
             )}
             <button
-              className="md:hidden flex items-center justify-center w-11 h-11 rounded-full bg-muted text-muted-foreground hover:text-foreground transition-colors duration-200"
+              className="min-[1200px]:hidden flex items-center justify-center w-11 h-11 rounded-full bg-muted text-muted-foreground hover:text-foreground transition-colors duration-200"
               onClick={() => setDrawerOpen(true)}
               aria-label={t("nav.openMenu")}
               aria-expanded={drawerOpen}
@@ -469,7 +682,7 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
       </nav>
 
       <div
-        className={`fixed inset-0 z-[60] md:hidden transition-opacity duration-300 ${
+        className={`fixed inset-0 z-[60] min-[1200px]:hidden transition-opacity duration-300 ${
           drawerOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -524,6 +737,7 @@ const Navbar = ({ translations, englishUrl }: NavbarProps) => {
                 setIndustriesMobileOpen,
                 industries,
               )}
+              {renderMobileGuides()}
               {englishUrl && (
                 <a
                   href={englishUrl}

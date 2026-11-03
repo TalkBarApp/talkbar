@@ -29,7 +29,7 @@ const toggle = () => {
   <UTooltip :text="nextLabel">
     <button
       type="button"
-      class="flex items-center justify-center w-9 h-9 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+      class="flex items-center justify-center w-9 h-9 rounded-full transition-colors"
       :aria-label="nextLabel"
       @click="toggle"
     >

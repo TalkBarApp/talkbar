@@ -97,7 +97,7 @@ export const groups = {
     {
       id: 'help',
       title: { en: 'Help', ru: 'Помощь' },
-      icon: 'i-heroicons-lifebuoy',
+      icon: 'i-heroicons-question-mark-circle',
       pages: ['troubleshooting', 'faq'],
     },
   ],

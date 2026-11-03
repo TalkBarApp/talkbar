@@ -8,6 +8,24 @@
 :root {
   --color-mark-background-color: rgb(var(--color-primary-200) / 0.6);
   --text-color: rgb(var(--ui-foreground));
+
+  /* Card treatment of www.talkbar.app: borderless, lifted by a soft shadow */
+  --card-radius: 18px;
+  --card-shadow: 0 1px 2px rgb(41 49 66 / 0.03), 0 10px 28px -18px rgb(45 57 83 / 0.1);
+  --card-shadow-hover: 0 1px 2px rgb(41 49 66 / 0.04), 0 14px 34px -18px rgb(45 57 83 / 0.15);
+  --card-background: 255 255 255;
+  --surface-alt: 245 244 239;
+  --heading: 43 58 93;
+  --lead: 84 96 123;
+}
+
+.dark {
+  --card-shadow: 0 1px 2px rgb(3 5 10 / 0.1), 0 10px 28px -18px rgb(3 5 10 / 0.1);
+  --card-shadow-hover: 0 1px 2px rgb(3 5 10 / 0.2), 0 14px 34px -18px rgb(3 5 10 / 0.2);
+  --card-background: 29 33 44;
+  --surface-alt: 14 17 24;
+  --heading: 255 255 255;
+  --lead: 171 180 193;
 }
 
 /* Warm accent, chosen with the header's color toggle. Higher specificity than
@@ -76,7 +94,9 @@ html[lang='ru'] .font-display {
 }
 
 .prose h2 {
-  font-weight: 500;
+  font-size: 1.75rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
 }
 
 .prose h3 {
@@ -90,6 +110,12 @@ html[lang='ru'] .font-display {
 /* Body copy and lists stay regular; bold UI labels read as medium-semibold */
 .prose strong {
   font-weight: 600;
+}
+
+/* Headings and bold labels use the website's navy instead of near-black */
+html:not(.dark) :is(h1, h2, h3, h4),
+html:not(.dark) .prose strong {
+  color: rgb(var(--heading));
 }
 
 code,
@@ -166,12 +192,114 @@ mark {
   color: var(--text-color);
 }
 
-table {
-  overflow-x: auto !important;
+/* Label and value columns keep short phrases on one line */
+.prose table :is(th, td):first-child {
+  min-width: 9.5rem;
+}
+
+.prose table :is(th, td):last-child:not(:nth-child(2)) {
+  min-width: 7.5rem;
+}
+
+.prose table th {
+  font-weight: 500;
+  color: rgb(var(--lead));
+}
+
+/* Tables scroll inside their own box on narrow screens */
+@media (max-width: 767px) {
+  .prose table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  .prose table :is(th, td):nth-child(n + 2):not(:last-child),
+  .prose table :is(th, td):nth-child(2):last-child {
+    min-width: 13rem;
+  }
 }
 
 table td code {
   font-size: 89% !important;
+}
+
+/* Inline code stays in scale with the sentence around it */
+.prose code.inline-code {
+  padding: 0.1em 0.35em;
+  border-radius: 6px;
+  background: rgb(var(--color-gray-500) / 0.1);
+  font-size: 0.86em;
+}
+
+.prose code.inline-code::before,
+.prose code.inline-code::after {
+  content: none;
+}
+
+.prose pre {
+  border-radius: 14px;
+}
+
+/* Callouts: a soft tint of their own color, as on the website's context cards */
+.prose .docs-callout {
+  margin-block: 1.5rem;
+  padding: 1rem 1.5rem 1rem 1.25rem;
+  border-color: color-mix(in srgb, var(--color-light) 22%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--color-light) 7%, transparent);
+  color: rgb(var(--ui-foreground));
+  font-size: 1rem;
+  line-height: 1.75rem;
+}
+
+.dark .prose .docs-callout {
+  border-color: color-mix(in srgb, var(--color-dark) 28%, transparent);
+  background: color-mix(in srgb, var(--color-dark) 10%, transparent);
+}
+
+/* Template cards and previous/next links use the website's card */
+.docs-card.background-gradient,
+.docs-surround {
+  border: 0;
+  border-radius: var(--card-radius);
+  background: rgb(var(--card-background));
+  box-shadow: var(--card-shadow);
+  --tw-ring-shadow: 0 0 #0000;
+  transition: box-shadow 0.18s ease;
+}
+
+.docs-card.background-gradient::before {
+  display: none;
+}
+
+.docs-card.background-gradient:hover,
+.docs-surround:hover {
+  background: rgb(var(--card-background));
+  box-shadow: var(--card-shadow-hover);
+}
+
+.docs-card > * {
+  border-radius: var(--card-radius);
+  background: transparent;
+}
+
+/* The MCP home's intro reads as body copy, not a heading */
+.landing-lead {
+  font-family: inherit;
+  text-wrap: pretty;
+}
+
+/* Header controls: round and muted, like the website's */
+.header-round {
+  width: 2.25rem;
+  height: 2.25rem;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgb(var(--color-gray-500) / 0.1);
+}
+
+.header-round:hover {
+  background: rgb(var(--color-gray-500) / 0.18);
 }
 
 /* Striped rows: a neutral tint, so they never read as the accent */
@@ -190,6 +318,18 @@ table tr:nth-child(2n) {
 
 .navigation-tree > div > a.text-primary {
   font-weight: 500 !important;
+}
+
+/* The current page is a soft tinted row */
+.navigation-tree a.text-primary {
+  padding-right: 0.5rem;
+  border-color: transparent;
+  border-radius: 8px;
+  background: rgb(var(--color-primary-500) / 0.08);
+}
+
+.dark .navigation-tree a.text-primary {
+  background: rgb(var(--color-primary-400) / 0.12);
 }
 
 /* Page transition animations */
@@ -273,4 +413,265 @@ nav[class*='toc'] {
 aside:hover,
 nav[class*='toc']:hover {
   scrollbar-color: rgb(var(--color-gray-400) / 0.45) transparent;
+}
+
+/* ---------- Homepage ---------- */
+
+.home-hero {
+  padding-block: 4.5rem 3.5rem;
+}
+
+.home-title {
+  max-width: 18ch;
+  font-size: clamp(2.5rem, 5.2vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: rgb(var(--heading));
+  text-wrap: balance;
+}
+
+.home-title-accent {
+  color: rgb(var(--color-primary-DEFAULT));
+}
+
+.home-lead {
+  max-width: 52ch;
+  text-wrap: pretty;
+  margin-top: 1.25rem;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: rgb(var(--lead));
+}
+
+.home-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.home-search {
+  display: flex;
+  flex: 1 1 18rem;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 36rem;
+  min-height: 3.25rem;
+  padding-inline: 1.25rem 1rem;
+  border-radius: 999px;
+  background: rgb(var(--card-background));
+  box-shadow: var(--card-shadow), 0 0 0 1px rgb(var(--color-gray-500) / 0.18);
+  color: rgb(var(--lead));
+  font-size: 1.0625rem;
+  text-align: left;
+  transition: box-shadow 0.18s ease;
+}
+
+.home-search:hover {
+  box-shadow: var(--card-shadow-hover), 0 0 0 1px rgb(var(--color-primary-500) / 0.55);
+}
+
+.home-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.25rem;
+  padding-inline: 2rem;
+  border-radius: 999px;
+  background: rgb(var(--color-primary-500));
+  box-shadow: 0 10px 26px -14px rgb(var(--color-primary-500) / 0.9);
+  color: #fff;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+/* White text needs the deeper warm tone */
+.color-theme-warm .home-cta {
+  background: rgb(var(--color-primary-600));
+}
+
+.home-cta:hover {
+  background: rgb(var(--color-primary-600));
+  box-shadow: 0 14px 32px -14px rgb(var(--color-primary-500) / 0.95);
+}
+
+.color-theme-warm .home-cta:hover {
+  background: rgb(var(--color-primary-700));
+}
+
+.home-search:focus-visible,
+.home-cta:focus-visible,
+.home-stage-links a:focus-visible,
+.docs-tile:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-DEFAULT));
+  outline-offset: 2px;
+}
+
+.home-stages {
+  padding-bottom: 5.5rem;
+}
+
+/* The widths of the bars don't scale with the drawing, only their positions */
+.home-wave {
+  display: block;
+  width: 100%;
+  height: 6rem;
+  overflow: visible;
+}
+
+.home-wave line {
+  stroke: rgb(var(--color-gray-400) / 0.65);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: home-wave-rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: calc(var(--bar) * 9ms);
+}
+
+.home-wave line.home-wave-live {
+  stroke: rgb(var(--color-primary-DEFAULT));
+}
+
+@keyframes home-wave-rise {
+  from {
+    transform: scaleY(0.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-wave line {
+    animation: none;
+  }
+}
+
+/* Fewer bars where they would otherwise run together */
+@media (max-width: 639px) {
+  .home-wave line:nth-child(even) {
+    display: none;
+  }
+}
+
+.home-stage-grid {
+  display: grid;
+  gap: 3rem 2.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .home-stage-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.home-stage-title {
+  font-size: 2.25rem;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+}
+
+.home-stage-text {
+  max-width: 34ch;
+  min-height: 3.25em;
+  margin-top: 0.625rem;
+  color: rgb(var(--lead));
+  font-size: 1.0625rem;
+  line-height: 1.55;
+}
+
+.home-stage-links {
+  margin-top: 1.25rem;
+}
+
+.home-stage-links a {
+  display: block;
+  padding-block: 0.75rem;
+  border-top: 1px solid rgb(var(--color-gray-500) / 0.2);
+  color: rgb(var(--heading));
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  transition: color 0.15s ease;
+}
+
+.home-stage-links a:hover {
+  color: rgb(var(--color-primary-DEFAULT));
+}
+
+.home-reference {
+  padding-block: 4.5rem 5.5rem;
+  background: rgb(var(--surface-alt));
+}
+
+.home-section-title {
+  font-size: clamp(2rem, 4.2vw, 3rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.home-tile-grid {
+  display: grid;
+  gap: 1.125rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .home-tile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-tile-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.docs-tile {
+  display: flex;
+  flex-direction: column;
+  min-height: 10rem;
+  padding: 1.5rem 1.625rem 1.75rem;
+  border-radius: var(--card-radius);
+  background: rgb(var(--card-background));
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.18s ease;
+}
+
+.docs-tile:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+@media (min-width: 640px) {
+  .docs-tile {
+    min-height: 13.5rem;
+  }
+}
+
+.docs-tile-icon {
+  align-self: flex-end;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  margin-bottom: 1.5rem;
+  color: rgb(var(--color-primary-DEFAULT));
+}
+
+.docs-tile-title {
+  margin-top: auto;
+  color: rgb(var(--heading));
+  font-size: 1.375rem;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+}
+
+.docs-tile-text {
+  margin-top: 0.5rem;
+  color: rgb(var(--lead));
+  font-size: 0.9625rem;
+  line-height: 1.45;
 }

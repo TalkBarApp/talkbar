@@ -21,12 +21,9 @@ useSeoMeta({
 
 <template>
   <div v-if="page">
-    <!-- Logo -->
-    <TalkBarLogo alt="TalkBar" class="mt-14 mx-auto h-12 w-[232px]" />
-
     <ULandingHero
       v-if="page.hero"
-      class="py-8 sm:py-8 md:py-8 relative !pt-0"
+      class="py-8 sm:py-8 md:py-8 relative !pt-16"
       :ui="{ title: 'font-display font-light sm:text-6xl text-4xl', description: 'text-lg sm:text-xl' }"
       v-bind="page.hero"
     >
@@ -64,7 +61,7 @@ useSeoMeta({
       </template>
 
       <template #description>
-        <h2 v-if="page.hero.introductionTitle" class="text-2xl sm:text-xl mt-4 !text-gray-500">{{ page.hero.introductionTitle }}</h2>
+        <p v-if="page.hero.introductionTitle" class="landing-lead text-xl mt-4 text-[rgb(var(--lead))]">{{ page.hero.introductionTitle }}</p>
       </template>
     </ULandingHero>
 

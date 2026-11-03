@@ -669,6 +669,11 @@
     border-radius: 12px;
   }
 
+  /* The last menu sits right of center, so its wide panel opens leftward. */
+  .guides-panel {
+    right: -3rem;
+  }
+
   .nav-drawer-panel {
     border-left: 1px solid hsl(var(--border));
     background: hsl(var(--card));

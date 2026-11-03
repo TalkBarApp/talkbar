@@ -8,7 +8,7 @@ export default defineAppConfig({
   seo: {
     siteName: 'TalkBar Documentation',
     titleTemplate: '%s | TalkBar Documentation',
-    description: 'Documentation for TalkBar, the private AI note taker for Windows and macOS',
+    description: 'Documentation for TalkBar, the private AI note taker for Windows',
     ogImage: {
       type: 'image/png',
       url: '/og/talkbar-og.png'
@@ -70,7 +70,31 @@ export default defineAppConfig({
         }
       }
     },
+    // Hooks for the website's card and callout styles (main.css)
+    landing: {
+      card: {
+        wrapper: 'docs-card',
+        icon: {
+          base: 'text-primary dark:text-primary'
+        },
+        title: 'font-medium text-lg'
+      },
+      section: {
+        title: 'font-display text-3xl sm:text-4xl lg:text-5xl font-normal'
+      }
+    },
     content: {
+      callout: {
+        wrapper: 'docs-callout',
+        icon: {
+          base: 'w-5 h-5 mr-2'
+        }
+      },
+      surround: {
+        link: {
+          wrapper: 'docs-surround'
+        }
+      },
       toc: {
         button: {
           label: 'font-medium text-[15px] leading-6 truncate'
