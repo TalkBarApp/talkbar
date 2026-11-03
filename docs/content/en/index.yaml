@@ -3,94 +3,47 @@ description: 'Docs for TalkBar, the private AI note taker for Windows: capture m
 navigation: false
 hero:
   title: 'TalkBar Documentation'
-  description: 'Everything you need to capture, understand and reuse your conversations'
-  orientation: vertical
-  introductionSubtitle: 'Private AI for meetings, calls and voice notes. Bot-free capture, local transcription, and local AI or your own key.'
-  links:
-    - label: Get started
-      icon: i-heroicons-rocket-launch-20-solid
-      trailing: false
-      to: '/getting-started/introduction'
-      size: xl
-    - label: MCP & CLI
-      icon: i-heroicons-command-line-20-solid
-      trailing: false
-      variant: outline
-      to: '/mcp'
-      size: xl
+  titleAccent: 'Documentation'
+  description: 'Set up TalkBar, record your first session, and find any setting.'
+  search: 'Search the documentation'
+  cta:
+    label: 'Get started'
+    to: '/getting-started/introduction'
 
-platforms:
-  items:
-    - title: 'TalkBar app'
-      cta: 'Explore the user guide'
-      description: 'Record, transcribe and summarize conversations on your computer, then keep what matters as searchable knowledge.'
-      icon: 'i-heroicons-chat-bubble-bottom-center-text'
-      id: 'app'
-      to: '/getting-started/introduction'
-      features:
-        - 'Bot-free meeting and call capture'
-        - 'Local transcription with speakers'
-        - 'Live summary, translation and Knowledge Cards'
-        - 'Summaries, decisions and action items'
-        - 'Ask TalkBar about any session or document'
-        - 'Private AI Mode and local models'
-        - 'Exports, share links and backups'
-    - title: 'MCP & CLI'
-      cta: 'Connect an AI assistant'
-      description: 'Let Claude, ChatGPT, Codex and other MCP clients search and work with your TalkBar workspace, under switches you control.'
-      icon: 'i-heroicons-command-line'
-      id: 'mcp'
-      to: '/mcp'
-      features:
-        - 'Local stdio MCP server'
-        - 'Ready-made setups for ChatGPT, Claude and Codex'
-        - 'Five gateway tools, 140+ operations'
-        - 'Per-operation access switches'
-        - 'Delete confirmation in your client'
-        - 'Scriptable talkbar-cli'
-        - 'Full operations reference'
+stages:
+  - title: 'Before'
+    description: 'Install TalkBar, choose your AI and plan the meeting.'
+    links:
+      - { label: 'Install and update', to: '/getting-started/install-and-update' }
+      - { label: 'First-run setup', to: '/getting-started/first-run-setup' }
+      - { label: 'How TalkBar uses AI', to: '/ai/how-talkbar-uses-ai' }
+      - { label: 'Scheduling and preparing', to: '/sessions/scheduling-and-preparing' }
+  - title: 'During'
+    description: 'Record the conversation, translate it live and dictate notes.'
+    links:
+      - { label: 'Starting a session', to: '/sessions/starting-a-session' }
+      - { label: 'Recording a session', to: '/sessions/recording' }
+      - { label: 'Live translation', to: '/voice/live-translation' }
+      - { label: 'Dictation', to: '/voice/dictation' }
+  - title: 'After'
+    description: 'Review the session, keep what matters and share it.'
+    links:
+      - { label: 'Session details', to: '/sessions/session-details' }
+      - { label: 'Knowledge cards', to: '/knowledge/knowledge-cards' }
+      - { label: 'Ask TalkBar', to: '/chats-and-notes/ask-talkbar' }
+      - { label: 'Exports', to: '/sharing/exports' }
 
-quickstart:
-  title: 'Explore the documentation'
+reference:
+  title: 'Look something up'
   items:
-    - title: 'Install and update'
-      description: 'Download TalkBar and keep it up to date'
-      icon: 'i-heroicons-arrow-down-tray'
-      to: '/getting-started/install-and-update'
-    - title: 'Your first session'
-      description: 'Record, review and summarize your first conversation'
-      icon: 'i-heroicons-play-circle'
-      to: '/getting-started/first-session'
-    - title: 'Sessions'
-      description: 'Start, record, review, schedule and prepare sessions'
-      icon: 'i-heroicons-microphone'
-      to: '/sessions/overview'
-    - title: 'Knowledge'
-      description: 'Knowledge Cards, documents, people, projects and action items'
-      icon: 'i-heroicons-light-bulb'
-      to: '/knowledge/knowledge-cards'
-    - title: 'AI and privacy'
-      description: 'Choose where AI runs, from local models to your own key'
-      icon: 'i-heroicons-lock-closed'
-      to: '/ai/how-talkbar-uses-ai'
     - title: 'Settings reference'
       description: 'Every setting, what it does and its default'
       icon: 'i-heroicons-cog-6-tooth'
       to: '/settings/overview'
-
-resources:
-  title: 'Resources'
-  items:
-    - title: 'Download TalkBar'
-      description: 'Get the latest release for your computer'
-      icon: 'i-heroicons-arrow-down-tray'
-      to: 'https://github.com/TalkBarApp/talkbar/releases/latest'
-      target: '_blank'
-    - title: 'TalkBar website'
-      description: 'Features, use cases and pricing'
-      icon: 'i-heroicons-globe-alt'
-      to: 'https://www.talkbar.app'
-      target: '_blank'
+    - title: 'MCP & CLI'
+      description: 'Connect an AI assistant or run TalkBar from a script'
+      icon: 'i-heroicons-command-line'
+      to: '/mcp'
     - title: 'Troubleshooting'
       description: 'Fix common problems with recording, AI and updates'
       icon: 'i-heroicons-wrench-screwdriver'

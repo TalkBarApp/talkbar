@@ -65,12 +65,13 @@ const panelLinks = computed(() => {
 
     <template #right>
       <div class="flex items-center gap-1 lg:ml-4 xl:ml-8">
+        <!-- The labelled search needs the room it gets from xl up; below that it is an icon -->
+        <UContentSearchButton :label="t('searchButton')" class="hidden xl:flex w-44 flex-none mr-1" />
+        <UContentSearchButton :label="null" class="header-round xl:hidden" />
         <!-- Phones keep only the essentials; GitHub is also in the footer -->
-        <UButton :to="repoUrl" target="_blank" icon="i-simple-icons-github" aria-label="GitHub" color="gray" variant="ghost" class="hidden sm:inline-flex" />
-        <ColorThemeToggle class="hidden sm:flex" />
-        <UColorModeButton />
-        <UContentSearchButton :label="t('searchButton')" class="hidden md:flex" />
-        <UContentSearchButton :label="null" class="md:hidden" />
+        <UButton :to="repoUrl" target="_blank" icon="i-simple-icons-github" aria-label="GitHub" color="gray" variant="ghost" class="header-round hidden sm:inline-flex" />
+        <ColorThemeToggle class="header-round hidden sm:flex" />
+        <UColorModeButton class="header-round" />
         <UButton
           to="https://github.com/TalkBarApp/talkbar/releases/latest"
           target="_blank"

@@ -185,7 +185,7 @@ body:
         icon: i-heroicons-building-office-2
       - title: Help & Tours and Doctor
         to: /settings/help-and-doctor
-        icon: i-heroicons-lifebuoy
+        icon: i-heroicons-question-mark-circle
   - title: Data, privacy and plans
     icon: i-heroicons-shield-check
     to: /data
@@ -200,7 +200,7 @@ body:
         to: /data/plans-and-license
         icon: i-heroicons-key
   - title: Help
-    icon: i-heroicons-lifebuoy
+    icon: i-heroicons-question-mark-circle
     to: /help
     children:
       - title: Troubleshooting

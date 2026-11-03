@@ -185,7 +185,7 @@ body:
         icon: i-heroicons-building-office-2
       - title: Помощь и туры, диагностика
         to: /settings/help-and-doctor
-        icon: i-heroicons-lifebuoy
+        icon: i-heroicons-question-mark-circle
   - title: Данные, конфиденциальность и тарифы
     icon: i-heroicons-shield-check
     to: /data
@@ -200,7 +200,7 @@ body:
         to: /data/plans-and-license
         icon: i-heroicons-key
   - title: Помощь
-    icon: i-heroicons-lifebuoy
+    icon: i-heroicons-question-mark-circle
     to: /help
     children:
       - title: Устранение неполадок
