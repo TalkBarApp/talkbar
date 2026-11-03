@@ -107,6 +107,18 @@ const config = {
     layoutTransition: false,
     head: {
       htmlAttrs: { lang: locale },
+      // Privacy-friendly Plausible analytics, with a separate site for each locale.
+      script: isProduction ? [
+        {
+          async: true,
+          src: locale === "ru"
+            ? "https://stats.pastebar.app/js/pa-5M7-O-qQLDuHfey4w2KQL.js"
+            : "https://stats.pastebar.app/js/pa-ntH8jCXcSbum-w5qCIsOL.js",
+        },
+        {
+          innerHTML: "window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};plausible.init()",
+        },
+      ] : [],
       // Favicons of www.talkbar.app, with the dark set for dark system themes. Declared
       // here rather than in app.vue so nuxt-seo-utils does not add a second icon set.
       link: [
