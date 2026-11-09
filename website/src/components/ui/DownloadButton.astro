@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { DOWNLOAD_LINK_WINDOWS } from '../../lib/download';
+import { DEFAULT_DOWNLOAD_URL } from '../../lib/download';
 
 interface Props {
   label: string;
@@ -19,7 +19,7 @@ const {
 } = Astro.props;
 ---
 <a
-  href={DOWNLOAD_LINK_WINDOWS}
+  href={DEFAULT_DOWNLOAD_URL}
   data-download-link
   class:list={[
     'group btn-pill btn-primary',

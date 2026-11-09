@@ -12,7 +12,7 @@
 // Configure via environment variables (e.g. in a .env file or CI):
 //   PREVIEW_MODAL_ON_DOWNLOAD  1|true / 0|false — download buttons open the
 //                                                 early-access modal instead of
-//                                                 downloading. Default: on.
+//                                                 downloading. Default: off.
 //   EARLY_ACCESS_SUBSCRIBE_URL <url>            — POST endpoint for the email signup.
 //   CONTACT_FORM_URL           <url>            — POST endpoint for the contact form.
 //   PRODUCT_UPDATES_SUBSCRIBE_URL <url>         — POST endpoint for later standalone

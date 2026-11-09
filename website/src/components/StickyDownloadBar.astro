@@ -1,7 +1,7 @@
 ---
 import { t, type Language } from '../i18n';
 import { Icon } from 'astro-icon/components';
-import { DOWNLOAD_LINK_WINDOWS } from '../lib/download';
+import { DEFAULT_DOWNLOAD_URL } from '../lib/download';
 
 interface Props {
   lang: Language;
@@ -13,7 +13,7 @@ const { lang } = Astro.props;
   <span class="label text-muted-foreground flex-shrink-0">
     {t(lang, 'stickyBar.note')}
   </span>
-  <a href={DOWNLOAD_LINK_WINDOWS} data-download-link class="flex-1 btn-pill btn-pill-sm btn-primary">
+  <a href={DEFAULT_DOWNLOAD_URL} data-download-link class="flex-1 btn-pill btn-pill-sm btn-primary">
     {t(lang, 'stickyBar.cta')}
     <Icon name="lucide:arrow-down-to-line" width="15" height="15" />
   </a>

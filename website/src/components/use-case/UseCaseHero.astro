@@ -6,7 +6,7 @@ import { Icon } from 'astro-icon/components';
 import HeroImageZoom from '../HeroImageZoom.tsx';
 import Screenshot from '../ui/Screenshot.astro';
 import type { ShotId } from '../../lib/screenshots';
-import { DOWNLOAD_LINK_WINDOWS } from '../../lib/download';
+import { DEFAULT_DOWNLOAD_URL } from '../../lib/download';
 
 interface Props {
   lang: Language;
@@ -47,7 +47,7 @@ const imageAlt = formatMediaText('media.alt.screenshot', mediaLabel);
 
         <div class="mt-10 lg:mt-14 flex flex-col sm:flex-row gap-3 sm:items-center">
           <a
-            href={isCtaPrimaryDownload ? DOWNLOAD_LINK_WINDOWS : ctaPrimary.href}
+            href={isCtaPrimaryDownload ? DEFAULT_DOWNLOAD_URL : ctaPrimary.href}
             data-download-link={isCtaPrimaryDownload ? "" : undefined}
             class="group btn-pill btn-primary w-full sm:w-auto"
           >

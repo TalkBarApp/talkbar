@@ -37,7 +37,7 @@ import ColorThemeToggle from "./ColorThemeToggle";
 import type { Language, Translations } from "../i18n";
 import { LANGUAGE_FLAGS } from "../i18n";
 import { docsUrl } from "../lib/docs";
-import { getDownloadLink } from "../lib/download";
+import { DEFAULT_DOWNLOAD_URL } from "../lib/download";
 import { logos } from "../lib/logos";
 
 interface NavbarProps {
@@ -97,7 +97,6 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
   const [industriesMobileOpen, setIndustriesMobileOpen] = useState(false);
   const [guidesMobileOpen, setGuidesMobileOpen] = useState(false);
   const [showStickyCta, setShowStickyCta] = useState(false);
-  const [downloadLink, setDownloadLink] = useState("#cta");
 
   const t = (key: string) => translations[key] || key;
   const themeToggleLabels = {
@@ -276,11 +275,6 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
       path: "/help/faq",
     },
   ];
-
-  useEffect(() => {
-    const handle = setTimeout(() => setDownloadLink(getDownloadLink()), 0);
-    return () => clearTimeout(handle);
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -628,7 +622,7 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
               <ColorThemeToggle {...colorThemeToggleLabels} />
             </div>
             <a
-              href={downloadLink}
+              href={DEFAULT_DOWNLOAD_URL}
               data-download-link
               className="group hidden sm:inline-flex btn-pill btn-pill-sm btn-primary"
             >
@@ -767,7 +761,7 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
 
           <div className="px-6 py-6 border-t border-border">
             <a
-              href={downloadLink}
+              href={DEFAULT_DOWNLOAD_URL}
               data-download-link
               onClick={closeDrawer}
               className="group btn-pill btn-pill-sm btn-primary w-full"
@@ -780,7 +774,7 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
       </div>
 
       <a
-        href={downloadLink}
+        href={DEFAULT_DOWNLOAD_URL}
         data-download-link
         className={`group md:hidden fixed bottom-3 inset-x-3 z-40 btn-pill btn-pill-sm btn-primary transition-all duration-300 ${
           showStickyCta && !drawerOpen

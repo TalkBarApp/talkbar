@@ -29,20 +29,25 @@ const Modal = ({ open, onClose, labelledById, closeLabel, children }: ModalProps
     };
   }, [open, handleEscape]);
 
-  // Focus the first focusable field once, when the modal opens.
-  // Kept separate from the keydown effect so it does not re-run (and steal
-  // focus back to the first field) on every parent re-render.
+  // Focus the control marked `data-autofocus`, else the first field, once, when
+  // the modal opens. Kept separate from the keydown effect so it does not
+  // re-run (and steal focus back to the first field) on every parent re-render.
   useEffect(() => {
     if (!open) return;
-    const focusTarget = panelRef.current?.querySelector<HTMLElement>(
-      "input, textarea, button:not([data-modal-close])",
-    );
+    const focusTarget =
+      panelRef.current?.querySelector<HTMLElement>("[data-autofocus]") ??
+      panelRef.current?.querySelector<HTMLElement>(
+        "input, textarea, button:not([data-modal-close])",
+      );
     const handle = window.setTimeout(() => focusTarget?.focus(), 50);
     return () => window.clearTimeout(handle);
   }, [open]);
 
   return (
     <div
+      // A closed modal stays mounted for its fade; `inert` keeps its fields and
+      // links out of keyboard focus and screen readers.
+      inert={!open}
       className={`fixed inset-0 z-[80] flex items-end sm:items-center justify-center p-0 sm:p-6 transition-opacity duration-200 ${
         open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}

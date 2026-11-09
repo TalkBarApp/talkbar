@@ -1,7 +1,7 @@
 ---
 import { t, LANGUAGE_FLAGS, type Language } from '../i18n';
 import { ENGLISH_CROSS_LINK, LICENSE_PORTAL_URLS } from '../i18n/domains';
-import { DOWNLOAD_LINK_WINDOWS } from '../lib/download';
+import { DEFAULT_DOWNLOAD_URL } from '../lib/download';
 import { SITE_CONFIG } from '../lib/siteConfig';
 import { logos } from '../lib/logos';
 import { Icon } from 'astro-icon/components';
@@ -43,7 +43,7 @@ const columns = [
       { label: t(lang, 'footer.support'), href: `mailto:${SITE_CONFIG.contactEmail}?subject=Support` },
       { label: t(lang, 'footer.contact'), href: `mailto:${SITE_CONFIG.contactEmail}`, contact: true },
       { label: t(lang, 'footer.licenses'), href: LICENSE_PORTAL_URLS[lang], external: true },
-      { label: t(lang, 'footer.download'), href: DOWNLOAD_LINK_WINDOWS, download: true },
+      { label: t(lang, 'footer.download'), href: DEFAULT_DOWNLOAD_URL, download: true },
     ],
   },
 ];

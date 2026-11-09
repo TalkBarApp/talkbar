@@ -114,10 +114,10 @@ production domain.
    |---|---|---|---|
    | `NODE_VERSION` | `22` | `22` | **Required** — Cloudflare's default Node is too old for Astro 6. |
    | `BUILD_DOMAIN` | `prod` | `preview` | Explicit is safest. Preview's build command also sets it. |
-   | `PREVIEW_MODAL_ON_DOWNLOAD` | `true` (modal) or `false` (real download) | `true` | Independent of build type — set per environment as you like. |
+   | `PREVIEW_MODAL_ON_DOWNLOAD` | leave unset (real download) | leave unset (real download) | Optional. `true` brings back the early-access modal on download buttons. |
    | `EARLY_ACCESS_SUBSCRIBE_URL` | optional override | optional override | Defaults to the matching license-server `/api/early-access` in builds. |
    | `CONTACT_FORM_URL` | optional override | optional override | Defaults to the matching license-server `/api/contact` in builds. |
-   | `PRODUCT_UPDATES_SUBSCRIBE_URL` | optional override | optional override | Reserved for the later standalone product-updates signup. |
+   | `PRODUCT_UPDATES_SUBSCRIBE_URL` | optional override | optional override | Defaults to the matching license-server `/api/subscriptions/product-updates`; the download dialog's Mac form uses it. |
 
    See [Environment Variables](#environment-variables) for the full list. Anything not
    set falls back to the defaults baked into `astro.config.mjs`.
@@ -165,12 +165,11 @@ client React islands. Copy `env.sample` to `.env` to configure locally. Booleans
 | Variable | Purpose | Default |
 |---|---|---|
 | `BUILD_DOMAIN` | Set to `preview` for English preview, `preview-ru` for Russian preview, or reserved `prod-ru` for future Russian production; anything else builds English production | `prod` |
-| `DOWNLOAD_LINK_WINDOWS` | Windows installer URL used by download buttons | `https://cdn.talkbar.app/TalkBar_x64-setup.exe` |
-| `DOWNLOAD_LINK_MAC` | Optional Mac download URL | empty |
-| `PREVIEW_MODAL_ON_DOWNLOAD` | `1`/`true` → download buttons open the early-access modal; `0`/`false` → real download | `true` |
+| `DOWNLOAD_HOST` | Updater that serves the installer links (`/get/windows/x64`, `/get/windows/arm`) | `https://updater.talkbar.app` |
+| `PREVIEW_MODAL_ON_DOWNLOAD` | `1`/`true` → download buttons open the early-access modal; `0`/`false` → download buttons download TalkBar (see Downloads) | `false` |
 | `EARLY_ACCESS_SUBSCRIBE_URL` | Optional override for early-access signup endpoint | Matching license server in builds, empty in dev |
 | `CONTACT_FORM_URL` | Optional override for contact form endpoint | Matching license server in builds, empty in dev |
-| `PRODUCT_UPDATES_SUBSCRIBE_URL` | Optional override for later standalone product-updates signup endpoint | Matching license server in builds, empty in dev |
+| `PRODUCT_UPDATES_SUBSCRIBE_URL` | Optional override for the product-updates signup endpoint (the download dialog's Mac "notify me" form) | Matching license server in builds, empty in dev |
 | `CONTACT_EMAIL` | Address used for footer Support/Contact `mailto:` fallbacks | `contact@talkbar.app` |
 
 Download buttons are wired through `data-download-link` and `src/lib/download.ts`.
@@ -191,13 +190,14 @@ such as `http://localhost:8787` remain valid for development.
 
 ## Preview-Launch Modals
 
-While there is no public `.exe`, the site can capture interest instead of serving a
-broken download. Two modals are provided by a single React island,
-`src/components/SiteModals.tsx`, mounted once in `src/layouts/BaseLayout.astro`:
+The modals are provided by a single React island, `src/components/SiteModals.tsx`,
+mounted once in `src/layouts/BaseLayout.astro`:
 
+- **Download** — the download dialog (see Downloads).
 - **Get early access** — opened by every download CTA (Hero, final CTA, navbar,
-  mobile sticky button, footer download, sticky download bar, and use-case pages).
-  Collects an email. Also links to the contact modal.
+  mobile sticky button, footer download, sticky download bar, and use-case pages)
+  only in builds with `PREVIEW_MODAL_ON_DOWNLOAD=true`. Collects an email. Also
+  links to the contact modal.
 - **Contact us** — opened by the footer **Contact** link. Collects name, email, and
   message.
 
@@ -209,10 +209,27 @@ broken download. Two modals are provided by a single React island,
   dispatches `talkbar:open-early-access` / `talkbar:open-contact` window events, which
   the island listens for. A `window.__talkbarPendingModal` buffer covers clicks that
   land before the island hydrates.
-- When `PREVIEW_MODAL_ON_DOWNLOAD=off`, the listener does **not** intercept download
-  clicks; instead it rewrites every `data-download-link` href to the platform download
-  (Windows/Mac), restoring normal download behaviour. The island is only mounted when
-  at least one modal is enabled.
+- By default (`PREVIEW_MODAL_ON_DOWNLOAD` unset or off), the listener does **not**
+  intercept download clicks; the download script (`src/lib/downloadFlow.ts`) handles
+  them, as described under Downloads.
+
+## Downloads
+
+By default every `data-download-link` button works the same, and the visitor stays on
+the website:
+
+- **Windows** (detected from the User-Agent; Chromium also reports Arm through a client
+  hint): the click starts the download from `<DOWNLOAD_HOST>/get/windows/x64` or
+  `/get/windows/arm`, and the download dialog thanks the visitor, with every file listed
+  in case the download did not start.
+- **Mac**: no download yet. The dialog says the Mac version is coming, takes an email
+  for the product-updates list, and lists the Windows files.
+- **Anything else** (phones, Linux, unknown): the dialog lists every file to choose from.
+- `?download` in the address opens the dialog on load.
+
+Each button's own `href` is the Windows x64 link, used without JavaScript. Browsers
+do not report when a download finishes, so the thanks appear as soon as it starts.
+The `/get` links pin first installs to the updater's `FIRST_INSTALL_VERSION`.
 
 ### Form submission
 

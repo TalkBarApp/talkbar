@@ -62,9 +62,9 @@ const noindexHeaders = {
 const parseBool = (value, fallback) =>
   value === undefined || value === "" ? fallback : /^(1|true)$/i.test(value);
 
-// Preview-launch modal config. Defaults to on (no .exe yet); set
-// PREVIEW_MODAL_ON_DOWNLOAD=off once the real download is ready.
-const previewModalOnDownload = parseBool(process.env.PREVIEW_MODAL_ON_DOWNLOAD, true);
+// Download buttons download TalkBar; PREVIEW_MODAL_ON_DOWNLOAD=true makes them open
+// the early-access modal instead.
+const previewModalOnDownload = parseBool(process.env.PREVIEW_MODAL_ON_DOWNLOAD, false);
 const submissionEndpoints = resolveSubmissionEndpoints({
   buildDomain,
   isDev,
@@ -107,11 +107,8 @@ export default defineConfig({
     },
     define: {
       "import.meta.env.BUILD_DOMAIN": JSON.stringify(buildDomain),
-      "import.meta.env.DOWNLOAD_LINK_WINDOWS": JSON.stringify(
-        process.env.DOWNLOAD_LINK_WINDOWS || "https://cdn.talkbar.app/TalkBar_x64-setup.exe"
-      ),
-      "import.meta.env.DOWNLOAD_LINK_MAC": JSON.stringify(
-        process.env.DOWNLOAD_LINK_MAC || ""
+      "import.meta.env.DOWNLOAD_HOST": JSON.stringify(
+        process.env.DOWNLOAD_HOST || "https://updater.talkbar.app"
       ),
       "import.meta.env.PREVIEW_MODAL_ON_DOWNLOAD": JSON.stringify(previewModalOnDownload),
       "import.meta.env.EARLY_ACCESS_SUBSCRIBE_URL": JSON.stringify(

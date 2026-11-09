@@ -643,6 +643,28 @@ const ru: Translations = {
   "earlyAccess.invalidEmail": "Введите корректный email.",
   "earlyAccess.contactPrompt": "Есть вопрос?",
   "earlyAccess.contactLink": "Напишите нам",
+  "download.title": "Скачать TalkBar",
+  "download.subtitle": "Выберите версию для своего компьютера.",
+  "download.thanks.title": "Спасибо, что скачали TalkBar!",
+  "download.thanks.body":
+    "Загрузка началась. Когда она закончится, откройте установщик, чтобы установить TalkBar.",
+  "download.thanks.ok": "Хорошо",
+  "download.notStarted": "Загрузка не началась? Выберите версию ниже.",
+  "download.windows.heading": "Windows 10 и 11 (64-бит)",
+  "download.windows.x64": "Intel или AMD (x64)",
+  "download.windows.arm": "Arm (arm64)",
+  "download.windows.armNote": "Для Windows 11 на Arm. Устанавливается версия x64, которая работает в режиме эмуляции.",
+  "download.mac.heading": "macOS",
+  "download.mac.soon": "Скоро",
+  "download.mac.notifyLink": "Сообщить, когда выйдет",
+  "download.mac.title": "TalkBar для Mac скоро выйдет",
+  "download.mac.body":
+    "Сейчас TalkBar работает на Windows. Оставьте email — мы сообщим, когда выйдет версия для Mac.",
+  "download.mac.submit": "Уведомить меня",
+  "download.mac.privacyNote":
+    "Вы будете получать новости TalkBar, в том числе о выходе версии для Mac. Отписаться можно в любой момент.",
+  "download.mac.success": "Спасибо! Мы напишем, когда TalkBar для Mac будет готов.",
+  "download.mac.windowsPrompt": "Есть компьютер с Windows? Скачайте TalkBar сейчас:",
   "contact.title": "Связаться с нами",
   "contact.subtitle":
     "Вопросы, отзывы или предложения? Напишите нам — мы ответим.",

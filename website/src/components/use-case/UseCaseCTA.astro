@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { DOWNLOAD_LINK_WINDOWS } from '../../lib/download';
+import { DEFAULT_DOWNLOAD_URL } from '../../lib/download';
 
 interface Props {
   eyebrow: string;
@@ -29,7 +29,7 @@ const isCtaDownload = ctaHref === '/#cta' || ctaHref === '#cta';
       )}
 
       <a
-        href={isCtaDownload ? DOWNLOAD_LINK_WINDOWS : ctaHref}
+        href={isCtaDownload ? DEFAULT_DOWNLOAD_URL : ctaHref}
         data-download-link={isCtaDownload ? "" : undefined}
         class="group btn-pill btn-primary mt-9"
       >

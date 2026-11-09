@@ -1,11 +1,18 @@
-import { useEffect, useRef, useState } from "react";
-import { Check, CheckCircle2 } from "lucide-react";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { Check, CheckCircle2, Download } from "lucide-react";
 import Modal from "./Modal";
+import { AppleLogo, WindowsLogo } from "./PlatformIcons";
 import type { Language, Translations } from "../i18n";
+import { DOWNLOAD_URLS } from "../lib/download";
+import {
+  OPEN_DOWNLOAD_EVENT,
+  type DownloadDialogMode,
+} from "../lib/downloadFlow";
 import {
   CONTACT_CATEGORIES,
   buildContactPayload,
   buildEarlyAccessPayload,
+  buildSubscriptionPayload,
   currentSubmissionContext,
 } from "../lib/submissionPayloads";
 import type { ContactCategory } from "../lib/submissionPayloads";
@@ -17,21 +24,55 @@ interface SiteModalsProps {
   earlyAccessSubscribeUrl?: string;
   contactFormUrl?: string;
   contactEmail?: string;
+  /** Where the Mac "notify me" email goes: the product updates list. */
+  productUpdatesSubscribeUrl?: string;
 }
 
-type ActiveModal = "early-access" | "contact" | null;
+type ActiveModal = "early-access" | "contact" | "download" | null;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/** The product name in a heading, drawn like the logo: semibold, "Bar" in the logo's colour. */
+const withBrandName = (text: string) =>
+  text.split(/(TalkBar)/).map((part, index) =>
+    part === "TalkBar" ? (
+      <span key={index} data-brand-name className="font-semibold">
+        <span className="text-foreground">Talk</span>
+        <span className="text-logo-accent">Bar</span>
+      </span>
+    ) : (
+      part
+    ),
+  );
+
+/** A heading whose words zoom in; spaces stay outside the words so they keep their width. */
+const zoomInWords = (text: string) =>
+  text.split(" ").map((word, index) => (
+    <Fragment key={index}>
+      {index > 0 && " "}
+      <span className="zoom-word">{withBrandName(word)}</span>
+    </Fragment>
+  ));
 
 const SiteModals = ({
   lang,
   translations,
   earlyAccessSubscribeUrl = "",
   contactFormUrl = "",
+  productUpdatesSubscribeUrl = "",
 }: SiteModalsProps) => {
   const t = (key: string) => translations[key] ?? key;
 
   const [active, setActive] = useState<ActiveModal>(null);
+
+  // Download dialog state; the Mac form signs up for product updates.
+  const [dlMode, setDlMode] = useState<DownloadDialogMode>("choose");
+  const [macEmail, setMacEmail] = useState("");
+  const [macError, setMacError] = useState("");
+  const [macBusy, setMacBusy] = useState(false);
+  const [macSent, setMacSent] = useState(false);
+  // Changes on every thanks, so the title's zoom plays again.
+  const [thanksShown, setThanksShown] = useState(0);
 
   // Early Access form state
   const [eaEmail, setEaEmail] = useState("");
@@ -82,14 +123,22 @@ const SiteModals = ({
     setCSubscribeUpdates(true);
   };
 
+  const resetMacForm = () => {
+    setMacSent(false);
+    setMacEmail("");
+    setMacError("");
+  };
+
   // Latest "sent" flags, readable from the once-registered event listeners
   // without re-subscribing on every render.
   const eaSentRef = useRef(eaSent);
   const cSentRef = useRef(cSent);
+  const macSentRef = useRef(macSent);
   useEffect(() => {
     eaSentRef.current = eaSent;
     cSentRef.current = cSent;
-  }, [eaSent, cSent]);
+    macSentRef.current = macSent;
+  }, [eaSent, cSent, macSent]);
 
   useEffect(() => {
     // Re-opening after a successful send starts the form fresh instead of
@@ -103,24 +152,63 @@ const SiteModals = ({
       setActive("contact");
     };
 
+    const pendingWindow = window as unknown as {
+      __talkbarPendingModal?: ActiveModal;
+      __talkbarPendingDownload?: DownloadDialogMode | null;
+    };
+    const openDownload = (mode: DownloadDialogMode) => {
+      if (macSentRef.current) resetMacForm();
+      setDlMode(mode);
+      setThanksShown((count) => count + 1);
+      setActive("download");
+    };
+    const onOpenDownload = (event: Event) => {
+      pendingWindow.__talkbarPendingDownload = null;
+      openDownload(
+        (event as CustomEvent<DownloadDialogMode>).detail ?? "choose",
+      );
+    };
+
     window.addEventListener("talkbar:open-early-access", openEarlyAccess);
     window.addEventListener("talkbar:open-contact", openContact);
+    window.addEventListener(OPEN_DOWNLOAD_EVENT, onOpenDownload);
 
     // Drain any click that happened before this island hydrated.
-    const pending = (
-      window as unknown as { __talkbarPendingModal?: ActiveModal }
-    ).__talkbarPendingModal;
+    const pending = pendingWindow.__talkbarPendingModal;
     if (pending === "early-access") openEarlyAccess();
     else if (pending === "contact") openContact();
-    (
-      window as unknown as { __talkbarPendingModal?: ActiveModal }
-    ).__talkbarPendingModal = null;
+    pendingWindow.__talkbarPendingModal = null;
+    const pendingDownload = pendingWindow.__talkbarPendingDownload;
+    if (pendingDownload) openDownload(pendingDownload);
+    pendingWindow.__talkbarPendingDownload = null;
 
     return () => {
       window.removeEventListener("talkbar:open-early-access", openEarlyAccess);
       window.removeEventListener("talkbar:open-contact", openContact);
+      window.removeEventListener(OPEN_DOWNLOAD_EVENT, onOpenDownload);
     };
   }, []);
+
+  const focusDownloadDialog = () =>
+    document
+      .querySelector('[aria-labelledby="download-title"]')
+      ?.querySelector<HTMLElement>("[data-autofocus]")
+      ?.focus();
+
+  // Switching the download dialog's view replaces the focused control; move
+  // focus to the new view so keyboard users stay inside the dialog.
+  const dlModeOpened = useRef(dlMode);
+  useEffect(() => {
+    if (dlModeOpened.current === dlMode) return;
+    dlModeOpened.current = dlMode;
+    if (active !== "download") return;
+    focusDownloadDialog();
+  }, [dlMode, active]);
+
+  // A successful Mac signup replaces the focused field with its confirmation.
+  useEffect(() => {
+    if (macSent && active === "download") focusDownloadDialog();
+  }, [macSent, active]);
 
   // Keep the message box sized to its content whenever the contact modal opens.
   useEffect(() => {
@@ -147,6 +235,41 @@ const SiteModals = ({
     setEaBusy(false);
     if (ok) setEaSent(true);
     else setEaError(t("earlyAccess.error"));
+  };
+
+  const submitMacNotify = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    if (macBusy) return;
+    if (!EMAIL_RE.test(macEmail.trim())) {
+      setMacError(t("earlyAccess.invalidEmail"));
+      return;
+    }
+    setMacError("");
+    setMacBusy(true);
+    const { ok } = await submitJson(
+      productUpdatesSubscribeUrl,
+      buildSubscriptionPayload(macEmail, currentSubmissionContext(lang)),
+    );
+    setMacBusy(false);
+    if (ok) setMacSent(true);
+    else setMacError(t("earlyAccess.error"));
+  };
+
+  // A file link in the dialog downloads through its own href; the dialog then
+  // thanks the visitor, as it does for a download started by a button.
+  const onFileLinkClick = (arch: "x64" | "arm64") => {
+    (
+      window as unknown as {
+        plausible?: (
+          event: string,
+          options?: { props?: Record<string, string> },
+        ) => void;
+      }
+    ).plausible?.("Download Started", {
+      props: { os: "windows", arch, from: "dialog" },
+    });
+    setDlMode("started");
+    setThanksShown((count) => count + 1);
   };
 
   const submitContact = async (e: { preventDefault: () => void }) => {
@@ -212,8 +335,209 @@ const SiteModals = ({
     </div>
   );
 
+  const fileLinkClass =
+    "inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline";
+
+  // Every file, by system. Without `showMac` the Mac row is left out (the Mac
+  // dialog already explains it); `focusFirst` makes the first file the
+  // dialog's starting focus.
+  const renderDownloadChoices = (showMac: boolean, focusFirst = false) => (
+    <div className="flex flex-col divide-y divide-border">
+      <div className="pb-3">
+        <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+          <WindowsLogo className="w-4 h-4 text-primary" />
+          {t("download.windows.heading")}
+        </div>
+        <ul className="mt-2.5 flex flex-col gap-2 pl-6">
+          <li>
+            <a
+              href={DOWNLOAD_URLS.windowsX64}
+              data-autofocus={focusFirst ? "" : undefined}
+              onClick={() => onFileLinkClick("x64")}
+              className={fileLinkClass}
+            >
+              <Download size={15} aria-hidden="true" />
+              {t("download.windows.x64")}
+            </a>
+          </li>
+          <li>
+            <a
+              href={DOWNLOAD_URLS.windowsArm64}
+              onClick={() => onFileLinkClick("arm64")}
+              className={fileLinkClass}
+            >
+              <Download size={15} aria-hidden="true" />
+              {t("download.windows.arm")}
+            </a>
+            <p className="mt-0.5 pl-[23px] text-xs text-muted-foreground">
+              {t("download.windows.armNote")}
+            </p>
+          </li>
+        </ul>
+      </div>
+      {showMac && (
+        <div className="pt-3">
+          <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
+            <AppleLogo className="w-4 h-4 text-muted-foreground" />
+            {t("download.mac.heading")}
+            <span className="rounded-full bg-muted px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
+              {t("download.mac.soon")}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => setDlMode("mac")}
+            className="mt-2 pl-6 text-sm font-semibold text-primary hover:underline cursor-pointer"
+          >
+            {t("download.mac.notifyLink")}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+
+  const renderDownloadDialog = () => {
+    if (dlMode === "started") {
+      return (
+        <div className="flex min-h-0 flex-col">
+          {/* Even side padding keeps the centred thanks clear of the close button. */}
+          <div className="shrink-0 px-14 pt-6 text-center sm:pt-7">
+            <div className="mx-auto mb-4 flex items-center justify-center w-12 h-12 rounded-full bg-primary/12 text-primary">
+              <CheckCircle2 size={26} />
+            </div>
+            <h2
+              key={thanksShown}
+              id="download-title"
+              className="font-display text-2xl sm:text-[26px] font-light text-foreground"
+            >
+              {zoomInWords(t("download.thanks.title"))}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {t("download.thanks.body")}
+            </p>
+          </div>
+          <div className={bodyClass}>
+            <p className="mb-3 text-sm text-muted-foreground">
+              {t("download.notStarted")}
+            </p>
+            {renderDownloadChoices(true)}
+          </div>
+          <div className={footerClass}>
+            <button
+              type="button"
+              data-autofocus
+              onClick={close}
+              className="btn-pill btn-pill-sm w-full cursor-pointer bg-muted text-secondary-foreground hover:bg-foreground/10"
+            >
+              {t("download.thanks.ok")}
+            </button>
+          </div>
+        </div>
+      );
+    }
+    if (dlMode === "mac") {
+      return (
+        <div className="flex min-h-0 flex-col">
+          <div className={headerClass}>
+            <AppleLogo className="mb-3 w-7 h-7 text-foreground" />
+            <h2
+              id="download-title"
+              className="font-display text-2xl sm:text-[26px] font-light text-foreground"
+            >
+              {t("download.mac.title")}
+            </h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {t("download.mac.body")}
+            </p>
+          </div>
+          <div className={bodyClass}>
+            {macSent ? (
+              <p
+                role="status"
+                tabIndex={-1}
+                data-autofocus
+                className="flex items-start gap-2 text-sm text-foreground focus:outline-none"
+              >
+                <CheckCircle2
+                  size={18}
+                  className="mt-0.5 shrink-0 text-primary"
+                />
+                {t("download.mac.success")}
+              </p>
+            ) : (
+              <form onSubmit={submitMacNotify}>
+                <div className="flex flex-col sm:flex-row gap-2.5">
+                  <input
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    required
+                    data-autofocus
+                    value={macEmail}
+                    onChange={(e) => setMacEmail(e.target.value)}
+                    placeholder={t("earlyAccess.emailPlaceholder")}
+                    aria-label={t("earlyAccess.emailPlaceholder")}
+                    className={inputClass}
+                  />
+                  <button
+                    type="submit"
+                    className={submitClass}
+                    disabled={macBusy}
+                  >
+                    {macBusy
+                      ? t("earlyAccess.submitting")
+                      : t("download.mac.submit")}
+                  </button>
+                </div>
+                {macError && (
+                  <p className="mt-2 text-xs text-destructive">{macError}</p>
+                )}
+                <p className="mt-3 label text-muted-foreground">
+                  {t("download.mac.privacyNote")}
+                </p>
+              </form>
+            )}
+            <div className="mt-5 pt-4 border-t border-border">
+              <p className="mb-3 text-sm text-muted-foreground">
+                {t("download.mac.windowsPrompt")}
+              </p>
+              {renderDownloadChoices(false)}
+            </div>
+          </div>
+        </div>
+      );
+    }
+    return (
+      <div className="flex min-h-0 flex-col">
+        <div className={headerClass}>
+          <h2
+            id="download-title"
+            className="font-display text-2xl sm:text-[26px] font-light text-foreground"
+          >
+            {t("download.title")}
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            {t("download.subtitle")}
+          </p>
+        </div>
+        <div className={`${bodyClass} pb-7`}>
+          {renderDownloadChoices(true, true)}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <>
+      <Modal
+        open={active === "download"}
+        onClose={close}
+        labelledById="download-title"
+        closeLabel={t("modal.close")}
+      >
+        {renderDownloadDialog()}
+      </Modal>
+
       <Modal
         open={active === "early-access"}
         onClose={close}

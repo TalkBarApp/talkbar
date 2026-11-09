@@ -4,7 +4,7 @@ import { BUILD_DOMAIN, IS_PREVIEW_BUILD, CURRENT_CONFIG, ENGLISH_CROSS_LINK, ENG
 import SiteModals from '../components/SiteModals.tsx';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import { SITE_CONFIG } from '../lib/siteConfig';
-import { DOWNLOAD_LINK_WINDOWS, DOWNLOAD_LINK_MAC } from '../lib/download';
+import { DEFAULT_DOWNLOAD_URL } from '../lib/download';
 import 'react-medium-image-zoom/dist/styles.css';
 import '../styles/global.css';
 
@@ -64,7 +64,7 @@ const appSchema = {
   applicationCategory: 'BusinessApplication',
   applicationSubCategory: 'AI meeting notes',
   operatingSystem: 'Windows, macOS',
-  downloadUrl: DOWNLOAD_LINK_WINDOWS,
+  downloadUrl: DEFAULT_DOWNLOAD_URL,
   description: jsonLdDescription,
   url: canonical,
   image: ogImage,
@@ -205,6 +205,7 @@ const siteSchemas = [
       earlyAccessSubscribeUrl={SITE_CONFIG.earlyAccessSubscribeUrl}
       contactFormUrl={SITE_CONFIG.contactFormUrl}
       contactEmail={SITE_CONFIG.contactEmail}
+      productUpdatesSubscribeUrl={SITE_CONFIG.productUpdatesSubscribeUrl}
     />
 
     <script is:inline>
@@ -224,15 +225,13 @@ const siteSchemas = [
       define:vars={{
         tbCfg: {
           previewModalOnDownload: SITE_CONFIG.previewModalOnDownload,
-          downloadWin: DOWNLOAD_LINK_WINDOWS,
-          downloadMac: DOWNLOAD_LINK_MAC,
         },
       }}
     >
       // The footer Contact link always opens the contact modal. When the preview
-      // modal is on, download CTAs open the "early access" modal too; when off, they
-      // navigate to the real platform download. One delegated listener covers every
-      // page and React-rendered link.
+      // modal is on, download CTAs open the "early access" modal too; when off,
+      // the download script below starts the download or opens the download
+      // dialog. One delegated listener covers every page and React-rendered link.
       (function () {
         if (window.__talkbarModalTriggers) return;
         window.__talkbarModalTriggers = true;
@@ -243,17 +242,11 @@ const siteSchemas = [
           (window.plausible.q = window.plausible.q || []).push(arguments);
         };
 
-        if (!tbCfg.previewModalOnDownload) {
-          var ua = (navigator.userAgent || '').toLowerCase();
-          var url = ua.indexOf('mac') !== -1 && tbCfg.downloadMac ? tbCfg.downloadMac : tbCfg.downloadWin;
-          document.querySelectorAll('[data-download-link]').forEach(function (el) {
-            if (el instanceof HTMLAnchorElement) el.href = url;
-          });
-        }
-
         function trigger(name, eventName) {
-          // Buffer the request in case the React island has not hydrated yet.
+          // Buffer the request in case the React island has not hydrated yet;
+          // only the latest request opens.
           window.__talkbarPendingModal = name;
+          window.__talkbarPendingDownload = null;
           window.dispatchEvent(new CustomEvent(eventName));
         }
 
@@ -281,6 +274,14 @@ const siteSchemas = [
           }
         });
       })();
+    </script>
+    <script>
+      import { SITE_CONFIG } from '../lib/siteConfig';
+      import { initDownloadButtons } from '../lib/downloadFlow';
+
+      // A known system downloads at once and the dialog thanks the visitor;
+      // a Mac or an unknown system opens the dialog to choose, on this page.
+      if (!SITE_CONFIG.previewModalOnDownload) initDownloadButtons();
     </script>
   </body>
 </html>

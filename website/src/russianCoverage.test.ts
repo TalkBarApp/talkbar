@@ -30,7 +30,7 @@ const renderedKeys = () => {
   for (const file of files) {
     const source = readFileSync(file, "utf8");
     for (const m of source.matchAll(/t\(lang,\s*'([^'`]+)'/g)) used.add(m[1]);
-    for (const m of source.matchAll(/['"]((?:knowledge|ask|templates|gallery|shot|faq|privacy|privacyFlow|privacyPage|featuresGrid|followup|liveDemo|workflows|priceMonitoring|howitworks|cta|footer|nav|hero|stickyBar|notfound|meta|usecases|industries|earlyAccess|contact)\.[A-Za-z0-9_.-]+)['"]/g)) used.add(m[1]);
+    for (const m of source.matchAll(/['"]((?:knowledge|ask|templates|gallery|shot|faq|privacy|privacyFlow|privacyPage|featuresGrid|followup|liveDemo|workflows|priceMonitoring|howitworks|cta|footer|nav|hero|stickyBar|notfound|meta|usecases|industries|earlyAccess|contact|download)\.[A-Za-z0-9_.-]+)['"]/g)) used.add(m[1]);
   }
   return used;
 };

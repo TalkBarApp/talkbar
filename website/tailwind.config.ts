@@ -76,6 +76,7 @@ export default {
         "ink-foreground": "hsl(var(--ink-foreground))",
         cream: "hsl(var(--cream))",
         "brand-deep": "hsl(var(--brand-deep))",
+        "logo-accent": "hsl(var(--logo-accent))",
         "ps-green": "hsl(var(--green))",
         "ps-green-soft": "hsl(var(--green-soft))",
         "ps-amber": "hsl(var(--amber))",

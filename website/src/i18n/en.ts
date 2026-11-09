@@ -639,6 +639,28 @@ const en: Translations = {
   "earlyAccess.invalidEmail": "Please enter a valid email address.",
   "earlyAccess.contactPrompt": "Have a question?",
   "earlyAccess.contactLink": "Send us a message",
+  "download.title": "Download TalkBar",
+  "download.subtitle": "Choose the version for your computer.",
+  "download.thanks.title": "Thanks for downloading TalkBar!",
+  "download.thanks.body":
+    "Your download has started. When it finishes, open the installer to set up TalkBar.",
+  "download.thanks.ok": "Okay",
+  "download.notStarted": "Download didn’t start? Choose your version below.",
+  "download.windows.heading": "Windows 10 and 11 (64-bit)",
+  "download.windows.x64": "Intel or AMD (x64)",
+  "download.windows.arm": "Arm (arm64)",
+  "download.windows.armNote": "For Windows 11 on Arm. Installs the x64 version, which runs under emulation.",
+  "download.mac.heading": "macOS",
+  "download.mac.soon": "Coming soon",
+  "download.mac.notifyLink": "Tell me when it’s ready",
+  "download.mac.title": "TalkBar for Mac is coming soon",
+  "download.mac.body":
+    "TalkBar runs on Windows today. Leave your email and we’ll let you know when the Mac version is ready.",
+  "download.mac.submit": "Notify me",
+  "download.mac.privacyNote":
+    "You’ll get TalkBar news, including the Mac release. Unsubscribe anytime.",
+  "download.mac.success": "Thanks! We’ll email you when TalkBar for Mac is ready.",
+  "download.mac.windowsPrompt": "Using Windows too? Download it now:",
   "contact.title": "Contact us",
   "contact.subtitle":
     "Questions, feedback, or anything else? Send us a note and we'll get back to you.",
