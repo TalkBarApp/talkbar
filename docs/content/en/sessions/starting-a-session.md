@@ -5,7 +5,12 @@ navigation:
   icon: i-heroicons-play-circle
 ---
 
-Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+::platform-tabs
+#windows
+The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
+#macos
+Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+::
 
 Every recording starts in the **New session** window. You pick what kind of session it is, where the audio comes from and how many people will talk, then click **Start session**. Everything else is optional and has sensible defaults.
 
@@ -129,7 +134,14 @@ The session bar is a small window that stays on top of your other apps, in the t
 
 TalkBar can notice when a conversation starts near your microphone and offer to record it. The session bar then shows **Sounds like a conversation — start a session?** with a short snippet of what it heard. Click **Start session**, **Skip** detection for a while, or turn detection off from the bar.
 
-Detection is on by default. Change it, the skip duration, and the bar's shortcut, position and number of transcript lines in **Settings → General → Session detection**. Detection never starts recording by itself, and nothing it hears is saved.
+::platform-tabs
+#windows
+Session detection is on by default.
+#macos
+Session detection is off by default. Turn it on in **Settings → General → Session detection**.
+::
+
+Change detection, the skip duration, and the bar's shortcut, position and number of transcript lines in **Settings → General → Session detection**. Detection never starts recording by itself, and nothing it hears is saved.
 
 ## Related
 

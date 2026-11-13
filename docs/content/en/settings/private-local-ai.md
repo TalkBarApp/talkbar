@@ -32,8 +32,10 @@ The **Local AI models** tab (search entry: **Local AI models**) lists the built-
 | --- | --- | --- |
 | **Manage models** | Opens the **Models** tab of [Settings → AI Providers](/settings/ai-providers#models). | — |
 | **Assign to AI features** | Opens the **AI Features** tab of Settings → AI Providers, where you pick which model each feature uses. | — |
-| **Find my best model** | Opens **Model Advisor**. It tests your downloaded models on this computer (about a minute per model) and recommends the highest-quality model that passed every check and runs fast or, failing that, the fastest one that passed the quality check. **Set as default** makes the recommended model your **Standard** default; **Make default** does the same for another tested model. See [Find my best model](/ai/local-models#find-my-best-model). | — |
+| **Find my best model** | Opens **Model Advisor**. It tests your downloaded models on this computer (about a minute per model) and recommends the highest-quality model that passed every check and runs fast or, failing that, the fastest one that passed the quality check. **Set as default** makes the recommended model your **Standard** default; **Make default** does the same for another tested model. Stop the current session before testing; pausing it is not enough, and starting a session stops a running test. See [Find my best model](/ai/local-models#find-my-best-model). | — |
 | **Local AI acceleration** | **Auto (GPU when available)** uses your graphics card when it can. **CPU only** avoids using GPU memory. | **Auto (GPU when available)** |
+
+Local AI running slowly? See [Speed up local AI](/ai/speed-up-ai).
 
 ### Model list
 
@@ -89,4 +91,5 @@ If your organization manages TalkBar with an [admin policy](/settings/admin-poli
 - [Voice settings](/settings/voice)
 - [Private AI Mode](/ai/private-ai-mode)
 - [Local models](/ai/local-models)
+- [Speed up local AI](/ai/speed-up-ai)
 - [Data and backup settings](/settings/data-and-backup)

@@ -107,8 +107,11 @@ talkbar-cli tools call notes.create --args-file note.json
 
 Files and piped text saved with a UTF-8 byte order mark, as Windows PowerShell 5 writes them, are read correctly.
 
-::callout{icon="i-heroicons-light-bulb" color="primary"}
+::platform-tabs
+#windows
 PowerShell and `cmd` treat quotes in JSON differently. If `--args '{...}'` gives "Invalid JSON arguments", put the JSON in a file and use `--args-file`.
+#macos
+Terminal accepts the JSON examples above in single quotes. If a command says "Invalid JSON arguments", put the JSON in a file and use `--args-file`.
 ::
 
 ## Run a batch
@@ -254,7 +257,7 @@ An agent that can run commands, such as Claude Code or Codex, can use `talkbar-c
 
 ## The app refreshes itself
 
-After a successful write, `talkbar-cli` (and the MCP server) tells the running TalkBar app what changed, over a private local channel. The app refreshes the screens and the tray menu that show those items. When the app is closed, nothing is sent and nothing slows down.
+After a successful write, `talkbar-cli` (and the MCP server) tells the running TalkBar app what changed, over a private local channel. The app refreshes the screens and the icon menu that show those items. When the app is closed, nothing is sent and nothing slows down.
 
 ## Related
 

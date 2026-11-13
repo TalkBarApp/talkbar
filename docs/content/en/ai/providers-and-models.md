@@ -60,9 +60,9 @@ If you already have an AI command-line tool installed and signed in, TalkBar can
 
 1. Open **Set up AI**, click **Providers** and choose **CLI tools**.
 2. TalkBar scans your computer for Claude Code, Codex, Agy, Grok CLI and OpenCode and marks each one **Detected** or **Not detected**. A tool you already connected is marked **Already added**.
-3. Pick the tool you want and click **Add and select model**.
+3. Click the tool you want. TalkBar opens its models.
 
-If TalkBar finds no tool, click **Show install steps**, install one, then click **Recheck CLI tools**.
+If TalkBar finds no tool, click **Show install steps**, install one, then click **Recheck CLI tools**. New to these tools? [CLI tools](/ai/cli-tools) explains how to install and sign in to each one, step by step, with a prompt you can give your AI assistant.
 
 You can also do this in **Settings → AI Providers → Providers**, in the **Local CLI Tools** card or in the **Detect Local CLI Tools** section of **Add Provider**. Those places mark a missing tool **Not found**. Installed a tool later? Click **Rescan** there.
 
@@ -107,7 +107,7 @@ Private AI Mode does not use a server that does not count as local. Features ass
 A server that counts as local can still be another computer, and it receives the text you send it. Only treat servers you control as local.
 ::
 
-If Ollama keeps a model loaded in your graphics card, the built-in model can run slower. While Private AI Mode is on, TalkBar can warn you and offer to unload Ollama's model. Unloading is always your choice.
+If Ollama keeps a model loaded in your graphics card, the built-in model can run slower. While Private AI Mode is on, TalkBar can warn you and offer to unload Ollama's model. Unloading is always your choice. For more ways to make local AI faster, see [Speed up local AI](/ai/speed-up-ai).
 
 ## Manage providers and models
 
@@ -146,5 +146,7 @@ With Built-in AI, **Qwen3.5 4B** is the default model for both Standard and Priv
 - [How TalkBar uses AI](/ai/how-talkbar-uses-ai)
 - [Private AI Mode](/ai/private-ai-mode)
 - [Local models](/ai/local-models)
+- [CLI tools](/ai/cli-tools)
+- [Speed up local AI](/ai/speed-up-ai)
 - [AI Providers settings](/settings/ai-providers)
 - [Backup and restore](/data/backup-and-restore)

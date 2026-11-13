@@ -21,16 +21,18 @@ const THUMB_WIDTHS = [640, 960];
 const items: GalleryItem[] = await Promise.all(
   ids.map(async (id) => {
     const shot = SCREENSHOTS[id];
-    const ratio = shot.src.height / shot.src.width;
+    const light = lang === 'ru' && shot.srcRu ? shot.srcRu : shot.src;
+    const dark = lang === 'ru' && shot.srcRuDark ? shot.srcRuDark : shot.srcDark;
+    const ratio = light.height / light.width;
     const thumbs = await Promise.all(
-      THUMB_WIDTHS.map((width) => getImage({ src: shot.src, width, format: 'webp' })),
+      THUMB_WIDTHS.map((width) => getImage({ src: light, width, format: 'webp' })),
     );
-    const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
-    const darkThumbs = shot.srcDark
-      ? await Promise.all(THUMB_WIDTHS.map((width) => getImage({ src: shot.srcDark!, width, format: 'webp' })))
+    const full = await getImage({ src: light, width: Math.min(2400, light.width), format: 'webp' });
+    const darkThumbs = dark
+      ? await Promise.all(THUMB_WIDTHS.map((width) => getImage({ src: dark, width, format: 'webp' })))
       : null;
-    const fullDark = shot.srcDark
-      ? await getImage({ src: shot.srcDark, width: Math.min(2400, shot.srcDark.width), format: 'webp' })
+    const fullDark = dark
+      ? await getImage({ src: dark, width: Math.min(2400, dark.width), format: 'webp' })
       : null;
     const width = THUMB_WIDTHS[THUMB_WIDTHS.length - 1];
     return {

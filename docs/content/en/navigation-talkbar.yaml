@@ -112,12 +112,18 @@ body:
       - title: Providers and models
         to: /ai/providers-and-models
         icon: i-heroicons-cpu-chip
+      - title: CLI tools
+        to: /ai/cli-tools
+        icon: i-heroicons-command-line
       - title: Private AI Mode
         to: /ai/private-ai-mode
         icon: i-heroicons-lock-closed
       - title: Local models
         to: /ai/local-models
         icon: i-heroicons-server-stack
+      - title: Speed up local AI
+        to: /ai/speed-up-ai
+        icon: i-heroicons-bolt
   - title: Sharing and exports
     icon: i-heroicons-share
     to: /sharing

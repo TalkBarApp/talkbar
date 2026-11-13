@@ -5,7 +5,12 @@ navigation:
   icon: i-heroicons-microphone
 ---
 
-Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+::platform-tabs
+#windows
+The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
+#macos
+Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+::
 
 When you click **Start session**, TalkBar opens the recording screen. The transcript appears by speaker as people talk, the timeline adds short AI notes as the conversation goes (every 10 seconds by default), and you can take notes, mark moments and ask questions while you record.
 

@@ -67,7 +67,7 @@ Open the Schedule window from:
 - **Schedule session** on the Upcoming page;
 - **Schedule for later** in the [New session window](/sessions/starting-a-session) or on the recording screen;
 - **Schedule follow-up** on a [session's details page](/sessions/session-details);
-- the title bar's upcoming menu, or the tray menu.
+- the title bar's upcoming menu, or the TalkBar icon menu.
 
 ::screenshot{src="/screenshots/sessions/schedule-window.png" alt="The Schedule for later window showing the title, Project and Series fields, Date, Time start and Time end, the duration pills, the Reminders choices, the Repeats dropdown and the Auto-start recording switch" caption="The Schedule for later window"}
 ::

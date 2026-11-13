@@ -56,7 +56,7 @@ export const groups = {
       id: 'ai',
       title: { en: 'AI and Private AI', ru: 'ИИ и приватный ИИ' },
       icon: 'i-heroicons-cpu-chip',
-      pages: ['how-talkbar-uses-ai', 'providers-and-models', 'private-ai-mode', 'local-models'],
+      pages: ['how-talkbar-uses-ai', 'providers-and-models', 'cli-tools', 'private-ai-mode', 'local-models', 'speed-up-ai'],
     },
     {
       id: 'sharing',

@@ -41,14 +41,14 @@ You can switch it from several places:
 - **Logo menu**: click the TalkBar logo and choose **Turn on Private AI Mode** or **Turn off Private AI Mode**.
 - **Settings → AI Providers**: the **Private AI Mode** switch at the top.
 - **Settings → Private Local AI**: the **Private AI Mode** switch at the top.
-- **System tray menu** (the menu bar icon on macOS): **Private AI Mode**.
+- **Menu icon** (the system tray on Windows, the menu bar on macOS): **Private AI Mode**.
 
 ::screenshot{src="/screenshots/ai/private-ai-mode-switch.png" alt="Settings → Private Local AI with the Private AI Mode card at the top switched On, reading All AI runs on this computer. Any external providers you have connected are turned off." caption="The Private AI Mode switch"}
 ::
 
 ### While a session is recording
 
-You cannot change the mode while a session records. The switch is locked with the message **Session in progress. Stop the session to change Private AI Mode.** In the tray menu the item reads **Private AI Mode (session in progress)**. Stop the session first, or use a private session (below).
+You cannot change the mode while a session records. The switch is locked with the message **Session in progress. Stop the session to change Private AI Mode.** In the icon menu the item reads **Private AI Mode (session in progress)**. Stop the session first, or use a private session (below).
 
 ### If local models are missing
 

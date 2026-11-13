@@ -39,6 +39,12 @@ When you finish a tour, TalkBar offers the next tour in the same category. Choos
 ::screenshot{src="/screenshots/settings/help-and-tours.png" alt="Settings → Help & Tours with the Onboarding row and Start onboarding again button at the top, the Search tours field, and the Getting started category showing tour rows with Completed badges and Run Again buttons" caption="Settings → Help & Tours"}
 ::
 
+### Guides
+
+At the end of the page, **Guides** links to step-by-step guides on this documentation site, grouped as **Getting started**, **Sessions**, **Chats and notes**, **Voice**, **AI**, **Knowledge**, **Sharing and data** and **Help**. Each link opens the guide in your browser, and **All documentation** opens the home page. With the app in Russian, the links open docs.talkbar.ru; in any other language, docs.talkbar.app.
+
+You can also find a guide with **Find a setting…** in the Settings sidebar: type a topic such as "speed", "CLI", "backup" or "speakers". Picking a guide takes you to **Help & Tours** and highlights its link.
+
 ## Doctor
 
 The **Settings Doctor** runs quick checks every time you open it. **Run all checks** also runs the probes, which take a moment: it sends one tiny test request to your default AI model, checks Ollama, and checks the TalkBar database.

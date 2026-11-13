@@ -47,6 +47,8 @@ Links at the top of the tab take you to **Manage models** (the Models tab in AI 
 
 **Find my best model** opens the **Model Advisor**. It runs a short test of each downloaded model on this computer, measures real speed and quality, and recommends the best default. Tick the models to test and click **Start test**. It takes about a minute per model, and **Cancel test** stops it.
 
+Stop the current session before testing models; pausing it is not enough. While a session is running, the window shows **Model tests can’t run during a live session. Stop the session to test models.** Starting a session also stops a test already running.
+
 - The advisor shows your computer, for example **Your system: 16 GB RAM · 8 cores**.
 - Models you have not downloaded are dimmed and marked **Download to test**. Download them from the model list first.
 - **Best for your system** names the recommended model: the highest-quality model that passed every check and runs fast on your computer or, failing that, the fastest one that passed the quality check. Click **Set as default** to make it your **Standard** default model.
@@ -64,6 +66,8 @@ Links at the top of the tab take you to **Manage models** (the Models tab in AI 
 | **CPU only** | Runs on the processor only. Choose it if the graphics card causes problems or you want to keep its memory free. |
 
 If Ollama is running and holding graphics memory, the built-in model can slow down. While Private AI Mode is on, TalkBar can warn you and offer to unload Ollama's model.
+
+If local AI gets slow, see [Speed up local AI](/ai/speed-up-ai).
 
 ## Speech models
 
@@ -118,7 +122,7 @@ Disk space adds up quickly:
 You can download any deleted model again at any time. TalkBar downloads **Silero VAD** and **WeSpeaker speaker embeddings** again by itself the next time a feature needs them.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
-Local AI on a slow computer may need more time. **Settings → AI Providers → Advanced → AI time limits on this computer** gives built-in and local Ollama models longer before a request times out, and **Local AI request queue** controls how many local requests run at once.
+Local AI on a slow computer may need more time. **Settings → AI Providers → Advanced → AI time limits on this computer** gives built-in and local Ollama models longer before a request times out. Keep **Queue built-in and Ollama** on, and set **Concurrent local requests** (default 1) for how many local requests run at once.
 ::
 
 ## Related
@@ -128,3 +132,4 @@ Local AI on a slow computer may need more time. **Settings → AI Providers → 
 - [Providers and models](/ai/providers-and-models)
 - [Recording and transcription](/voice/recording-and-transcription)
 - [Private Local AI settings](/settings/private-local-ai)
+- [Speed up local AI](/ai/speed-up-ai)

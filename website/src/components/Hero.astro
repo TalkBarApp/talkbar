@@ -20,13 +20,15 @@ const heroHighlights = [
 ];
 
 const shot = SCREENSHOTS['home-hero'];
+const light = lang === 'ru' && shot.srcRu ? shot.srcRu : shot.src;
+const dark = lang === 'ru' && shot.srcRuDark ? shot.srcRuDark : shot.srcDark;
 const shotAlt = t(lang, 'hero.shot.alt');
 const shotLabel = t(lang, shot.captionKey);
 const zoomLabel = t(lang, 'media.zoom.expand').replace('{label}', shotLabel);
 const unzoomLabel = t(lang, 'media.zoom.close').replace('{label}', shotLabel);
-const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
-const fullDark = shot.srcDark
-  ? await getImage({ src: shot.srcDark, width: Math.min(2400, shot.srcDark.width), format: 'webp' })
+const full = await getImage({ src: light, width: Math.min(2400, light.width), format: 'webp' });
+const fullDark = dark
+  ? await getImage({ src: dark, width: Math.min(2400, dark.width), format: 'webp' })
   : null;
 ---
 <section class="section-pro hero-section relative overflow-hidden pt-28 sm:pt-32 lg:pt-32 pb-16 sm:pb-20 lg:pb-24">
@@ -86,17 +88,17 @@ const fullDark = shot.srcDark
             zoomSrc={full.src}
           >
             <Picture
-              src={shot.src}
+              src={light}
               alt={shotAlt}
               formats={['avif', 'webp']}
-              widths={[720, 1080, 1440, 2160, 2880, shot.src.width]}
+              widths={[720, 1080, 1440, 2160, 2880, light.width]}
               sizes="(min-width: 1180px) 1080px, 100vw"
               class="hero-shot-img"
               loading="eager"
               fetchpriority="high"
             />
           </HeroImageZoom>
-          {fullDark && shot.srcDark && (
+          {fullDark && dark && (
             <HeroImageZoom
               client:load
               className="hero-shot-zoom hero-shot-dark"
@@ -105,10 +107,10 @@ const fullDark = shot.srcDark
               zoomSrc={fullDark.src}
             >
               <Picture
-                src={shot.srcDark}
+                src={dark}
                 alt={shotAlt}
                 formats={['avif', 'webp']}
-                widths={[720, 1080, 1440, 2160, 2880, shot.srcDark.width]}
+                widths={[720, 1080, 1440, 2160, 2880, dark.width]}
                 sizes="(min-width: 1180px) 1080px, 100vw"
                 class="hero-shot-img"
                 loading="eager"

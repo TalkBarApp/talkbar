@@ -5,7 +5,12 @@ navigation:
   icon: i-heroicons-wrench-screwdriver
 ---
 
-Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+::platform-tabs
+#windows
+The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
+#macos
+Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+::
 
 Most problems have a quick fix. Start with Settings Doctor, then look for your problem below. If you're still stuck, contact the TalkBar team from inside the app.
 
@@ -81,7 +86,7 @@ Another app may already use it. TalkBar tells you when a shortcut is taken; choo
 ### "Summary failed" or "Summary timed out"
 
 - Click **Retry**, or **Change model** to pick a faster or more capable model.
-- If a local model is slow, try **Settings → Private Local AI → Find my best model**.
+- If a local model is slow, see [Built-in AI or Ollama is slow](#built-in-ai-or-ollama-is-slow).
 - Very short sessions don't get an automatic summary. You can generate one from the summary panel when you're ready.
 
 ### The transcript is in the wrong language
@@ -103,6 +108,12 @@ Check **Transcription language** in **Settings → Voice → Transcription**. So
 - For a local model, check that it is downloaded in **Settings → Private Local AI**.
 
 See [Providers and models](/ai/providers-and-models) and [AI provider settings](/settings/ai-providers).
+
+### Built-in AI or Ollama is slow
+
+Replies, summaries, titles and other AI features can take much longer when Built-in AI or Ollama runs on this computer. TalkBar shows a notice such as **Built-in AI is running slowly** or **Ollama is running slowly**. Click **Show options** for the fixes that apply. The amber warning button, in the live session toolbar or in the title bar before **Help**, opens that window again.
+
+The full steps are in [Speed up local AI](/ai/speed-up-ai): what to check, how to free graphics memory, when to run on the processor, how to pick a smaller model, and when a cloud provider is the better choice. Start with the [quick checklist](/ai/speed-up-ai#quick-checklist).
 
 ### Ask AI on a recording session says "Not found in the attached sources."
 
@@ -236,3 +247,4 @@ The form doesn't attach log files. If the team asks for logs, send them by email
 - [Help & Tours and Doctor](/settings/help-and-doctor)
 - [Backup and restore](/data/backup-and-restore)
 - [Your first session](/getting-started/first-session)
+- [Speed up local AI](/ai/speed-up-ai)

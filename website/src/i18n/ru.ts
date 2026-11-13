@@ -1021,51 +1021,51 @@ const ru: Translations = {
   "gallery.counter": "{current} из {total}",
   "gallery.region": "Интерфейс TalkBar",
   "gallery.scrub": "Пролистать экраны",
-  "shot.session-setup.caption": "Начать сессию",
+  "shot.session-setup.caption": "Подготовка к звонку",
   "shot.session-setup.alt":
-    "Настройка новой сессии в TalkBar: выбор шаблона, микрофона и звука системы, участников",
+    "Подготовка к звонку в TalkBar: заметки, открытые задачи с прошлых встреч, документ и карточки знаний",
   "shot.session-schedule.caption": "Запланировать",
   "shot.session-schedule.alt":
-    "Планирование сессии в TalkBar: дата, длительность, напоминание и повтор",
-  "shot.live-transcript.caption": "Расшифровка и таймлайн",
+    "Планирование звонка в TalkBar: название, дата, длительность, напоминания и повтор",
+  "shot.live-transcript.caption": "Расшифровка",
   "shot.live-transcript.alt":
-    "Расшифровка сессии в TalkBar с определением говорящих рядом с таймлайном разговора",
-  "shot.live-translation.caption": "Живой перевод",
+    "Расшифровка звонка в TalkBar с именами спикеров и отметками времени рядом с закреплёнными карточками знаний",
+  "shot.live-translation.caption": "Вопрос во время звонка",
   "shot.live-translation.alt":
-    "Живая сессия в TalkBar с переводом под каждой репликой, таймлайном, заметками и кнопками «Спросить TalkBar»",
-  "shot.live-focus.caption": "Живая расшифровка",
+    "TalkBar отвечает на вопрос о текущем звонке со ссылками на фрагменты расшифровки",
+  "shot.live-focus.caption": "Карточки знаний на звонке",
   "shot.live-focus.alt":
-    "Живая расшифровка в TalkBar с определением говорящих и выделенными темами, с переводом под каждой репликой",
-  "shot.live-summary.caption": "Сводка по ходу",
+    "Рабочее пространство звонка в TalkBar: сводка и закреплённые карточки знаний с фактами и рисками",
+  "shot.live-summary.caption": "Решения и задачи",
   "shot.live-summary.alt":
-    "Сводка сессии в TalkBar с главными выводами рядом с таймлайном разговора",
+    "Доска задач TalkBar: задачи, договорённости, открытые вопросы и решения со звонка",
   "shot.session-overview.caption": "Обзор сессии",
   "shot.session-overview.alt":
-    "Обзор сессии в TalkBar после звонка: сводка, время разговора, говорящие и вкладки задач, расшифровки и заметок",
+    "Обзор сессии TalkBar после звонка: сводка, темы, время разговора, спикеры и вкладки задач, расшифровки и заметок",
   "shot.knowledge-review.caption": "Проверка предложений",
   "shot.knowledge-review.alt":
-    "Проверка знаний в TalkBar: предложенные карточки из просканированной сессии с кнопками «Добавить в знания», «Изменить» и «Отклонить»",
+    "Проверка знаний в TalkBar: предложения из звонка с кнопками «Добавить», «Изменить и одобрить», «Отклонить» и «Отложить»",
   "shot.knowledge-cards.caption": "Карточки знаний",
   "shot.knowledge-cards.alt":
-    "Раздел «Знания» в TalkBar с карточками, сохранёнными после сканирования",
-  "shot.knowledge-source.caption": "Назад к источнику",
+    "Карточки знаний TalkBar: закреплённые факты и риски, сохранённые со звонка",
+  "shot.knowledge-source.caption": "Заметки по ходу разговора",
   "shot.knowledge-source.alt":
-    "Карточка знаний в TalkBar с цитатой-источником из разговора и ссылкой на сессию",
+    "Заметка сессии в TalkBar, написанная во время звонка, рядом со сводкой и карточками знаний",
   "shot.documents.caption": "Документы",
   "shot.documents.alt":
-    "Библиотека документов TalkBar с открытым импортированным документом и поиском по нему",
+    "Просмотр документа в TalkBar: открыта импортированная Markdown-записка",
   "shot.chat-sources.caption": "Спросить TalkBar",
   "shot.chat-sources.alt":
-    "Чат TalkBar отвечает на вопрос о документе и показывает источник рядом с ответом",
+    "Чат TalkBar отвечает на вопрос о сессии с пронумерованными ссылками и источником под ответом",
   "shot.templates-settings.caption": "Шаблоны и навыки",
   "shot.templates-settings.alt":
     "Настройки «Шаблоны и навыки» в TalkBar: шаблоны сессий, которые можно включать и выключать",
   "shot.private-ai.caption": "Приватный режим ИИ",
   "shot.private-ai.alt":
-    "Настройки приватного режима ИИ в TalkBar с локальными моделями, скачанными на ваш компьютер",
+    "Настройки локального ИИ в TalkBar: переключатель приватного режима и локальные модели для загрузки",
   "shot.setup-ai.caption": "Выберите свой ИИ",
   "shot.setup-ai.alt":
-    "Настройка ИИ в TalkBar: встроенный локальный ИИ, внешние провайдеры или оба варианта",
+    "Поставщики ИИ в TalkBar: Anthropic, Google Gemini и OpenAI, подключённые с вашими ключами",
   "shot.home-hero.caption": "Главная",
   "shot.home-hero.alt": "Главный экран TalkBar: ближайшие сессии, статистика проекта и недавние заметки",
   "shot.home-mint.caption": "Главная, мятная рамка",
@@ -1076,12 +1076,12 @@ const ru: Translations = {
   "shot.settings-framed.alt": "Настройки «Общие» в TalkBar в рамке",
   "shot.settings-framed-lg.caption": "Общие, крупная рамка",
   "shot.settings-framed-lg.alt": "Настройки «Общие» в TalkBar в крупной рамке",
-  "shot.settings-window.caption": "Общие, полное окно",
-  "shot.settings-window.alt": "Настройки «Общие» в TalkBar в полном окне",
+  "shot.settings-window.caption": "Общие настройки",
+  "shot.settings-window.alt": "Общие настройки TalkBar: тема, цвет акцента и параметры боковой панели",
   "shot.settings-frame-win.caption": "Общие, окно в рамке",
   "shot.settings-frame-win.alt": "Настройки «Общие» в TalkBar в окне с рамкой",
   "shot.topics-keywords.caption": "Темы и ключевые слова",
-  "shot.topics-keywords.alt": "Настройки «Темы и ключевые слова» в TalkBar с метками задач",
+  "shot.topics-keywords.alt": "Настройки «Темы и ключевые слова» в TalkBar с ключевыми словами, созданными ИИ по вашим сессиям",
   "privacy.compare.privateAi": "Приватный режим ИИ",
   "privacy.compare.privateAi.badge": "Весь ИИ на вашем компьютере",
   "privacy.compare.privateAi.detail":

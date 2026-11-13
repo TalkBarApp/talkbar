@@ -12,19 +12,28 @@ Download TalkBar for your computer from GitHub, install it, and keep it up to da
 ::platform-tabs
 #windows
 1. Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) on GitHub.
-2. Under **Assets**, download `TalkBar_<version>_x64-setup.exe`.
+2. Under **Assets**, download the installer for your PC:
+   - Intel or AMD (x64): `TalkBar_<version>_x64-setup.exe`
+   - Windows 11 on Arm: `TalkBar_<version>_arm64-setup.exe`
 3. Run the installer and follow the steps.
 
 The installer is digitally signed. If Microsoft Edge WebView2 Runtime is missing, the installer sets it up using an internet connection.
 #macos
-A Mac version is in progress. When it is ready, its download and instructions will be on the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) page.
+1. Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) on GitHub.
+2. Under **Assets**, download the macOS file for your Mac.
+3. Open the downloaded file, follow the steps, and open TalkBar.
 ::
 
 ## First launch
 
 The first time you open TalkBar, the welcome window guides you through setup: your name, the app language, where AI runs, and the speech and speaker models every session needs. Setup can't be skipped, but you can quit and continue where you left off the next time you open TalkBar. See [First-run setup](/getting-started/first-run-setup).
 
-When you close the main window, TalkBar keeps running in the system tray. To exit completely, click the TalkBar logo and choose **Quit TalkBar**.
+::platform-tabs
+#windows
+When you close the main window, TalkBar keeps running in the system tray. To exit completely, click the TalkBar logo, choose **Quit TalkBar**, then click **Quit App** in the confirmation.
+#macos
+When you close the main window, TalkBar keeps running from the menu bar. To exit completely, click the TalkBar logo, choose **Quit TalkBar**, then click **Quit App** in the confirmation.
+::
 
 ## Automatic updates
 

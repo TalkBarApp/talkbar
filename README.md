@@ -123,11 +123,11 @@ Read the full breakdown on the [privacy page](https://www.talkbar.app/privacy).
 
 ## Download and install
 
-1. Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest).
-2. Download `TalkBar_<version>_x64-setup.exe` under **Assets**.
-3. Run the installer and follow the setup.
+TalkBar runs on 64-bit Windows and on macOS. Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) and use the file under **Assets** for your computer.
 
-TalkBar runs on 64-bit Windows. A Mac version is in progress.
+**Windows.** For Intel or AMD, download `TalkBar_<version>_x64-setup.exe`. For Windows 11 on Arm, download `TalkBar_<version>_arm64-setup.exe`. Run the installer and follow the setup.
+
+**macOS.** Download the macOS file for your Mac, open it, follow the steps and open TalkBar.
 
 ### Updates
 

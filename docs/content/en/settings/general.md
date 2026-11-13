@@ -5,7 +5,12 @@ navigation:
   icon: i-heroicons-adjustments-horizontal
 ---
 
-Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+::platform-tabs
+#windows
+The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
+#macos
+Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+::
 
 **Settings → General** holds app-wide preferences: how TalkBar looks, how new sessions start, what gets cleaned up automatically, and how the app starts and updates. Changes save as you make them. The one exception is the timezone, which has its own **Save Timezone** button.
 
@@ -50,7 +55,7 @@ When your microphone is free, TalkBar can listen locally for a conversation. If 
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Session detection** (section switch) | Turns detection on or off. | On |
+| **Session detection** (section switch) | Turns detection on or off. | See platform defaults below |
 | **Skip duration** | How long the session bar's **Skip** button pauses detection: 5, 10, 15, 30 or 60 minutes. | 15 minutes |
 | **Session bar shortcut** | A keyboard shortcut that shows or hides the session bar, with its own on/off switch. Changes apply right away. If the shortcut doesn't respond, use the **restart the app** link under it. | `Ctrl+Alt+B`, on |
 | **Current speaker lines** | How many lines of the current speaker's words the bar shows while you record: 2, 3, 4, 6, 8 or 10. | 3 lines |
@@ -58,6 +63,13 @@ When your microphone is free, TalkBar can listen locally for a conversation. If 
 | **Default position** | Where the bar opens when it has no remembered position: **Top left**, **Top center**, **Top right**, **Bottom left**, **Bottom center** or **Bottom right**. | Top right |
 | **Edge offset** | The distance between the bar and the screen edges, from 0 to 200 px. | 16 px |
 | **Bar position** | **Reset position** forgets the remembered spot and moves the bar back to the default corner. | — |
+
+::platform-tabs
+#windows
+Session detection is on by default.
+#macos
+Session detection is off by default. Turn it on in **Settings → General → Session detection**.
+::
 
 ## Auto titles
 
@@ -113,7 +125,7 @@ See [Knowledge cards](/knowledge/knowledge-cards) for how review and live recall
 
 Pick the language of TalkBar's menus and screens. 15 languages are available: English, Español, Deutsch, Français, Italiano, Русский, Türkçe, Polski, Українська, 简体中文, Português (Brasil), Português (Portugal), 日本語, 한국어 and 繁體中文.
 
-The default is your system language if TalkBar supports it, and English otherwise. Dates, numbers, the tray menu, the session bar, the dictation panel and the titles TalkBar gives new sessions all follow this language.
+The default is your system language if TalkBar supports it, and English otherwise. Dates, numbers, the icon menu, the session bar, the dictation panel and the titles TalkBar gives new sessions all follow this language.
 
 ::callout{icon="i-heroicons-information-circle" color="gray"}
 Some regional licenses cover only certain interface languages. With one of those, the other languages are greyed out, and a note links to **Settings → License**. See [Plans and license](/data/plans-and-license).
@@ -123,7 +135,7 @@ This setting doesn't change which languages TalkBar can transcribe. See [Support
 
 ### Custom translations
 
-Under the language buttons, **Custom translations** lets you change any phrase in the main window for the current language. Your wording applies right away and is saved on this computer, separately for each language. The tray menu, the session bar and the dictation panel keep the built-in text.
+Under the language buttons, **Custom translations** lets you change any phrase in the main window for the current language. Your wording applies right away and is saved on this computer, separately for each language. The icon menu, the session bar and the dictation panel keep the built-in text.
 
 | Control | What it does | Default |
 | --- | --- | --- |
@@ -171,7 +183,7 @@ You can also check for an update at any time with **Check for Update** at the bo
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Window mode on launch** | **Last state** opens the window if it was open when you last quit, and stays in the tray if it was minimized. **Tray** always starts in the system tray. **Window** always opens the main window. | Last state |
+| **Window mode on launch** | **Last state** opens the window if it was open when you last quit, and stays hidden if it was minimized. **Tray** always starts hidden, in the system tray on Windows and in the menu bar on macOS. **Window** always opens the main window. | Last state |
 | **Auto start** | Starts TalkBar when you sign in to your computer. | On |
 | **Keep awake** | Keeps your computer from going to sleep while TalkBar is running. | Off |
 | **Show TalkBar shortcut** | A keyboard shortcut that opens and focuses the main TalkBar window from any app. Click the field to record a new shortcut, and use the switch to turn it on. | `Ctrl+Shift+Space`, off |

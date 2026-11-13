@@ -45,7 +45,7 @@ Between conversations you can also write notes, chat with your sessions and docu
 
 | Requirement | Details |
 | --- | --- |
-| Operating system | 64-bit Windows. A Mac version is in progress. Check the release for supported versions and hardware. |
+| Operating system | 64-bit Windows (x64, and Arm on Windows 11) and macOS. Check the release for supported versions and hardware. |
 | Disk space | Room for the speech, speaker and AI models you download, plus your recordings. First-run setup shows the size of each download and the free space on the drive. |
 | Internet | Needed to download the installer and models, and for cloud AI providers, sharing, calendar subscriptions and updates. Transcription and Built-in AI run on this computer once their models are downloaded. |
 | Audio | A microphone to record your own voice. Without one you can still record system audio. |

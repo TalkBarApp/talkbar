@@ -1,11 +1,16 @@
 ---
 title: Getting around
-description: The TalkBar layout, sidebar, Home, search, Quick Actions, system tray, session bar, reminders, tours, keyboard shortcuts and the interface language.
+description: The TalkBar layout, sidebar, Home, search, Quick Actions, menu icon, session bar, reminders, tours, keyboard shortcuts and the interface language.
 navigation:
   icon: i-heroicons-map
 ---
 
-Keyboard shortcuts shown below are Windows defaults. On macOS, check the shortcut shown in TalkBar or its settings; configurable shortcuts can be changed there.
+::platform-tabs
+#windows
+The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
+#macos
+Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+::
 
 This page shows where everything is in the TalkBar main window and how to move around quickly. For a guided version, take the *Find your way around* tour from **Help → Take a tour**.
 
@@ -45,17 +50,15 @@ Collapse the sidebar to a narrow rail with the button at its top. To pin icon li
 
 When Private AI Mode is on, the logo becomes a green shield to remind you that all AI features run on local models only. See [Private AI Mode](/ai/private-ai-mode).
 
-**Close Window** hides TalkBar to the system tray, and so does the window's close button. TalkBar keeps running there. **Quit TalkBar** asks whether to exit completely (**Quit App**) or keep running in the tray (**Hide to Tray**).
+**Close Window** hides the main window, and so does the window's close button. TalkBar keeps running. **Quit TalkBar** asks whether to exit completely (**Quit App**) or keep running (**Hide to Tray**).
 
-## The system tray
-
-TalkBar keeps an icon in the system tray while it runs, even when the main window is closed. The icon changes while a session records or is paused.
+## The TalkBar icon
 
 ::platform-tabs
 #windows
-Click the icon to open the main window. Right-click it to open the menu.
+TalkBar keeps an icon in the system tray while it runs, even when the main window is closed. The icon changes while a session records or is paused. Click the icon to open the main window. Right-click it to open the menu.
 #macos
-Click the icon in the menu bar to open the menu.
+TalkBar keeps an icon in the menu bar while it runs, even when the main window is closed. The icon changes while a session records or is paused. Click the icon to open the menu.
 ::
 
 | Menu item | What it does |
@@ -92,7 +95,7 @@ Press `Ctrl+K` (`Cmd+K` on macOS), or click the search box at the top of the sid
 
 Search finds sessions, notes, chats, action items, documents, memory cards, people, companies, projects and series. Matches inside a transcript, summary or document text are marked as such.
 
-In the note editor these keys belong to the editor: `/` opens the editor's command menu and `Ctrl+K` inserts a link.
+In the note editor these keys belong to the editor: `/` opens the editor's command menu and `Ctrl+K` (`Cmd+K` on macOS) inserts a link.
 
 To find a setting, use the **Find a setting…** box at the top of the Settings sidebar.
 
@@ -109,7 +112,14 @@ The session bar is a small floating window that stays on top of your other apps.
 - While you record, it shows a compact view of the session, with the latest words of the current speaker.
 - When session detection is on and your microphone is free, TalkBar listens on this computer for a conversation and offers to start a session from the bar. Audio and text never leave this device, and nothing is saved until you start.
 
-Show or hide it from the TalkBar logo menu, or with `Ctrl+Alt+B`. You can drag the bar anywhere. Configure detection, the shortcut, its position, how many lines it shows and the **Skip duration** (how long the bar's Skip button pauses detection) in **Settings → General → Session detection**. Session detection is on by default.
+Show or hide it from the TalkBar logo menu, or with `Ctrl+Alt+B`. You can drag the bar anywhere. Configure detection, the shortcut, its position, how many lines it shows and the **Skip duration** (how long the bar's Skip button pauses detection) in **Settings → General → Session detection**.
+
+::platform-tabs
+#windows
+Session detection is on by default.
+#macos
+Session detection is off by default. Turn it on in **Settings → General → Session detection**.
+::
 
 ## Reminders
 

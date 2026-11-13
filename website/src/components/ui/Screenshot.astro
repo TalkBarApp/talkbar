@@ -29,13 +29,15 @@ const {
 } = Astro.props;
 
 const shot = SCREENSHOTS[id];
+const light = lang === 'ru' && shot.srcRu ? shot.srcRu : shot.src;
+const dark = lang === 'ru' && shot.srcRuDark ? shot.srcRuDark : shot.srcDark;
 const alt = t(lang, shot.altKey);
 const caption = t(lang, shot.captionKey);
 const zoomLabel = t(lang, 'media.zoom.expand').replace('{label}', caption);
 const unzoomLabel = t(lang, 'media.zoom.close').replace('{label}', caption);
-const full = await getImage({ src: shot.src, width: Math.min(2400, shot.src.width), format: 'webp' });
-const fullDark = shot.srcDark
-  ? await getImage({ src: shot.srcDark, width: Math.min(2400, shot.srcDark.width), format: 'webp' })
+const full = await getImage({ src: light, width: Math.min(2400, light.width), format: 'webp' });
+const fullDark = dark
+  ? await getImage({ src: dark, width: Math.min(2400, dark.width), format: 'webp' })
   : null;
 ---
 <figure
@@ -51,7 +53,7 @@ const fullDark = shot.srcDark
     zoomSrc={full.src}
   >
     <Picture
-      src={shot.src}
+      src={light}
       alt={alt}
       formats={['avif', 'webp']}
       widths={[720, 1080, 1440, 2160]}
@@ -61,7 +63,7 @@ const fullDark = shot.srcDark
       decoding="async"
     />
   </HeroImageZoom>
-  {fullDark && shot.srcDark && (
+  {fullDark && dark && (
     <HeroImageZoom
       client:visible
       className="shot-zoom shot-dark"
@@ -70,7 +72,7 @@ const fullDark = shot.srcDark
       zoomSrc={fullDark.src}
     >
       <Picture
-        src={shot.srcDark}
+        src={dark}
         alt={alt}
         formats={['avif', 'webp']}
         widths={[720, 1080, 1440, 2160]}

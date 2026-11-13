@@ -48,7 +48,7 @@ At the top of the sidebar, **Back** returns you to where you were before Setting
 
 - **Check for Update** checks for a new TalkBar version right away.
 - **Contact us** opens a form for sending a message to the TalkBar team.
-- **Quit / Hide** asks whether to quit TalkBar (**Quit App**) or keep it running in the tray (**Hide to Tray**).
+- **Quit / Hide** asks whether to quit TalkBar (**Quit App**) or keep it running (**Hide to Tray**). On Windows it stays in the system tray. On macOS it stays in the menu bar.
 
 ### Inner tabs
 

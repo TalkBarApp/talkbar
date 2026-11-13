@@ -25,7 +25,7 @@ The menu holds the same items on every page.
 
 **While you record.** The button is hidden on the recording screen and the session setup screen. On other pages it stays available. If **Recording** is in your menu, it shows a pulsing red dot while a session records, and an amber pause mark while the session is paused or on hold.
 
-**In the tray menu.** The same shortcuts appear under **Quick Actions** in the [system tray menu](/getting-started/getting-around#the-system-tray). Turning off **Enable Quick Actions** removes them from there too.
+**In the icon menu.** The same shortcuts appear under **Quick Actions** in the [TalkBar icon menu](/getting-started/getting-around#the-talkbar-icon). Turning off **Enable Quick Actions** removes them from there too.
 
 ## Enable Quick Actions
 

@@ -30,7 +30,8 @@ are built from `content/en` and `content/ru`; update both languages together.
   Preserve this behavior and keyboard accessibility when changing the component.
 - Verify platform-specific facts before documenting them. Do not invent macOS
   paths, installer names, shortcuts or app behavior; when a path varies, direct
-  readers to the actual path shown in TalkBar. Label Windows-only examples clearly.
+  readers to the actual path shown in TalkBar. Give both platforms an
+  instruction. Do not leave a panel as a Windows-only or Mac-in-progress note.
 - After editing content, run `npm run check:content` from `docs/`. For changes to
   platform tabs or generated content, build both locales sequentially and run any
   applicable checks described in `docs/README.md`. Check that both tab panels render and

@@ -101,7 +101,7 @@ For command-line tools, the edit screen also has **CLI prompt controls**, includ
 
 ### Local CLI Tools
 
-The **Local CLI Tools** card detects AI command-line tools installed on this computer. Supported tools are Claude Code, Codex, Agy, Grok CLI and OpenCode (marked **Experimental**). Click **Scan** (or **Rescan**) to check again. Each tool shows **Detected** or **Not found**. **Add Provider** connects a detected tool, and **Installed** marks one you already connected. The **Set up AI** window marks a missing tool **Not detected** instead.
+The **Local CLI Tools** card detects AI command-line tools installed on this computer. Supported tools are Claude Code, Codex, Agy, Grok CLI and OpenCode (marked **Experimental**). Click **Scan** (or **Rescan**) to check again. Each tool shows **Detected** or **Not found**. **Add Provider** connects a detected tool, and **Installed** marks one you already connected. The **Set up AI** window marks a missing tool **Not detected** instead. To install and sign in to a tool, see [CLI tools](/ai/cli-tools).
 
 ## Models
 
@@ -174,7 +174,7 @@ Gives built-in and local Ollama models more time on slower computers before a re
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Auto** | Sets the limits from the measured speed of your computer. Until a built-in model has run, Auto doubles the limits; run the speed test in [Model Advisor](/ai/local-models#find-my-best-model) to measure now. Under the control, TalkBar shows the measured speed for each model. | Selected |
+| **Auto** | Sets the limits from the measured speed of your computer. After a built-in model has run, Auto can allow up to six times the **Standard** limits. Until then, it doubles them. Run the speed test in [Model Advisor](/ai/local-models#find-my-best-model) to measure now. Under the control, TalkBar shows the measured speed for each model. | Selected |
 | **Standard** | Keeps the default limits. | — |
 | **Longer** | Doubles the limits. | — |
 | **Longest** | Allows four times as long. | — |
@@ -216,6 +216,7 @@ If your organization manages TalkBar with an [admin policy](/settings/admin-poli
 
 - [Private Local AI settings](/settings/private-local-ai)
 - [Providers and models](/ai/providers-and-models)
+- [CLI tools](/ai/cli-tools)
 - [Private AI Mode](/ai/private-ai-mode)
 - [Local models](/ai/local-models)
 - [How TalkBar uses AI](/ai/how-talkbar-uses-ai)
