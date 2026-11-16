@@ -178,10 +178,12 @@ Both are deployed with Cloudflare Pages. To work on them locally (Node.js 22 or 
 ```bash
 npm run setup      # install the root tools, docs and website
 npm run dev        # docs on http://localhost:8000 and website on http://localhost:4321
+npm run dev:ru     # Russian docs on http://localhost:8001 and Russian website on http://localhost:4322
 ```
 
 | Command | What it does |
 | --- | --- |
+| `npm run dev:ru` | Russian docs (port 8001) and Russian website (port 4322) together |
 | `npm run dev:docs` / `npm run dev:docs:ru` | Docs dev server, English (port 8000) or Russian (port 8001) |
 | `npm run dev:website` / `npm run dev:website:ru` | Website dev server, English (port 4321) or Russian (port 4322) |
 | `npm run build:docs` / `npm run build:docs:ru` | Production build of docs.talkbar.app / docs.talkbar.ru into `docs/dist` |

@@ -5,6 +5,7 @@
   "scripts": {
     "setup": "npm install && npm --prefix docs install && npm --prefix website install",
     "dev": "concurrently -n docs,website -c blue,magenta \"npm:dev:docs\" \"npm:dev:website\"",
+    "dev:ru": "concurrently -n docs,website -c blue,magenta \"npm:dev:docs:ru\" \"npm:dev:website:ru\"",
     "dev:docs": "npm --prefix docs run dev",
     "dev:docs:ru": "npm --prefix docs run dev:ru",
     "dev:website": "npm --prefix website run dev",
