@@ -13,6 +13,7 @@
     "build:docs": "npm --prefix docs run generate:en",
     "build:docs:ru": "npm --prefix docs run generate:ru",
     "build:website": "npm --prefix website run build",
+    "build:website:ru": "npm --prefix website run build:ru",
     "build:website:preview": "npm --prefix website run build:preview",
     "build:website:preview:ru": "npm --prefix website run build:preview:ru",
     "check": "npm --prefix docs run check:content && npm --prefix website test && npm --prefix website run lint && npm --prefix website run check",

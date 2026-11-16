@@ -32,7 +32,7 @@ const configs = {
     defaultLocale: "ru",
     locales: ["ru"],
   },
-  // Reserved future Russian production build.
+  // Russian production, served at www.talkbar.ru.
   "prod-ru": {
     site: "https://www.talkbar.ru",
     defaultLocale: "ru",

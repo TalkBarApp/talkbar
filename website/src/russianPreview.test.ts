@@ -11,7 +11,7 @@ describe("Russian preview build (preview.talkbar.ru)", () => {
 
     expect(pkg.scripts["build:preview:ru"]).toBe("cross-env BUILD_DOMAIN=preview-ru astro build");
     expect(pkg.scripts["deploy:preview:ru"]).toBe(
-      "npm run build:preview:ru && npx --yes wrangler pages deploy dist-preview-ru --project-name talkbar-preview-ru --branch preview",
+      "npm run build:preview:ru && npx --yes wrangler pages deploy dist-preview-ru --project-name ru-talkbar-www-preview --branch preview",
     );
   });
 

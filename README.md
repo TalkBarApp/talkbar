@@ -171,7 +171,7 @@ website:
 | Folder | What it is | Sites |
 | --- | --- | --- |
 | [`docs/`](docs/README.md) | Documentation site (Nuxt): user guide, settings reference, MCP & CLI | [docs.talkbar.app](https://docs.talkbar.app), [docs.talkbar.ru](https://docs.talkbar.ru) |
-| [`website/`](website/README.md) | Marketing website (Astro) | [www.talkbar.app](https://www.talkbar.app), [preview.talkbar.app](https://preview.talkbar.app), [preview.talkbar.ru](https://preview.talkbar.ru) |
+| [`website/`](website/README.md) | Marketing website (Astro) | [www.talkbar.app](https://www.talkbar.app), [www.talkbar.ru](https://www.talkbar.ru), [preview.talkbar.app](https://preview.talkbar.app), [preview.talkbar.ru](https://preview.talkbar.ru) |
 
 Both are deployed with Cloudflare Pages. To work on them locally (Node.js 22 or newer):
 
@@ -187,16 +187,16 @@ npm run dev:ru     # Russian docs on http://localhost:8001 and Russian website o
 | `npm run dev:docs` / `npm run dev:docs:ru` | Docs dev server, English (port 8000) or Russian (port 8001) |
 | `npm run dev:website` / `npm run dev:website:ru` | Website dev server, English (port 4321) or Russian (port 4322) |
 | `npm run build:docs` / `npm run build:docs:ru` | Production build of docs.talkbar.app / docs.talkbar.ru into `docs/dist` |
-| `npm run build:website` | Production build of www.talkbar.app into `website/dist-prod` |
+| `npm run build:website` / `npm run build:website:ru` | Production build of www.talkbar.app / www.talkbar.ru into `website/dist-prod` / `website/dist-prod-ru` |
 | `npm run build:website:preview` / `npm run build:website:preview:ru` | Preview builds for preview.talkbar.app / preview.talkbar.ru |
 | `npm run check` | Docs content checks, website tests, lint and type checks |
 | `npm run deploy:docs` / `npm run deploy:docs:ru` | Build and upload the docs to the `talkbar-docs` / `talkbar-docs-ru` Cloudflare Pages projects |
-| `npm run deploy:website:preview` / `npm run deploy:website:preview:ru` | Build and upload the website previews to `talkbar-preview` / `talkbar-preview-ru` |
+| `npm run deploy:website:preview` / `npm run deploy:website:preview:ru` | Build and upload the website previews to `talkbar-www-preview` / `ru-talkbar-www-preview` |
 
 The `deploy:*` commands need [Wrangler](https://developers.cloudflare.com/workers/wrangler/)
 signed in to the Cloudflare account. Production sites also deploy automatically from `main`
 when their Cloudflare Pages projects are connected to this repository (root directory `docs`
-or `website`).
+or `website`); the website previews deploy from the `preview` branch.
 
 <p align="center">
   <sub>© 2026 TalkBar. Built for sensitive conversations.</sub>

@@ -1,14 +1,15 @@
 # TalkBar Website
 
-English-only Astro website for TalkBar, a private conversation intelligence app for Mac and Windows. The public site covers the homepage plus deep Use Case and Industry pages, sharing one layout, navbar, footer, metadata, brand styling, and download flow.
+Astro website for TalkBar, a private conversation intelligence app for Mac and Windows. The public site covers the homepage plus deep Use Case and Industry pages, sharing one layout, navbar, footer, metadata, brand styling, and download flow.
 
-The Use Case and Industry pages are linked from the navbar dropdowns, the homepage, and the footer. The production and English preview sites are English-only; a fully translated **Russian preview** is built as its own build domain and served at the root of `preview.talkbar.ru` (see [Russian preview](#russian-preview-previewtalkbarru)).
+The Use Case and Industry pages are linked from the navbar dropdowns, the homepage, and the footer. The English sites (`www.talkbar.app`, `preview.talkbar.app`) and the fully translated Russian sites (`www.talkbar.ru`, `preview.talkbar.ru`) are separate builds of the same pages at the same paths (see [Russian site](#russian-site-wwwtalkbarru-and-previewtalkbarru)).
 
 ## Domains
 
 | Domain | Purpose | Language |
 |---|---|---|
 | `www.talkbar.app` | Production public site | English |
+| `www.talkbar.ru` | Russian production site (served through an nginx proxy) | Russian |
 | `preview.talkbar.app` | Preview build with noindex robots rules | English |
 | `preview.talkbar.ru` | Russian preview build with noindex robots rules | Russian |
 
@@ -36,12 +37,14 @@ The dev server starts at `http://localhost:4321/`. The Russian dev server (`npm 
 | `npm run dev` | Start the Astro dev server on port 4321 (`--ignore-lock`, so it can run alongside the Russian dev server) |
 | `npm test` | Run the Vitest regression suite |
 | `npm run build` | Build the production site for `www.talkbar.app` into `dist-prod/` |
+| `npm run build:ru` | Build the Russian production site for `www.talkbar.ru` into `dist-prod-ru/` |
+| `npm run deploy:prod` / `npm run deploy:prod:ru` | Manual fallback: build and deploy `dist-prod/` / `dist-prod-ru/` to `talkbar-www` / `ru-talkbar-www` (branch `main`) |
 | `npm run build:preview` | Build the preview site for `preview.talkbar.app` into `dist-preview/` |
-| `npm run deploy:preview` | Build and deploy `dist-preview/` to the `talkbar-preview` Cloudflare Pages project |
+| `npm run deploy:preview` | Build and deploy `dist-preview/` to the `talkbar-www-preview` Cloudflare Pages project (branch `preview`) |
 | `npm run dev:preview:ru` | Start the dev server with the Russian (`preview-ru`) build domain on port 4322, alongside the English dev server (`--ignore-lock`; not tracked by `astro dev stop`) |
 | `npm run dev:ru` | Shorthand for `dev:preview:ru` |
 | `npm run build:preview:ru` | Build the Russian preview site for `preview.talkbar.ru` into `dist-preview-ru/` |
-| `npm run deploy:preview:ru` | Build and deploy `dist-preview-ru/` to the `talkbar-preview-ru` Cloudflare Pages project |
+| `npm run deploy:preview:ru` | Build and deploy `dist-preview-ru/` to the `ru-talkbar-www-preview` Cloudflare Pages project (branch `preview`) |
 | `npm run preview` | Preview the built site locally |
 | `npm run lint` | Run ESLint |
 | `npm run check` | Run Astro type checking |
@@ -52,108 +55,115 @@ The dev server starts at `http://localhost:4321/`. The Russian dev server (`npm 
 | Command | Output | Domain |
 |---|---|---|
 | `npm run build` | `dist-prod/` | `www.talkbar.app` |
+| `npm run build:ru` | `dist-prod-ru/` | `www.talkbar.ru` |
 | `npm run build:preview` | `dist-preview/` | `preview.talkbar.app` |
 | `npm run build:preview:ru` | `dist-preview-ru/` | `preview.talkbar.ru` |
 
-The output directory is set by `outDir: ./dist-${buildDomain}` in `astro.config.mjs`. `BUILD_DOMAIN=preview` selects the English preview domain, `BUILD_DOMAIN=preview-ru` the Russian preview domain, and `BUILD_DOMAIN=prod-ru` is reserved for a future live Russian domain; all other builds use the production (`prod`) domain.
+The output directory is set by `outDir: ./dist-${buildDomain}` in `astro.config.mjs`. `BUILD_DOMAIN=preview` selects the English preview domain, `BUILD_DOMAIN=preview-ru` the Russian preview domain and `BUILD_DOMAIN=prod-ru` the Russian production domain; all other builds use the English production (`prod`) domain.
 
-## Russian preview (`preview.talkbar.ru`)
+## Russian site (`www.talkbar.ru` and `preview.talkbar.ru`)
 
-The Russian site is a third build domain, `preview-ru`, configured in `astro.config.mjs`
-and `src/i18n/domains.ts`. It sets `defaultLocale: 'ru'`, so every page renders Russian at
-the **root** of `preview.talkbar.ru` (no `/ru/` prefix) — the same components, driven by the
-translated string data:
+The Russian sites are two build domains, `prod-ru` and `preview-ru`, configured in
+`astro.config.mjs` and `src/i18n/domains.ts`. They set `defaultLocale: 'ru'`, so every page
+renders Russian at the **root** of its domain (no `/ru/` prefix): the same components, driven
+by the translated string data:
 
 - UI copy lives in `src/i18n/ru.ts` (a full translation of `en.ts`).
 - Deep Use Case / Industry page content lives in `src/i18n/ru-use-cases.ts`, registered for
   the `ru` locale in `src/i18n/use-cases.ts`.
 
-Like every non-production build, `preview-ru` is de-indexed by all three layers (`noindex`
-meta, `X-Robots-Tag` header, locked-down `robots.txt`) because `buildDomain !== "prod"`.
+Like every preview build, `preview-ru` is de-indexed by all three layers (`noindex` meta,
+`X-Robots-Tag` header, locked-down `robots.txt`). `prod-ru` is indexed.
 
-Deploy it to its own Cloudflare Pages project (`talkbar-preview-ru`) with
-`npm run deploy:preview:ru`, and attach the `preview.talkbar.ru` custom domain to that
-project only. Set `NODE_VERSION=22` and `BUILD_DOMAIN=preview-ru` in the project's
-environment variables, exactly as the English preview project does with `BUILD_DOMAIN=preview`.
+### hreflang
+
+Both languages render the same pages at the same paths, so every indexable page lists its
+counterpart: `hreflang="en"` on the English site, `hreflang="ru"` on the Russian site, and
+`hreflang="x-default"` on the English site. Production builds point at `www.talkbar.app` /
+`www.talkbar.ru`; preview builds point at `preview.talkbar.app` / `preview.talkbar.ru`
+(`getHreflangLinks` in `src/i18n/domains.ts`). A page that exists in only one language passes
+`translated={false}` to its layout and then lists only itself. Canonicals always point at the
+page itself.
 
 ## Deployment
 
-The site is hosted on **Cloudflare Pages**. Production (`www.talkbar.app`) and preview
-(`preview.talkbar.app`) are **two separate Pages projects** connected to this GitHub
-repo — same code, different build command and domain. Keeping them separate is what
-makes the preview build (with its `noindex` rules and early-access modals) stay off the
-production domain.
+The site is hosted on **Cloudflare Pages** as **four projects** connected to this GitHub repo,
+all with root directory `website`: same code, different build command and domain. Keeping
+them separate is what keeps the preview builds (with their `noindex` rules) off the production
+domains.
 
-| | Production | Preview |
-|---|---|---|
-| Pages project | `talkbar-app` (example name) | `talkbar-preview` |
-| Production branch | `main` | `main` |
-| Build command | `npm run build` | `npm run build:preview` |
-| Build output directory | `dist-prod` | `dist-preview` |
-| Custom domain | `www.talkbar.app` (+ apex `talkbar.app`) | `preview.talkbar.app` |
-| `BUILD_DOMAIN` | `prod` (default) | `preview` |
-| Indexed by search engines | Yes | No (`noindex` meta + `X-Robots-Tag` header + disallow `robots.txt`) |
+| Pages project | Domain | Branch | Build command | Output directory | Indexed |
+|---|---|---|---|---|---|
+| `talkbar-www` | `www.talkbar.app` | `main` | `npm run build` | `dist-prod` | Yes |
+| `ru-talkbar-www` | `www.talkbar.ru` (through an nginx proxy) | `main` | `npx cross-env BUILD_DOMAIN=prod-ru astro build` | `dist-prod-ru` | Yes |
+| `talkbar-www-preview` | `preview.talkbar.app` | `preview` | `npm run build:preview` | `dist-preview` | No |
+| `ru-talkbar-www-preview` | `preview.talkbar.ru` | `preview` | `npm run build:preview:ru` | `dist-preview-ru` | No |
+
+Preview builds are de-indexed by a `noindex` meta tag, an `X-Robots-Tag` header and a
+disallow-all `robots.txt`. `npm run build:ru` runs the same command as the `ru-talkbar-www`
+build.
 
 > **Keep the output directory in sync.** The build output dir is derived from the build
 > token: `outDir: ./dist-${buildDomain}`. If you ever rename the token (e.g. the
 > production token was `app` → `dist-app` before it became `prod` → `dist-prod`), you
 > **must** update each Pages project's **Build output directory** setting in the Cloudflare
-> dashboard to match in the same change — otherwise the next push to `main` builds into a
+> dashboard to match in the same change — otherwise the next push builds into a
 > folder the project isn't serving from, and the deploy ships stale/empty output.
 
 ### One-time setup (per project)
 
 1. **Cloudflare Dashboard → Workers & Pages → Create → Pages → Connect to Git** and
-   select this repository.
-2. Set the **build command** and **build output directory** from the table above
-   (the only difference between the two projects).
+   select this repository. Set the root directory to `website` and the production branch
+   from the table above.
+2. Set the **build command** and **build output directory** from the table above.
 3. Add **environment variables** (Settings → Variables and Secrets), applied to both
    the Production and Preview environments:
 
-   | Variable | Production | Preview | Notes |
-   |---|---|---|---|
-   | `NODE_VERSION` | `22` | `22` | **Required** — Cloudflare's default Node is too old for Astro 6. |
-   | `BUILD_DOMAIN` | `prod` | `preview` | Explicit is safest. Preview's build command also sets it. |
-   | `PREVIEW_MODAL_ON_DOWNLOAD` | leave unset (real download) | leave unset (real download) | Optional. `true` brings back the early-access modal on download buttons. |
-   | `EARLY_ACCESS_SUBSCRIBE_URL` | optional override | optional override | Defaults to the matching license-server `/api/early-access` in builds. |
-   | `CONTACT_FORM_URL` | optional override | optional override | Defaults to the matching license-server `/api/contact` in builds. |
-   | `PRODUCT_UPDATES_SUBSCRIBE_URL` | optional override | optional override | Defaults to the matching license-server `/api/subscriptions/product-updates`; the download dialog's Mac form uses it. |
+   | Variable | Value | Notes |
+   |---|---|---|
+   | `NODE_VERSION` | `22` | **Required**: Cloudflare's default Node is too old for Astro. |
+   | `BUILD_DOMAIN` | `prod`, `prod-ru`, `preview` or `preview-ru` | Explicit is safest; the build commands also set it (except `prod`, the default). |
+   | `PREVIEW_MODAL_ON_DOWNLOAD` | leave unset (real download) | Optional. `true` brings back the early-access modal on download buttons. |
+   | `EARLY_ACCESS_SUBSCRIBE_URL` | optional override | Defaults to the matching license-server `/api/early-access` in builds. |
+   | `CONTACT_FORM_URL` | optional override | Defaults to the matching license-server `/api/contact` in builds. |
+   | `PRODUCT_UPDATES_SUBSCRIBE_URL` | optional override | Defaults to the matching license-server `/api/subscriptions/product-updates`; the download dialog's Mac form uses it. |
 
    See [Environment Variables](#environment-variables) for the full list. Anything not
    set falls back to the defaults baked into `astro.config.mjs`.
 4. **Add the custom domain**: project → Custom domains → add the domain from the table.
-   Since `talkbar.app` is a zone on the same Cloudflare account, the proxied CNAME is
-   created automatically. Attach `www.talkbar.app` (and apex `talkbar.app`) only to the
-   production project, and `preview.talkbar.app` only to the preview project — never the
-   reverse.
+   Attach each domain only to its own project, never to another one. `www.talkbar.ru` is
+   served through an nginx proxy in front of `ru-talkbar-www`.
 
-After setup, every push to `main` rebuilds and redeploys both projects automatically.
-Each project also keeps a `<project>.pages.dev` URL that can't be removed; on the
-preview project it's harmless because the build is `noindex`.
+After setup, every push to `main` rebuilds both production projects, and every push to
+`preview` rebuilds both preview projects. Each project also keeps a `<project>.pages.dev` URL
+that can't be removed; on the preview projects it's harmless because the build is `noindex`.
 
-> **Node / `cross-env` note:** `build:preview` uses `cross-env`, a devDependency.
+> **Node / `cross-env` note:** the build scripts use `cross-env`, a devDependency.
 > Cloudflare Pages installs devDependencies by default, so this works. If a build ever
-> fails with `cross-env: not found`, set the preview build command to `npm run build`
-> and rely on the `BUILD_DOMAIN=preview` env var instead — `astro.config.mjs` reads it
-> and still outputs to `dist-preview`.
+> fails with `cross-env: not found`, set the build command to `npm run build` and rely on
+> the `BUILD_DOMAIN` env var instead: `astro.config.mjs` reads it and still outputs to
+> `dist-${BUILD_DOMAIN}`.
 
 ### Optional: limit preview deployments
 
-Branches other than `main` create throwaway `*.pages.dev` preview deployments. To
+Branches other than a project's production branch create throwaway `*.pages.dev` preview deployments. To
 suppress them, set **Settings → Builds & deployments → Configure Preview deployments**
 to **None** (or restrict to specific branches).
 
 ### Manual deploy (fallback)
 
-Git integration is the normal path, but you can also deploy preview directly with
+Git integration is the normal path, but you can also build and upload directly with
 Wrangler without pushing:
 
 ```bash
-npm run deploy:preview   # builds dist-preview/ and pushes to the talkbar-preview project
+npm run deploy:preview      # dist-preview/    -> talkbar-www-preview (branch preview)
+npm run deploy:preview:ru   # dist-preview-ru/ -> ru-talkbar-www-preview (branch preview)
+npm run deploy:prod         # dist-prod/       -> talkbar-www (branch main)
+npm run deploy:prod:ru      # dist-prod-ru/    -> ru-talkbar-www (branch main)
 ```
 
-This requires Wrangler auth (`npx wrangler login`) and targets the project named
-`talkbar-preview`. There is no production equivalent script — production deploys via Git.
+This requires Wrangler auth (`npx wrangler login`). The production scripts publish to the
+live sites; prefer pushing to `main`.
 
 ## Environment Variables
 
@@ -164,7 +174,7 @@ client React islands. Copy `env.sample` to `.env` to configure locally. Booleans
 
 | Variable | Purpose | Default |
 |---|---|---|
-| `BUILD_DOMAIN` | Set to `preview` for English preview, `preview-ru` for Russian preview, or reserved `prod-ru` for future Russian production; anything else builds English production | `prod` |
+| `BUILD_DOMAIN` | Set to `preview` for English preview, `preview-ru` for Russian preview, or `prod-ru` for Russian production; anything else builds English production | `prod` |
 | `DOWNLOAD_HOST` | Updater that serves the installer links (`/get/windows/x64`, `/get/windows/arm`) | `https://updater.talkbar.app` |
 | `PREVIEW_MODAL_ON_DOWNLOAD` | `1`/`true` → download buttons open the early-access modal; `0`/`false` → download buttons download TalkBar (see Downloads) | `false` |
 | `EARLY_ACCESS_SUBSCRIBE_URL` | Optional override for early-access signup endpoint | Matching license server in builds, empty in dev |

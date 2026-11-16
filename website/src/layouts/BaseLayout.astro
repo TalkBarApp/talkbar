@@ -1,6 +1,6 @@
 ---
 import { t, getTranslations, type Language } from '../i18n';
-import { BUILD_DOMAIN, IS_PREVIEW_BUILD, CURRENT_CONFIG, ENGLISH_CROSS_LINK, ENGLISH_SITE_URL, getLocaleUrl } from '../i18n/domains';
+import { BUILD_DOMAIN, IS_PREVIEW_BUILD, ENGLISH_CROSS_LINK, getHreflangLinks } from '../i18n/domains';
 import SiteModals from '../components/SiteModals.tsx';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import { SITE_CONFIG } from '../lib/siteConfig';
@@ -8,7 +8,6 @@ import { DEFAULT_DOWNLOAD_URL } from '../lib/download';
 import 'react-medium-image-zoom/dist/styles.css';
 import '../styles/global.css';
 
-const ACTIVE_LANGUAGES: Language[] = CURRENT_CONFIG.languages;
 // True for every non-production build (English preview + Russian preview-ru).
 const isPreviewBuild = IS_PREVIEW_BUILD;
 
@@ -26,6 +25,9 @@ interface Props {
   /** Keep the page out of search results (404). Drops canonical, hreflang and
       the app's structured data too. */
   noindex?: boolean;
+  /** False for a page with no counterpart on the other language's site; its
+      hreflang then lists only itself. */
+  translated?: boolean;
   /** Add the site-wide WebSite and Organization schema (homepage only). */
   siteSchema?: boolean;
 }
@@ -38,6 +40,7 @@ const {
   ogDescription = description,
   jsonLdDescription = description,
   noindex = false,
+  translated = true,
   siteSchema = false,
 } = Astro.props;
 
@@ -46,7 +49,6 @@ const siteUrl = new URL('/', Astro.site ?? Astro.url).href;
 const ogImage = new URL('/og/talkbar-og.png', Astro.site ?? Astro.url).href;
 const ogImageAlt = t(lang, 'meta.ogImageAlt');
 const OG_LOCALES: Record<Language, string> = { en: 'en_US', es: 'es_ES', ru: 'ru_RU', uk: 'uk_UA' };
-const isDefaultLocale = (l: Language) => l === CURRENT_CONFIG.defaultLocale;
 
 const publisher = {
   '@type': 'Organization',
@@ -157,12 +159,9 @@ const siteSchemas = [
     {/* The flag font only draws the language cross-link, which English builds do not show. */}
     {ENGLISH_CROSS_LINK && <link rel="preload" href="/TwemojiCountryFlags.woff2" as="font" type="font/woff2" crossorigin />}
 
-    {!noindex && ACTIVE_LANGUAGES.map((l) => (
-      <link rel="alternate" hreflang={l} href={isDefaultLocale(l) ? canonical : getLocaleUrl(l)} />
+    {!noindex && getHreflangLinks(canonical, translated).map(({ hreflang, href }) => (
+      <link rel="alternate" hreflang={hreflang} href={href} />
     ))}
-    {/* English is served at the root of its own domain, so a non-English build
-        points x-default at the same path on the English site. */}
-    {!noindex && <link rel="alternate" hreflang="x-default" href={isDefaultLocale('en') ? canonical : new URL(Astro.url.pathname, ENGLISH_SITE_URL).href} />}
 
     <!-- JSON-LD Structured Data -->
     {!noindex && <script type="application/ld+json" is:inline set:html={JSON.stringify(appSchema)} />}

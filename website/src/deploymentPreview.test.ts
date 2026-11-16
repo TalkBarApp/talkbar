@@ -11,7 +11,7 @@ describe("TalkBar preview deployment", () => {
 
     expect(pkg.scripts["build:preview"]).toBe("cross-env BUILD_DOMAIN=preview astro build");
     expect(pkg.scripts["deploy:preview"]).toBe(
-      "npm run build:preview && npx --yes wrangler pages deploy dist-preview --project-name talkbar-preview --branch preview",
+      "npm run build:preview && npx --yes wrangler pages deploy dist-preview --project-name talkbar-www-preview --branch preview",
     );
   });
 

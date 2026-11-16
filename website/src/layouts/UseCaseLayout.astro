@@ -15,9 +15,10 @@ interface Props {
     name: string;
     url: string;
   };
+  translated?: boolean;
 }
 
-const { lang, title, description, breadcrumb } = Astro.props;
+const { lang, title, description, breadcrumb, translated } = Astro.props;
 const translations = getTranslations(lang);
 
 const siteUrl = new URL('/', Astro.url).origin;
@@ -31,7 +32,7 @@ const breadcrumbSchema = {
   ],
 };
 ---
-<BaseLayout lang={lang} title={title} description={description}>
+<BaseLayout lang={lang} title={title} description={description} translated={translated}>
   <Navbar client:load lang={lang} translations={translations} englishUrl={ENGLISH_CROSS_LINK} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} is:inline />
   <main id="main-content">

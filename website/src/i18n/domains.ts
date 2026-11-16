@@ -83,6 +83,36 @@ export const ENGLISH_SITE_URL = IS_PREVIEW_BUILD
 // links back to Russian.
 export const ENGLISH_CROSS_LINK = CURRENT_CONFIG.defaultLocale === 'en' ? '' : ENGLISH_SITE_URL;
 
+// The English and Russian sites of the current stage. Both builds render the same
+// pages at the same paths, so a page's counterpart is its path on the other site.
+// Preview builds point at the previews, which stay noindex.
+export const LANGUAGE_SITES = IS_PREVIEW_BUILD
+  ? { en: 'https://preview.talkbar.app', ru: 'https://preview.talkbar.ru' }
+  : { en: 'https://www.talkbar.app', ru: 'https://www.talkbar.ru' };
+
+export interface HreflangLink {
+  hreflang: string;
+  href: string;
+}
+
+// hreflang alternates for a page. A page with a counterpart lists en, ru and
+// x-default (English); a page without one lists only itself.
+export function getHreflangLinks(canonical: string, translated: boolean): HreflangLink[] {
+  const locale = CURRENT_CONFIG.defaultLocale;
+  if (!translated) {
+    const self = [{ hreflang: locale, href: canonical }];
+    return locale === 'en' ? [...self, { hreflang: 'x-default', href: canonical }] : self;
+  }
+  const { pathname } = new URL(canonical);
+  const en = new URL(pathname, LANGUAGE_SITES.en).href;
+  const ru = new URL(pathname, LANGUAGE_SITES.ru).href;
+  return [
+    { hreflang: 'en', href: locale === 'en' ? canonical : en },
+    { hreflang: 'ru', href: locale === 'ru' ? canonical : ru },
+    { hreflang: 'x-default', href: locale === 'en' ? canonical : en },
+  ];
+}
+
 export function getLocaleUrl(locale: Language): string {
   const domain = LOCALE_DOMAINS[locale];
   // The build's default locale is served at the domain root; any other locale

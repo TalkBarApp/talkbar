@@ -11,6 +11,7 @@ node_modules
 .astro
 dist
 dist-prod
+dist-prod-ru
 dist-preview
 dist-preview-ru
 dist-ru

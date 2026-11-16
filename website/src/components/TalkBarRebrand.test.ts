@@ -51,11 +51,11 @@ describe("TalkBar homepage rebrand surface", () => {
     expect(readme).not.toContain("PricingSection");
     expect(agents).toContain("TalkBar");
     expect(pkg.scripts.test).toBe("vitest run");
-    // The ambiguous `build:ru` name stays retired; the Russian preview uses the
-    // explicit `*:preview:ru` names, with `dev:ru` as a pure alias for the
-    // preview-ru dev server.
+    // `build:ru` builds Russian production (www.talkbar.ru), like `build` does for
+    // English; the Russian preview uses the explicit `*:preview:ru` names, with
+    // `dev:ru` as a pure alias for the preview-ru dev server.
     expect(pkg.scripts["dev:ru"]).toBe("npm run dev:preview:ru");
-    expect(pkg.scripts["build:ru"]).toBeUndefined();
+    expect(pkg.scripts["build:ru"]).toBe("cross-env BUILD_DOMAIN=prod-ru astro build");
   });
 
   test("keeps inactive localized and language-support surfaces from carrying PageSignal copy", () => {
