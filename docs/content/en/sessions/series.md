@@ -41,7 +41,7 @@ Click **Series types** on the Series page to add your own (under **Your types**)
 
 Open a series to see everything about it.
 
-::screenshot{src="/screenshots/sessions/series-page.png" alt="A series page for a weekly team meeting: header with type, name, session count and schedule, the Start next session button, the Upcoming list with five planned meetings, the Sessions list, Open action items, and the right column with Series type, Project, Schedule and New sessions start with" caption="A series page"}
+::screenshot{src="/screenshots/sessions/series-page.png" alt="A series page for a weekly team meeting: header with type, name, session count and schedule, the Start next session button, the Upcoming list (empty here), the Sessions list, Open action items, and the right column with Series type, Project, Schedule and New sessions start with" caption="A series page"}
 ::
 
 | Part | What it shows |

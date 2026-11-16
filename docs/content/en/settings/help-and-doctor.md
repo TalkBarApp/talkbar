@@ -36,7 +36,7 @@ Tours are grouped by category. Each category shows how many of its tours you've 
 When you finish a tour, TalkBar offers the next tour in the same category. Choose **Start next tour** or **Not now**.
 ::
 
-::screenshot{src="/screenshots/settings/help-and-tours.png" alt="Settings → Help & Tours with the Onboarding row and Start onboarding again button at the top, the Search tours field, and the Getting started category showing tour rows with Completed badges and Run Again buttons" caption="Settings → Help & Tours"}
+::screenshot{src="/screenshots/settings/help-and-tours.png" alt="Settings → Help & Tours with the Onboarding row and Start onboarding again button at the top, the Search tours field, and the Getting started category with the Home tour marked Completed and its Run Again button" caption="Settings → Help & Tours"}
 ::
 
 ### Guides

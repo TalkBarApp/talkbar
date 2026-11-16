@@ -24,7 +24,7 @@ Video files (mp4, mkv, webm) work too: TalkBar uses their audio track.
 3. Drop your file on the window, or click to browse for it.
 4. Choose the options below, then click **Start import**.
 
-::screenshot{src="/screenshots/sessions/upload-audio-file.png" alt="The Upload audio file window with an mp3 file selected, the Speakers choice, the Transcription model and Summary model dropdowns, and the Start import button" caption="The Upload audio file window"}
+::screenshot{src="/screenshots/sessions/upload-audio-file.png" alt="The Upload audio file window with an mp3 file selected, the Speakers choice, the Transcription model and Summary model dropdowns, and the Start import button" caption="The Upload audio file window" compact max-width="570"}
 ::
 
 | Option | What it does |

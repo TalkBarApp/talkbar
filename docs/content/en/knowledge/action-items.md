@@ -65,7 +65,7 @@ Click an item's title to open **Action item details**. It shows the status, owne
 
 An open item's due date turns amber within three days of the date and red once it has passed. TalkBar does not send reminders for due dates.
 
-::screenshot{src="/screenshots/knowledge/action-item-editor.png" alt="Edit Action item dialog for a task, showing the Type label picker, the title field, Responsible people with one person assigned, Due date with a date picked, and Details" caption="Editing an action item"}
+::screenshot{src="/screenshots/knowledge/action-item-editor.png" alt="Edit Action item dialog for a task: the Action item title, the Type picker, Due date and Time, Details, and Responsible people with one person assigned" caption="Editing an action item" compact max-width="560"}
 ::
 
 ## Change or remove an item

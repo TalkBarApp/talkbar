@@ -370,9 +370,6 @@ An assistant wants TalkBar to run:
 Confirm to run it, or decline to run nothing.
 ```
 
-::screenshot{src="/screenshots/mcp/delete-confirmation-prompt.png" alt="An MCP client that supports confirmation requests showing TalkBar's question: the text 'An assistant wants TalkBar to run:' with the notes.trash line and note id, a confirm field, and the client's accept and decline controls" caption="Confirming a delete in your AI app"}
-::
-
 If you decline, or don't answer within 5 minutes, nothing runs and the assistant gets:
 
 ```json

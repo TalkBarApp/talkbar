@@ -112,7 +112,7 @@ There are two ways to add cards. Both start from **Add card** on the Memory card
 - **New card** (**Write a card**): type a **Title**, pick a **Category**, add **Details** and choose where the card is **Available to**. Cards you write yourself are treated as verified and are saved right away.
 - **Scan for cards**: AI reads a session or a document and proposes draft cards. You review every draft before it becomes a card. See [Review and scans](/knowledge/review-and-scans).
 
-::screenshot{src="/screenshots/knowledge/add-card-dialog.png" alt="Add knowledge cards dialog with Write a card selected, showing the Title, Category, Details and Available to fields" caption="Writing a card"}
+::screenshot{src="/screenshots/knowledge/add-card-dialog.png" alt="Add knowledge cards dialog with Write a card selected, showing the Title, Category, Details and Available to fields" caption="Writing a card" compact max-width="610"}
 ::
 
 ## Edit and manage a card
@@ -166,6 +166,10 @@ To take a card off the deck, open its menu and choose **Remove from session**. T
 
 While you record, TalkBar listens for the cards on the session's deck. When the conversation names a card, the card is flagged **Mentioned just now**. This is called live recall. It runs on your computer and does not send anything to an AI model.
 
+::callout{icon="i-heroicons-light-bulb" color="primary"}
+A card lights up when enough of the words in its text come up in the conversation, so a short card is caught more easily than a long one. In Russian and Greek, a short change of ending still counts for a longer word, so «видеокарта» also matches «видеокарту». English words have to match exactly. Write a short name the way people will say it, and write a name from another script both ways, like «Qwen (Квен)».
+::
+
 The live **Knowledge** panel has three views. Each one appears when it has something to show:
 
 | View | What it shows |
@@ -178,7 +182,7 @@ From a live card's menu you can **Pin** it, mark it **Still true**, **Add to not
 
 Use **Layout** in the live session to choose where the Knowledge panel goes, or show the cards as an overlay on the right edge.
 
-::screenshot{src="/screenshots/knowledge/live-knowledge-panel.png" alt="Live session with the Knowledge panel open on the Cards view, one card highlighted with the Mentioned just now badge" caption="A card lighting up during a call"}
+::screenshot{src="/screenshots/knowledge/live-knowledge-panel.png" alt="Live session with the Timeline panel above and the Knowledge panel on the Mentions view, showing a card that just came up in the conversation and the Heard quote under it" caption="A card lighting up during a call" compact max-width="430"}
 ::
 
 After the session, its **Knowledge** tab shows the **Knowledge deck** and the cards that **Came up in conversation**.

@@ -130,7 +130,7 @@ Clicking a link in a note you can edit only places the cursor. To open it in you
 
 Notes work well with Markdown:
 
-- Paste Markdown and it keeps its formatting.
+- Paste Markdown and it keeps its formatting. A `[ ]` line pasted directly under a bullet stays part of that bullet; put a blank line before it, or write `- [ ]`, to make it a task.
 - **Import markdown** on the Notes page turns a `.md`, `.markdown` or `.txt` file into a note. The first `#` heading becomes the title; without one, the file name does.
 - **Copy as markdown** puts the note on the clipboard, and **Export as markdown** saves a `.md` file where you choose. Both are in the **⋮** menu and in the note's menu in the list.
 - Embedded blocks that can't be written as Markdown are left out. **Export as markdown** and the list's **Copy as markdown** tell you when that happens. The [Ask AI block](#the-ask-ai-block) is never exported.

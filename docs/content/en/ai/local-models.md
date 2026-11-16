@@ -55,7 +55,7 @@ Stop the current session before testing models; pausing it is not enough. While 
 - Each tested model shows its speed and check results. **Make default** on a model's row picks that model instead. If it is not the recommended one, TalkBar asks you to confirm.
 - **Test again** returns to the list of models. If your hardware changed since the last test, the advisor asks you to run it again.
 
-::screenshot{src="/screenshots/ai/model-advisor.png" alt="The Model Advisor dialog after a test run, showing the Your system line with RAM and cores, per-model speed and check results, and the Best for your system recommendation with a Set as default button" caption="Model Advisor"}
+::screenshot{src="/screenshots/ai/model-advisor.png" alt="The Model Advisor dialog after a test run, showing the Your system line with RAM and cores, per-model speed and check results, and the Best for your system recommendation with a Set as default button" caption="Model Advisor" compact max-width="640"}
 ::
 
 ### Local AI acceleration
@@ -71,7 +71,7 @@ If local AI gets slow, see [Speed up local AI](/ai/speed-up-ai).
 
 ## Speech models
 
-The **Speech models** tab lists every speech-to-text model with its size and what it is **used for**: **Live transcription**, **Enhancement** or **Dictation**. Pick which model does which job in **Settings → Voice** (see [Recording and transcription](/voice/recording-and-transcription#speech-models)).
+The **Speech models** tab lists every speech-to-text model with its size. A model in use shows a badge for that job: **Live transcription**, **Enhancement** or **Dictation**. A model nothing is using has no badge. Pick which model does which job in **Settings → Voice** (see [Recording and transcription](/voice/recording-and-transcription#speech-models)).
 
 | Model | Download |
 | --- | --- |
@@ -83,7 +83,7 @@ The **Speech models** tab lists every speech-to-text model with its size and wha
 | Canary 180M Flash | about 146 MB |
 | Canary 1B v2 | about 692 MB |
 
-::screenshot{src="/screenshots/ai/speech-models-tab.png" alt="Settings → Private Local AI with the Speech models tab open, listing speech models with sizes, a Live transcription badge on Parakeet V3 and an Enhancement badge on Whisper Turbo" caption="Speech models"}
+::screenshot{src="/screenshots/ai/speech-models-tab.png" alt="Settings → Private Local AI with the Speech models tab open, listing speech models with their sizes and download or delete buttons, and usage badges such as Live transcription and Dictation on the models in use" caption="Speech models"}
 ::
 
 ## System models

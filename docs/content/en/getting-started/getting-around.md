@@ -14,7 +14,7 @@ Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts
 
 This page shows where everything is in the TalkBar main window and how to move around quickly. For a guided version, take the *Find your way around* tour from **Help → Take a tour**.
 
-::screenshot{src="/screenshots/getting-started/main-window-layout.png" alt="TalkBar main window on Home with the sidebar expanded on the left (Home, Recording, Sessions, Chats, Notes, Knowledge, Projects, Settings and the account card), the title bar with the TalkBar logo, New session, Upcoming and Help, and the round Quick Actions button in the bottom-right corner" caption="The main window"}
+::screenshot{src="/screenshots/getting-started/main-window-layout.png" alt="TalkBar main window on Home with the sidebar expanded on the left (Home, Last session, Sessions, Chats, Notes, Knowledge, Review, Projects, Settings and the account card), the title bar with the TalkBar logo, New session, Upcoming and Help, and the round Quick Actions button in the bottom-right corner" caption="The main window"}
 ::
 
 ## The sidebar
@@ -86,7 +86,7 @@ Home is your start page for the active workspace.
 - The time range menu sets how far back the recent list goes, such as **Today** or **This week**. Click **Set as default** to keep your choice.
 - The recent list shows your latest sessions, notes and chats by day. Switch between **All** and **Pinned**, filter by type, and search. The pin on a row pins or unpins it, and **Pinned on top** keeps pinned items first.
 
-::screenshot{src="/screenshots/getting-started/home-dashboard.png" alt="TalkBar Home page with the greeting, the Add menu and New session buttons, the four count tiles for Sessions, Chats, Notes and Documents, the Up next strip with one scheduled session, and the recent activity list grouped by day" caption="Home"}
+::screenshot{src="/screenshots/getting-started/home-dashboard.png" alt="TalkBar Home page with the greeting, the Add menu and New session buttons, the four count tiles for Sessions, Chats, Notes and Documents, the Up next strip with the next scheduled sessions, and the recent activity list grouped by day" caption="Home"}
 ::
 
 ## Universal search

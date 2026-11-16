@@ -136,7 +136,7 @@ The Business plan includes custom branding. On Personal, Plus and Pro you can ad
 
 The switch in the section header turns custom branding on or off. It is **off** by default. You need to claim a handle before you can turn it on.
 
-::screenshot{src="/screenshots/settings/custom-branding.png" alt="Settings → Export & Share with the Custom branding inner tab selected on a plan that includes branding, showing the Handle field with a Claimed badge, Business details, Logo, Brand color swatches and Default appearance" caption="Custom branding settings"}
+::screenshot{src="/screenshots/settings/custom-branding.png" alt="Settings → Export & Share with the Custom branding inner tab selected on a plan that includes branding, showing the Handle field, Business details, Logo, Brand color swatches and Default appearance" caption="Custom branding settings"}
 ::
 
 | Setting | What it does | Default |

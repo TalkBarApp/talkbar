@@ -370,9 +370,6 @@ An assistant wants TalkBar to run:
 Confirm to run it, or decline to run nothing.
 ```
 
-::screenshot{src="/screenshots/mcp/delete-confirmation-prompt.png" alt="MCP-клиент, поддерживающий запросы подтверждения, показывает вопрос TalkBar: текст «An assistant wants TalkBar to run:» со строкой notes.trash и идентификатором заметки, поле подтверждения и элементы клиента для подтверждения и отказа" caption="Подтверждение удаления в ИИ-приложении"}
-::
-
 Если вы откажетесь или не ответите в течение 5 минут, ничего не выполнится, а ассистент получит:
 
 ```json

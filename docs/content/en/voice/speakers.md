@@ -18,12 +18,12 @@ When you start a session, the **Speakers** row in **New session** tells TalkBar 
 | **Small (2–4)** | Small meetings | Separates up to four voices |
 | **Large (5–8)** | Larger meetings | Separates up to eight voices with a large-meeting speaker model |
 
-::screenshot{src="/screenshots/voice/new-session-speakers.png" alt="New session dialog showing the Audio row and the Speakers row with Just you, You + 1, Small (2–4) and Large (5–8) pills, and the Speakers at start roster with You and Speaker 1 slots below" caption="Choosing speakers in New session"}
+::screenshot{src="/screenshots/voice/new-session-speakers.png" alt="New session dialog showing the Audio row and the Speakers row with Just you, You + 1, Small (2–4) and Large (5–8) pills, You + 1 selected, and the Speakers at start roster below with the You and Speaker 2 slots" caption="Choosing speakers in New session" compact max-width="640"}
 ::
 
 ### Name speakers before you start
 
-Under **Speakers at start** you see a slot for **You** and one for each expected voice (**Speaker 1**, **Speaker 2**, and so on). Use **More speakers** and **Fewer speakers** to change the count. Click a slot to type a name, or type `@` to pick a saved person.
+Under **Speakers at start** you see one slot for each expected voice. With **You + 1** and your microphone captured, the first slot is **You** and the next is **Speaker 2**. With **Small** or **Large**, the slots are **Speaker 1**, **Speaker 2** and so on; mark yourself later with **This is me**. If your microphone isn't captured (for example with **System audio** only), there is no **You** slot. **Just you** has no roster. Use **−** and **+** next to the count to change it. Click a slot to type a name, or type `@` to pick a saved person.
 
 New voices are matched to free speakers in order. If the order turns out wrong, rename or combine speakers at any time.
 
@@ -49,7 +49,7 @@ If a session starts without speaker detection because its model is missing, Talk
 
 During or after a session, click a speaker chip to open its menu.
 
-::screenshot{src="/screenshots/voice/speaker-chip-menu.png" alt="A session's speaker chip menu open, showing Rename voice, Session Leader, This is me, Ignore speaker, Label, Combine speakers… and the Color swatches" caption="The speaker menu"}
+::screenshot{src="/screenshots/voice/speaker-chip-menu.png" alt="A session's speaker chip menu open, showing Rename voice, Session Leader, This is me, Ignore speaker, Label, Combine speakers… and the Color swatches" caption="The speaker menu" compact max-width="600"}
 ::
 
 | Menu item | What it does |

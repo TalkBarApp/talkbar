@@ -11,7 +11,7 @@ Schedule a session to get a reminder before it starts, or have TalkBar start rec
 
 Open **Sessions → Upcoming** to see your scheduled sessions. The header has **Sessions**, **Series**, **Prepare** and **Schedule session**.
 
-::screenshot{src="/screenshots/sessions/upcoming-sessions-list.png" alt="The Upcoming sessions page in List layout on the Upcoming tab, with rows grouped under Starting soon, Today and Tomorrow, each showing time, title, duration, series, reminder and a Start button" caption="Upcoming sessions"}
+::screenshot{src="/screenshots/sessions/upcoming-sessions-list.png" alt="The Upcoming sessions page in List layout on the Upcoming tab, with rows grouped by when they start (Starting soon, Today, Tomorrow, This week, then by date), each showing time, title, duration, series and reminder" caption="Upcoming sessions"}
 ::
 
 ### Views
@@ -69,7 +69,7 @@ Open the Schedule window from:
 - **Schedule follow-up** on a [session's details page](/sessions/session-details);
 - the title bar's upcoming menu, or the TalkBar icon menu.
 
-::screenshot{src="/screenshots/sessions/schedule-window.png" alt="The Schedule for later window showing the title, Project and Series fields, Date, Time start and Time end, the duration pills, the Reminders choices, the Repeats dropdown and the Auto-start recording switch" caption="The Schedule for later window"}
+::screenshot{src="/screenshots/sessions/schedule-window.png" alt="The Schedule for later window showing the title, Project and Series fields, Date, Time start and Time end, the duration pills, the Reminders choices, the Repeats pills and the Auto-start recording switch" caption="The Schedule for later window" compact max-width="680"}
 ::
 
 The window is titled **Schedule for later**. Its first part, **Schedule**, sets when the session happens:

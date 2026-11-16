@@ -67,7 +67,7 @@ Live speech, split by speaker. New lines appear at the bottom; click **Jump to l
 - change the order (**Oldest first** or **Newest first**) and how the transcript looks;
 - choose **Original**, **Both** or the target language (for example **Russian**) when [live translation](/voice/live-translation) is on.
 
-Right-click a line, or select text in it, to **Set Action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker with **Assign to…**.
+Right-click a line, or select text in it, to **Set action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker with **Assign to…**.
 
 ### Notes
 
@@ -108,7 +108,7 @@ Reference files attached to the session, for reading while you talk. See [Docume
 Mark important moments while you record:
 
 - Select text in the transcript or timeline and choose **Add bookmark**. A bookmark can have a title, a comment and a color.
-- Choose **Set Action item** to flag a line as a task, decision or another action item label.
+- Choose **Set action item** to flag a line as a task, decision or another action item label.
 - Open the **Bookmarks** menu in a panel header to see every bookmark and jump to it.
 
 ### Layouts
@@ -177,7 +177,7 @@ The buttons at the top of the bar:
 
 **Bar settings** lets you change these without opening Settings: **Detect conversations**, **Live translation**, **Translation view**, **Remember bar position**, **Speaker lines**, **Skip duration** and **Reset window position**. See [Session detection](/settings/general#session-detection) and [Live translation](/voice/live-translation#in-the-session-bar).
 
-::screenshot{src="/screenshots/sessions/session-bar-live.png" alt="The session bar during a recording, showing the last transcript lines by speaker, the pause and microphone mute buttons and Stop session" caption="The session bar while recording"}
+::screenshot{src="/screenshots/sessions/session-bar-live.png" alt="The session bar during a recording, showing the last transcript lines by speaker, the pause and microphone mute buttons and Stop session" caption="The session bar while recording" compact max-width="440"}
 ::
 
 ## After you stop

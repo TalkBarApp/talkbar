@@ -5,9 +5,9 @@ navigation:
   icon: i-heroicons-rocket-launch
 ---
 
-The first time you open TalkBar, a setup window gets it ready for your first session. It has five steps: **Welcome**, **AI**, **Voice**, **Workspace** and **Review**. Most people finish it in a few minutes, plus the time the model downloads take.
+The first time you open TalkBar, a setup window gets it ready for your first session. It has five steps: **Welcome**, **AI**, **Voice**, **Extras** and **Review**. Most people finish it in a few minutes, plus the time the model downloads take.
 
-::screenshot{src="/screenshots/getting-started/setup-welcome.png" alt="First-run setup window on the Welcome step: the step bar Welcome, AI, Voice, Workspace, Review at the top, the Your name and Job title fields, the 'Get TalkBar ready to record' download card, the App language buttons and the Theme control" caption="The Welcome step"}
+::screenshot{src="/screenshots/getting-started/setup-welcome.png" alt="First-run setup window on the Welcome step: the step bar Welcome, AI, Voice, Extras, Review at the top, the Your name and Job title fields, the App language buttons, the What will you record? starter packs and the Theme control" caption="The Welcome step" compact max-width="680"}
 ::
 
 ## Choose your setup
@@ -27,14 +27,14 @@ With any setup, your audio is never sent to an AI provider. With external AI, th
 
 Have your API key ready, or install your CLI tool first.
 
-1. **Welcome**: enter your name. In **Get TalkBar ready to record**, turn off **Include** on the **Built-in AI** row, then click **Download all**.
-2. **AI**: choose **External providers**. Connect your provider, choose a default model, then click **Verify it works** and wait for **Working**.
+1. **Welcome**: enter your name.
+2. **AI**: choose **External providers**. Connect your provider, choose a default model, then click **Verify it works** and wait for **Working**. In **Get TalkBar ready to record**, click **Download all** to get the speech and speaker models.
 3. **Voice**: wait for the speech and speaker models to finish.
-4. **Workspace**: click **Continue**. Starter packs are selected for you.
+4. **Extras**: click **Skip for now**.
 5. **Review**: click **Finish setup**.
 
-::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
-Turn off **Include** before you click **Download all**. If it's on, TalkBar also downloads the built-in model and makes it your default AI.
+::callout{icon="i-heroicons-light-bulb" color="primary"}
+With **External providers**, **Get TalkBar ready to record** has no **Built-in AI** row, so the built-in model isn't downloaded. Choose **Local built-in AI** or **Both** if you want it.
 ::
 
 ### Add private local models later
@@ -63,13 +63,20 @@ If you turn on the mode before a local model is ready, TalkBar shows **Private A
 | --- | --- |
 | **Your name** | Required. It is saved to your profile on this device. |
 | **Job title** | Optional. |
-| **Get TalkBar ready to record** | Lists the models TalkBar needs before your first session: **Speech recognition**, **Speaker models** and **Built-in AI**, with their download sizes. Click **Download all** to start them all at once. |
+| **What will you record?** | Starter packs. Meetings, calls and voice notes are always included. Pick more to add their session templates (see the table below). |
 | **App language** | The language of the TalkBar interface. It changes right away. |
 | **Theme** | **System**, **Light** or **Dark**. |
 
-The **Built-in AI** row has an **Include** switch. Turn it off before **Download all** if you plan to use your own AI provider; the card then says the model is skipped and you connect a provider in the next step. The row goes away once your default model is external.
+| Starter pack | For |
+| --- | --- |
+| Sales & client calls | Discovery calls, QBRs, objections, follow-ups. |
+| Interviews & research | Candidate interviews and user research sessions. |
+| Coaching & 1:1 development | Coaching conversations and development check-ins. |
+| Podcasts & lectures | Recorded shows, talks, and lectures. |
+| Legal & diligence | Consultations, risk, and compliance-relevant calls. |
+| Leadership & board | Investor calls, board syncs, and exec reviews. |
 
-The card also shows the free space on the drive. If there isn't enough room, it tells you how much is needed. If a download fails, click **Retry downloads**.
+When you run setup again, packs you pick are added, and templates that are already on stay on.
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
 New to TalkBar? Click **Take a quick TalkBar tour** at the bottom of the Welcome step. The setup window steps aside while the tour runs and comes back afterwards with what you already typed.
@@ -87,15 +94,17 @@ New to TalkBar? Click **Take a quick TalkBar tour** at the bottom of the Welcome
 
 Below the options you set up what you chose:
 
-- **Local language models** lets you choose the built-in model. Not sure which one? Click **Model Advisor**. It measures this computer and marks its pick.
+- **Built-in AI models** lets you choose the built-in model. Not sure which one? Click **Model Advisor**. It measures this computer and marks its pick.
 - **External providers** walks you through connecting one: **Local AI (Ollama)**, **CLI tools** (Claude Code, Codex, Agy, Grok CLI or OpenCode), or **Bring your own API key** (Anthropic, OpenAI, Gemini, Groq and others).
 - When your default model comes from an external provider, click **Verify it works**. You can't continue until this check passes. It sends a small test request and shows **Working** when the provider answers. If the check fails, TalkBar says why, for example **The provider rejected the API key.**, and offers **Fix provider**.
+
+**Get TalkBar ready to record** lists the models TalkBar needs before your first session, with their download sizes: **Speech recognition**, **Speaker detection** and, when you choose **Local built-in AI** or **Both**, **Built-in AI**. Click **Download all** to start them at once, or **Choose models** to pick different ones. The card also shows the free space on the drive; if there isn't enough room, it says how much is needed. If a download fails, click **Retry downloads**.
 
 To continue, one AI model must be ready: the built-in model downloaded, or a provider connected and verified. If you picked the local option but your default model is an external provider, click **Use built-in AI instead**.
 
 Want the background first? **Learn about AI first** starts the *How TalkBar uses AI* tour, then returns you to setup. See [How TalkBar uses AI](/ai/how-talkbar-uses-ai) and [Providers and models](/ai/providers-and-models).
 
-::screenshot{src="/screenshots/getting-started/setup-ai.png" alt="First-run setup window on the AI step with the three option cards Local built-in AI (default), External providers and Both, Local built-in AI selected, and the Local language models row below" caption="Choosing where AI runs"}
+::screenshot{src="/screenshots/getting-started/setup-ai.png" alt="First-run setup window on the AI step with the three option cards Local built-in AI (default), External providers and Both, Local built-in AI selected, the Get TalkBar ready to record card listing Speech recognition, Speaker detection and Built-in AI, and the Built-in AI models row below" caption="Choosing where AI runs" compact max-width="680"}
 ::
 
 ## Step 3: Voice
@@ -105,30 +114,27 @@ Want the background first? **Learn about AI first** starts the *How TalkBar uses
 | Section | What to do |
 | --- | --- |
 | **Speech recognition** | Turns what is said into the live transcript. Choose the **Live transcription model**; Parakeet V3 is fast and recommended. Then set the **Transcription language**. Some models detect the spoken language automatically; others transcribe only certain languages, and the step tells you which. |
-| **Speaker models** | Voice activity detection and speaker separation. Needed for every session. |
+| **Speaker detection** | Voice activity detection and speaker separation. Needed for every session. |
 | **Microphone** | Optional. Choose the **Input device** used by default for sessions and dictation, and make a short test recording to check it. If no microphone is found, you can still record system audio. |
-| **Optional downloads** | Extra models you can add now or later: **Large sessions (more than 4 speakers)**, **Translation** and **Documents** (semantic document search). |
 
 The speech and speaker models must finish downloading before you can continue. Click **Download all** if they haven't started.
 
-## Step 4: Workspace
+## Step 4: Extras
 
-**Set up your workspace.** Starter packs and an optional first project.
+**Optional extras.** All optional. Turn on what you want now, or skip and add it later in Settings.
 
-Under **What will you record?**, pick any starter packs that fit. Each one switches on the matching session templates and skills. **Meetings & 1:1s** and **Voice notes & ideas** are selected by default.
+Under **Extra features**, everything starts off. Turn a feature on, then download its model when you want it.
 
-| Starter pack | For |
+| Feature | What it does |
 | --- | --- |
-| Meetings & 1:1s | Team meetings, calls, and one-on-ones. |
-| Voice notes & ideas | Solo thinking, dictation, and brainstorms. |
-| Sales & client calls | Discovery calls, QBRs, objections, follow-ups. |
-| Interviews & research | Candidate interviews and user research sessions. |
-| Coaching & 1:1 development | Coaching conversations and development check-ins. |
-| Podcasts & lectures | Recorded shows, talks, and lectures. |
-| Legal & diligence | Consultations, risk, and compliance-relevant calls. |
-| Leadership & board | Investor calls, board syncs, and exec reviews. |
+| **Enhance transcripts after recording** | When a session ends, a larger model checks the transcript again for better accuracy. It also makes **Enhance transcript** available on finished sessions. |
+| **Live translation** | Translates the transcript into another language while you record. Choose **From** and **To**. |
+| **Large meetings (5+ speakers)** | Tells apart more than four speakers in big meetings. |
+| **Search inside your documents** | Finds attached documents by meaning, not only by exact words. |
 
-**First project (optional)** creates a project to file sessions and notes under. Leave it empty to skip; you can add projects any time.
+**First project (optional)** creates a project to file sessions and notes under. Leave it empty to skip; you can add projects any time. It isn't shown when you run setup again.
+
+Until you turn something on, the button reads **Skip for now**. Models for the extras you turn on keep downloading after you finish setup.
 
 ## Step 5: Review
 

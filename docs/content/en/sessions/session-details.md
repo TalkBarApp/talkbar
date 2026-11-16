@@ -82,7 +82,7 @@ Each section has a **⋮** menu:
 
 | Action | What it does |
 | --- | --- |
-| **Set Action item** | Flags the section text as an action item. |
+| **Set action item** | Flags the section text as an action item. |
 | **Copy text** | Copies the section. |
 | **Add bookmark** | Bookmarks the section. |
 | **Add to note** | Adds the section to your session note. |
@@ -90,7 +90,7 @@ Each section has a **⋮** menu:
 | **Edit text** | Edits the section in place. |
 | **Delete section** | Removes the section from the summary. |
 
-Select text in the summary to get a small toolbar with **Copy to clipboard**, **Set Action item**, **Add bookmark**, **Add to notes** and **Delete selected text**.
+Select text in the summary to get a small toolbar with **Copy to clipboard**, **Set action item**, **Add bookmark**, **Add to notes** and **Delete selected text**.
 
 To check where a point came from, hover over it. When the AI recorded its source, an icon (**Show evidence**) appears at the right edge. Hover the icon to see the transcript lines behind the point, with the speaker and time, and click a line to jump to it in the transcript. Not every point has one, and lines from ignored speakers aren't shown.
 
@@ -158,7 +158,7 @@ Right-click a line, or use its **⋮** menu:
 
 | Action | What it does |
 | --- | --- |
-| **Set Action item** | Flags the line as an action item. |
+| **Set action item** | Flags the line as an action item. |
 | **Speaker** → **Assign to…** | Moves the line to another speaker, or type `@` to pick a person. |
 | **Speaker** → **Join with previous** | Merges the line into the one before it. |
 | **Copy text** | Copies the line. |
@@ -173,7 +173,7 @@ The **View** menu switches between **Classic layout**, **Avatar layout** and **C
 
 ### Enhance transcript
 
-**Enhance transcript** runs the saved recording through a more accurate speech model on your computer, to improve the text and the speaker separation. It is available for completed sessions that still have their audio.
+**Enhance transcript** runs the saved recording through a more accurate speech model on your computer, to improve the text and the speaker separation. It is available for completed sessions that still have their audio, when **Enhance transcripts after recording** is on in **Settings → Voice → Transcription**. The default enhancement model, Whisper Turbo, is a 1.5 GB download; you can also pick Parakeet V3, the model already used for live transcription.
 
 1. Click **Enhance transcript**, choose the **Enhancement model** and **Spoken language**, and start. TalkBar offers to download a model if one is missing.
 2. When it finishes, review the result in the **Enhanced transcript ready for review** card. **Show preview** shows the new text.

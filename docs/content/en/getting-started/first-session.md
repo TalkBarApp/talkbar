@@ -27,7 +27,7 @@ Click **New session** in the title bar or on Home. The New session window opens.
 4. **Optional.** Choose the AI model for the summary, add topics, file the session under a project or series, attach knowledge cards and documents, and adjust **AI & privacy**.
 5. Click **Start session**.
 
-::screenshot{src="/screenshots/getting-started/new-session-window.png" alt="New session window with the Meeting template selected, Mic + System chosen under Audio, Small (2–4) chosen under Speakers, and the Start session button at the bottom" caption="The New session window"}
+::screenshot{src="/screenshots/getting-started/new-session-window.png" alt="New session window with the Meeting template selected, Mic + System chosen under Audio, Small (2–4) chosen under Speakers, and the Start session button at the bottom" caption="The New session window" compact max-width="680"}
 ::
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}

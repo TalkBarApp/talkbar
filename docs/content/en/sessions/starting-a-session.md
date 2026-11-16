@@ -29,7 +29,7 @@ Only one session can record at a time. If another session is recording, the wind
 
 The window has four parts. Use the step bar at the top to jump between them. **Template** is always open; the other three expand when you click them.
 
-::screenshot{src="/screenshots/sessions/new-session-window.png" alt="The New session window with the Template part showing template cards, the Sections line, the Audio, Speakers, Speakers at start and Intelligence rows, and the footer with Start session, Prepare, Schedule for later and Cancel" caption="The New session window"}
+::screenshot{src="/screenshots/sessions/new-session-window.png" alt="The New session window with the Template part showing template cards, the Sections line, the Audio, Speakers, Speakers at start and Intelligence rows, and the footer with Start session, Prepare, Schedule for later and Cancel" caption="The New session window" compact max-width="680"}
 ::
 
 ### Template
@@ -41,7 +41,7 @@ The window has four parts. Use the step bar at the top to jump between them. **T
 | **Audio** | **Microphone** (your voice), **System audio** (the sound your computer plays, such as the other side of a call) or **Mic + System** (both; **Microphone + system audio** in **Settings → Voice**). |
 | **Upload audio file** | Builds the session from an existing recording instead. See [Importing recordings](/sessions/importing-recordings). |
 | **Speakers** | How many people you expect: **Just you**, **You + 1**, **Small (2–4)** or **Large (5–8)**. This helps TalkBar tell voices apart. |
-| **Speakers at start** | The expected voices as slots, starting with **You**. Use the buttons next to it to add or remove slots. Click a slot to type a name, or type `@` to pick a saved person. New voices fill free slots in order; you can rename or combine speakers later. |
+| **Speakers at start** | The expected voices as slots. With **You + 1** and your microphone captured, the first slot is **You** and the next is **Speaker 2**. With **Small** or **Large**, the slots are **Speaker 1**, **Speaker 2** and so on. If the microphone isn't captured, there is no **You** slot, and **Just you** has no roster. Use **−** and **+** to add or remove slots. Click a slot to type a name, or type `@` to pick a saved person. New voices fill free slots in order; you can rename or combine speakers later. |
 | **Intelligence** | Which AI writes the timeline and summary. **Default** uses your configured model; open its menu to pick another model for this session. **Private AI** runs the session on built-in local models only (see below). |
 | **Topics** and **Source** | Tag the session with [topics](/knowledge/topics-and-keywords), and note where it comes from, such as a video or meeting link. |
 
@@ -127,12 +127,15 @@ The session bar is a small window that stays on top of your other apps, in the t
 - When nothing is recording, it asks **Start a session?** Pick a **Template:** and an **Input:** (**Mic**, **System** or **Mic + System**), then click **Start session**.
 - While a session records, it becomes a compact live view. See [The session bar while recording](/sessions/recording#the-session-bar).
 
-::screenshot{src="/screenshots/sessions/session-bar-prompt.png" alt="The session bar in the top-right corner of the screen showing 'Start a session?' with template pills, the Input choice and the Start session button" caption="The session bar prompt"}
+::screenshot{src="/screenshots/sessions/session-bar-prompt.png" alt="The session bar in the top-right corner of the screen showing 'Start a session?' with template pills, the Input choice and the Start session button" caption="The session bar prompt" compact max-width="440"}
 ::
 
 ### Session detection
 
 TalkBar can notice when a conversation starts near your microphone and offer to record it. The session bar then shows **Sounds like a conversation — start a session?** with a short snippet of what it heard. Click **Start session**, **Skip** detection for a while, or turn detection off from the bar.
+
+::screenshot{src="/screenshots/sessions/session-detection-prompt.png" alt="The session bar reading 'Sounds like a conversation — start a session?' with a snippet of what it heard, the Template pills, the Input choice, and the Start session and Skip 15 min buttons" caption="Session detection" compact max-width="440"}
+::
 
 ::platform-tabs
 #windows

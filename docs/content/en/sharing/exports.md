@@ -43,7 +43,7 @@ TalkBar remembers the folder you used and saves it as a destination named after 
 
 To export a single transcript turn, use **Export this transcript turn** in the transcript.
 
-::screenshot{src="/screenshots/sharing/export-session-what-to-export.png" alt="The Export session dialog on the What to export step, with Summary, Transcript, Session information, Notes, Outcomes and Markers checked, the Audio format row, and Limit to a time range" caption="Choosing what to export"}
+::screenshot{src="/screenshots/sharing/export-session-what-to-export.png" alt="The Export session dialog on the What to export step, with Summary, Transcript, Session information, Notes, Outcomes and Markers checked, the Audio format row, and Limit to a time range" caption="Choosing what to export" compact max-width="640"}
 ::
 
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
@@ -113,7 +113,7 @@ Manage destinations in **Settings → Export & Share → Export Session → Expo
 
 Each destination's menu has **Edit…**, **Open folder** or **Open in Notion**, **Test connection** (Notion), **Enable destination** / **Disable destination**, **Disconnect Notion** and **Delete destination**. Deleting a destination keeps the files and pages already exported.
 
-::screenshot{src="/screenshots/sharing/export-add-destination.png" alt="The Add destination dialog with Local folder selected, showing Destination name, Format set to Obsidian vault, Export folder with Browse, and Folder layout set to By project" caption="Adding a saved destination"}
+::screenshot{src="/screenshots/sharing/export-add-destination.png" alt="The Add destination dialog with Local folder selected, showing Destination name, Format set to Markdown (.md), Export folder with Browse, Folder layout set to By project and series, and the Enable destination switch" caption="Adding a saved destination" compact max-width="590"}
 ::
 
 ## Automatic export rules

@@ -65,6 +65,7 @@ Speech-to-text runs on this computer. A model downloads when you select it; a st
 | Setting | What it does | Default |
 | --- | --- | --- |
 | **Live transcription model** | The model that writes the live transcript while you record. A fast model keeps words appearing as you speak; TalkBar warns you if you pick a slow one. | **Parakeet V3** |
+| **Enhance transcripts after recording** | Makes **Enhance transcript** available on finished sessions; when a session ends, a larger model checks the transcript again for better accuracy. The enhancement model below shows only when this is on. | Off |
 | **After-recording enhancement model** | The model used by **Enhance transcript** after a recording ends. Slower, more accurate models are fine here. | **Whisper Turbo** |
 | **Transcription language** | The spoken language for live and enhanced transcripts. Leave it on auto-detect, or pick a language if words come out wrong. The list only offers languages your selected models support, and it is locked when both models detect the language on their own. | **Auto-detect** |
 | **Speaker detection model** | The model that separates speakers in new sessions, imported audio and Enhance. Options: **Automatic (Sortformer up to 4 speakers, Nemotron 3 for more)**, **Sortformer (4 or 8 speakers)**, **Nemotron 3 (up to 8 speakers)**. For more than 4 speakers, **Automatic** uses Nemotron 3 when it is installed, otherwise the 8-speaker Sortformer model. | **Automatic (Sortformer up to 4 speakers, Nemotron 3 for more)** |

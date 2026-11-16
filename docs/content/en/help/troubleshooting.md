@@ -81,7 +81,9 @@ Another app may already use it. TalkBar tells you when a shortcut is taken; choo
 
 ### "Enhance transcript" isn't available
 
-**Enhance transcript** needs a completed session and its saved recording. If **Delete audio when a session ends** is on in **Settings → Voice → Recording → Saved recording**, the audio is removed after you stop, and Enhance isn't available for those sessions.
+First check that **Enhance transcripts after recording** is on in **Settings → Voice → Transcription**. The button appears only when it is.
+
+**Enhance transcript** also needs a completed session and its saved recording. If **Delete audio when a session ends** is on in **Settings → Voice → Recording → Saved recording**, the audio is removed after you stop, and Enhance isn't available for those sessions.
 
 ### "Summary failed" or "Summary timed out"
 
@@ -238,7 +240,7 @@ Contact the TalkBar team from inside the app:
 
 The form doesn't attach log files. If the team asks for logs, send them by email to **contact@talkbar.app**, the address shown in the form under **Or send us a direct email:**.
 
-::screenshot{src="/screenshots/help/contact-us.png" alt="Contact us window opened from Help → Contact us, with the What do you need help with? topic list, the Your name, Email, Subject and Message fields, the Screenshots (optional) drop area and the Include app version and system details checkbox" caption="The Contact us window"}
+::screenshot{src="/screenshots/help/contact-us.png" alt="Contact us window opened from Help → Contact us, showing the What do you need help with? topic list; the form with name, email, subject, message, screenshots and the system details checkbox opens after you pick a topic" caption="The Contact us window" compact max-width="640"}
 ::
 
 ## Related

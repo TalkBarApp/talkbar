@@ -33,7 +33,7 @@ While the panel is open you can also:
 
 Closing the panel discards text you have not inserted.
 
-::screenshot{src="/screenshots/voice/dictation-overlay.png" alt="The floating dictation panel over another app, showing dictated text, the microphone, Copy, Polish, erase and Insert buttons, and the gear and history icons in the header" caption="The dictation panel"}
+::screenshot{src="/screenshots/voice/dictation-overlay.png" alt="The floating dictation panel over another app, showing dictated text, the microphone, Copy, Polish, erase and Insert buttons, and the gear and history icons in the header" caption="The dictation panel" compact max-width="460"}
 ::
 
 ## Dictate in TalkBar

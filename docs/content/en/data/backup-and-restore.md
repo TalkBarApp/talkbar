@@ -98,7 +98,7 @@ If the file holds more sessions than the new computer's plan allows, TalkBar ask
 
 Passwords and API keys never travel in a transfer file. After the import, TalkBar lists the services to reconnect (AI providers, notification channels, export destinations, calendars, share branding) with a link to each one's settings. A calendar subscription's address isn't in the file, so you add it again. Shared links and export history stay with the old computer.
 
-::screenshot{src="/screenshots/data/transfer-export-dialog.png" alt="The Export data to a transfer file dialog, with workspace checkboxes, the What to include list (Workspaces and projects; Settings, templates and AI setup; Knowledge, documents and people; Session series and calendars; Sessions and transcripts; Notes; AI chats), Which sessions options and the Include session audio checkbox" caption="Choosing what goes into a transfer file"}
+::screenshot{src="/screenshots/data/transfer-export-dialog.png" alt="The Export data to a transfer file dialog, with workspace checkboxes, the What to include list (Workspaces and projects; Settings, templates and AI setup; Knowledge, documents and people; Session series and calendars; Sessions and transcripts; Notes; AI chats), Which sessions options and the Include session audio checkbox" caption="Choosing what goes into a transfer file" compact max-width="620"}
 ::
 
 ## Resets

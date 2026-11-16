@@ -11,9 +11,9 @@ For what projects, topics and action items are and how to use them day to day, s
 
 ## Projects
 
-**Settings → Projects** lists every project in the workspace. Pinned projects come first, then the rest in their saved order, then by name. Each row shows the project icon, its name, its type and how many sessions it has. The project you are working in is marked **Active**. Hover over a row to see its ⋮ menu, or right-click the row.
+**Settings → Projects** lists every project in the workspace. Pinned projects come first, then the rest in their saved order, then by name. Each row shows the project icon, its name, its type and how many sessions it has. Hover over a row to see its ⋮ menu, or right-click the row.
 
-::screenshot{src="/screenshots/settings/projects-tab.png" alt="Settings → Projects tab with several projects listed (one marked Active, one pinned), the New project button and the Show deleted button at the bottom" caption="Settings → Projects"}
+::screenshot{src="/screenshots/settings/projects-tab.png" alt="Settings → Projects tab listing three projects with their type and session count, the New project button and Show deleted at the bottom" caption="Settings → Projects"}
 ::
 
 | Control | What it does |

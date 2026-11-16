@@ -90,7 +90,7 @@ A keyword is often a good topic. Open **Settings → Topics & Keywords → Keywo
 
 The keyword stays on its sessions after you convert it. See [Projects, topics and keywords settings](/settings/projects-and-topics#keywords) for every control on that tab.
 
-::screenshot{src="/screenshots/knowledge/topic-page.png" alt="A topic page showing the topic name and color in the header with Edit and Delete topic buttons, and the Sessions tab listing three tagged sessions" caption="A topic page"}
+::screenshot{src="/screenshots/knowledge/topic-page.png" alt="A topic page showing the topic name and color in the header with the Edit and Delete topic buttons, and the Notes tab listing the notes tagged with the topic" caption="A topic page"}
 ::
 
 ## Related

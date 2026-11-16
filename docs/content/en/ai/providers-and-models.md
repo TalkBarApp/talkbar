@@ -39,7 +39,22 @@ After you add a provider, the window moves on to **Default models**. Pick a prov
 3. Paste your **API key**. **Endpoint (optional)** can stay blank to use the provider's default address.
 4. Select the models you want to use. TalkBar lists the provider's models and shows what each can do (**Text**, **Vision**, **Structured**). To use a model that is not listed, use **Add custom model**; TalkBar sends it a quick test request before adding it.
 
-::screenshot{src="/screenshots/ai/add-provider-api-key.png" alt="Set up AI wizard on the Connect to provider step, with the API key field, the optional Endpoint field and the Continue to select models button" caption="Connecting a cloud provider"}
+::screenshot{src="/screenshots/ai/wizard-setup-method.png" alt="Providers window asking how you would like to set up AI, with three options: Local AI (Ollama) marked Recommended, CLI tools, and Bring your own API key" caption="Step 1: choose Bring your own API key" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-pick-provider.png" alt="Providers window listing cloud providers as cards (Anthropic, OpenAI, Google Gemini, xAI, DeepSeek, AWS Bedrock, Cohere, Fireworks AI, Groq, OpenAI-compatible), each with its capabilities and number of models; providers you already connected are marked Already added" caption="Step 2: pick the provider" compact max-width="560"}
+::
+
+::screenshot{src="/screenshots/ai/add-provider-api-key.png" alt="Providers window on the Connect to Anthropic step, with the empty API key field, the optional Endpoint field showing the default Anthropic address, and the Continue to select models button" caption="Step 3: connecting a cloud provider" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-select-models.png" alt="Models from Anthropic: the discovered Claude models with checkboxes and capability badges (Text, Vision, Structured), the model search, Scan models, Add custom model and the Continue to select model button" caption="Step 4: select the models" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-default-model.png" alt="Default models step after adding Anthropic: pick the model to use by default, with each model's capability badges and Compatible features count, the Add custom model field and the Continue to apply button" caption="Step 5: pick the default model" compact max-width="560"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-default-standard.png" alt="Default models step asking where to use the chosen model: Standard, for your everyday setup, or Private AI, which is unavailable for a cloud model" caption="Step 6: make it your Standard default" compact max-width="600"}
 ::
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}
@@ -61,6 +76,18 @@ If you already have an AI command-line tool installed and signed in, TalkBar can
 1. Open **Set up AI**, click **Providers** and choose **CLI tools**.
 2. TalkBar scans your computer for Claude Code, Codex, Agy, Grok CLI and OpenCode and marks each one **Detected** or **Not detected**. A tool you already connected is marked **Already added**.
 3. Click the tool you want. TalkBar opens its models.
+
+::screenshot{src="/screenshots/ai/wizard-cli-pick.png" alt="Providers window listing CLI tools as cards (Claude Code, Codex, Agy, Grok and OpenCode CLI) with their install path (blurred here), version and Detected or Already added, plus the Have an AI subscription? card with a Step-by-step guide link" caption="Step 1: pick the CLI tool" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-cli-models.png" alt="Models from Codex CLI with the discovered models, their capability badges and checkboxes, the model search, Scan models, Add custom model and the Continue to select model button" caption="Step 2: select the models" compact max-width="560"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-cli-default-model.png" alt="Default models step for the CLI tool, with GPT-6-Luna selected among the discovered models and the Continue to apply button" caption="Step 3: pick the default model" compact max-width="560"}
+::
+
+::screenshot{src="/screenshots/ai/wizard-cli-default-apply.png" alt="Default models step confirming Set GPT-6-Luna as the Standard default model, with the Apply button" caption="Step 4: apply it as the Standard default" compact max-width="600"}
+::
 
 If TalkBar finds no tool, click **Show install steps**, install one, then click **Recheck CLI tools**. New to these tools? [CLI tools](/ai/cli-tools) explains how to install and sign in to each one, step by step, with a prompt you can give your AI assistant.
 
@@ -87,7 +114,22 @@ CLI tools are never used while [Private AI Mode](/ai/private-ai-mode) is on.
   ::
 ::
 
-::screenshot{src="/screenshots/ai/ollama-setup.png" alt="Set up AI wizard on the Ollama step with Local installation selected, showing Ollama detected with its version and endpoint, and a list of pulled models with gemma4:e4b marked Recommended" caption="Setting up Ollama"}
+::screenshot{src="/screenshots/ai/ollama-method.png" alt="Providers window asking how to set up AI, with Local AI (Ollama) marked Recommended and selected, CLI tools, and Bring your own API key" caption="Step 1: choose Local AI (Ollama)" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/ollama-setup.png" alt="Ollama step with Local installation selected, showing Ollama detected with its version and endpoint, the pulled gemma4:e4b model selected, How to install Local Ollama and the Add and select model button" caption="Step 2: Local installation finds Ollama on this computer" compact max-width="620"}
+::
+
+::screenshot{src="/screenshots/ai/ollama-remote.png" alt="Ollama step with Remote URL selected: the Ollama URL field with the Detect Ollama button and a hint to enter the address of Ollama running on another machine" caption="On another computer: Remote URL" compact max-width="620"}
+::
+
+::screenshot{src="/screenshots/ai/ollama-default-model.png" alt="Default models step with the Ollama model gemma4:e4b selected and the Continue to apply button" caption="Step 3: pick the default model" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/ollama-default-private.png" alt="Default models step asking where to use gemma4:e4b, with Private AI selected next to Standard" caption="Step 4: choose Standard or Private AI" compact max-width="600"}
+::
+
+::screenshot{src="/screenshots/ai/ollama-default-apply.png" alt="Default models step confirming Set gemma4:e4b as the Private AI default model, with the Apply button" caption="Step 5: apply it" compact max-width="600"}
 ::
 
 You can also add Ollama with **Add Provider** in **Settings → AI Providers → Providers**. There it is called **Ollama (Local)** and is listed under **Cloud API**, even though it runs on hardware you control. Its API key is optional.

@@ -55,7 +55,7 @@ You can create several channels of any type and turn each one on or off.
 3. Optionally choose the [automatic notifications](#automatic-notifications) this channel receives.
 4. Use **Send test** (**Send Test** in the **Create channel** form) to check delivery, then click **Create channel**.
 
-::screenshot{src="/screenshots/sharing/add-channel-type.png" alt="The Set up a channel wizard on its first step, asking Which kind of channel would you like to set up, with cards for Email (SMTP), Telegram, Slack, Microsoft Teams and Custom webhook" caption="Choosing a channel type"}
+::screenshot{src="/screenshots/sharing/add-channel-type.png" alt="The Set up a channel wizard on its first step, asking Which kind of channel would you like to set up, with cards for Email (SMTP), Telegram, Slack, Microsoft Teams and Custom webhook" caption="Choosing a channel type" compact max-width="660"}
 ::
 
 ### Automatic notifications

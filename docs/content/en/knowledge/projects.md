@@ -19,7 +19,7 @@ Click **Projects** in the sidebar. Up to five of your projects also appear under
 | Pin | **Pin project** keeps a project at the top and in the sidebar. |
 | ⋮ menu, or right-click a card | **Pin project** or **Unpin project**, **Edit project** and **Move to Trash**. |
 
-::screenshot{src="/screenshots/knowledge/projects-page.png" alt="Projects page with the New project and Manage buttons, Group by company turned on, and project cards grouped under two company headings, one project pinned" caption="The Projects page"}
+::screenshot{src="/screenshots/knowledge/projects-page.png" alt="Projects page with the grouping menu set to No grouping, the Manage and New project buttons, and three project cards, each with its type badge, description and session count" caption="The Projects page"}
 ::
 
 ## Create a project

@@ -55,6 +55,12 @@ TalkBar проверяет обновления в фоне. Когда выхо
 ::screenshot{src="/screenshots/getting-started/update-banner.png" alt="Баннер обновления в верхней части главного окна TalkBar с текстом «Доступна версия TalkBar x.y.z» и «Перезапустите TalkBar, чтобы завершить обновление до x.y.z», с кнопками «Перезапустить» и «Список изменений»" caption="Баннер обновления"}
 ::
 
+::screenshot{src="/screenshots/getting-started/update-banner-download.png" alt="Баннер обновления в верхней части главного окна TalkBar с текстом «Доступна версия TalkBar x.y.z» и кнопками «Скачать обновление» и «Список изменений»" caption="Доступна новая версия"}
+::
+
+::screenshot{src="/screenshots/getting-started/whats-new-dialog.png" alt="Окно «Что нового в TalkBar x.y.z», открытое из «Списка изменений», с разделами «Новое» и «Улучшено» и кнопками «Закрыть» и «Скачать обновление»" caption="Список изменений" compact max-width="640"}
+::
+
 ### Проверка обновлений вручную
 
 - Нажмите на логотип TalkBar в заголовке окна и выберите **Проверить обновления**.

@@ -61,7 +61,7 @@ If you turn the mode on before the needed built-in models are downloaded, TalkBa
 - The [dictation](/voice/dictation) panel shows a shield next to **Dictation**.
 - In model lists, models that cannot be used are marked **Unavailable in Private Mode**.
 
-::screenshot{src="/screenshots/ai/logo-private-ai-shield.png" alt="Top-left corner of the TalkBar window with Private AI Mode on: the logo shown as a shield next to a green TalkBar wordmark, with the tooltip Private AI: all AI features run on local models only" caption="The shield shows Private AI Mode is on"}
+::screenshot{src="/screenshots/ai/logo-private-ai-shield.png" alt="Top-left corner of the TalkBar window with Private AI Mode on: the logo shown as a shield next to a green TalkBar wordmark, with the tooltip Private AI: all AI features run on local models only" caption="The shield shows Private AI Mode is on" compact max-width="600"}
 ::
 
 ### Not fully local
@@ -82,7 +82,7 @@ The session runs on built-in local models only, and its summaries stay private. 
 
 The **Private AI** option appears once Private AI Mode is [available](#when-it-is-available). It needs at least one downloaded built-in model. If none is downloaded, the option is unavailable and its tooltip points you to **Settings → Private Local AI**.
 
-::screenshot{src="/screenshots/ai/new-session-intelligence-private.png" alt="New session dialog with the Intelligence row showing the Default pill and the Private AI pill selected, with the note This session runs on built-in local models only, and its summaries stay private forever." caption="A private session"}
+::screenshot{src="/screenshots/ai/new-session-intelligence-private.png" alt="New session dialog with the Intelligence row showing the Default pill and the Private AI pill selected, with the note This session runs on built-in local models only, and its summaries stay private forever." caption="A private session" compact max-width="680"}
 ::
 
 ::callout{icon="i-heroicons-light-bulb" color="primary"}

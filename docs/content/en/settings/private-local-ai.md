@@ -60,7 +60,7 @@ The total space your downloaded models use is shown under the list.
 
 The **Speech models** tab (search entry: **Speech models**) lists the speech recognition models used for live transcription, transcript enhancement and dictation. These models run on your computer.
 
-Pick which model each feature uses in [Settings → Voice](/settings/voice). Here you download and delete them. Each row shows which feature uses the model: **Live transcription**, **Enhancement** or **Dictation**. The available models are Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo, GigaAM v3, Canary 180M Flash and Canary 1B v2.
+Pick which model each feature uses in [Settings → Voice](/settings/voice). Here you download and delete them. A model in use shows a badge for that job: **Live transcription**, **Enhancement** or **Dictation**. A model nothing is using has no badge. The available models are Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo, GigaAM v3, Canary 180M Flash and Canary 1B v2.
 
 Each row has the same **Download**, **Cancel**, **Re-download** and **Delete** controls as local AI models.
 

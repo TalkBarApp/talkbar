@@ -26,7 +26,7 @@ New to recording? Start with [Your first session](/getting-started/first-session
 
 Open **Sessions** from the sidebar. The page lists every session in the current workspace.
 
-::screenshot{src="/screenshots/sessions/sessions-list.png" alt="The Sessions page in the All sessions view, with the Up next strip at the top, the All sessions / Pinned / Trash tabs, the Sort and filter buttons, and a few session rows grouped under Today and Yesterday" caption="The Sessions list"}
+::screenshot{src="/screenshots/sessions/sessions-list.png" alt="The Sessions page in the All sessions view, with the Up next strip at the top, the All sessions / Pinned / Trash tabs, the Sort and filter buttons, and session rows grouped by day, with a pinned session at the top" caption="The Sessions list"}
 ::
 
 The header has buttons for the other session pages, plus the primary action:

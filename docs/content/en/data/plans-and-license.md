@@ -59,7 +59,7 @@ You can also open the activation link from **Manage License** on the license por
 
 Some regional licenses cover one interface language. When you activate one, TalkBar offers to switch the app to that language.
 
-::screenshot{src="/screenshots/data/license-activate-dialog.png" alt="The Activate license dialog after pasting a key, showing the Plan, Licensed to, Updates included until and Interface language rows and the Activate license button" caption="Checking a license before activating it"}
+::screenshot{src="/screenshots/data/license-activate-dialog.png" alt="The Activate license dialog with a license key pasted into the field (blurred here) and the Cancel and Continue buttons" caption="Pasting your license key" compact max-width="550"}
 ::
 
 ### After activation

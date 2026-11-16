@@ -55,6 +55,12 @@ You can't restart to update while a recording, dictation or transcript processin
 ::screenshot{src="/screenshots/getting-started/update-banner.png" alt="Update banner at the top of the TalkBar main window reading 'TalkBar x.y.z is available' and 'Restart TalkBar to finish updating to x.y.z', with the Restart to update and Release notes buttons" caption="The update banner"}
 ::
 
+::screenshot{src="/screenshots/getting-started/update-banner-download.png" alt="Update banner at the top of the TalkBar main window reading 'TalkBar x.y.z is available' with the Download update and Release notes buttons" caption="A new version is available"}
+::
+
+::screenshot{src="/screenshots/getting-started/whats-new-dialog.png" alt="The What's new in TalkBar x.y.z window opened from Release notes, listing New and Improved changes, with the Close and Download update buttons" caption="Release notes" compact max-width="640"}
+::
+
 ### Check for updates yourself
 
 - Click the TalkBar logo in the title bar and choose **Check for updates**.

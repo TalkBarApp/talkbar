@@ -16,7 +16,7 @@ Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts
 
 Open **Knowledge → Documents** to see your document library.
 
-::screenshot{src="/screenshots/knowledge/documents-library.png" alt="Knowledge → Documents tab showing the All/Markdown/PDF/Docs/Other kind tabs, the sort and search controls, and a grid of document cards, one of them still showing Building search with a percentage" caption="The document library"}
+::screenshot{src="/screenshots/knowledge/documents-library.png" alt="Knowledge → Documents tab scoped to a project, showing the All, Markdown and PDF kind tabs, the sort and search controls, and a grid of document cards" caption="The document library"}
 ::
 
 ## Supported formats
@@ -38,6 +38,9 @@ Each file can be up to **64 MB**.
 2. Choose **Add files**, **Add folder**, or drag files onto the dialog. You can add many files at once. **Add folder** imports the supported files in a folder and its subfolders.
 3. Under **File into**, pick a project, or leave the documents in **General**.
 4. Click **Add documents**.
+
+::screenshot{src="/screenshots/knowledge/add-documents-dialog.png" alt="The Upload files dialog with Add files and Add folder, three Markdown files listed to be added, File into set to the M&A Research project, and the Add documents button" caption="Adding documents" compact max-width="590"}
+::
 
 TalkBar reads each file, adds it to your library and builds its search index. The dialog shows how many files are imported and how many failed. You can close the dialog while indexing runs.
 
@@ -74,14 +77,16 @@ Click a document to open it in the reader. The reader shows the text TalkBar ext
 - **File Info** shows the type, size, source and when the document was added. For a document imported with **Add folder**, it also shows the **Imported folder**. Under **Knowledge**, it says how many memory cards came from the document and how many may be stale.
 - **Related** lists linked knowledge items.
 - **Ask AI** opens a chat about the document in the side panel.
-- **Scan for knowledge** asks AI to find memory cards, people and companies in the document. See [Review and scans](/knowledge/review-and-scans).
+- **Scan for knowledge** (in the **⋮** menu) asks AI to find memory cards, people and companies in the document. See [Review and scans](/knowledge/review-and-scans).
 
-::screenshot{src="/screenshots/knowledge/document-reader.png" alt="Document reader with two documents open as tabs, a search term highlighted in the text, and the Ask AI and Scan for knowledge buttons visible" caption="Reading and searching a document"}
+Searching inside a document and **Scan for knowledge** need the document search model and a document that has finished indexing. Until then, searching inside the document asks you to install the model, and **Scan for knowledge** isn't shown.
+
+::screenshot{src="/screenshots/knowledge/document-reader.png" alt="Document reader with two documents open as tabs, a Markdown document with headings and a table, the Ask AI and Search buttons, and the ⋮ menu open with Pin, Scan for knowledge, Update from file, Show in File Explorer and Delete" caption="Reading and searching a document"}
 ::
 
 ## Organize documents
 
-- **Kind tabs**: **All**, **Markdown**, **PDF**, **Docs** and **Other** (text, spreadsheets, slides, e-books). **Filter views** chooses which kind tabs you see, and **Set as default** keeps your choice.
+- **Kind tabs**: **All**, **Markdown**, **PDF**, **Docs** and **Other** (text, spreadsheets, slides, e-books). A kind tab appears only when you have documents of that kind. **Filter views** chooses which kind tabs you see, and **Set as default** keeps your choice.
 - **Sort** by date added or by title. **Pinned on top** keeps pinned documents first.
 - The scope switcher at the top right of Knowledge shows documents for the whole workspace, for **General**, or for one project or series.
 

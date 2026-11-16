@@ -26,7 +26,7 @@ Share a session, a note, a chat or a single answer from Ask TalkBar. You can pub
 
 Each opens the same dialog, titled **Share session**, **Share note**, **Share chat** or **Share reply**.
 
-::screenshot{src="/screenshots/sharing/share-dialog-publish-link.png" alt="The Share session dialog with Publish link selected: the What they'll see parts (Summary, Action items, Timeline, Transcript, Notes) and the Who can open it options Public, Private link and Specific people" caption="The share dialog for a session"}
+::screenshot{src="/screenshots/sharing/share-dialog-publish-link.png" alt="The Share session dialog with Publish link selected: the What they'll see parts (Summary, Action items, Timeline, Transcript, Notes) and the Who can open it options Public, Private link and Specific people" caption="The share dialog for a session" compact max-width="640"}
 ::
 
 ## Choose what they see
@@ -103,7 +103,7 @@ A published link opens a read-only page on talkbar.link. Depending on what you s
 
 Pages without custom branding show a small TalkBar footer and a link to download TalkBar.
 
-::screenshot{src="/screenshots/sharing/shared-page-recipient.png" alt="A shared session page on talkbar.link opened in a browser, showing the title, date, participants, the Summary tab selected and the read-only snapshot note" caption="What a recipient sees"}
+::screenshot{src="/screenshots/sharing/shared-page-recipient.png" alt="A shared session page on talkbar.link opened in a browser, showing the Shared session label, title, date, duration and update date, the Summary, Timeline, Transcript and Notes tabs with the summary open, and the participants list" caption="What a recipient sees"}
 ::
 
 ## Update or revoke a link
@@ -113,6 +113,9 @@ Open **Manage links** from the session's **Share** menu or the share dialog. All
 - **Publish update** replaces the page at the same link with the current content. Who can open it, when it expires and which parts it shares stay the same; you can still change the summary sections with **Edit and publish**. On the Free plan you can update a link once every 30 minutes.
 - **Revoke link**: anyone using the link loses access at once. A revoked or expired link can't be brought back; publish a new one instead.
 - **Clear ended links** removes revoked, expired and removed links from the list. Active links are not affected.
+
+::screenshot{src="/screenshots/sharing/manage-links.png" alt="The Manage links window for a session with the Active, Removed, Revoked and Expired tabs, one active public link with its address, Names shown · Never expires, and the Publish update, Edit and publish and delete buttons" caption="Manage links" compact max-width="640"}
+::
 
 Each session, note or chat can have up to three active links. On the Free plan you can keep up to 10 active links in total; revoke one to publish another.
 

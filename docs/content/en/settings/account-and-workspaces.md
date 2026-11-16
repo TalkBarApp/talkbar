@@ -45,6 +45,9 @@ Each workspace is fully separate: it has its own sessions, notes, people, knowle
 
 You can't move the active workspace or your last workspace to Trash. Switch to another workspace first.
 
+::screenshot{src="/screenshots/settings/account-move-workspace-to-trash.png" alt="The Move this workspace to Trash? dialog explaining that the workspace will be hidden and its sessions, notes and files stay on disk until you delete it permanently from Deleted workspaces, with the Keep it and Move to Trash buttons" caption="Moving a workspace to Trash" compact max-width="480"}
+::
+
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
 While a session is recording, you can't switch, create or change workspaces. Stop the session first.
 ::
@@ -58,7 +61,7 @@ When at least one workspace is in Trash, **Show deleted** appears below the list
 
 If a permanent delete fails partway, the button changes to **Retry**.
 
-::screenshot{src="/screenshots/settings/account-delete-workspace.png" alt="The Delete this workspace permanently? dialog with the Create a backup first checkbox checked and an empty field asking to type the full workspace name" caption="Deleting a workspace permanently"}
+::screenshot{src="/screenshots/settings/account-delete-workspace.png" alt="The Delete this workspace permanently? dialog with the Create a backup first checkbox checked and an empty field asking to type the full workspace name" caption="Deleting a workspace permanently" compact max-width="460"}
 ::
 
 ## Plan limits
