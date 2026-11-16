@@ -31,15 +31,21 @@ const { data: aboutMenu } = await useAsyncData('about-menu', () =>
 )
 
 // The mobile menu lists the website links as one more group.
+const downloadLink = {
+  label: t('download'),
+  to: 'https://download.talkbar.ru',
+  target: '_blank',
+}
+
 const panelLinks = computed(() => {
   const menu = aboutMenu.value
-  if (!menu) return props.links
+  if (!menu) return [downloadLink, ...props.links]
   const websiteLinks = [...menu.main, ...menu.groups.flatMap(group => group.items)].map(link => ({
     label: link.label,
     to: aboutLinkHref(link),
     target: '_blank',
   }))
-  return [...props.links, { label: menu.label, to: websiteUrl, children: websiteLinks }]
+  return [downloadLink, ...props.links, { label: menu.label, to: websiteUrl, children: websiteLinks }]
 })
 </script>
 
@@ -73,8 +79,9 @@ const panelLinks = computed(() => {
         <ColorThemeToggle class="header-round hidden sm:flex" />
         <UColorModeButton class="header-round" />
         <UButton
-          to="https://github.com/TalkBarApp/talkbar/releases/latest"
+          to="https://download.talkbar.ru"
           target="_blank"
+          rel="noopener noreferrer"
           :label="t('download')"
           icon="i-heroicons-arrow-down-tray-20-solid"
           color="primary"

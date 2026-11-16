@@ -5,22 +5,20 @@ navigation:
   icon: i-heroicons-arrow-down-tray
 ---
 
-Скачайте TalkBar для вашего компьютера с GitHub, установите приложение и поддерживайте его в актуальном состоянии. Сейчас доступна версия для Windows. Mac (скоро).
+Скачайте TalkBar со <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer">страницы загрузки</a>, установите приложение и поддерживайте его в актуальном состоянии. Сейчас доступна версия для Windows. Mac (скоро).
 
 ## Скачивание и установка
 
 ::platform-tabs
 #windows
-1. Откройте [последний выпуск](https://github.com/TalkBarApp/talkbar/releases/latest) на GitHub.
-2. В разделе **Assets** скачайте установщик для вашего компьютера:
-   - Intel или AMD (x64): `TalkBar_<version>_x64-setup.exe`
-   - Windows 11 на Arm: `TalkBar_<version>_arm64-setup.exe`
+1. Откройте <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer">страницу загрузки TalkBar</a>.
+2. Скачайте установщик для вашего компьютера: **Windows (Intel или AMD)** или **Windows на ARM**.
 3. Запустите установщик и следуйте его шагам.
 
 Установщик подписан. Если Microsoft Edge WebView2 отсутствует, установщик загрузит его через интернет.
 #macos
-1. Откройте [последний выпуск](https://github.com/TalkBarApp/talkbar/releases/latest) на GitHub.
-2. В разделе **Assets** скачайте файл macOS для вашего Mac.
+1. Откройте <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer">страницу загрузки TalkBar</a>.
+2. Скачайте файл macOS для вашего Mac.
 3. Откройте скачанный файл, выполните шаги и запустите TalkBar.
 ::
 
