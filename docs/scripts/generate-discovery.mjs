@@ -20,8 +20,8 @@ const index = [
   '# TalkBar Documentation',
   '',
   locale === 'ru'
-    ? '> Документация TalkBar: приватный ИИ-помощник для заметок в Windows и macOS, локальная транскрибация, встречи, MCP и CLI.'
-    : '> Official documentation for TalkBar, the private AI note taker for Windows and macOS: local transcription, meetings, voice notes, MCP and CLI.',
+    ? '> Документация TalkBar: приватный ИИ-помощник для заметок для Windows и Mac (скоро), локальная транскрибация, встречи, MCP и CLI.'
+    : '> Official documentation for TalkBar, the private AI note taker for Windows and Mac (soon): local transcription, meetings, voice notes, MCP and CLI.',
   '',
   `Language: ${locale}. Each entry links to the canonical page and its Markdown version.`,
   '',

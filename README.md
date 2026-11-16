@@ -5,19 +5,19 @@
 </p>
 
 <p align="center">
-  <strong>Private conversation intelligence for Windows.</strong><br>
+  <strong>Private conversation intelligence for Windows and Mac (soon).</strong><br>
   Capture meetings and calls, dictate voice notes, get live context,<br>
   and turn every conversation into searchable local memory.
 </p>
 
 <p align="center">
   <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><img src="https://img.shields.io/github/v/release/TalkBarApp/talkbar?label=latest%20release&color=1f4fe0" alt="Latest release"></a>
-  <img src="https://img.shields.io/badge/platform-Windows-1f4fe0" alt="Platform: Windows">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Mac%20(soon)-1f4fe0" alt="Platform: Windows and Mac (soon)">
   <a href="https://www.talkbar.app"><img src="https://img.shields.io/badge/website-talkbar.app-f08a4b" alt="Website: talkbar.app"></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><strong>Download for Windows</strong></a>
+  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><strong>Download for Windows. Mac (soon)</strong></a>
   &nbsp;·&nbsp;
   <a href="https://www.talkbar.app">Website</a>
   &nbsp;·&nbsp;
@@ -34,7 +34,7 @@
 
 ## What is TalkBar?
 
-TalkBar is a private AI note taker for Windows. It records meetings and calls
+TalkBar is a private AI note taker for Windows and Mac (soon). It records meetings and calls
 right from your desktop, using your microphone and your computer's audio, so no
 bot ever joins the call. It works with Zoom, Microsoft Teams, Google Meet, other
 meeting apps, and browser calls.
@@ -123,7 +123,7 @@ Read the full breakdown on the [privacy page](https://www.talkbar.app/privacy).
 
 ## Download and install
 
-TalkBar runs on 64-bit Windows and on macOS. Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) and use the file under **Assets** for your computer.
+TalkBar runs on 64-bit Windows. Mac (soon). Open the [latest release](https://github.com/TalkBarApp/talkbar/releases/latest) and use the file under **Assets** for your computer.
 
 **Windows.** For Intel or AMD, download `TalkBar_<version>_x64-setup.exe`. For Windows 11 on Arm, download `TalkBar_<version>_arm64-setup.exe`. Run the installer and follow the setup.
 

@@ -69,7 +69,7 @@ export const useDocsSeo = (page: Ref<DocsPage | null | undefined>) => {
     name: 'TalkBar', url: `${websiteUrl}/`,
     applicationCategory: 'BusinessApplication',
     applicationSubCategory: 'AI meeting notes',
-    operatingSystem: 'Windows, macOS',
+    operatingSystem: 'Windows, Mac (soon)',
     publisher: { '@id': organization['@id'] },
   }
 

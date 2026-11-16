@@ -97,7 +97,7 @@ navigation:
 
 ### Есть ли версия для Mac?
 
-Да. TalkBar работает в Windows и в macOS. См. [Установка и обновление](/getting-started/install-and-update).
+Mac (скоро). Сейчас TalkBar работает в Windows. Шаги для Mac уже есть в разделе [Установка и обновление](/getting-started/install-and-update).
 
 ### Как работают обновления?
 

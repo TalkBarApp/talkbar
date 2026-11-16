@@ -97,7 +97,7 @@ There is a Free plan, and paid plans named Personal, Plus, Pro and Business. The
 
 ### Is there a Mac version?
 
-Yes. TalkBar runs on Windows and on macOS. See [Install and update](/getting-started/install-and-update).
+Mac (soon). TalkBar runs on Windows today. The Mac steps are already on [Install and update](/getting-started/install-and-update).
 
 ### How do updates work?
 

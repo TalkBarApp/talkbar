@@ -8,7 +8,7 @@ export default defineAppConfig({
   seo: {
     siteName: 'TalkBar Documentation',
     titleTemplate: '%s | TalkBar Documentation',
-    description: 'Documentation for TalkBar, the private AI note taker for Windows',
+    description: 'Documentation for TalkBar, the private AI note taker for Windows and Mac (soon)',
     ogImage: {
       type: 'image/png',
       url: '/og/talkbar-og.png'

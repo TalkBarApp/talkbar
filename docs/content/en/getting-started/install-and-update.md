@@ -5,7 +5,7 @@ navigation:
   icon: i-heroicons-arrow-down-tray
 ---
 
-Download TalkBar for your computer from GitHub, install it, and keep it up to date.
+Download TalkBar for your computer from GitHub, install it, and keep it up to date. Windows is available now. Mac (soon).
 
 ## Download and install
 
