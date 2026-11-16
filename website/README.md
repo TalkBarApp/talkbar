@@ -72,8 +72,9 @@ by the translated string data:
 - Deep Use Case / Industry page content lives in `src/i18n/ru-use-cases.ts`, registered for
   the `ru` locale in `src/i18n/use-cases.ts`.
 
-Like every preview build, `preview-ru` is de-indexed by all three layers (`noindex` meta,
-`X-Robots-Tag` header, locked-down `robots.txt`). `prod-ru` is indexed.
+Like every preview build, `preview-ru` is de-indexed by a `noindex` meta tag and an
+`X-Robots-Tag` header (see [Keeping preview builds out of search](#keeping-preview-builds-out-of-search)).
+`prod-ru` is indexed.
 
 ### hreflang
 
@@ -99,8 +100,8 @@ domains.
 | `talkbar-www-preview` | `preview.talkbar.app` | `preview` | `npm run build:preview` | `dist-preview` | No |
 | `ru-talkbar-www-preview` | `preview.talkbar.ru` | `preview` | `npm run build:preview:ru` | `dist-preview-ru` | No |
 
-Preview builds are de-indexed by a `noindex` meta tag, an `X-Robots-Tag` header and a
-disallow-all `robots.txt`. `npm run build:ru` runs the same command as the `ru-talkbar-www`
+Preview builds are de-indexed by a `noindex` meta tag and an `X-Robots-Tag` header; their
+`robots.txt` lets search crawlers in so they can see both. `npm run build:ru` runs the same command as the `ru-talkbar-www`
 build.
 
 > **Keep the output directory in sync.** The build output dir is derived from the build
@@ -433,34 +434,41 @@ tools/               Local image utilities
 
 ## SEO
 
-The active public build emits English-only `hreflang` tags:
+Every indexable page lists its counterpart on the other language's site (see
+[hreflang](#hreflang)), for example on `www.talkbar.ru/b2b-sales/`:
 
-- `hreflang="en"` -> `https://www.talkbar.app/`
-- `hreflang="x-default"` -> `https://www.talkbar.app/`
+- `hreflang="en"` -> `https://www.talkbar.app/b2b-sales/`
+- `hreflang="ru"` -> `https://www.talkbar.ru/b2b-sales/`
+- `hreflang="x-default"` -> `https://www.talkbar.app/b2b-sales/`
 
-### Keeping non-production builds out of search
+Each production build's `robots.txt` allows crawling and names its own sitemap
+(`https://www.talkbar.app/sitemap-index.xml` or `https://www.talkbar.ru/sitemap-index.xml`).
 
-Only the `prod` build (`www.talkbar.app`) is meant to be indexed. **Every other build**
-— `preview`, and any future `dev`/`staging`/`preview2` deploy, on any hostname — is
-de-indexed by three independent layers, all keyed off `BUILD_DOMAIN` (i.e. `buildDomain !== "prod"`):
+### Keeping preview builds out of search
 
-1. **`<meta name="robots" content="noindex, nofollow">`** — `src/layouts/BaseLayout.astro`
-   adds it on every page of non-prod builds. This is the most reliable de-index signal,
-   because the crawler must fetch the page to honour it.
-2. **`X-Robots-Tag: noindex, nofollow` HTTP header** — an `astro:build:done` hook in
+Only the production builds, `prod` (`www.talkbar.app`) and `prod-ru` (`www.talkbar.ru`), are
+meant to be indexed. The preview builds, `preview` and `preview-ru`, are de-indexed by two
+layers keyed off `BUILD_DOMAIN`:
+
+1. **`<meta name="robots" content="noindex, nofollow">`**: `src/layouts/BaseLayout.astro`
+   adds it on every page of the preview builds.
+2. **`X-Robots-Tag: noindex, nofollow` HTTP header**: an `astro:build:done` hook in
    `astro.config.mjs` writes a Cloudflare Pages [`_headers`](https://developers.cloudflare.com/pages/configuration/headers/)
-   file (`/*` → the header) into the output dir for non-prod builds only. It covers every
-   response, including non-HTML assets and redirects, and can't be undercut by `robots.txt`.
-   The `prod` build never emits this file.
-3. **Locked-down `robots.txt`** — `src/pages/robots.txt.ts` serves `Disallow: /` (plus
-   explicit AI-crawler blocks) for non-prod builds, and `Allow: /` + sitemap for `prod`.
+   file (`/*` → the header) into the output dir of the preview builds only. It covers every
+   response, including non-HTML assets. The production builds never emit this file.
 
-> **Heads-up — Cloudflare "Managed robots.txt":** if enabled on a Pages project, Cloudflare
-> *prepends* its own `User-agent: * / Allow: / Content-Signal: search=yes` block above the
-> app's `robots.txt`, producing conflicting groups (many crawlers resolve the tie toward
-> `Allow`) and signalling `search=yes`. Disable it on non-prod projects in the dashboard.
-> The `noindex` meta + `X-Robots-Tag` header keep the build de-indexed regardless, but the
-> mixed `robots.txt` is misleading. To verify the live state:
+The preview `robots.txt` (`src/pages/robots.txt.ts`) **allows** search crawlers on purpose:
+a crawler that may not fetch a page never sees its `noindex`, so a blocked URL that is linked
+from elsewhere can still be listed ([Google's guidance](https://developers.google.com/search/docs/crawling-indexing/block-indexing)).
+It still blocks AI crawlers and lists no sitemap.
+
+An unrecognised `BUILD_DOMAIN` falls back to `prod`, so any other non-production deploy
+must build with `preview` or `preview-ru`.
+
+> **Cloudflare "Managed robots.txt":** if enabled on a Pages project, Cloudflare prepends
+> its own `User-agent: *` group (`Allow: /`, `Content-Signal`). That agrees with this site's
+> rules, which already let search crawlers in. After enabling it, check that search crawling is
+> still allowed and that the previews still send `noindex`. To verify the live state:
 > `curl -s https://preview.talkbar.app/robots.txt` and
 > `curl -sI https://preview.talkbar.app/ | grep -i x-robots-tag`.
 

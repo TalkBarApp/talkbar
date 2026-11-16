@@ -15,6 +15,17 @@ describe("TalkBar preview deployment", () => {
     );
   });
 
+  test("production deploy scripts build the domain they upload", () => {
+    const pkg = JSON.parse(read("package.json"));
+
+    expect(pkg.scripts["deploy:prod"]).toBe(
+      "cross-env BUILD_DOMAIN=prod astro build && npx --yes wrangler pages deploy dist-prod --project-name talkbar-www --branch main",
+    );
+    expect(pkg.scripts["deploy:prod:ru"]).toBe(
+      "npm run build:ru && npx --yes wrangler pages deploy dist-prod-ru --project-name ru-talkbar-www --branch main",
+    );
+  });
+
   test("configures preview.talkbar.app as its own build domain", () => {
     const domains = read("src/i18n/domains.ts");
     const astroConfig = read("astro.config.mjs");

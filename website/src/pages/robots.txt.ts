@@ -4,8 +4,10 @@ import { IS_PREVIEW_BUILD, CURRENT_CONFIG } from '../i18n/domains';
 export const GET: APIRoute = () => {
   const isPreviewBuild = IS_PREVIEW_BUILD;
   const body = isPreviewBuild
-    ? `User-agent: *
-Disallow: /
+    ? // Search crawlers may fetch preview pages: a robots.txt block would hide their
+      // noindex meta and X-Robots-Tag header, so a linked URL could still be listed.
+      `User-agent: *
+Allow: /
 
 User-agent: GPTBot
 Disallow: /

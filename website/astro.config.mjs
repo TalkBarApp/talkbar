@@ -43,11 +43,11 @@ const configs = {
 const config = configs[buildDomain];
 const ALL_LOCALES = ["en", "ru"];
 
-// Every build EXCEPT the production `prod` build emits a Cloudflare Pages
-// `_headers` file that sends `X-Robots-Tag: noindex, nofollow` on every
-// response. This is the unambiguous de-index guarantee for any non-production
-// deployment — preview, preview2, dev, staging, whatever the hostname — and it
-// cannot be undercut by conflicting robots.txt rules. Only `prod` is indexable.
+// The preview builds (`preview`, `preview-ru`) emit a Cloudflare Pages `_headers`
+// file that sends `X-Robots-Tag: noindex, nofollow` on every response. Only the
+// production builds (`prod`, `prod-ru`) are indexable. An unrecognised
+// BUILD_DOMAIN falls back to `prod`, so every non-production deploy must set
+// `preview` or `preview-ru` explicitly.
 const isProductionBuild = buildDomain === "prod" || buildDomain === "prod-ru";
 const noindexHeaders = {
   name: "noindex-headers",

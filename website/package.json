@@ -8,7 +8,7 @@
     "test": "vitest run",
     "build": "astro build",
     "build:ru": "cross-env BUILD_DOMAIN=prod-ru astro build",
-    "deploy:prod": "npm run build && npx --yes wrangler pages deploy dist-prod --project-name talkbar-www --branch main",
+    "deploy:prod": "cross-env BUILD_DOMAIN=prod astro build && npx --yes wrangler pages deploy dist-prod --project-name talkbar-www --branch main",
     "deploy:prod:ru": "npm run build:ru && npx --yes wrangler pages deploy dist-prod-ru --project-name ru-talkbar-www --branch main",
     "build:preview": "cross-env BUILD_DOMAIN=preview astro build",
     "deploy:preview": "npm run build:preview && npx --yes wrangler pages deploy dist-preview --project-name talkbar-www-preview --branch preview",
