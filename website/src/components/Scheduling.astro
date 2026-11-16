@@ -1,0 +1,55 @@
+---
+import { t, type Language } from '../i18n';
+import { Icon } from 'astro-icon/components';
+import SectionHeader from './ui/SectionHeader.astro';
+import Screenshot from './ui/Screenshot.astro';
+
+interface Props {
+  lang: Language;
+}
+
+const { lang } = Astro.props;
+
+// Scheduling, upcoming sessions and calendar sync: the second half of "Before the call".
+const features = [
+  { icon: 'lucide:calendar-days', label: t(lang, 'scheduling.upcoming') },
+  { icon: 'lucide:calendar-sync', label: t(lang, 'scheduling.calendarSync') },
+  { icon: 'lucide:bell-ring', label: t(lang, 'scheduling.reminders') },
+  { icon: 'lucide:timer', label: t(lang, 'scheduling.autoStart') },
+  { icon: 'lucide:repeat', label: t(lang, 'scheduling.series') },
+  { icon: 'lucide:video', label: t(lang, 'scheduling.join') },
+];
+---
+<section class="section-pro relative section-pad overflow-hidden scheduling-section" id="scheduling">
+  <div class="container relative z-10">
+    <SectionHeader
+      eyebrow={t(lang, 'scheduling.eyebrow')}
+      headline={t(lang, 'scheduling.headline')}
+      accent={t(lang, 'scheduling.accent')}
+      subhead={t(lang, 'scheduling.subhead')}
+    />
+
+    <div class="grid grid-cols-1 lg:grid-cols-[0.82fr_1.18fr] gap-6 lg:gap-10 items-start">
+      <div class="briefing-delivery-panel panel-pro p-4 sm:p-5 order-2 lg:order-1">
+        <div class="mb-4">
+          <div class="text-[11px] font-bold uppercase tracking-[0.2em] text-primary mb-2 flex items-center gap-2">
+            <Icon name="lucide:calendar-clock" width="14" height="14" />
+            {t(lang, 'scheduling.delivered')}
+          </div>
+          <p class="text-sm leading-relaxed text-muted-foreground">{t(lang, 'scheduling.deliveredDesc')}</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-2.5">
+          {features.map(({ icon, label }) => (
+            <div class="flex items-center gap-3.5 py-2">
+              <span class="icon-mark"><Icon name={icon} width="20" height="20" /></span>
+              <div class="text-[15px] font-semibold">{label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <Screenshot lang={lang} id="session-calendar" class="shot-shadow order-1 lg:order-2" />
+    </div>
+  </div>
+</section>

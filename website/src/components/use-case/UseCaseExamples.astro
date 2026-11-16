@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import type { Language } from '../../i18n';
 import SectionHeader from '../ui/SectionHeader.astro';
 import CardExplorer, { type ExplorerItem } from '../ui/CardExplorer.astro';
@@ -37,11 +38,15 @@ const scenarios: ExplorerItem[] = items.map(({ icon, title, desc, shot }, i) => 
     <CardExplorer lang={lang} id="examples" label={accent ? `${headline} ${accent}` : headline} items={scenarios} />
 
     {templatesLine && templatesLine.chips.length > 0 && (
-      <p class="mt-8 text-center text-sm leading-relaxed text-muted-foreground">
-        <span class="font-semibold text-foreground">{templatesLine.label}.</span>
-        {' '}
-        {templatesLine.chips.join(' · ')}
-      </p>
+      <div class="uce-templates">
+        <span class="uce-templates-label">
+          <Icon name="lucide:layout-template" width="16" height="16" aria-hidden="true" />
+          {templatesLine.label}
+        </span>
+        <ul class="uce-templates-chips">
+          {templatesLine.chips.map((chip) => <li class="uce-chip">{chip}</li>)}
+        </ul>
+      </div>
     )}
   </div>
 </section>

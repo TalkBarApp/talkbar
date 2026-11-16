@@ -2,7 +2,7 @@
 import { getImage } from 'astro:assets';
 import ScreenshotGallery, { type GalleryItem } from './ScreenshotGallery.tsx';
 import SectionHeader from './ui/SectionHeader.astro';
-import { GALLERY_SHOTS, SCREENSHOTS, showTempLabel, type ShotId } from '../lib/screenshots';
+import { GALLERY_CATEGORIES, GALLERY_SHOTS, SCREENSHOTS, showTempLabel, type ShotId } from '../lib/screenshots';
 import { t, type Language } from '../i18n';
 
 interface Props {
@@ -52,6 +52,15 @@ const items: GalleryItem[] = await Promise.all(
   }),
 );
 
+// Tabs over the row: only groups that hold some of these screenshots, and only
+// when there are at least two of them.
+const categories = GALLERY_CATEGORIES.map((cat) => ({
+  id: cat.id,
+  profile: cat.profile,
+  label: t(lang, cat.labelKey as Parameters<typeof t>[1]),
+  ids: cat.ids.filter((id) => ids.includes(id)) as string[],
+})).filter((cat) => cat.ids.length > 0);
+
 const labels = {
   prev: t(lang, 'gallery.prev'),
   next: t(lang, 'gallery.next'),
@@ -60,6 +69,7 @@ const labels = {
   unzoom: t(lang, 'media.zoom.close'),
   region: t(lang, 'gallery.region'),
   scrub: t(lang, 'gallery.scrub'),
+  categories: t(lang, 'gallery.categories'),
 };
 ---
 <section
@@ -80,5 +90,5 @@ const labels = {
     />
   </div>
 
-  <ScreenshotGallery client:visible items={items} labels={labels} />
+  <ScreenshotGallery client:visible items={items} labels={labels} categories={categories.length > 1 ? categories : undefined} />
 </section>

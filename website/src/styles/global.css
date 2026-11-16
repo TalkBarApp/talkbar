@@ -2119,6 +2119,113 @@
     }
   }
 
+  /* Explorer with a screenshot and a caption (use-case pages): the whole
+     screenshot sits on the window, edge to edge, with the caption under it. */
+  .cx:not(.cx-media) .cx-window {
+    overflow: visible;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .cx:not(.cx-media) .cx-body {
+    justify-content: flex-start;
+    padding: 0;
+  }
+  .cx:not(.cx-media) .cx-panel {
+    margin: 0;
+  }
+  .cx-shot {
+    width: 100%;
+  }
+  .cx-cap {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 2px 0;
+  }
+  .cx-cap-ic {
+    display: grid;
+    flex: none;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: hsl(var(--primary) / 0.08);
+    color: hsl(var(--primary));
+  }
+  .cx-cap-copy {
+    min-width: 0;
+  }
+  .cx-cap-title {
+    margin: 0 0 3px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.35;
+    color: hsl(var(--foreground));
+  }
+  .cx-cap-text {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.55;
+    color: hsl(var(--muted-foreground));
+  }
+  .cx-cap .cx-panel-desc {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .cx:not(.cx-media) .cx-body {
+      padding: 0;
+    }
+    .cx:not(.cx-media) .cx-panel {
+      margin: 0;
+    }
+    .cx-cap {
+      padding: 22px 4px 0;
+    }
+  }
+
+  /* Templates line under the use-case examples: a label and a row of chips. */
+  .uce-templates {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px 14px;
+    margin-top: 36px;
+  }
+  .uce-templates-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: hsl(var(--muted-foreground));
+  }
+  .uce-templates-label svg {
+    color: hsl(var(--primary));
+  }
+  .uce-templates-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .uce-chip {
+    padding: 7px 14px;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    background: hsl(var(--card));
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: hsl(var(--foreground));
+  }
+
   /* ============ Inner-page hero: copy left, call mock bleeding right ======= */
   .uc-hero-grid {
     display: grid;
@@ -2256,7 +2363,7 @@
 
   /* ============ Inner-page feature blocks ============ */
   .uc-feature {
-    max-width: 1080px;
+    max-width: 1200px;
     margin-inline: auto;
   }
   .uc-feature-media {
@@ -2295,13 +2402,14 @@
     color: hsl(var(--lead));
   }
   @media (min-width: 1024px) {
+    /* The screenshot gets the larger share so the app stays readable. */
     .uc-feature-media {
-      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-      gap: 80px;
+      grid-template-columns: minmax(0, 0.72fr) minmax(0, 1.28fr);
+      gap: 64px;
     }
     .uc-feature-media-left {
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 120px;
+      grid-template-columns: minmax(0, 1.28fr) minmax(0, 0.72fr);
+      gap: 72px;
     }
     .uc-feature-media-left .uc-feature-copy {
       order: 2;
@@ -2668,14 +2776,26 @@
   }
 
   /* ============ Screenshots (src/lib/screenshots.ts) ============ */
+  /* The screenshot files are window captures: they carry the app window's own
+     rounded corners and edge. The figure adds no frame of its own (no border,
+     no card fill, no clip), so there is no second, fatter border and no light
+     wedges in the corners. The lift is a drop-shadow that follows the window. */
   .shot {
     position: relative;
     margin: 0;
-    overflow: hidden;
-    border: 1px solid hsl(var(--border) / 0.7);
-    border-radius: 16px;
-    background: hsl(var(--card));
-    box-shadow: var(--card-shadow);
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .shot:not(.shot-fixed) .shot-img {
+    filter: drop-shadow(0 10px 24px rgb(15 23 42 / 0.02))
+      drop-shadow(0 2px 4px rgb(15 23 42 / 0.06));
+  }
+  .dark .shot:not(.shot-fixed) .shot-img {
+    filter: drop-shadow(0 12px 28px rgb(0 0 0 / 0.05))
+      drop-shadow(0 2px 4px rgb(0 0 0 / 0.3));
   }
   .shot-img {
     display: block;
@@ -2683,9 +2803,113 @@
     height: auto;
     cursor: zoom-in;
   }
+  /* Screenshot placeholder: until the image arrives, its box (sized from the
+     file's own width and height) shows a soft block with a light wave
+     sweeping across, so it reads as "loading", not as a gap. The script in
+     BaseLayout marks each image loaded. */
+  .img-skeletons .shot-img:not([data-loaded]) {
+    border-radius: 10px;
+    background-color: hsl(var(--muted));
+    background-image: linear-gradient(
+      100deg,
+      transparent 25%,
+      rgb(255 255 255 / 0.8) 50%,
+      transparent 75%
+    );
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    /* The same very light lift as a loaded screenshot. */
+    box-shadow:
+      0 10px 24px rgb(15 23 42 / 0.02),
+      0 2px 4px rgb(15 23 42 / 0.06);
+    animation: shot-shimmer 1.4s ease-in-out infinite;
+    filter: none !important;
+  }
+  .dark.img-skeletons .shot-img:not([data-loaded]) {
+    box-shadow:
+      0 12px 28px rgb(0 0 0 / 0.05),
+      0 2px 4px rgb(0 0 0 / 0.3);
+    background-image: linear-gradient(
+      100deg,
+      transparent 25%,
+      rgb(255 255 255 / 0.08) 50%,
+      transparent 75%
+    );
+  }
+  /* A fixed-ratio frame keeps no card shadow while its screenshot loads. */
+  .img-skeletons .shot-fixed:has(.shot-zoom:not(.shot-light):not(.shot-dark) .shot-img:not([data-loaded])),
+  html.img-skeletons:not(.dark) .shot-fixed:has(.shot-light .shot-img:not([data-loaded])),
+  .dark.img-skeletons .shot-fixed:has(.shot-dark .shot-img:not([data-loaded])) {
+    box-shadow: none;
+  }
+  /* Gallery cards while loading: a faint see-through panel over the card's
+     colour, with the same light wave sweeping across. No spinner. */
+  .img-skeletons .gal-img:not([data-loaded]) {
+    background-color: rgb(255 255 255 / 0.28);
+    background-image: linear-gradient(
+      100deg,
+      transparent 25%,
+      rgb(255 255 255 / 0.6) 50%,
+      transparent 75%
+    );
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    animation: shot-shimmer 1.4s ease-in-out infinite;
+  }
+  .dark.img-skeletons .gal-img:not([data-loaded]) {
+    background-color: rgb(255 255 255 / 0.05);
+    background-image: linear-gradient(
+      100deg,
+      transparent 25%,
+      rgb(255 255 255 / 0.12) 50%,
+      transparent 75%
+    );
+  }
+  /* Once loaded, the screenshot fades in quickly over where the wave was. */
+  .img-skeletons .shot-img[data-loaded],
+  .img-skeletons .gal-img[data-loaded] {
+    animation: shot-fade-in 0.35s ease-out;
+  }
+  @keyframes shot-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes shot-shimmer {
+    from {
+      background-position: 130% 0;
+    }
+    to {
+      background-position: -30% 0;
+    }
+  }
+  @keyframes shot-pulse {
+    50% {
+      opacity: 0.45;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .img-skeletons .shot-img[data-loaded],
+    .img-skeletons .gal-img[data-loaded] {
+      animation: none;
+    }
+    .img-skeletons .shot-img:not([data-loaded]) {
+      background-image: none;
+      animation: shot-pulse 1.6s ease-in-out infinite;
+    }
+    .img-skeletons .gal-img:not([data-loaded]) {
+      background-image: none;
+      animation: shot-pulse 1.6s ease-in-out infinite;
+    }
+  }
   /* Fixed-ratio frame: crop from the top-left, where the app's content starts. */
   .shot-fixed {
     aspect-ratio: var(--shot-ratio);
+    overflow: hidden;
+    border: 0;
+    border-radius: 10px;
+    background: hsl(var(--card));
+    box-shadow: var(--card-shadow);
   }
   .shot-fixed .shot-zoom,
   .shot-fixed [data-rmiz],
@@ -2695,7 +2919,11 @@
     height: 100%;
   }
   .shot-fixed .shot-img {
-    height: 100%;
+    /* Hide the capture's thin shadow halo behind the frame edge. */
+    width: calc(100% + 4px);
+    max-width: none;
+    margin: -2px;
+    height: calc(100% + 4px);
     object-fit: cover;
     object-position: left top;
   }
@@ -2737,16 +2965,22 @@
   }
   /* Light file is the default. The dark file replaces it with the theme.
      Two classes so this wins over .shot-fixed .shot-zoom { display: block }. */
-  .shot-zoom.shot-dark { display: none; }
-  .dark .shot-zoom.shot-light { display: none; }
-  .dark .shot-zoom.shot-dark { display: block; }
+  .shot-zoom.shot-dark {
+    display: none;
+  }
+  .dark .shot-zoom.shot-light {
+    display: none;
+  }
+  .dark .shot-zoom.shot-dark {
+    display: block;
+  }
   /* Same lift as .panel-pro. Corners stay rounded; no outline. */
-  .shot-shadow {
-    overflow: hidden;
+  .shot-shadow:not(.shot-fixed) {
+    overflow: visible;
     border: 0;
-    border-radius: 8px;
-    background: hsl(var(--card));
-    box-shadow: var(--card-shadow);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
   /* Explorer, screenshots only: each shot draws its own frame (same lift as
      Before the call). The window must not add a second box or clip that shadow. */
@@ -2773,13 +3007,20 @@
   .shot-flat {
     box-shadow: none;
   }
+  .shot-flat .shot-img,
+  .shot-flush .shot-img {
+    filter: none !important;
+  }
   /* Use-case hero: the screenshot runs off the right edge of the page. */
   @media (min-width: 1024px) {
+    /* Like the home hero: the window runs off the page and its right edge
+       fades out. --uc-fade-start / --uc-fade-end set where the fade runs. */
     .uc-hero-shot {
+      --uc-fade-start: 58%;
+      --uc-fade-end: 82%;
       width: max(100%, 720px);
-      border-right-width: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      -webkit-mask-image: linear-gradient(to right, #000 var(--uc-fade-start), transparent var(--uc-fade-end));
+      mask-image: linear-gradient(to right, #000 var(--uc-fade-start), transparent var(--uc-fade-end));
     }
   }
 
@@ -2790,6 +3031,85 @@
     justify-content: flex-end;
     gap: 18px;
     margin-bottom: 22px;
+  }
+  .gal-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  /* Category tabs over the row; progress and arrows under it, on the right. */
+  .gal-controls-cats {
+    justify-content: flex-start;
+  }
+  .gal-controls-bottom {
+    justify-content: flex-end;
+    margin-top: 18px;
+    margin-bottom: 0;
+  }
+  .gal-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .gal-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 14px;
+    border: 1px solid hsl(var(--border));
+    border-radius: 999px;
+    background: hsl(var(--card));
+    color: hsl(var(--muted-foreground));
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+  .gal-cat:hover {
+    color: hsl(var(--foreground));
+    border-color: hsl(var(--foreground) / 0.25);
+  }
+  .gal-cat[aria-selected="true"] {
+    background: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  .gal-cat:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 3px;
+  }
+  .gal-cat-count {
+    display: inline-grid;
+    place-items: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: hsl(var(--muted));
+    color: hsl(var(--muted-foreground));
+    font-size: 11.5px;
+    font-weight: 700;
+  }
+  .gal-cat[aria-selected="true"] .gal-cat-count {
+    background: hsl(var(--primary-foreground) / 0.22);
+    color: hsl(var(--primary-foreground));
+  }
+  @media (max-width: 640px) {
+    .gal-cats {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      width: 100%;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .gal-cat {
+      flex: none;
+    }
   }
   /* Where the row is: a thumb the width of the visible share of slides.
      Also a scrubber: a tall hit area around a thin line; click or drag. */
@@ -2868,10 +3188,74 @@
   .gal-controls .gal-btn:hover:not(:disabled) {
     border-color: hsl(var(--primary) / 0.55);
   }
-  .gal-btn:focus-visible,
-  .gal-viewport:focus-visible {
+  /* Full screen: arrows swap the screenshot in place with a short fade. */
+  /* Zooming out also fades (set on the image itself, see ScreenshotGallery),
+     revealing the card's own thumbnail underneath. */
+  .gal-card [data-rmiz-content] {
+    visibility: visible !important;
+  }
+  /* Dragging left or right in the full-screen view steps; no text selection. */
+  dialog[data-rmiz-modal] {
+    user-select: none;
+  }
+  .gal-zoom-alt {
+    position: absolute;
+    transform-origin: top left;
+    object-fit: contain;
+    pointer-events: none;
+    animation: gal-zoom-fade 0.24s ease both;
+    transition: opacity 0.3s;
+  }
+  /* The screenshot being replaced fades out as the new one fades in, so a
+     smaller or differently shaped image never shows the old one round it. */
+  .gal-zoom-alt-prev {
+    animation: gal-zoom-fade-out 0.24s ease both;
+  }
+  @keyframes gal-zoom-fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  .gal-zoom-alt[data-state="UNLOADING"] {
+    opacity: 0;
+  }
+  @keyframes gal-zoom-fade {
+    from {
+      opacity: 0;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gal-zoom-alt {
+      animation: none;
+    }
+    .gal-zoom-alt-prev {
+      display: none;
+    }
+  }
+  .gal-btn:focus-visible {
     outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
+  }
+  /* The slider: nothing in it can be selected or dragged out while swiping,
+     and it shows no focus ring (arrow keys still work while it has focus). */
+  .gal,
+  .gal * {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .gal img {
+    -webkit-user-drag: none;
+  }
+  .gal-viewport:focus,
+  .gal-viewport:focus-visible,
+  .gal-viewport [data-rmiz-btn-zoom]:focus,
+  .gal-viewport [data-rmiz-btn-zoom]:focus-visible,
+  .gal-viewport [data-rmiz-content]:focus,
+  .gal-progress:focus,
+  .gal-progress:focus-visible {
+    outline: none;
+    box-shadow: none;
   }
   /* Embla viewport: starts on the container's left edge and runs off the
      right edge of the page, so the next screenshot always peeks in. */
@@ -2892,6 +3276,7 @@
     touch-action: pan-y pinch-zoom;
   }
   .gal-card {
+    position: relative;
     flex: 0 0 min(78vw, 440px);
     min-width: 0;
   }
@@ -2920,6 +3305,113 @@
     object-position: left top;
     cursor: zoom-in;
   }
+  /* ============ Shot frame (components/ui/ShotFrame.tsx) ============
+     A screenshot on a soft mesh gradient, ShotCandy-style. The window is drawn
+     --sc-scale times the frame width and cropped by the frame's edges.
+     Profiles set --sc-bg, a two-colour diagonal (light); .dark swaps in a deeper version. */
+  .sc {
+    --sc-scale: 1.4;
+    --sc-pad-x: 6%;
+    --sc-pad-y: 8.6%;
+    --sc-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 14px;
+    background: var(--sc-bg);
+  }
+  .sc-stage {
+    position: absolute;
+    top: var(--sc-pad-y);
+    width: calc(var(--sc-scale) * 100%);
+    overflow: hidden;
+    border-radius: var(--sc-radius);
+    box-shadow:
+      0 18px 50px -12px rgb(15 23 42 / 0.28),
+      0 2px 6px rgb(15 23 42 / 0.08);
+  }
+  .sc-pos-bottom-right .sc-stage {
+    left: var(--sc-pad-x);
+  }
+  .sc-pos-bottom-left .sc-stage {
+    right: var(--sc-pad-x);
+  }
+  .sc-pos-center .sc-stage {
+    top: 50%;
+    left: 50%;
+    width: calc(100% - 2 * var(--sc-pad-x));
+    transform: translate(-50%, -50%);
+  }
+  .sc-stage [data-rmiz],
+  .sc-stage [data-rmiz-content] {
+    display: block;
+  }
+  .sc-stage img,
+  .sc-img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Light profiles: a plain two-colour diagonal, sampled from ShotCandy frames. */
+  .sc-sky {
+    --sc-bg: linear-gradient(to bottom right, #7ab6fb 0%, #a8f0cf 100%);
+  }
+  .sc-peach {
+    --sc-bg: linear-gradient(to bottom right, #f7a98a 0%, #f8c8ec 100%);
+  }
+  .sc-mint {
+    --sc-bg: linear-gradient(to bottom right, #c6f6e1 0%, #92d2f2 100%);
+  }
+  .sc-sun {
+    --sc-bg: linear-gradient(to bottom right, #ffd98a 0%, #ff9f8f 100%);
+  }
+  .sc-lavender {
+    --sc-bg: linear-gradient(to bottom right, #b4cbfb 0%, #f2cdf3 100%);
+  }
+  .sc-rose {
+    --sc-bg: linear-gradient(to bottom right, #ffb3cb 0%, #b7b4ff 100%);
+  }
+
+  /* Dark: the same two hues, deeper and less saturated, so cards don't glare. */
+  .dark .sc-stage {
+    box-shadow:
+      0 18px 50px -12px rgb(0 0 0 / 0.6),
+      0 0 0 1px rgb(255 255 255 / 0.06);
+  }
+  .dark .sc-sky {
+    --sc-bg: linear-gradient(to bottom right, #1f4f86 0%, #1d6b55 100%);
+  }
+  .dark .sc-peach {
+    --sc-bg: linear-gradient(to bottom right, #7a4232 0%, #6b3a5e 100%);
+  }
+  .dark .sc-mint {
+    --sc-bg: linear-gradient(to bottom right, #1f5d4a 0%, #1e4c6e 100%);
+  }
+  .dark .sc-sun {
+    --sc-bg: linear-gradient(to bottom right, #6e5420 0%, #6d2f2a 100%);
+  }
+  .dark .sc-lavender {
+    --sc-bg: linear-gradient(to bottom right, #263f73 0%, #5c3470 100%);
+  }
+  .dark .sc-rose {
+    --sc-bg: linear-gradient(to bottom right, #6d2a45 0%, #383a80 100%);
+  }
+
+  /* Gallery cards: the frame is the card; hover lifts it a little. */
+  .gal-card .sc {
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .gal-card .sc:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--card-shadow-hover);
+  }
+  .gal-card .sc .gal-img {
+    height: auto;
+    object-fit: initial;
+  }
+
   .gal-cap {
     margin-top: 14px;
     font-size: 15.5px;
@@ -2971,6 +3463,55 @@
     color: rgb(255 255 255 / 0.6);
     font-size: 13px;
     font-variant-numeric: tabular-nums;
+  }
+
+  /* Full-screen view: large arrows centred in the empty
+     band beside the image, a slim caption under it. Phones keep the bottom bar. */
+  .gal-zoom-side {
+    display: none;
+  }
+  @media (min-width: 640px) {
+    .gal-zoom-side {
+      --gal-side-size: 64px;
+      position: fixed;
+      top: 50%;
+      z-index: 1;
+      display: grid;
+      width: var(--gal-side-size);
+      height: var(--gal-side-size);
+      border-color: transparent;
+      background: rgb(52 58 74 / 0.6);
+      opacity: 0;
+      transform: translateY(-50%);
+      transition:
+        opacity 0.2s ease,
+        border-color 0.18s ease,
+        background-color 0.18s ease;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+    }
+    .gal-zoom-side:hover:not(:disabled) {
+      border-color: rgb(255 255 255 / 0.55);
+      background: rgb(60 67 85 / 0.72);
+    }
+    .gal-zoom-side[data-state="LOADED"] {
+      opacity: 1;
+    }
+    /* Middle of the band; on narrow windows, just inside the edge (over the
+       image, where the blur keeps it readable). */
+    .gal-zoom-side-prev {
+      left: max(12px, calc(var(--gal-side-gap, 0px) / 2 - var(--gal-side-size) / 2));
+    }
+    .gal-zoom-side-next {
+      right: max(12px, calc(var(--gal-side-gap, 0px) / 2 - var(--gal-side-size) / 2));
+    }
+    .gal-zoom-bar-sides {
+      bottom: 8px;
+      padding: 6px 16px;
+    }
+    .gal-zoom-bar-sides > .gal-btn {
+      display: none;
+    }
   }
 
   /* ============ Knowledge: scan steps + the four parts ============ */
@@ -4117,7 +4658,7 @@
   }
   .hero-shot {
     --shot-overflow: 120%;
-    --shot-fade: 96%;
+    --shot-fade: 80%;
     --shot-trim: 0px;
     position: relative;
     z-index: 1;
@@ -4139,9 +4680,15 @@
   .hero-shot picture {
     display: block;
   }
-  .hero-shot-dark { display: none; }
-  .dark .hero-shot-light { display: none; }
-  .dark .hero-shot-dark { display: block; }
+  .hero-shot-dark {
+    display: none;
+  }
+  .dark .hero-shot-light {
+    display: none;
+  }
+  .dark .hero-shot-dark {
+    display: block;
+  }
   .hero-shot picture {
     transform: scale(var(--shot-zoom));
     transform-origin: top left;
@@ -4245,7 +4792,8 @@
        Zoom stays on the base .hero-media rule so it does not grow the row. */
     .hero-shot {
       --shot-overflow: 105%;
-      --shot-fade: 96%;
+      /* A long, soft fade like the inner pages (about the last quarter). */
+      --shot-fade: 72%;
       max-height: 600px;
     }
   }

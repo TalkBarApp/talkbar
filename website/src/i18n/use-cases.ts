@@ -1,4 +1,5 @@
 import type { UseCaseContent, UseCaseFeatureBlockContent, UseCaseWorkflowItem } from '../content/use-cases/types';
+import { FEATURE_SHOTS } from '../content/use-cases/feature-shots';
 import type { Language } from './types';
 import { ruUseCaseContent } from './ru-use-cases';
 
@@ -145,6 +146,8 @@ function featureBlocks(
       heading: output.heading,
       body: output.body,
       subList: output.outputs,
+      mediaPlaceholder: 'Follow-up preview',
+      mediaLabel: 'Follow-up preview',
     },
   ];
 }
@@ -207,7 +210,8 @@ function makeContent(input: {
       paragraphs: input.problem,
       pullquote: input.pullquote,
     },
-    features: input.features,
+    // Each block shows the screen that matches its text (see feature-shots.ts).
+    features: input.features.map((f, i) => ({ ...f, shot: f.shot ?? FEATURE_SHOTS[input.slug]?.[i] })),
     examples: {
       ...input.examples,
       templatesLine: {

@@ -3,6 +3,7 @@ import type {
   UseCaseFeatureBlockContent,
   UseCaseWorkflowItem,
 } from "../content/use-cases/types";
+import { FEATURE_SHOTS } from "../content/use-cases/feature-shots";
 
 // Russian deep-page content for the Use Case / Industry pages. Mirrors the
 // structure of `use-cases.ts` (English) one to one so the same components render
@@ -152,6 +153,8 @@ function featureBlocks(
       heading: output.heading,
       body: output.body,
       subList: output.outputs,
+      mediaPlaceholder: "Превью итогов",
+      mediaLabel: "Превью итогов",
     },
   ];
 }
@@ -214,7 +217,8 @@ function makeContent(input: {
       paragraphs: input.problem,
       pullquote: input.pullquote,
     },
-    features: input.features,
+    // Each block shows the screen that matches its text (see feature-shots.ts).
+    features: input.features.map((f, i) => ({ ...f, shot: f.shot ?? FEATURE_SHOTS[input.slug]?.[i] })),
     examples: {
       ...input.examples,
       templatesLine: {

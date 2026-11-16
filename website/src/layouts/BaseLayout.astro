@@ -94,6 +94,28 @@ const siteSchemas = [
         .nav-label-full { display: inline; }
       }
     </style>
+    {/* Screenshot placeholders: until a screenshot has loaded it shows a soft
+        shimmering block (global.css, "Screenshot placeholder"). This marks each
+        one as loaded; the class on <html> keeps the placeholder off without JS. */}
+    <script is:inline>
+      (() => {
+        document.documentElement.classList.add('img-skeletons');
+        const pick = 'img.shot-img, img.gal-img';
+        const mark = (img) => img.setAttribute('data-loaded', '');
+        const settle = (event) => {
+          const img = event.target;
+          if (img instanceof HTMLImageElement && img.matches(pick)) mark(img);
+        };
+        document.addEventListener('load', settle, true);
+        document.addEventListener('error', settle, true);
+        const scan = () =>
+          document.querySelectorAll(pick).forEach((img) => {
+            if (img.complete && img.naturalWidth > 0) mark(img);
+          });
+        document.addEventListener('DOMContentLoaded', scan);
+        window.addEventListener('pageshow', scan);
+      })();
+    </script>
     <title>{title}</title>
     <meta name="description" content={description} />
     {(isPreviewBuild || noindex) && <meta name="robots" content="noindex, nofollow" />}

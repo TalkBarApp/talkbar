@@ -67,7 +67,7 @@ const { lang, id, label, items, mediaOnly = false } = Astro.props;
           {item.shot && mediaOnly ? (
             <Screenshot lang={lang} id={item.shot} class="shot-shadow" sizes="(min-width: 1280px) 800px, (min-width: 1024px) 64vw, 100vw" />
           ) : item.shot ? (
-            <Screenshot lang={lang} id={item.shot} aspect="16/10" sizes="(min-width: 1280px) 780px, (min-width: 1024px) 62vw, 100vw" />
+            <Screenshot lang={lang} id={item.shot} class="cx-shot" sizes="(min-width: 1280px) 780px, (min-width: 1024px) 62vw, 100vw" />
           ) : (
             <div class="mockup-pro aspect-[16/10] w-full overflow-hidden">
               <div class="screenshot-placeholder-pro h-full w-full border-2 border-dashed border-primary/30" role="img" aria-label={item.title}>
@@ -79,11 +79,17 @@ const { lang, id, label, items, mediaOnly = false } = Astro.props;
             </div>
           )}
           {!mediaOnly && (
-            <>
-              {item.desc && <p class="cx-panel-desc">{item.desc}</p>}
-              <p class="q">{item.quoted ? `"${item.quote}"` : item.quote}</p>
-              {item.meta && <div class="meta">{item.meta}</div>}
-            </>
+            <div class="cx-cap">
+              <span class="cx-cap-ic icon-line" aria-hidden="true">
+                <Icon name={item.icon} width="20" height="20" is:inline />
+              </span>
+              <div class="cx-cap-copy">
+                <p class="cx-cap-title">{item.title}</p>
+                {item.desc && <p class="cx-panel-desc">{item.desc}</p>}
+                <p class="cx-cap-text">{item.quoted ? `"${item.quote}"` : item.quote}</p>
+                {item.meta && <div class="meta">{item.meta}</div>}
+              </div>
+            </div>
           )}
         </div>
       ))}
