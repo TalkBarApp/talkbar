@@ -4,7 +4,7 @@ import { afterEach, describe, expect, test, vi } from "vitest";
 async function robotsFor(buildDomain: string) {
   vi.stubEnv("BUILD_DOMAIN", buildDomain);
   vi.resetModules();
-  const { GET } = await import("./robots.txt");
+  const { GET } = await import("./pages/robots.txt");
   const response = await GET({} as Parameters<typeof GET>[0]);
   return response.text();
 }
