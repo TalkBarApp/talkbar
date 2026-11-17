@@ -78,6 +78,7 @@ into the next conversation.
 - **Ask TalkBar** · chat with a session, a document, or everything you've kept, with sources.
 - **Searchable memory** · every transcript, note, and document, searchable on your computer.
 - **Exports your way** · Markdown, HTML, JSON, subtitles, or ZIP, or straight to Obsidian or Notion.
+- **Share with a web link** · publish a read-only page of a session, note, or answer, public or private, and revoke it any time.
 
 ### Run it your way
 
