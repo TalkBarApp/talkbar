@@ -92,4 +92,4 @@ navigation:
 - [Приватный режим ИИ](/ai/private-ai-mode)
 - [Локальные модели](/ai/local-models)
 - [Как ускорить локальный ИИ](/ai/speed-up-ai)
-- [Данные и резервные копии](/settings/data-and-backup)
+- [Данные и копии](/settings/data-and-backup)

@@ -925,6 +925,17 @@
     transform: scale(1.12);
   }
 
+  /* Download buttons show the Windows logo until the visitor is known to use a
+     Mac (`data-download-os`, set by src/lib/downloadFlow.ts). */
+  .download-icon-mac,
+  html[data-download-os="mac"] .download-icon-windows {
+    display: none;
+  }
+
+  html[data-download-os="mac"] .download-icon-mac {
+    display: block;
+  }
+
   /* ============================================================
      Studio mockup component system
      (ported from design/Mocks, mapped to project HSL tokens)

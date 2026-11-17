@@ -10,7 +10,7 @@ This walkthrough takes you from an empty workspace to a finished session with a 
 ## Before you start
 
 - **Microphone.** Connect the microphone you want to use. In **Settings → Voice → Recording** you can pick it and click **Start test** under **Test audio input** to hear how it sounds.
-- **Microphone access.** Allow TalkBar to use the microphone in your system privacy settings.
+- **Permissions.** On Windows, allow TalkBar to use the microphone in the Windows privacy settings. On a Mac, a session needs the permissions its audio source records with: **Microphone** for your voice, and **System Audio Recording** (**Screen & System Audio Recording** before macOS 14.4) for the other people in a call. Until those are allowed, **Start session** in the New session window waits and the **Audio** section says which permission is missing, with a link to Settings. A permission macOS can't report doesn't block the start. Check them in **Settings → General → Allow TalkBar on this Mac**.
 - **Speech model.** Transcription runs on this computer. If the model is missing when you start, TalkBar tells you to download it in **Settings → Voice**.
 - **AI.** Summaries and titles need an AI model. You chose one during setup; to change it, click the TalkBar logo and choose **Set up AI…**.
 

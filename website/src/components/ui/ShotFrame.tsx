@@ -1,8 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
-
-/** Background colour profiles. Each has a light and a muted dark version (global.css, "Shot frame"). */
-export const SHOT_FRAME_PROFILES = ['sky', 'peach', 'mint', 'sun', 'lavender', 'rose'] as const;
-export type ShotFrameProfile = (typeof SHOT_FRAME_PROFILES)[number];
+import type { ShotFrameProfile } from './shotFrameProfiles';
 
 /** Where the window sits on the gradient. The corner it points to is cut off by the frame. */
 export type ShotFramePosition = 'bottom-right' | 'bottom-left' | 'center';

@@ -18,7 +18,7 @@ const props = defineProps({
 })
 
 const route = useRoute()
-const { t, repoUrl } = useDocsStrings()
+const { t, repoUrl, downloadUrl } = useDocsStrings()
 const { aboutLinkHref, websiteUrl } = useAboutLinks()
 
 const isMcpRoute = computed(() => isMcpPath(route.path))
@@ -33,7 +33,7 @@ const { data: aboutMenu } = await useAsyncData('about-menu', () =>
 // The mobile menu lists the website links as one more group.
 const downloadLink = {
   label: t('download'),
-  to: 'https://download.talkbar.ru',
+  to: downloadUrl,
   target: '_blank',
 }
 
@@ -79,7 +79,7 @@ const panelLinks = computed(() => {
         <ColorThemeToggle class="header-round hidden sm:flex" />
         <UColorModeButton class="header-round" />
         <UButton
-          to="https://download.talkbar.ru"
+          :to="downloadUrl"
           target="_blank"
           rel="noopener noreferrer"
           :label="t('download')"

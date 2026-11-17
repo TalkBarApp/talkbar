@@ -9,25 +9,94 @@ interface ModalProps {
   children: React.ReactNode;
 }
 
+const FOCUSABLE =
+  'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+// Safari does not focus a link or button on click, so the control that opened a
+// modal is remembered from the click itself (capture phase, before any handler
+// opens the modal). The hidden link that starts a download is skipped.
+let lastClick: { control: HTMLElement | null; at: number } | null = null;
+let trackingClicks = false;
+const rememberClick = (event: MouseEvent) => {
+  const control =
+    event.target instanceof Element ? event.target.closest<HTMLElement>(FOCUSABLE) : null;
+  if (control?.hidden) return;
+  lastClick = { control, at: performance.now() };
+};
+
+// A modal opened by a click opens within moments of it; anything older was not
+// the trigger, so a keyboard or programmatic open uses the focused element.
+const CLICK_OPEN_WINDOW_MS = 1000;
+
+// A trigger inside a menu that has since closed (the mobile drawer, whose
+// role="dialog" panel drops aria-modal) is offscreen; its toggle gets focus.
+const visibleReturnTarget = (control: HTMLElement) => {
+  const menu = control.closest<HTMLElement>('[role="dialog"][aria-modal="false"][id]');
+  return (menu && document.querySelector<HTMLElement>(`[aria-controls="${menu.id}"]`)) ?? control;
+};
+
 const Modal = ({ open, onClose, labelledById, closeLabel, children }: ModalProps) => {
   const panelRef = useRef<HTMLDivElement>(null);
 
-  const handleEscape = useCallback(
+  // Escape closes; Tab and Shift+Tab wrap around inside the panel.
+  const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      const panel = panelRef.current;
+      if (e.key !== "Tab" || !panel) return;
+      const focusable = Array.from(panel.querySelectorAll<HTMLElement>(FOCUSABLE));
+      if (focusable.length === 0) {
+        e.preventDefault();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const current = document.activeElement;
+      const outside = !panel.contains(current);
+      if (e.shiftKey && (outside || current === first)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (outside || current === last)) {
+        e.preventDefault();
+        first.focus();
+      }
     },
     [onClose],
   );
 
   useEffect(() => {
     if (!open) return;
-    document.addEventListener("keydown", handleEscape);
+    document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
     };
-  }, [open, handleEscape]);
+  }, [open, handleKeyDown]);
+
+  useEffect(() => {
+    if (trackingClicks) return;
+    trackingClicks = true;
+    document.addEventListener("click", rememberClick, true);
+  }, []);
+
+  // Closing returns focus to whatever opened the modal: the control just
+  // clicked, else the focused element (keyboard or programmatic opens).
+  useEffect(() => {
+    if (!open) return;
+    const recent = lastClick && performance.now() - lastClick.at < CLICK_OPEN_WINDOW_MS;
+    const clicked = recent && lastClick?.control?.isConnected ? lastClick.control : null;
+    lastClick = null;
+    const active = document.activeElement;
+    const opener =
+      clicked ?? (active instanceof HTMLElement && active !== document.body ? active : null);
+    return () => {
+      if (opener?.isConnected) visibleReturnTarget(opener).focus({ preventScroll: true });
+    };
+  }, [open]);
 
   // Focus the control marked `data-autofocus`, else the first field, once, when
   // the modal opens. Kept separate from the keydown effect so it does not

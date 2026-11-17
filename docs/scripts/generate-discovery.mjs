@@ -20,8 +20,8 @@ const index = [
   '# TalkBar Documentation',
   '',
   locale === 'ru'
-    ? '> Документация TalkBar: приватный ИИ-помощник для заметок для Windows и Mac (скоро), локальная транскрибация, встречи, MCP и CLI.'
-    : '> Official documentation for TalkBar, the private AI note taker for Windows and Mac (soon): local transcription, meetings, voice notes, MCP and CLI.',
+    ? '> Документация TalkBar: приватный ИИ-помощник для заметок для Windows и Mac, локальная транскрибация, встречи, MCP и CLI.'
+    : '> Official documentation for TalkBar, the private AI note taker for Windows and Mac: local transcription, meetings, voice notes, MCP and CLI.',
   '',
   `Language: ${locale}. Each entry links to the canonical page and its Markdown version.`,
   '',
@@ -69,7 +69,8 @@ for (const { path, data, content } of pages) {
     if (inCode) return line
     if (/^\s*#windows\s*$/.test(line)) return '### Windows\n'
     if (/^\s*#macos\s*$/.test(line)) return '### macOS\n'
-    if (!/^\s*::/.test(line)) return line
+    // An inline HTML link (used to open a page in a new tab) becomes a Markdown link.
+    if (!/^\s*::/.test(line)) return line.replace(/<a\b[^>]*\bhref="([^"]*)"[^>]*>(.*?)<\/a>/g, '[$2]($1)')
     // Field names/types and tab labels carry API semantics, not just layout.
     const attr = key => new RegExp(`${key}="([^"]*)"`).exec(line)?.[1]
     if (/^\s*::field\{/.test(line)) {

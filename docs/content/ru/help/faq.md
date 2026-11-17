@@ -97,7 +97,7 @@ navigation:
 
 ### Есть ли версия для Mac?
 
-Mac (скоро). Сейчас TalkBar работает в Windows. Шаги для Mac уже есть в разделе [Установка и обновление](/getting-started/install-and-update).
+Да. TalkBar работает на Mac с чипом Apple (M1 или новее) и macOS 13.4 или новее; компьютеры Mac с процессором Intel не поддерживаются. Кроме того, TalkBar работает в Windows 10 и 11 (64-разрядных) и нативно в Windows 11 на Arm. См. [Установка и обновление](/getting-started/install-and-update).
 
 ### Как работают обновления?
 

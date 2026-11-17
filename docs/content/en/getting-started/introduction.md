@@ -1,6 +1,6 @@
 ---
 title: Introduction
-description: TalkBar is a private AI note taker for Windows and Mac (soon) that records meetings and calls from your desktop and keeps your data on your computer.
+description: TalkBar is a private AI note taker for Windows and Mac that records meetings and calls from your desktop and keeps your data on your computer.
 navigation:
   icon: i-heroicons-sparkles
 ---
@@ -45,7 +45,7 @@ Between conversations you can also write notes, chat with your sessions and docu
 
 | Requirement | Details |
 | --- | --- |
-| Operating system | 64-bit Windows (x64, and Arm on Windows 11). Mac (soon). Check the release for supported versions and hardware. |
+| Operating system | Windows 10 or 11, 64-bit, on an Intel or AMD processor. Windows 11 on Arm, with a native Arm64 version. A Mac with Apple silicon (M1 or later) and macOS 13.4 or later; Intel Macs aren't supported. |
 | Disk space | Room for the speech, speaker and AI models you download, plus your recordings. First-run setup shows the size of each download and the free space on the drive. |
 | Internet | Needed to download the installer and models, and for cloud AI providers, sharing, calendar subscriptions and updates. Transcription and Built-in AI run on this computer once their models are downloaded. |
 | Audio | A microphone to record your own voice. Without one you can still record system audio. |

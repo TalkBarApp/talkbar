@@ -14,7 +14,8 @@ import {
 } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { Controlled as ControlledZoom, type ControlledProps } from 'react-medium-image-zoom';
-import ShotFrame, { SHOT_FRAME_PROFILES, type ShotFrameProfile } from './ui/ShotFrame';
+import ShotFrame from './ui/ShotFrame';
+import { SHOT_FRAME_PROFILES, type ShotFrameProfile } from './ui/shotFrameProfiles';
 
 type ZoomContentProps = Parameters<NonNullable<ControlledProps['ZoomContent']>>[0];
 
@@ -240,6 +241,7 @@ export default function ScreenshotGallery({ items: allItems, labels, categories 
   const zoomSrcs = useMemo(() => tour.map((t) => fullSrc(t.item)), [tour, fullSrc]);
 
   // While zoomed, step to the neighbouring screenshot in place.
+  const stepTarget = useRef<number | null>(null);
   const step = useCallback(
     (dir: -1 | 1) => {
       if (open === null || tour.length < 2) return;
@@ -263,7 +265,6 @@ export default function ScreenshotGallery({ items: allItems, labels, categories 
     },
     [open, view, tour.length, tourStart, zoomSrcs],
   );
-  const stepTarget = useRef<number | null>(null);
 
   // Warm up the screenshots either side of the one in view.
   useEffect(() => {
@@ -278,19 +279,18 @@ export default function ScreenshotGallery({ items: allItems, labels, categories 
     if (open !== null) opened.current = tourStart + open;
   }, [open, tourStart]);
 
-  // Once closed: if the arrows moved to another screenshot that is out of
+  // On closing: if the arrows moved to another screenshot that is out of
   // sight, bring it into the row, but only after the view has fully closed,
-  // so nothing moves under the closing animation.
-  useEffect(() => {
-    if (open !== null || view === null) return;
-    const target = view;
+  // so nothing moves under the closing animation. `view` keeps the last
+  // screenshot until the next open sets it again.
+  const bringIntoRow = (target: number | null) => {
     stepTarget.current = null;
-    setView(null);
-    const dest = tour[target];
+    const dest = target === null ? undefined : tour[target];
     if (target === opened.current || !embla || !dest) return;
-    const start = performance.now();
-    const tick = () => {
-      if (document.querySelector('dialog[data-rmiz-modal][open]') && performance.now() - start < 1500) {
+    let start: number | null = null;
+    const tick = (now: number) => {
+      start ??= now;
+      if (document.querySelector('dialog[data-rmiz-modal][open]') && now - start < 1500) {
         requestAnimationFrame(tick);
         return;
       }
@@ -302,7 +302,7 @@ export default function ScreenshotGallery({ items: allItems, labels, categories 
       }
     };
     requestAnimationFrame(tick);
-  }, [open, view, embla, showSlide, tour, category]);
+  };
 
   const stepRef = useRef(step);
   useEffect(() => {
@@ -420,7 +420,7 @@ export default function ScreenshotGallery({ items: allItems, labels, categories 
             } else if (modalState !== 'UNLOADING') {
               setLayers((l) => (l.cur === current ? l : { cur: current, prev: l.cur }));
             }
-          }, [current, modalState]);
+          }, [current, modalState, own]);
           const swapped = layers.cur !== own || layers.prev !== null;
           const modalImg = img as ReactElement<{ style?: CSSProperties; className?: string }> | null;
           const box = modalImg?.props.style;
@@ -587,6 +587,7 @@ export default function ScreenshotGallery({ items: allItems, labels, categories 
                   // A closing dialog reports late; only let it clear its own image.
                   onZoomChange={(zoomed) => {
                     if (zoomed) setView(tourStart + i);
+                    else if (open === i) bringIntoRow(view);
                     setOpen((current) => (zoomed ? i : current === i ? null : current));
                   }}
                   zoomImg={{ src: full, srcSet: `${full} 2400w`, sizes: '100vw', alt: item.alt }}

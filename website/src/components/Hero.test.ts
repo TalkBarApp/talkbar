@@ -15,10 +15,12 @@ describe("TalkBar homepage hero and brand identity", () => {
     expect(translations).toContain("No cloud");
     expect(translations).toContain("Runs on your machine");
     expect(translations).toContain("Local AI");
-    expect(translations).toContain('"hero.cta.primary": "Download for Windows"');
-    expect(translations).toContain('"cta.button": "Download for Windows"');
+    expect(translations).toContain('"hero.cta.primary": "Download TalkBar"');
+    expect(translations).toContain('"cta.button": "Download TalkBar"');
     expect(translations).toContain('"nav.downloadFree": "Download"');
     expect(translations).not.toContain("Download for Mac and Windows");
+    expect(translations).toContain("Windows · Windows on Arm · Mac with Apple silicon");
+    expect(translations).not.toMatch(/Mac version in progress|coming soon|emulation/i);
   });
 
   test("does not hide above-fold hero content before JavaScript runs", () => {
@@ -33,7 +35,7 @@ describe("TalkBar homepage hero and brand identity", () => {
     const css = read("src/styles/global.css");
     const pkg = read("package.json");
 
-    expect(translations).toContain("TalkBar: Private AI Note Taker for Windows, No Meeting Bot");
+    expect(translations).toContain("TalkBar: Private AI Note Taker for Windows and Mac");
     expect(layout).toContain('og:site_name" content="TalkBar"');
     expect(layout).toContain("name: 'TalkBar'");
     expect(layout).toContain('<html lang={lang} class="color-theme-blue">');
@@ -45,16 +47,17 @@ describe("TalkBar homepage hero and brand identity", () => {
     expect(css).toContain("#054df6");
   });
 
-  test("keeps the legacy Windows download icon and hover scale treatment", () => {
+  test("keeps the Windows download icon, adds the Mac one, and keeps the hover scale", () => {
     // The button markup lives in one shared component now; the guarantees
-    // (Windows glyph, hover zoom, lift on hover) are asserted at its source.
+    // (Windows and Mac glyphs, hover zoom, lift on hover) are asserted at its source.
     const button = read("src/components/ui/DownloadButton.astro");
     const hero = read("src/components/Hero.astro");
     const cta = read("src/components/CTASection.astro");
     const css = read("src/styles/global.css");
 
     expect(button).toContain('viewBox="0 0 164.11 144.637"');
-    expect(button).toContain("download-icon");
+    expect(button).toContain("download-icon download-icon-windows");
+    expect(button).toContain("download-icon download-icon-mac");
     expect(button).toContain("data-download-link");
     expect(button).toContain("group btn-pill btn-primary");
     expect(hero).toContain("<DownloadButton");
@@ -63,5 +66,6 @@ describe("TalkBar homepage hero and brand identity", () => {
     expect(css).toContain("transform: translateY(-1px)");
     expect(css).toContain(".group:hover .download-icon");
     expect(css).toContain("scale(1.12)");
+    expect(css).toContain('html[data-download-os="mac"] .download-icon-mac');
   });
 });

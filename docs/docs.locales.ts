@@ -11,6 +11,8 @@ export interface DocsLocaleConfig {
   websiteUrl: { production: string; preview: string }
   /** License portal for this language (pricing, contact): production, and the preview used by dev builds */
   licenseUrl: { production: string; preview: string }
+  /** Download page for this language, which lists every installer */
+  downloadUrl: string
   siteName: string
   description: string
   strings: Record<string, string>
@@ -23,9 +25,10 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     siteUrl: 'https://docs.talkbar.app',
     websiteUrl: { production: 'https://www.talkbar.app', preview: 'https://preview.talkbar.app' },
     licenseUrl: { production: 'https://license.talkbar.app', preview: 'https://license.preview.talkbar.app' },
+    downloadUrl: 'https://download.talkbar.app',
     siteName: 'TalkBar Documentation',
     description:
-      'Documentation for TalkBar, the private AI note taker for Windows and Mac (soon): capture meetings and calls, dictate voice notes, and keep every conversation as searchable local memory.',
+      'Documentation for TalkBar, the private AI note taker for Windows and Mac: capture meetings and calls, dictate voice notes, and keep every conversation as searchable local memory.',
     strings: {
       docsTitle: 'TalkBar Docs',
       mcpTitle: 'TalkBar MCP',
@@ -67,9 +70,10 @@ export const docsLocales: Record<DocsLocale, DocsLocaleConfig> = {
     siteUrl: 'https://docs.talkbar.ru',
     websiteUrl: { production: 'https://www.talkbar.ru', preview: 'https://preview.talkbar.ru' },
     licenseUrl: { production: 'https://license.talkbar.ru', preview: 'https://license.preview.talkbar.ru' },
+    downloadUrl: 'https://download.talkbar.ru',
     siteName: 'Документация TalkBar',
     description:
-      'Документация TalkBar — приватного ИИ-помощника для заметок для Windows и Mac (скоро): записывайте встречи и звонки, диктуйте голосовые заметки и храните каждый разговор как локальную память с поиском.',
+      'Документация TalkBar — приватного ИИ-помощника для заметок для Windows и Mac: записывайте встречи и звонки, диктуйте голосовые заметки и храните каждый разговор как локальную память с поиском.',
     strings: {
       docsTitle: 'TalkBar Docs',
       mcpTitle: 'TalkBar MCP',

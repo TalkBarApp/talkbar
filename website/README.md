@@ -1,6 +1,6 @@
 # TalkBar Website
 
-Astro website for TalkBar, a private conversation intelligence app for Mac and Windows. The public site covers the homepage plus deep Use Case and Industry pages, sharing one layout, navbar, footer, metadata, brand styling, and download flow.
+Astro website for TalkBar, a private conversation intelligence app for Windows (x64 and Arm64) and Macs with Apple silicon. The public site covers the homepage plus deep Use Case and Industry pages, sharing one layout, navbar, footer, metadata, brand styling, and download flow.
 
 The Use Case and Industry pages are linked from the navbar dropdowns, the homepage, and the footer. The English sites (`www.talkbar.app`, `preview.talkbar.app`) and the fully translated Russian sites (`www.talkbar.ru`, `preview.talkbar.ru`) are separate builds of the same pages at the same paths (see [Russian site](#russian-site-wwwtalkbarru-and-previewtalkbarru)).
 
@@ -127,7 +127,7 @@ build.
    | `PREVIEW_MODAL_ON_DOWNLOAD` | leave unset (real download) | Optional. `true` brings back the early-access modal on download buttons. |
    | `EARLY_ACCESS_SUBSCRIBE_URL` | optional override | Defaults to the matching license-server `/api/early-access` in builds. |
    | `CONTACT_FORM_URL` | optional override | Defaults to the matching license-server `/api/contact` in builds. |
-   | `PRODUCT_UPDATES_SUBSCRIBE_URL` | optional override | Defaults to the matching license-server `/api/subscriptions/product-updates`; the download dialog's Mac form uses it. |
+   | `PRODUCT_UPDATES_SUBSCRIBE_URL` | optional override | Defaults to the matching license-server `/api/subscriptions/product-updates`, kept for a later standalone signup; no page uses it today. |
 
    See [Environment Variables](#environment-variables) for the full list. Anything not
    set falls back to the defaults baked into `astro.config.mjs`.
@@ -176,11 +176,11 @@ client React islands. Copy `env.sample` to `.env` to configure locally. Booleans
 | Variable | Purpose | Default |
 |---|---|---|
 | `BUILD_DOMAIN` | Set to `preview` for English preview, `preview-ru` for Russian preview, or `prod-ru` for Russian production; anything else builds English production | `prod` |
-| `DOWNLOAD_HOST` | Updater that serves the installer links (`/get/windows/x64`, `/get/windows/arm`) | `https://updater.talkbar.app` |
+| `DOWNLOAD_HOST` | Updater that serves the installer links (`/get/windows/x64`, `/get/windows/arm`, `/get/mac`) | `https://updater.talkbar.app` |
 | `PREVIEW_MODAL_ON_DOWNLOAD` | `1`/`true` → download buttons open the early-access modal; `0`/`false` → download buttons download TalkBar (see Downloads) | `false` |
 | `EARLY_ACCESS_SUBSCRIBE_URL` | Optional override for early-access signup endpoint | Matching license server in builds, empty in dev |
 | `CONTACT_FORM_URL` | Optional override for contact form endpoint | Matching license server in builds, empty in dev |
-| `PRODUCT_UPDATES_SUBSCRIBE_URL` | Optional override for the product-updates signup endpoint (the download dialog's Mac "notify me" form) | Matching license server in builds, empty in dev |
+| `PRODUCT_UPDATES_SUBSCRIBE_URL` | Optional override for the product-updates signup endpoint, kept for a later standalone signup (no page uses it today) | Matching license server in builds, empty in dev |
 | `CONTACT_EMAIL` | Address used for footer Support/Contact `mailto:` fallbacks | `contact@talkbar.app` |
 
 Download buttons are wired through `data-download-link` and `src/lib/download.ts`.
@@ -231,14 +231,20 @@ the website:
 
 - **Windows** (detected from the User-Agent; Chromium also reports Arm through a client
   hint): the click starts the download from `<DOWNLOAD_HOST>/get/windows/x64` or
-  `/get/windows/arm`, and the download dialog thanks the visitor, with every file listed
-  in case the download did not start.
-- **Mac**: no download yet. The dialog says the Mac version is coming, takes an email
-  for the product-updates list, and lists the Windows files.
-- **Anything else** (phones, Linux, unknown): the dialog lists every file to choose from.
+  `/get/windows/arm` (the native Arm64 build), and the download dialog thanks the
+  visitor, with every file listed in case the download did not start.
+- **Mac**: the click starts the Apple silicon download from `<DOWNLOAD_HOST>/get/mac`,
+  with the same thanks. Safari and Firefox report every Mac as Intel, so a Mac is taken
+  to have Apple silicon unless Chromium reports an Intel processor (an Intel build of
+  Chromium under Rosetta reports one too); an Intel Mac opens the dialog, which says the Mac version needs Apple silicon and macOS 13.4 or later.
+- **Anything else** (phones, Linux, 32-bit Windows, unknown): the dialog lists every
+  file to choose from.
 - `?download` in the address opens the dialog on load.
 
-Each button's own `href` is the Windows x64 link, used without JavaScript. Browsers
+The buttons show the Windows logo, or the Apple logo once a Mac is detected
+(`data-download-os` on `<html>`). Each button's own `href` is the download page
+(`https://download.talkbar.app`, or `https://download.talkbar.ru` on the Russian
+sites), used without JavaScript, so no system is handed another system's file. Browsers
 do not report when a download finishes, so the thanks appear as soon as it starts.
 The `/get` links pin first installs to the updater's `FIRST_INSTALL_VERSION`.
 

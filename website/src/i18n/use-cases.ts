@@ -3,7 +3,7 @@ import { FEATURE_SHOTS } from '../content/use-cases/feature-shots';
 import type { Language } from './types';
 import { ruUseCaseContent } from './ru-use-cases';
 
-const download = { label: 'Download for Windows', href: '/#cta' };
+const download = { label: 'Download TalkBar', href: '/#cta' };
 const examples = { label: 'See examples', href: '#examples' };
 
 const deepCtaProofItems = [
@@ -231,9 +231,9 @@ function makeContent(input: {
       eyebrow: input.ctaEyebrow,
       headline: input.ctaHeadline,
       accent: input.ctaAccent,
-      ctaLabel: 'Download for Windows',
+      ctaLabel: 'Download TalkBar',
       ctaHref: '/#cta',
-      platformsNote: 'Available for Windows · Mac version in progress',
+      platformsNote: 'Windows · Windows on Arm · Mac with Apple silicon',
       proofItems: deepCtaProofItems,
     },
   };

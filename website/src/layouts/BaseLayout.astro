@@ -57,8 +57,8 @@ const publisher = {
   logo: new URL('/web-app-manifest-512x512.png', siteUrl).href,
 };
 
-// Same platforms as the docs (docs/composables/useDocsSeo.ts), so the product
-// description stays the same as Mac support arrives.
+// Same platforms as the docs (docs/composables/useDocsSeo.ts). Without
+// JavaScript, the download URL is the download page that lists every installer.
 const appSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
@@ -226,7 +226,6 @@ const siteSchemas = [
       earlyAccessSubscribeUrl={SITE_CONFIG.earlyAccessSubscribeUrl}
       contactFormUrl={SITE_CONFIG.contactFormUrl}
       contactEmail={SITE_CONFIG.contactEmail}
-      productUpdatesSubscribeUrl={SITE_CONFIG.productUpdatesSubscribeUrl}
     />
 
     <script is:inline>
@@ -301,7 +300,7 @@ const siteSchemas = [
       import { initDownloadButtons } from '../lib/downloadFlow';
 
       // A known system downloads at once and the dialog thanks the visitor;
-      // a Mac or an unknown system opens the dialog to choose, on this page.
+      // an unknown or unsupported system opens the dialog to choose, on this page.
       if (!SITE_CONFIG.previewModalOnDownload) initDownloadButtons();
     </script>
   </body>

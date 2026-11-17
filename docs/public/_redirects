@@ -1,8 +1,8 @@
-# Cloudflare Pages redirects (copied into dist/ by `npm run generate:cf-pages`).
+# Cloudflare Pages redirects, copied into dist/ with the rest of public/.
 
 # Short links
 /mcp/reference   /mcp/operations   301
-/download        https://download.talkbar.ru   302
+# /download is added here by nuxt.config.ts
 
 # Group paths from the sidebar have no page of their own
 /getting-started   /getting-started/introduction   301

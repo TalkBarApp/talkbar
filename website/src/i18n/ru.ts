@@ -146,11 +146,11 @@ const ru: Translations = {
   "hero.scene.cloud.left": "Без облака",
   "hero.scene.cloud.right": "без аккаунта",
   "hero.scene.cloud.gap": "20",
-  "hero.cta.primary": "Скачать для Windows",
+  "hero.cta.primary": "Скачать TalkBar",
   "hero.cta.secondary": "Как это работает",
   "hero.ctaNote":
     "Работает на вашем компьютере · Локальный ИИ или свой ключ · Без бота на встрече",
-  "hero.platforms": "Windows 10/11 · macOS скоро",
+  "hero.platforms": "Windows · Windows на Arm · Mac с чипом Apple",
   "hero.card.eyebrow": "Контекстная карточка в реальном времени",
   "hero.card.title": "Совпадение с памятью",
   "hero.card.confidence": "Высокая точность",
@@ -578,7 +578,7 @@ const ru: Translations = {
     "Ответы о приватности, локальной записи, памяти, экспорте и о том, для кого создан TalkBar.",
   "faq.what.q": "Что такое TalkBar?",
   "faq.what.a":
-    "Приватный ИИ для заметок со встреч на Windows. Он записывает встречи и звонки с вашего компьютера, показывает ваши карточки знаний во время разговора и превращает каждый звонок в сводки, задачи и заметки с поиском.",
+    "Приватный ИИ для заметок со встреч на Windows и Mac. Он записывает встречи и звонки с вашего компьютера, показывает ваши карточки знаний во время разговора и превращает каждый звонок в сводки, задачи и заметки с поиском.",
   "faq.different.q":
     "Чем TalkBar отличается от других ИИ-помощников для заметок?",
   "faq.different.a":
@@ -613,12 +613,12 @@ const ru: Translations = {
   "cta.headline.2": "в каждом разговоре?",
   "cta.subtitle":
     "Локальная расшифровка · Локальный ИИ или свой ключ · Запись без бота",
-  "cta.button": "Скачать для Windows",
-  "cta.platforms": "Доступно для Windows · версия для Mac в разработке",
+  "cta.button": "Скачать TalkBar",
+  "cta.platforms": "Windows · Windows на Arm · Mac с чипом Apple",
   "cta.chip.privacy": "Приватность в основе",
   "cta.chip.local": "Локальная расшифровка",
   "cta.chip.noAccounts": "Без аккаунта",
-  "cta.chip.platforms": "Windows",
+  "cta.chip.platforms": "Windows · Mac",
 
   "footer.brand": "TalkBar",
   "footer.homeAria": "TalkBar — на главную",
@@ -626,7 +626,7 @@ const ru: Translations = {
     "Ваша приватная память. Каждый разговор. До, во время и после.",
   "footer.lifecycle": "До, во время, после",
   "footer.featuresLink": "Возможности",
-  "footer.platformChip": "Доступно для Windows · версия для Mac в разработке",
+  "footer.platformChip": "Доступно для Windows и Mac",
   "footer.product": "Продукт",
   "footer.features": "Продукт",
   "footer.liveContextCards": "Знания",
@@ -662,24 +662,16 @@ const ru: Translations = {
   "download.subtitle": "Выберите версию для своего компьютера.",
   "download.thanks.title": "Спасибо, что скачали TalkBar!",
   "download.thanks.body":
-    "Загрузка началась. Когда она закончится, откройте установщик, чтобы установить TalkBar.",
+    "Загрузка началась. Когда она закончится, откройте файл, чтобы установить TalkBar.",
   "download.thanks.ok": "Хорошо",
   "download.notStarted": "Загрузка не началась? Выберите версию ниже.",
-  "download.windows.heading": "Windows 10 и 11 (64-бит)",
-  "download.windows.x64": "Intel или AMD (x64)",
-  "download.windows.arm": "Arm (arm64)",
-  "download.windows.armNote": "Для Windows 11 на Arm. Устанавливается версия x64, которая работает в режиме эмуляции.",
-  "download.mac.heading": "macOS",
-  "download.mac.soon": "Скоро",
-  "download.mac.notifyLink": "Сообщить, когда выйдет",
-  "download.mac.title": "TalkBar для Mac скоро выйдет",
-  "download.mac.body":
-    "Сейчас TalkBar работает на Windows. Оставьте email — мы сообщим, когда выйдет версия для Mac.",
-  "download.mac.submit": "Уведомить меня",
-  "download.mac.privacyNote":
-    "Вы будете получать новости TalkBar, в том числе о выходе версии для Mac. Отписаться можно в любой момент.",
-  "download.mac.success": "Спасибо! Мы напишем, когда TalkBar для Mac будет готов.",
-  "download.mac.windowsPrompt": "Есть компьютер с Windows? Скачайте TalkBar сейчас:",
+  "download.windows.x64": "Windows (Intel или AMD)",
+  "download.windows.x64Note": "Windows 10 или 11, 64-разрядная",
+  "download.windows.arm": "Windows на Arm",
+  "download.windows.armNote": "Windows 11 на Arm",
+  "download.mac.appleSilicon": "Mac с чипом Apple",
+  "download.mac.note": "Mac с чипом Apple, macOS 13.4 или новее",
+  "download.mac.intelNote": "Компьютеры Mac с процессором Intel не поддерживаются.",
   "contact.title": "Связаться с нами",
   "contact.subtitle":
     "Вопросы, отзывы или предложения? Напишите нам — мы ответим.",
@@ -899,7 +891,7 @@ const ru: Translations = {
     "TalkBar убирает бота со встречи, но не снимает с вас ответственность. Правила согласия на запись различаются по регионам и типам звонков — соблюдайте те, что применимы к вашим разговорам, как с любым инструментом записи.",
   "privacyPage.faqTitle": "Вопросы о приватности",
 
-  "stickyBar.cta": "Скачать для Windows",
+  "stickyBar.cta": "Скачать TalkBar",
   "stickyBar.note": "Работает на вашем компьютере",
   "stickyBar.dismiss": "Скрыть панель загрузки",
 
@@ -1195,7 +1187,7 @@ const ru: Translations = {
     "Да. Следите за разговором на другом языке — при желании рядом с оригиналом. Скачайте языковую пару один раз, и перевод будет идти на вашем компьютере, подтягиваясь по ходу.",
   "faq.platforms.q": "Есть ли TalkBar для Mac?",
   "faq.platforms.a":
-    "Пока нет. Сейчас TalkBar работает на Windows; версия для Mac в разработке.",
+    "Да. TalkBar работает на Mac с чипом Apple (M1 и новее) и macOS 13.4 или новее. Он также работает на Windows 10 и 11 (64-разрядных) и нативно на Windows 11 на Arm. Компьютеры Mac с процессором Intel не поддерживаются.",
   "faq.chat.q": "Можно ли общаться с моими встречами и документами?",
   "faq.chat.a":
     "Да. Выберите сессию или документ — или спросите сразу по всем карточкам знаний, документам, людям и компаниям. Ответы показывают, откуда они взяты.",

@@ -82,5 +82,5 @@ navigation:
 
 - [Знакомство с приложением](/getting-started/getting-around)
 - [Тарифы и лицензия](/data/plans-and-license)
-- [Данные и резервные копии](/settings/data-and-backup)
+- [Данные и копии](/settings/data-and-backup)
 - [Резервное копирование и восстановление](/data/backup-and-restore)

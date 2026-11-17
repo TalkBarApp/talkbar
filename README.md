@@ -5,19 +5,19 @@
 </p>
 
 <p align="center">
-  <strong>Private conversation intelligence for Windows and Mac (soon).</strong><br>
+  <strong>Private conversation intelligence for Windows and Mac.</strong><br>
   Capture meetings and calls, dictate voice notes, get live context,<br>
   and turn every conversation into searchable local memory.
 </p>
 
 <p align="center">
   <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><img src="https://img.shields.io/github/v/release/TalkBarApp/talkbar?label=latest%20release&color=1f4fe0" alt="Latest release"></a>
-  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Mac%20(soon)-1f4fe0" alt="Platform: Windows and Mac (soon)">
+  <img src="https://img.shields.io/badge/platform-Windows%20%7C%20Windows%20on%20Arm%20%7C%20macOS-1f4fe0" alt="Platform: Windows, Windows on Arm and macOS">
   <a href="https://www.talkbar.app"><img src="https://img.shields.io/badge/website-talkbar.app-f08a4b" alt="Website: talkbar.app"></a>
 </p>
 
 <p align="center">
-  <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer"><strong>Download for Windows. Mac (soon)</strong></a>
+  <a href="https://download.talkbar.app" target="_blank" rel="noopener noreferrer"><strong>Download for Windows and Mac</strong></a>
   &nbsp;·&nbsp;
   <a href="https://www.talkbar.app">Website</a>
   &nbsp;·&nbsp;
@@ -34,7 +34,7 @@
 
 ## What is TalkBar?
 
-TalkBar is a private AI note taker for Windows and Mac (soon). It records meetings and calls
+TalkBar is a private AI note taker for Windows and Mac. It records meetings and calls
 right from your desktop, using your microphone and your computer's audio, so no
 bot ever joins the call. It works with Zoom, Microsoft Teams, Google Meet, other
 meeting apps, and browser calls.
@@ -123,11 +123,15 @@ Read the full breakdown on the [privacy page](https://www.talkbar.app/privacy).
 
 ## Download and install
 
-TalkBar runs on 64-bit Windows. Mac (soon). Open the [TalkBar download page](https://download.talkbar.ru) and download the installer for your computer.
+TalkBar runs on Windows 10 and 11 (64-bit), natively on Windows 11 on Arm, and on Macs with
+Apple silicon (M1 or later) with macOS 13.4 or later. Intel Macs aren't supported. Open the
+[TalkBar download page](https://download.talkbar.app) and download the file for your computer.
 
-**Windows.** Choose **Windows (Intel or AMD)** or **Windows on ARM**. Run the installer and follow the setup.
+**Windows.** Choose **Windows (Intel or AMD)** or **Windows on Arm**. Run the installer and follow the setup.
 
-**macOS.** Download the macOS file for your Mac, open it, follow the steps and open TalkBar.
+**macOS.** Choose **Mac with Apple silicon**. Open the downloaded file, drag TalkBar into the
+Applications folder and open it. Setup asks for the permissions TalkBar needs, such as the
+microphone and System Audio Recording.
 
 ### Updates
 

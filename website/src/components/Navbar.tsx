@@ -39,6 +39,7 @@ import { LANGUAGE_FLAGS } from "../i18n";
 import { docsUrl } from "../lib/docs";
 import { DEFAULT_DOWNLOAD_URL } from "../lib/download";
 import { logos } from "../lib/logos";
+import { AppleLogo } from "./PlatformIcons";
 
 interface NavbarProps {
   lang: Language;
@@ -47,20 +48,23 @@ interface NavbarProps {
   englishUrl?: string;
 }
 
-const WindowsDownloadIcon = ({
+const DownloadIcon = ({
   className = "w-3.5 h-3.5",
 }: {
   className?: string;
 }) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 164.11 144.637"
-    className={`${className} fill-current mr-1.5 download-icon`}
-    aria-hidden="true"
-  >
-    <path d="M34.089 6.949s32.8-17.843 60.859 3.654L79.246 64.561s-17.574-12.104-30.623-10.8c-13.049 1.304-30.234 7.554-30.234 7.554l15.7-54.366zM15.621 70.823s17.604-8.188 32.221-7.146c14.615 1.043 26.285 8.91 28.802 10.717l-15.865 54.521s-17.635-11.476-30.162-10.432C18.089 119.53 7.229 121.438 0 125.181l15.621-54.358zM84.859 79.672s16.744 10.888 27.705 10.627c10.799-.258 18.27-1.109 32.921-6.852.114-.045.412-.258.313-.195-.313.195-15.699 54.031-15.699 54.031s-17.273 8.082-32.935 7.301c-15.658-.783-25.062-9.738-27.929-10.873l15.624-54.039z" />
-    <path d="M103.251 16.295L87.51 69.942s12.788 12.527 30.797 11.482c18.008-1.043 27.795-6.719 30.176-7.52l15.627-54.12s-20.748 8.66-34.32 7.094c-13.571-1.564-22.024-7.335-26.539-10.583z" />
-  </svg>
+  <>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 164.11 144.637"
+      className={`${className} fill-current mr-1.5 download-icon download-icon-windows`}
+      aria-hidden="true"
+    >
+      <path d="M34.089 6.949s32.8-17.843 60.859 3.654L79.246 64.561s-17.574-12.104-30.623-10.8c-13.049 1.304-30.234 7.554-30.234 7.554l15.7-54.366zM15.621 70.823s17.604-8.188 32.221-7.146c14.615 1.043 26.285 8.91 28.802 10.717l-15.865 54.521s-17.635-11.476-30.162-10.432C18.089 119.53 7.229 121.438 0 125.181l15.621-54.358zM84.859 79.672s16.744 10.888 27.705 10.627c10.799-.258 18.27-1.109 32.921-6.852.114-.045.412-.258.313-.195-.313.195-15.699 54.031-15.699 54.031s-17.273 8.082-32.935 7.301c-15.658-.783-25.062-9.738-27.929-10.873l15.624-54.039z" />
+      <path d="M103.251 16.295L87.51 69.942s12.788 12.527 30.797 11.482c18.008-1.043 27.795-6.719 30.176-7.52l15.627-54.12s-20.748 8.66-34.32 7.094c-13.571-1.564-22.024-7.335-26.539-10.583z" />
+    </svg>
+    <AppleLogo className={`${className} mr-1.5 download-icon download-icon-mac`} />
+  </>
 );
 
 const Logo = ({ className = "", alt }: { className?: string; alt: string }) => (
@@ -626,7 +630,7 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
               data-download-link
               className="group hidden sm:inline-flex btn-pill btn-pill-sm btn-primary"
             >
-              <WindowsDownloadIcon />
+              <DownloadIcon />
               {t("nav.downloadFree")}
             </a>
             {englishUrl && (
@@ -766,7 +770,7 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
               onClick={closeDrawer}
               className="group btn-pill btn-pill-sm btn-primary w-full"
             >
-              <WindowsDownloadIcon />
+              <DownloadIcon />
               {t("nav.downloadFree")}
             </a>
           </div>
@@ -784,7 +788,7 @@ const Navbar = ({ lang, translations, englishUrl }: NavbarProps) => {
         aria-hidden={!showStickyCta || drawerOpen}
         tabIndex={showStickyCta && !drawerOpen ? 0 : -1}
       >
-        <WindowsDownloadIcon />
+        <DownloadIcon />
         {t("nav.downloadFree")}
       </a>
     </>

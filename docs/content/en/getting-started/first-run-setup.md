@@ -5,7 +5,7 @@ navigation:
   icon: i-heroicons-rocket-launch
 ---
 
-The first time you open TalkBar, a setup window gets it ready for your first session. It has five steps: **Welcome**, **AI**, **Voice**, **Extras** and **Review**. Most people finish it in a few minutes, plus the time the model downloads take.
+The first time you open TalkBar, a setup window gets it ready for your first session. It has five steps: **Welcome**, **AI**, **Voice**, **Extras** and **Review**. On a Mac, a **Permissions** step comes after **AI** (see [Permissions on a Mac](#permissions-on-a-mac)). Most people finish it in a few minutes, plus the time the model downloads take.
 
 ::screenshot{src="/screenshots/getting-started/setup-welcome.png" alt="First-run setup window on the Welcome step: the step bar Welcome, AI, Voice, Extras, Review at the top, the Your name and Job title fields, the App language buttons, the What will you record? starter packs and the Theme control" caption="The Welcome step" compact max-width="680"}
 ::
@@ -106,6 +106,23 @@ Want the background first? **Learn about AI first** starts the *How TalkBar uses
 
 ::screenshot{src="/screenshots/getting-started/setup-ai.png" alt="First-run setup window on the AI step with the three option cards Local built-in AI (default), External providers and Both, Local built-in AI selected, the Get TalkBar ready to record card listing Speech recognition, Speaker detection and Built-in AI, and the Built-in AI models row below" caption="Choosing where AI runs" compact max-width="680"}
 ::
+
+## Permissions on a Mac
+
+**Allow TalkBar on this Mac.** On a Mac, setup shows each macOS permission TalkBar uses, with its live status and one button to allow it. Recording needs **Microphone** and the system audio permission this macOS uses (**System Audio Recording** on macOS 14.4 and later, **Screen & System Audio Recording** before). Setup marks them **Required**, and **Continue** waits for them. A permission macOS can't report is not marked **Required** and doesn't hold up setup. The others can be allowed later.
+
+| Permission | What TalkBar uses it for |
+| --- | --- |
+| **Microphone** | Records your voice in sessions, voice notes and dictation. |
+| **System Audio Recording** (macOS 14.4 and later) | Records the other people in online meetings. Audio only, never your screen, and no restart needed. |
+| **Screen & System Audio Recording** (macOS 13.4 to 14.3) | Records the other people in online meetings. TalkBar uses only the sound, never the picture. Restart TalkBar after you allow it. |
+| **Accessibility** | Types dictated text into the app you are using. |
+| **Input Monitoring** | Starts dictation when you hold its shortcut in any app. |
+| **Notifications** | Shows meeting reminders and alerts. |
+
+Click **Allow access**, then choose **Allow** in the macOS message. If macOS has asked before, the button is **Open System Settings**: turn on the switch next to TalkBar there. For **System Audio Recording**, **Screen & System Audio Recording**, **Accessibility** and **Input Monitoring**, if TalkBar is not in the list, click **+**, choose TalkBar in **Applications**, then turn it on.
+
+The statuses update by themselves when you change a permission in System Settings. Later, check or change them in **Settings → General → Allow TalkBar on this Mac**.
 
 ## Step 3: Voice
 

@@ -38,7 +38,7 @@ describe("Russian preview build (preview.talkbar.ru)", () => {
 
     // ru.ts must hold real Russian copy rather than re-exporting English.
     expect(ru).not.toContain('export default en');
-    expect(ru).toContain("Скачать для Windows");
+    expect(ru).toContain("Скачать TalkBar");
     expect(ru).toContain("Карточки знаний");
 
     // The deep use-case pages must be wired to Russian content.

@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac, the shortcuts in the app use `Cmd` instead of `Ctrl` (`Cmd+K`, `Cmd+J`, `Cmd+Shift+O`). The shortcuts that work anywhere use the Control key: hold `Control+Shift` to dictate, `Control+Shift+Return` inserts while recording, `Control+Shift+L` polishes, `Control+Shift+M` mutes the microphone and `Control+Option+B` shows the session bar. **Show TalkBar shortcut** is `Cmd+Shift+Space`. Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 This page shows where everything is in the TalkBar main window and how to move around quickly. For a guided version, take the *Find your way around* tour from **Help → Take a tour**.

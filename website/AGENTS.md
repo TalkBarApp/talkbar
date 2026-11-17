@@ -24,7 +24,7 @@ This repository is the TalkBar website. Treat the active public site as an Engli
 
 - Prefer changing translation data and section arrays before large component rewrites.
 - Keep download buttons wired through `data-download-link` and `src/lib/download.ts`.
-- Preserve the Windows icon and hover zoom treatment on download buttons unless explicitly changed.
+- Preserve the platform icon (the Windows logo, or the Apple logo once `src/lib/downloadFlow.ts` detects a Mac) and hover zoom treatment on download buttons unless explicitly changed.
 - Product screenshots come from the registry in `src/lib/screenshots.ts`, rendered with `src/components/ui/Screenshot.astro` (sections) or `ScreenshotStrip.astro` (slideshow). Every screenshot opens full-screen through `react-medium-image-zoom`.
 - Stand-in screenshots live in `src/assets/screenshots/temporary/` and are marked `temp: true`, which shows a `Temp · <id>` label on the page. To replace one, point its import at the final file and set `temp: false`.
 - Keep graph/dashboard screenshots where possible until replacement assets are approved.

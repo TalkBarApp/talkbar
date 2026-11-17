@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac they use the Control key: `Control+Shift+M` mutes the microphone, hold `Control+Shift` to dictate, `Control+Shift+Return` inserts while recording and `Control+Shift+L` polishes. Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 **Settings → Voice** controls how TalkBar records audio, turns it into a transcript, runs dictation, and labels speakers. It has four inner tabs: **Recording**, **Transcription**, **Dictation** and **Speakers**. Speech models are downloaded and removed under [Settings → Private Local AI](/settings/private-local-ai); the **Manage Model** link next to a model opens that page.

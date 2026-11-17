@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac the mute shortcut is `Control+Shift+M`. Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 Most problems have a quick fix. Start with Settings Doctor, then look for your problem below. If you're still stuck, contact the TalkBar team from inside the app.
@@ -37,13 +37,21 @@ See [Help & Tours and Doctor](/settings/help-and-doctor).
 
 - Turn on or connect a microphone. TalkBar picks it up automatically and shows **Microphone connected**.
 - In **Settings → Voice → Recording**, check the selected microphone and click **Start test** under **Test audio input**.
-- Allow TalkBar microphone access in your system privacy settings.
+- Allow TalkBar to use the microphone. On Windows, check the microphone privacy settings. On a Mac, open **Settings → General → Allow TalkBar on this Mac** and click the button next to **Microphone**.
 - Pressed `Ctrl+Shift+M`? That shortcut mutes all microphone input to TalkBar. Press it again to unmute.
 
 ### "No audio detected yet — check your microphone or audio source."
 
 - Check the audio source. **System audio** only records what your computer plays. To record yourself, choose **Microphone** or **Mic + System**.
 - Use the audio source menu on the recording screen to switch devices.
+
+### The other people in a call aren't recorded on a Mac
+
+Recording what other apps play needs **System Audio Recording** on macOS 14.4 and later, or **Screen & System Audio Recording** on macOS 13.4 to 14.3. When it is off, a banner says what TalkBar isn't allowed to use, with **Fix in Settings**.
+
+1. Open **Settings → General → Allow TalkBar on this Mac**.
+2. Click **Allow access** next to the permission, or **Open System Settings** if macOS has asked before, and turn on the switch next to TalkBar.
+3. After allowing **Screen & System Audio Recording**, click **Restart TalkBar**. **System Audio Recording** needs no restart.
 
 ### "Could not start the session"
 
@@ -71,7 +79,11 @@ These recordings were cut off before a session could be created, so they can't b
 
 ### "Microphone not available" in the dictation panel
 
-Dictation needs a microphone. Connect one, or allow TalkBar microphone access in your system privacy settings, then close the panel and dictate again.
+Dictation needs a microphone. Connect one, or allow TalkBar to use the microphone (on a Mac, in **Settings → General → Allow TalkBar on this Mac**), then close the panel and dictate again.
+
+### Dictation doesn't start or type on a Mac
+
+Holding the dictation shortcut in other apps needs **Input Monitoring**, and typing the text into the app you are using needs **Accessibility**. Allow both in **Settings → General → Allow TalkBar on this Mac**.
 
 ### A keyboard shortcut doesn't respond
 

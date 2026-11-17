@@ -1,16 +1,11 @@
-import {
-  detectDownloadTarget,
-  detectFromUserAgent,
-  directDownloadUrl,
-  type DownloadTarget,
-} from "./download";
+import { detectDownloadTarget, detectFromUserAgent, directDownloadUrl } from "./download";
 
 /**
  * What the download dialog shows: `started` thanks the visitor for a download
- * that has just begun, `choose` lists every file, and `mac` explains that the
- * Mac version is not out yet.
+ * that has just begun, `startedMac` does the same for the Mac file and says
+ * which Macs it runs on, and `choose` lists every file.
  */
-export type DownloadDialogMode = "started" | "choose" | "mac";
+export type DownloadDialogMode = "started" | "startedMac" | "choose";
 
 export const OPEN_DOWNLOAD_EVENT = "talkbar:open-download";
 
@@ -38,16 +33,12 @@ export function startDownload(url: string, doc: Document = document) {
   link.remove();
 }
 
-/** The dialog that answers a download click for this system when nothing can download at once. */
-export function dialogModeFor(target: DownloadTarget): DownloadDialogMode {
-  return target.os === "mac" ? "mac" : "choose";
-}
-
 /**
  * Wires every `[data-download-link]` on the page: a known system downloads at
- * once and the dialog thanks the visitor; a Mac or an unknown system opens the
- * dialog to choose. `?download` in the address opens the dialog on load.
- * Returns a function that removes the click handling.
+ * once and the dialog thanks the visitor; an unknown or unsupported system
+ * opens the dialog to choose. `?download` in the address opens the dialog on load.
+ * The system is also set as `data-download-os` on the page, so the buttons show
+ * its logo. Returns a function that removes the click handling.
  */
 export function initDownloadButtons(win: DownloadWindow = window): () => void {
   const doc = win.document;
@@ -57,6 +48,7 @@ export function initDownloadButtons(win: DownloadWindow = window): () => void {
     (win.navigator as Navigator & { userAgentData?: { platform?: string } }).userAgentData?.platform,
     win.navigator.maxTouchPoints,
   );
+  doc.documentElement.dataset.downloadOs = target.os;
   void detectDownloadTarget(win.navigator as Parameters<typeof detectDownloadTarget>[0]).then(
     (detected) => {
       target = detected;
@@ -76,9 +68,11 @@ export function initDownloadButtons(win: DownloadWindow = window): () => void {
       win.plausible?.("Download Started", {
         props: { os: target.os, arch: target.arch ?? "unknown" },
       });
-      openDownloadDialog("started", win);
+      // A Mac whose processor is unknown (Safari, Firefox) gets the Apple
+      // silicon file; the thanks says what it needs.
+      openDownloadDialog(target.os === "mac" ? "startedMac" : "started", win);
     } else {
-      openDownloadDialog(dialogModeFor(target), win);
+      openDownloadDialog("choose", win);
     }
   };
   doc.addEventListener("click", onClick);
@@ -87,7 +81,7 @@ export function initDownloadButtons(win: DownloadWindow = window): () => void {
   if (address.searchParams.has("download")) {
     address.searchParams.delete("download");
     win.history.replaceState(win.history.state, "", `${address.pathname}${address.search}${address.hash}`);
-    openDownloadDialog(dialogModeFor(target), win);
+    openDownloadDialog("choose", win);
   }
   return () => doc.removeEventListener("click", onClick);
 }

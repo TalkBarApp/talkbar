@@ -383,8 +383,12 @@ function processMarkdownFile(filePath, contentDir) {
       .replace(/^\/\//, '/')
       .replace(/(.)\/$/, '$1'))
 
-    // MDC block markers (::callout, ::screenshot{...}, ::) are layout, not text
-    const tokens = marked.lexer(content.replace(/^\s*::.*$/gm, ''))
+    // MDC block markers (::callout, ::screenshot{...}, ::) and platform-tab slot
+    // names (#windows, #macos) are layout, not text; an inline link is its text.
+    const tokens = marked.lexer(content
+      .replace(/^\s*::.*$/gm, '')
+      .replace(/^\s*#(windows|macos)\s*$/gm, '')
+      .replace(/<a\b[^>]*>(.*?)<\/a>/g, '$1'))
     const bodyAST = transformTokensToBodyAST(tokens)
     const toc = generateTocFromTokens(
       tokens,

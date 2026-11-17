@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac the mute shortcut is `Control+Shift+M`, and recording needs the **Microphone** permission for your voice and, for system audio, **System Audio Recording** on macOS 14.4 and later or **Screen & System Audio Recording** on macOS 13.4 to 14.3 (see [Permissions on a Mac](/getting-started/first-run-setup#permissions-on-a-mac)). Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 TalkBar records your microphone, your computer's audio, or both, and turns speech into a transcript on this computer. No audio is sent to an AI provider. This page explains the recording sources, the speech models, the transcription languages and what happens to the audio afterwards.

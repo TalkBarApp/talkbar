@@ -2,7 +2,7 @@ import type { Translations } from "./types";
 
 const en: Translations = {
   "meta.title":
-    "TalkBar: Private AI Note Taker for Windows, No Meeting Bot",
+    "TalkBar: Private AI Note Taker for Windows and Mac",
   "meta.description":
     "Record meetings and calls with no bot. TalkBar transcribes on your computer and drafts summaries and action items with local AI or your own key.",
 
@@ -132,10 +132,10 @@ const en: Translations = {
   "hero.scene.cloud.left": "No cloud",
   "hero.scene.cloud.right": "No account",
   "hero.scene.cloud.gap": "20",
-  "hero.cta.primary": "Download for Windows",
+  "hero.cta.primary": "Download TalkBar",
   "hero.cta.secondary": "See How It Works",
   "hero.ctaNote": "Runs on your machine · Local AI or your own key · No meeting bot",
-  "hero.platforms": "Available for Windows · Mac version in progress",
+  "hero.platforms": "Windows · Windows on Arm · Mac with Apple silicon",
   "hero.card.eyebrow": "Live Context Card",
   "hero.card.title": "Memory Match",
   "hero.card.confidence": "High confidence",
@@ -575,7 +575,7 @@ const en: Translations = {
     "Answers about privacy, local capture, memory, exports, and who TalkBar is built for.",
   "faq.what.q": "What is TalkBar?",
   "faq.what.a":
-    "A private AI note taker for Windows. It records meetings and calls from your desktop, shows your Knowledge Cards while you talk, and turns each call into summaries, action items, and searchable notes.",
+    "A private AI note taker for Windows and Mac. It records meetings and calls from your desktop, shows your Knowledge Cards while you talk, and turns each call into summaries, action items, and searchable notes.",
   "faq.different.q": "How is TalkBar different from other AI note takers?",
   "faq.different.a":
     "It helps before and during the call, not just after, and it records from your desktop instead of sending a bot. Your workspace stays on your computer.",
@@ -608,12 +608,12 @@ const en: Translations = {
   "cta.headline.1": "Ready to bring your private memory",
   "cta.headline.2": "into every conversation?",
   "cta.subtitle": "Local transcription · Local AI or your own key · Bot-free capture",
-  "cta.button": "Download for Windows",
-  "cta.platforms": "Available for Windows · Mac version in progress",
+  "cta.button": "Download TalkBar",
+  "cta.platforms": "Windows · Windows on Arm · Mac with Apple silicon",
   "cta.chip.privacy": "Privacy-first",
   "cta.chip.local": "Local transcription",
   "cta.chip.noAccounts": "No accounts",
-  "cta.chip.platforms": "Windows",
+  "cta.chip.platforms": "Windows · Mac",
 
   "footer.brand": "TalkBar",
   "footer.homeAria": "TalkBar home",
@@ -621,7 +621,7 @@ const en: Translations = {
     "Your private memory. Every conversation. Before, during, and after.",
   "footer.lifecycle": "Before, during, after",
   "footer.featuresLink": "Features",
-  "footer.platformChip": "Available for Windows · Mac version in progress",
+  "footer.platformChip": "Available for Windows and Mac",
   "footer.product": "Product",
   "footer.features": "Product",
   "footer.liveContextCards": "Knowledge",
@@ -658,24 +658,16 @@ const en: Translations = {
   "download.subtitle": "Choose the version for your computer.",
   "download.thanks.title": "Thanks for downloading TalkBar!",
   "download.thanks.body":
-    "Your download has started. When it finishes, open the installer to set up TalkBar.",
+    "Your download has started. When it finishes, open the file to install TalkBar.",
   "download.thanks.ok": "Okay",
   "download.notStarted": "Download didn’t start? Choose your version below.",
-  "download.windows.heading": "Windows 10 and 11 (64-bit)",
-  "download.windows.x64": "Intel or AMD (x64)",
-  "download.windows.arm": "Arm (arm64)",
-  "download.windows.armNote": "For Windows 11 on Arm. Installs the x64 version, which runs under emulation.",
-  "download.mac.heading": "macOS",
-  "download.mac.soon": "Coming soon",
-  "download.mac.notifyLink": "Tell me when it’s ready",
-  "download.mac.title": "TalkBar for Mac is coming soon",
-  "download.mac.body":
-    "TalkBar runs on Windows today. Leave your email and we’ll let you know when the Mac version is ready.",
-  "download.mac.submit": "Notify me",
-  "download.mac.privacyNote":
-    "You’ll get TalkBar news, including the Mac release. Unsubscribe anytime.",
-  "download.mac.success": "Thanks! We’ll email you when TalkBar for Mac is ready.",
-  "download.mac.windowsPrompt": "Using Windows too? Download it now:",
+  "download.windows.x64": "Windows (Intel or AMD)",
+  "download.windows.x64Note": "Windows 10 or 11, 64-bit",
+  "download.windows.arm": "Windows on Arm",
+  "download.windows.armNote": "Windows 11 on Arm",
+  "download.mac.appleSilicon": "Mac with Apple silicon",
+  "download.mac.note": "Mac with Apple silicon, macOS 13.4 or later",
+  "download.mac.intelNote": "Intel Macs aren’t supported.",
   "contact.title": "Contact us",
   "contact.subtitle":
     "Questions, feedback, or anything else? Send us a note and we'll get back to you.",
@@ -924,7 +916,7 @@ const en: Translations = {
     "TalkBar removes the meeting bot, not your responsibilities. Recording-consent rules vary by region and by call type; follow the ones that apply to your conversations, as with any notes or recording tool.",
   "privacyPage.faqTitle": "Privacy questions",
 
-  "stickyBar.cta": "Download for Windows",
+  "stickyBar.cta": "Download TalkBar",
   "stickyBar.note": "Runs on your machine",
   "stickyBar.dismiss": "Dismiss download bar",
 
@@ -1024,7 +1016,7 @@ const en: Translations = {
 
   "meta.ogTitle": "TalkBar: private conversation intelligence",
   "meta.ogDescription": "Capture meetings and calls, dictate voice notes, get live context, and turn every conversation into searchable local memory.",
-  "meta.jsonLdDescription": "Private AI note taker for Windows. Records meetings and calls from the desktop with no bot, transcribes locally, and turns conversations into summaries, action items, and searchable notes, with local AI or your own API key.",
+  "meta.jsonLdDescription": "Private AI note taker for Windows and Mac. Records meetings and calls from the desktop with no bot, transcribes locally, and turns conversations into summaries, action items, and searchable notes, with local AI or your own API key.",
   "meta.ogImageAlt": "TalkBar, a private AI note taker, showing a recorded conversation with its summary, timeline, and notes",
   "meta.feature.1": "Bot-free recording of your microphone and computer audio",
   "meta.feature.2": "Local transcription",
@@ -1064,7 +1056,7 @@ const en: Translations = {
   "faq.apps.q": "Does TalkBar work with Zoom, Teams, and Google Meet?",
   "faq.apps.a": "Yes, and with other meeting apps and browser calls. TalkBar records on your computer, so there’s nothing to add to the meeting.",
   "faq.platforms.q": "Is TalkBar available for Mac?",
-  "faq.platforms.a": "Not yet. TalkBar runs on Windows now; a Mac version is in progress.",
+  "faq.platforms.a": "Yes. TalkBar runs on Macs with Apple silicon (M1 or later) and macOS 13.4 or later. It also runs on Windows 10 and 11 (64-bit), and natively on Windows 11 on Arm. Intel Macs aren’t supported.",
   "faq.consent.q": "Do I need consent to record calls?",
   "faq.consent.a": "It depends on where everyone is and on the type of call. TalkBar removes the meeting bot, not your responsibilities, so follow the rules that apply.",
   "gallery.eyebrow": "Modern interface",

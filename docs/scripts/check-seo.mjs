@@ -86,6 +86,8 @@ if (!preview) {
   assert(/^Content-Signal: search=yes, ai-input=yes, ai-train=yes$/m.test(robotsTxt), 'robots.txt Content-Signal')
   assert(!/^Disallow: \/$/m.test(robotsTxt), 'production robots.txt must not block the site')
 }
+const downloadPage = locale === 'ru' ? 'https://download.talkbar.ru' : 'https://download.talkbar.app'
+assert(new RegExp(`^/download\\s+${downloadPage.replaceAll('.', '\\.')}\\s+302$`, 'm').test(read('_redirects')), `/download redirects to ${downloadPage}`)
 const headers = read('_headers')
 assert(/^\/\*\.md\n\s+X-Robots-Tag: noindex$/m.test(headers), 'Markdown copies have a noindex header')
 const headerRules = headers.split('\n').filter(line => line.startsWith('/')).length

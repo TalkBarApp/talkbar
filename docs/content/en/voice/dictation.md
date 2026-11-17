@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac they use the Control key: hold `Control+Shift` to dictate, `Control+Shift+Return` inserts while recording and `Control+Shift+L` polishes. With the pointer over the panel, `Control+Delete` erases a sentence and `Cmd+C` copies the text. Dictating into other apps on a Mac needs the **Input Monitoring** and **Accessibility** permissions (see [Permissions on a Mac](/getting-started/first-run-setup#permissions-on-a-mac)). Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 **Dictation** lets you speak instead of typing. Hold the dictation shortcut, talk, and TalkBar turns your words into text on this computer. In a TalkBar note the text goes straight into the note; anywhere else a small floating panel shows your words and then pastes them into the app you are using.

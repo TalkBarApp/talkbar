@@ -58,6 +58,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup?.();
   cleanup = null;
+  delete document.documentElement.dataset.downloadOs;
   vi.restoreAllMocks();
 });
 
@@ -86,13 +87,39 @@ describe("download buttons", () => {
     expect(downloads).toEqual([DOWNLOAD_URLS.windowsArm64]);
   });
 
-  test("open the Mac dialog on a Mac and the chooser elsewhere, without downloading", () => {
+  test("download the Mac file at once on a Mac and thank the visitor", () => {
     const mac = stubWindow(MAC);
     start(mac);
     expect(clickButton().defaultPrevented).toBe(true);
-    expect(opened(mac)).toEqual(["mac"]);
-    cleanup?.();
+    expect(downloads).toEqual([DOWNLOAD_URLS.mac]);
+    expect(opened(mac)).toEqual(["startedMac"]);
+    expect(mac.plausible).toHaveBeenCalledWith("Download Started", {
+      props: { os: "mac", arch: "unknown" },
+    });
+  });
 
+  test("mark the page with the visitor's system so the buttons show its logo", () => {
+    start(stubWindow(MAC));
+    expect(document.documentElement.dataset.downloadOs).toBe("mac");
+    cleanup?.();
+    start(stubWindow(WINDOWS));
+    expect(document.documentElement.dataset.downloadOs).toBe("windows");
+  });
+
+  test("open the chooser for an Intel Mac reported by Chromium", async () => {
+    const intel = stubWindow(MAC, undefined, {
+      platform: "macOS",
+      getHighEntropyValues: async () => ({ architecture: "x86" }),
+    });
+    start(intel);
+    await Promise.resolve();
+    await Promise.resolve();
+    clickButton();
+    expect(opened(intel)).toEqual(["choose"]);
+    expect(downloads).toEqual([]);
+  });
+
+  test("open the chooser on other systems, without downloading", () => {
     const linux = stubWindow(LINUX);
     start(linux);
     clickButton();
@@ -119,7 +146,7 @@ describe("download buttons", () => {
   test("let only the latest request open once the dialogs load", () => {
     const win = { dispatchEvent: vi.fn(), __talkbarPendingModal: "contact" } as unknown as Window & {
       __talkbarPendingModal?: string | null;
-      __talkbarPendingDownload?: "started" | "choose" | "mac" | null;
+      __talkbarPendingDownload?: "started" | "startedMac" | "choose" | null;
     };
     openDownloadDialog("choose", win);
     expect(win.__talkbarPendingModal).toBeNull();

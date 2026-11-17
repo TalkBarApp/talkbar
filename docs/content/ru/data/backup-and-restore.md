@@ -119,7 +119,7 @@ TalkBar перезапустится и заменит данные на это�
 
 ## См. также
 
-- [Настройки «Данные и резервные копии»](/settings/data-and-backup)
+- [Настройки «Данные и копии»](/settings/data-and-backup)
 - [Конфиденциальность и ваши данные](/data/privacy-and-your-data)
 - [Тарифы и лицензия](/data/plans-and-license)
 - [Устранение неполадок](/help/troubleshooting)

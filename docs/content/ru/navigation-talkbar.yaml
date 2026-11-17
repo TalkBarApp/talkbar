@@ -180,7 +180,7 @@ body:
       - title: Доступ по MCP
         to: /settings/mcp-access
         icon: i-heroicons-link
-      - title: Данные и резервные копии
+      - title: Данные и копии
         to: /settings/data-and-backup
         icon: i-heroicons-archive-box
       - title: Лицензия

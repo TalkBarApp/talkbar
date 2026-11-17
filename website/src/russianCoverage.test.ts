@@ -58,7 +58,7 @@ describe("Russian translation coverage", () => {
       .map((m) => m[2])
       .join("\n");
     const ruSourceRendered = values + read("src/i18n/ru-use-cases.ts");
-    for (const banned of ["бесплатно", "Mac и Windows", "macOS скоро", "60 секунд", "Word, PDF", "контекстные карточки", "Уверенность", "не покидает", "оценочные листы", "карта участников", "MEDDPICC", "Telegram"]) {
+    for (const banned of ["бесплатно", "Mac и Windows", "macOS скоро", "версия для Mac в разработке", "эмуляц", "60 секунд", "Word, PDF", "контекстные карточки", "Уверенность", "не покидает", "оценочные листы", "карта участников", "MEDDPICC", "Telegram"]) {
       expect(ruSourceRendered, banned).not.toContain(banned);
     }
   });

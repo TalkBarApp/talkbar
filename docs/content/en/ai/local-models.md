@@ -65,6 +65,8 @@ Stop the current session before testing models; pausing it is not enough. While 
 | **Auto (GPU when available)** | Uses your graphics card when one is available. Usually faster. Default. |
 | **CPU only** | Runs on the processor only. Choose it if the graphics card causes problems or you want to keep its memory free. |
 
+With **Auto**, Built-in AI runs on the graphics of a Mac with Apple silicon (Metal), which shares its memory with the processor. On a Snapdragon Windows on Arm PC it runs on the Adreno graphics, which needs the OpenCL graphics driver; without it, TalkBar uses the processor. On other Windows PCs it uses the graphics card through Vulkan.
+
 If Ollama is running and holding graphics memory, the built-in model can slow down. While Private AI Mode is on, TalkBar can warn you and offer to unload Ollama's model.
 
 If local AI gets slow, see [Speed up local AI](/ai/speed-up-ai).

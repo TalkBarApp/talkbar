@@ -5,21 +5,26 @@ navigation:
   icon: i-heroicons-arrow-down-tray
 ---
 
-Download TalkBar from the <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer">download page</a>, install it, and keep it up to date. Windows is available now. Mac (soon).
+Download TalkBar from the <a href="https://download.talkbar.app" target="_blank" rel="noopener noreferrer">download page</a>, install it, and keep it up to date. TalkBar runs on Windows 10 and 11 (64-bit), natively on Windows 11 on Arm, and on Macs with Apple silicon with macOS 13.4 or later. Intel Macs aren't supported.
 
 ## Download and install
 
 ::platform-tabs
 #windows
-1. Open the <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer">TalkBar download page</a>.
-2. Download the installer for your PC: **Windows (Intel or AMD)** or **Windows on ARM**.
+1. Open the <a href="https://download.talkbar.app" target="_blank" rel="noopener noreferrer">TalkBar download page</a>.
+2. Download the installer for your PC: **Windows (Intel or AMD)** for Windows 10 or 11 (64-bit), or **Windows on Arm** for Windows 11 on a PC with an Arm processor, such as a Snapdragon PC. The Arm version runs natively, without emulation. Not sure which one you have? In Windows, open **Settings → System → About** and look at **System type**.
 3. Run the installer and follow the steps.
 
 The installer is digitally signed. If Microsoft Edge WebView2 Runtime is missing, the installer sets it up using an internet connection.
 #macos
-1. Open the <a href="https://download.talkbar.ru" target="_blank" rel="noopener noreferrer">TalkBar download page</a>.
-2. Download the macOS file for your Mac.
-3. Open the downloaded file, follow the steps, and open TalkBar.
+TalkBar needs a Mac with Apple silicon (M1 or later) and macOS 13.4 or later. To check your Mac, choose **Apple menu → About This Mac**: **Chip** names an Apple chip such as Apple M1. Intel Macs aren't supported.
+
+1. Open the <a href="https://download.talkbar.app" target="_blank" rel="noopener noreferrer">TalkBar download page</a>.
+2. Download **Mac with Apple silicon**.
+3. Open the downloaded file and drag **TalkBar** into the **Applications** folder.
+4. Open TalkBar from the **Applications** folder. If macOS asks whether to open an app downloaded from the internet, click **Open**.
+
+Setup then asks for the permissions TalkBar needs on a Mac, such as the microphone. See [Permissions on a Mac](/getting-started/first-run-setup#permissions-on-a-mac).
 ::
 
 ## First launch
@@ -30,7 +35,7 @@ The first time you open TalkBar, the welcome window guides you through setup: yo
 #windows
 When you close the main window, TalkBar keeps running in the system tray. To exit completely, click the TalkBar logo, choose **Quit TalkBar**, then click **Quit App** in the confirmation.
 #macos
-When you close the main window, TalkBar keeps running from the menu bar. To exit completely, click the TalkBar logo, choose **Quit TalkBar**, then click **Quit App** in the confirmation.
+When you close the main window, TalkBar keeps running from the menu bar. To exit completely, click the TalkBar logo and choose **Quit TalkBar**, or press `Cmd+Q`, then click **Quit App** in the confirmation.
 ::
 
 ## Automatic updates
@@ -104,7 +109,7 @@ Every update is signed, and TalkBar checks the signature before installing it. I
 #windows
 Uninstall TalkBar from the **Apps** section of Windows Settings.
 #macos
-Quit TalkBar and remove the app using the usual macOS app removal method.
+Quit TalkBar, then drag **TalkBar** from the **Applications** folder to the Trash.
 ::
 
 Before you uninstall, make a backup if you might want your sessions later: **Settings → Data & Backup → Create backup** saves your data into a ZIP file. See [Backup and restore](/data/backup-and-restore).

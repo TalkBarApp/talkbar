@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac the session bar shortcut is `Control+Option+B` and **Show TalkBar shortcut** is `Cmd+Shift+Space`. Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 **Settings → General** holds app-wide preferences: how TalkBar looks, how new sessions start, what gets cleaned up automatically, and how the app starts and updates. Changes save as you make them. The one exception is the timezone, which has its own **Save Timezone** button.
@@ -27,6 +27,15 @@ Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts
 | **Hover Animation** | Adds motion when you hover the collapsed sidebar and similar parts of the app. | On |
 | **Collapsed sidebar** | When the sidebar is collapsed, **Expand on hover** opens the full sidebar when you point at it. **Keep closed** keeps the icon rail with tooltips. | Expand on hover |
 | **Knowledge shortcuts** | The section switch shows or hides icon-only links under Knowledge in the sidebar. A switch for each tab picks which links appear: **Memory cards**, **Documents**, **People**, **Companies**, **Action items** and **Review**. Turning the section off keeps your picks. | Off (no tabs picked) |
+
+## Allow TalkBar on this Mac
+
+This section appears on a Mac only. It lists the macOS permissions TalkBar uses (**Microphone**, **System Audio Recording** or **Screen & System Audio Recording**, **Accessibility**, **Input Monitoring** and **Notifications**) with their live status, and one button for each permission that is still off. The ones recording needs are marked **Required**, and the section turns amber when one of them is off.
+
+- **Check permissions** reads every status again and says what it found.
+- **Open setup** opens the setup step with the full guide.
+
+See [Permissions on a Mac](/getting-started/first-run-setup#permissions-on-a-mac) for what each permission does.
 
 ## Live Session Appearance
 

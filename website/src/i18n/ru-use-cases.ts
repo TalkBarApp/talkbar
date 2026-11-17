@@ -10,7 +10,7 @@ import { FEATURE_SHOTS } from "../content/use-cases/feature-shots";
 // it. Brand name "TalkBar", product acronyms (SLA, CRM, NDA, QBR) and tech names
 // (Ollama, Markdown, PDF, Word, Obsidian, Notion) stay untranslated.
 
-const download = { label: "Скачать для Windows", href: "/#cta" };
+const download = { label: "Скачать TalkBar", href: "/#cta" };
 const examples = { label: "Посмотреть примеры", href: "#examples" };
 
 const deepCtaProofItems = [
@@ -238,9 +238,9 @@ function makeContent(input: {
       eyebrow: input.ctaEyebrow,
       headline: input.ctaHeadline,
       accent: input.ctaAccent,
-      ctaLabel: "Скачать для Windows",
+      ctaLabel: "Скачать TalkBar",
       ctaHref: "/#cta",
-      platformsNote: "Доступно для Windows · версия для Mac в разработке",
+      platformsNote: "Windows · Windows на Arm · Mac с чипом Apple",
       proofItems: deepCtaProofItems,
     },
   };

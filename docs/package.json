@@ -17,7 +17,6 @@
     "generate": "npm run search:index && npm run discovery:generate && nuxt generate",
     "generate:en": "cross-env DOCS_LOCALE=en NUXT_SITE_ENV=production npm run generate",
     "generate:ru": "cross-env DOCS_LOCALE=ru NUXT_SITE_ENV=production npm run generate",
-    "generate:cf-pages": "npm run generate && cp public/_redirects dist/_redirects",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare && patch-package",
     "discovery:generate": "node scripts/generate-discovery.mjs",

@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { execFileSync } from "child_process";
-import { existsSync, mkdirSync, readdirSync, writeFileSync } from "fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "fs";
 import { join, relative, resolve, sep } from "path";
 import type { Nuxt } from "nuxt/schema";
 import { docsLocales, resolveDocsLocale } from "./docs.locales";
@@ -83,6 +83,18 @@ const removeTemplateAssets = (_options: unknown, nuxt: Nuxt) => {
   });
 };
 
+// public/_redirects is shared by both sites; /download goes to the download page
+// in this site's language, so the rule is filled in once public/ is copied.
+const downloadRedirect = (_options: unknown, nuxt: Nuxt) => {
+  nuxt.hook("nitro:build:public-assets", (nitro) => {
+    const file = join(nitro.options.output.publicDir, "_redirects");
+    const marker = "# /download is added here by nuxt.config.ts";
+    const redirects = readFileSync(file, "utf8");
+    if (!redirects.includes(marker)) throw new Error(`${file}: missing "${marker}"`);
+    writeFileSync(file, redirects.replace(marker, `/download        ${localeConfig.downloadUrl}   302`));
+  });
+};
+
 const config = {
   ssr: true, // Enable SSR for better performance and SEO
   compatibilityDate: "2023-10-01",
@@ -148,6 +160,7 @@ const config = {
       // Production builds link to the live sites; dev builds to the preview sites
       docsWebsiteUrl: isProduction ? localeConfig.websiteUrl.production : localeConfig.websiteUrl.preview,
       docsLicenseUrl: isProduction ? localeConfig.licenseUrl.production : localeConfig.licenseUrl.preview,
+      docsDownloadUrl: localeConfig.downloadUrl,
       docsRepoUrl: "https://github.com/TalkBarApp/talkbar",
       docsScreenshots: listScreenshots(screenshotsDir),
       // Replaces the template's zkSync site links (unused by TalkBar components).
@@ -187,6 +200,10 @@ const config = {
     },
   },
   icon: {
+    // Inline <svg> elements. The default CSS mode put every icon of the page
+    // (about 60, most of them in the sidebar) into a <style> block as data URIs,
+    // close to 50 KB of uncacheable inline CSS on each page.
+    mode: "svg",
     clientBundle: {
       // scan all components in the project and include icons
       scan: true,
@@ -218,7 +235,7 @@ const config = {
       ],
     },
   },
-  modules: ["@nuxt/fonts", devAppManifest, removeTemplateAssets],
+  modules: ["@nuxt/fonts", devAppManifest, removeTemplateAssets, downloadRedirect],
   // Ship styles as one cacheable stylesheet instead of inlining them into every page.
   features: {
     inlineStyles: false,

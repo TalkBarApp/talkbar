@@ -1,6 +1,7 @@
 import { describe, expect, test } from "vitest";
 import {
   DEFAULT_DOWNLOAD_URL,
+  DOWNLOAD_PAGE_URL,
   DOWNLOAD_URLS,
   detectDownloadTarget,
   detectFromUserAgent,
@@ -17,10 +18,15 @@ const ANDROID = "Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 Chr
 const LINUX = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/140.0 Safari/537.36";
 
 describe("download links", () => {
-  test("point at the updater's direct Windows links", () => {
+  test("point at the updater's direct links for each system", () => {
     expect(DOWNLOAD_URLS.windowsX64).toBe("https://updater.talkbar.app/get/windows/x64");
     expect(DOWNLOAD_URLS.windowsArm64).toBe("https://updater.talkbar.app/get/windows/arm");
-    expect(DEFAULT_DOWNLOAD_URL).toBe(DOWNLOAD_URLS.windowsX64);
+    expect(DOWNLOAD_URLS.mac).toBe("https://updater.talkbar.app/get/mac");
+  });
+
+  test("send a click without JavaScript to the English download page", () => {
+    expect(DOWNLOAD_PAGE_URL).toBe("https://download.talkbar.app");
+    expect(DEFAULT_DOWNLOAD_URL).toBe(DOWNLOAD_PAGE_URL);
   });
 });
 
@@ -82,6 +88,26 @@ describe("detectDownloadTarget", () => {
     expect(x64).toEqual({ os: "windows", arch: "x64" });
   });
 
+  test("asks Chromium for the processor on a Mac", async () => {
+    const appleSilicon = await detectDownloadTarget({
+      userAgent: MAC,
+      userAgentData: {
+        platform: "macOS",
+        getHighEntropyValues: async () => ({ architecture: "arm" }),
+      },
+    });
+    expect(appleSilicon).toEqual({ os: "mac", arch: "arm64" });
+    const intel = await detectDownloadTarget({
+      userAgent: MAC,
+      userAgentData: {
+        platform: "macOS",
+        getHighEntropyValues: async () => ({ architecture: "x86" }),
+      },
+    });
+    expect(intel).toEqual({ os: "mac", arch: "x64" });
+    expect(await detectDownloadTarget({ userAgent: MAC })).toEqual({ os: "mac", arch: null });
+  });
+
   test("sends 32-bit Windows reported by Chromium to the chooser", async () => {
     const target = await detectDownloadTarget({
       userAgent: WINDOWS,
@@ -111,11 +137,16 @@ describe("detectDownloadTarget", () => {
 });
 
 describe("directDownloadUrl", () => {
-  test("downloads at once only for Windows", () => {
+  test("downloads at once for Windows and Macs with Apple silicon", () => {
     expect(directDownloadUrl({ os: "windows", arch: null })).toBe(DOWNLOAD_URLS.windowsX64);
     expect(directDownloadUrl({ os: "windows", arch: "x64" })).toBe(DOWNLOAD_URLS.windowsX64);
     expect(directDownloadUrl({ os: "windows", arch: "arm64" })).toBe(DOWNLOAD_URLS.windowsArm64);
-    expect(directDownloadUrl({ os: "mac", arch: null })).toBeNull();
+    expect(directDownloadUrl({ os: "mac", arch: null })).toBe(DOWNLOAD_URLS.mac);
+    expect(directDownloadUrl({ os: "mac", arch: "arm64" })).toBe(DOWNLOAD_URLS.mac);
+  });
+
+  test("lets an Intel Mac or an unknown system choose", () => {
+    expect(directDownloadUrl({ os: "mac", arch: "x64" })).toBeNull();
     expect(directDownloadUrl({ os: "other", arch: null })).toBeNull();
   });
 });

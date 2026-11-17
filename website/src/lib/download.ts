@@ -9,7 +9,7 @@ export type DownloadArch = "x64" | "arm64";
 
 export interface DownloadTarget {
   os: DownloadOs;
-  /** Known only where the browser reports it (Chromium on Windows). */
+  /** Known only where the browser reports it (Chromium on Windows and macOS). */
   arch: DownloadArch | null;
 }
 
@@ -19,13 +19,25 @@ export const DOWNLOAD_HOST = (
 
 export const DOWNLOAD_URLS = {
   windowsX64: `${DOWNLOAD_HOST}/get/windows/x64`,
-  // Windows on Arm gets the x64 installer, which runs under emulation, until an
-  // Arm64 build is published; the updater decides.
   windowsArm64: `${DOWNLOAD_HOST}/get/windows/arm`,
+  // Macs with Apple silicon; Intel Macs are not supported.
+  mac: `${DOWNLOAD_HOST}/get/mac`,
 } as const;
 
-/** What a download button links to before the visitor's system is known, and without JavaScript. */
-export const DEFAULT_DOWNLOAD_URL = DOWNLOAD_URLS.windowsX64;
+// Plain comparisons, so each build keeps only its own language's address.
+const RUSSIAN_SITE =
+  import.meta.env.BUILD_DOMAIN === "prod-ru" || import.meta.env.BUILD_DOMAIN === "preview-ru";
+
+/** The download page, in the site's language, that lists every installer. */
+export const DOWNLOAD_PAGE_URL = RUSSIAN_SITE
+  ? "https://download.talkbar.ru"
+  : "https://download.talkbar.app";
+
+/**
+ * What a download button links to before the visitor's system is known, and
+ * without JavaScript: the download page, so no system is handed another's file.
+ */
+export const DEFAULT_DOWNLOAD_URL = DOWNLOAD_PAGE_URL;
 
 type UserAgentData = {
   platform?: string;
@@ -70,7 +82,8 @@ export function detectFromUserAgent(
 
 /**
  * The visitor's system. Chromium browsers report the processor through a
- * client hint; others report Windows on Arm as x64, which gets the same file.
+ * client hint; other browsers report Windows on Arm as x64 and every Mac as
+ * Intel, so without the hint a Mac is taken to have Apple silicon.
  */
 export async function detectDownloadTarget(
   nav: NavigatorLike = navigator as NavigatorLike,
@@ -80,7 +93,7 @@ export async function detectDownloadTarget(
     nav.userAgentData?.platform,
     nav.maxTouchPoints,
   );
-  if (target.os !== "windows" || target.arch || !nav.userAgentData?.getHighEntropyValues) {
+  if (target.os === "other" || target.arch || !nav.userAgentData?.getHighEntropyValues) {
     return target;
   }
   try {
@@ -88,10 +101,10 @@ export async function detectDownloadTarget(
       "architecture",
       "bitness",
     ]);
-    if (architecture === "arm") return { os: "windows", arch: "arm64" };
+    if (architecture === "arm") return { os: target.os, arch: "arm64" };
     // 32-bit Windows cannot run TalkBar; let the visitor choose instead.
-    if (bitness === "32") return { os: "other", arch: null };
-    return { os: "windows", arch: "x64" };
+    if (target.os === "windows" && bitness === "32") return { os: "other", arch: null };
+    return { os: target.os, arch: "x64" };
   } catch {
     return target;
   }
@@ -99,6 +112,10 @@ export async function detectDownloadTarget(
 
 /** The file for a known system, or null when the visitor has to choose. */
 export function directDownloadUrl(target: DownloadTarget): string | null {
-  if (target.os !== "windows") return null;
-  return target.arch === "arm64" ? DOWNLOAD_URLS.windowsArm64 : DOWNLOAD_URLS.windowsX64;
+  if (target.os === "windows") {
+    return target.arch === "arm64" ? DOWNLOAD_URLS.windowsArm64 : DOWNLOAD_URLS.windowsX64;
+  }
+  // An Intel Mac cannot run TalkBar; the dialog shows what it needs.
+  if (target.os === "mac") return target.arch === "x64" ? null : DOWNLOAD_URLS.mac;
+  return null;
 }

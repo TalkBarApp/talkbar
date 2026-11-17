@@ -9,7 +9,7 @@ navigation:
 #windows
 The shortcuts below are the defaults. Configurable shortcuts can be changed in Settings.
 #macos
-Use the shortcut TalkBar shows in the app or in Settings. Configurable shortcuts can be changed there.
+The shortcuts below are the Windows defaults. On a Mac the session bar shortcut is `Control+Option+B`. Settings shows each shortcut with Mac keys (⌃ ⌥ ⇧ ⌘), and you can change it there.
 ::
 
 Every recording starts in the **New session** window. You pick what kind of session it is, where the audio comes from and how many people will talk, then click **Start session**. Everything else is optional and has sensible defaults.
