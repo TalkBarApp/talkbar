@@ -52,48 +52,44 @@ documents, and knowledge stay in one data folder on your machine.
 Prepare before you talk, keep your context in view while you do, and carry what you learned
 into the next conversation.
 
-| | Feature | What it does |
-| :-: | --- | --- |
-| 🎙️ | **Bot-free capture** | Record meetings and calls from your desktop: your mic and your computer's audio. No bot joins. |
-| 📋 | **Preparation page** | Bring the last conversation into the next one: agenda, documents, open action items, and the Knowledge Cards you want within reach. |
-| 📅 | **Scheduling** | Plan sessions or bring them in from your calendar, each with its prep, a reminder, and a recording that can start on its own. |
-| ⚡ | **Live context** | Live transcript with speaker labels and a timeline. Knowledge Cards and action items light up when the conversation reaches their topic. |
-| ✅ | **Summaries and action items** | Leave each call with decisions, open questions, and action items, ready to review, export, or share. |
-| 🧠 | **Knowledge Cards** | Scan past meetings or any document, review what TalkBar suggests, and keep only what matters. |
-| 💬 | **Ask TalkBar** | Chat with one session, one document, or everything you've kept. Every answer shows where it came from. |
-| 🔎 | **Searchable memory** | Search every transcript, note, and document, all kept on your computer. |
-| 🗣️ | **Voice notes and dictation** | Turn spoken ideas, field notes, and reflections into searchable notes. |
-| 🧩 | **Templates & Skills** | Shape how each session is captured and summarized. Skills add outputs like a client-ready recap. |
-| 🔒 | **Local AI or your own key** | Built-in model, Ollama, or any provider with your own key. **Private AI Mode** keeps all AI on your computer with one switch. |
-| 📤 | **Exports your way** | Markdown, text, HTML, JSON, subtitles, or ZIP, or straight to Obsidian or Notion. |
-| 🔌 | **MCP & CLI** | Let Claude, ChatGPT, Codex, and other MCP clients search and update your workspace locally, with switches you control. |
+### Capture and prepare
+
+🎙️ **Bot-free capture** · record from your desktop with your mic and computer audio. No bot joins.<br>
+⚡ **Live context** · a live transcript with speakers, and Knowledge Cards that light up on cue.<br>
+📋 **Preparation page** · agenda, documents, and last time's action items, ready before the call.<br>
+📅 **Scheduling** · plan sessions or bring them in from your calendar, with reminders.<br>
+🗣️ **Voice notes** · turn spoken ideas, field notes, and reflections into searchable notes.
+
+### Remember and act
+
+✅ **Summaries and action items** · decisions, open questions, and next steps from every call.<br>
+🧠 **Knowledge Cards** · scan meetings and documents, then keep only the facts that matter.<br>
+💬 **Ask TalkBar** · chat with a session, a document, or everything you've kept, with sources.<br>
+🔎 **Searchable memory** · every transcript, note, and document, searchable on your computer.<br>
+📤 **Exports your way** · Markdown, HTML, JSON, subtitles, or ZIP, or straight to Obsidian or Notion.
+
+### Run it your way
+
+🔒 **Local AI or your own key** · a built-in model, Ollama, or any provider with your own key.<br>
+🛡️ **Private AI Mode** · one switch keeps summaries, chat, and knowledge scans on your computer.<br>
+🧩 **Templates & Skills** · shape how each session is captured and summarized, and add outputs.<br>
+🔌 **MCP & CLI** · let Claude, ChatGPT, Codex, and other MCP clients work with your workspace, locally.
 
 See every feature on [talkbar.app](https://www.talkbar.app/#features).
 
 ## See it in action
 
-<table>
-  <tr>
-    <td width="50%" valign="top">
-      <img src="docs/public/screenshots/sessions/prep-page.png" alt="Preparation page for an upcoming call with prep notes, open action items, documents, and Knowledge Cards">
-      <p align="center"><b>Before:</b> prepare the call</p>
-    </td>
-    <td width="50%" valign="top">
-      <img src="docs/public/screenshots/getting-started/recording-screen.png" alt="Live recording with speaker labels, transcript, timeline, and a Knowledge Card in view">
-      <p align="center"><b>During:</b> live transcript and context</p>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%" valign="top">
-      <img src="docs/public/screenshots/sessions/session-details-overview.png" alt="Session details with the summary, participants, action items, and knowledge tabs">
-      <p align="center"><b>After:</b> summary, action items, and speakers</p>
-    </td>
-    <td width="50%" valign="top">
-      <img src="docs/public/screenshots/knowledge/memory-cards-page.png" alt="Knowledge page with Knowledge Cards kept from past conversations">
-      <p align="center"><b>Knowledge:</b> facts that outlast the call</p>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="docs/public/screenshots/sessions/prep-page.png" width="46%" alt="Preparation page for an upcoming call with prep notes, open action items, documents, and Knowledge Cards">&emsp;<img src="docs/public/screenshots/getting-started/recording-screen.png" width="46%" alt="Live recording with speaker labels, transcript, timeline, and a Knowledge Card in view">
+  <br>
+  <sub><b>Before</b> · prepare the call &emsp;&emsp; <b>During</b> · live context</sub>
+</p>
+<br>
+<p align="center">
+  <img src="docs/public/screenshots/sessions/session-details-overview.png" width="46%" alt="Session details with the summary, participants, action items, and knowledge tabs">&emsp;<img src="docs/public/screenshots/knowledge/memory-cards-page.png" width="46%" alt="Knowledge page with Knowledge Cards kept from past conversations">
+  <br>
+  <sub><b>After</b> · summary and action items &emsp;&emsp; <b>Knowledge</b> · facts that last</sub>
+</p>
 
 ## Get started
 
