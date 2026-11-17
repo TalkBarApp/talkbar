@@ -47,10 +47,18 @@ Transcription runs on your computer. AI can run there too, with a built-in model
 or you can bring your own API key when you want a stronger model. Your sessions, notes,
 documents, and knowledge stay in one data folder on your machine.
 
-## Core features
+## Before, during, and after every conversation
 
 Prepare before you talk, keep your context in view while you do, and carry what you learned
 into the next conversation.
+
+| Before | During | After |
+| --- | --- | --- |
+| Your agenda and the questions you want answered | Every word captured, with who said it | A clear recap of what was decided |
+| The files and facts you'll need, in one place | The right fact surfaces when its topic comes up | Follow-ups with owners, carried into the next call |
+| What's still open from last time | Quick answers mid-call, with the source shown | Every conversation, searchable and easy to share |
+
+## Core features
 
 ### Capture and prepare
 
