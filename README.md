@@ -54,40 +54,47 @@ into the next conversation.
 
 ### Capture and prepare
 
-🎙️ **Bot-free capture** · record from your desktop with your mic and computer audio. No bot joins.<br>
-⚡ **Live context** · a live transcript with speakers, and Knowledge Cards that light up on cue.<br>
-📋 **Preparation page** · agenda, documents, and last time's action items, ready before the call.<br>
-📅 **Scheduling** · plan sessions or bring them in from your calendar, with reminders.<br>
-🗣️ **Voice notes** · turn spoken ideas, field notes, and reflections into searchable notes.
+- **Bot-free capture** · record from your desktop with your mic and computer audio. No bot joins.
+- **Live context** · a live transcript with speakers, and Knowledge Cards that light up on cue.
+- **Preparation page** · agenda, documents, and last time's action items, ready before the call.
+- **Scheduling** · plan sessions or bring them in from your calendar, with reminders.
+- **Voice notes** · turn spoken ideas, field notes, and reflections into searchable notes.
 
 ### Remember and act
 
-✅ **Summaries and action items** · decisions, open questions, and next steps from every call.<br>
-🧠 **Knowledge Cards** · scan meetings and documents, then keep only the facts that matter.<br>
-💬 **Ask TalkBar** · chat with a session, a document, or everything you've kept, with sources.<br>
-🔎 **Searchable memory** · every transcript, note, and document, searchable on your computer.<br>
-📤 **Exports your way** · Markdown, HTML, JSON, subtitles, or ZIP, or straight to Obsidian or Notion.
+- **Summaries and action items** · decisions, open questions, and next steps from every call.
+- **Knowledge Cards** · scan meetings and documents, then keep only the facts that matter.
+- **Ask TalkBar** · chat with a session, a document, or everything you've kept, with sources.
+- **Searchable memory** · every transcript, note, and document, searchable on your computer.
+- **Exports your way** · Markdown, HTML, JSON, subtitles, or ZIP, or straight to Obsidian or Notion.
 
 ### Run it your way
 
-🔒 **Local AI or your own key** · a built-in model, Ollama, or any provider with your own key.<br>
-🛡️ **Private AI Mode** · one switch keeps summaries, chat, and knowledge scans on your computer.<br>
-🧩 **Templates & Skills** · shape how each session is captured and summarized, and add outputs.<br>
-🔌 **MCP & CLI** · let Claude, ChatGPT, Codex, and other MCP clients work with your workspace, locally.
+- **Local AI or your own key** · a built-in model, Ollama, or any provider with your own key.
+- **Private AI Mode** · one switch keeps summaries, chat, and knowledge scans on your computer.
+- **Templates & Skills** · shape how each session is captured and summarized, and add outputs.
+- **MCP & CLI** · let Claude, ChatGPT, Codex, and other MCP clients work with your workspace, locally.
 
 See every feature on [talkbar.app](https://www.talkbar.app/#features).
 
 ## See it in action
 
-<p>
-  <img src="docs/public/screenshots/sessions/prep-page.png" width="49%" alt="Preparation page for an upcoming call with prep notes, open action items, documents, and Knowledge Cards"> <img src="docs/public/screenshots/getting-started/recording-screen.png" width="49%" alt="Live recording with speaker labels, transcript, timeline, and a Knowledge Card in view">
-  <br>
-  <b>Before</b> · Prepare the call&emsp;&emsp;&emsp;<b>During</b> · Live context and knowledge
+<!-- Justified rows: the left screenshot and label sit on the left edge, the right ones on the right edge.
+     Labels use narrow no-break spaces (&#8239;) so only the gap between the two labels widens.
+     The zero-height image ends each row so its label line is justified too. -->
+<p align="justify">
+  <img src="docs/public/screenshots/sessions/prep-page.png" width="49.2%" alt="Preparation page for an upcoming call with prep notes, open action items, documents, and Knowledge Cards">
+  <img src="docs/public/screenshots/getting-started/recording-screen.png" width="49.2%" alt="Live recording with speaker labels, transcript, timeline, and a Knowledge Card in view">
+  <b>Before</b>&#8239;·&#8239;Prepare&#8239;the&#8239;call
+  <b>During</b>&#8239;·&#8239;Live&#8239;context&#8239;and&#8239;knowledge
+  <img src="docs/public/screenshots/sessions/prep-page.png" width="100%" height="0" alt="">
 </p>
-<p>
-  <img src="docs/public/screenshots/sessions/session-details-overview.png" width="49%" alt="Session details with the summary, participants, action items, and knowledge tabs"> <img src="docs/public/screenshots/knowledge/memory-cards-page.png" width="49%" alt="Knowledge page with Knowledge Cards kept from past conversations">
-  <br>
-  <b>After</b> · Summary and action items&emsp;&emsp;&emsp;<b>Knowledge</b> · Facts that last
+<p align="justify">
+  <img src="docs/public/screenshots/sessions/session-details-overview.png" width="49.2%" alt="Session details with the summary, participants, action items, and knowledge tabs">
+  <img src="docs/public/screenshots/knowledge/memory-cards-page.png" width="49.2%" alt="Knowledge page with Knowledge Cards kept from past conversations">
+  <b>After</b>&#8239;·&#8239;Summary&#8239;and&#8239;action&#8239;items
+  <b>Knowledge</b>&#8239;·&#8239;Facts&#8239;that&#8239;last
+  <img src="docs/public/screenshots/sessions/session-details-overview.png" width="100%" height="0" alt="">
 </p>
 
 ## Get started
