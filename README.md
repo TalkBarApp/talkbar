@@ -63,7 +63,10 @@ into the next conversation.
 ### Capture and prepare
 
 - **Bot-free capture** · record from your desktop with your mic and computer audio. No bot joins.
-- **Live context** · a live transcript with speakers, and Knowledge Cards that light up on cue.
+- **Real-time transcription** · your words turn into text as you talk, right on your computer, with no audio sent to the cloud.
+- **Speaker identification and labels** · TalkBar tells voices apart, so you see who said what, and the names you give carry into summaries.
+- **Conversation timeline** · short AI notes build up as you talk, each one linked back to the moment in the transcript.
+- **Live context** · Knowledge Cards and open action items light up as the conversation reaches them.
 - **Preparation page** · agenda, documents, and last time's action items, ready before the call.
 - **Scheduling** · plan sessions or bring them in from your calendar, with reminders.
 - **Voice notes** · turn spoken ideas, field notes, and reflections into searchable notes.
@@ -78,8 +81,9 @@ into the next conversation.
 
 ### Run it your way
 
-- **Local AI or your own key** · a built-in model, Ollama, or any provider with your own key.
+- **Local AI** · a built-in model or Ollama, no cloud needed.
 - **Private AI Mode** · one switch keeps summaries, chat, and knowledge scans on your computer.
+- **Any model, your way** · use the Claude, ChatGPT, Google Gemini, or Grok plan you already have through its [CLI tool](https://docs.talkbar.app/ai/cli-tools), or connect any provider with an [API key](https://docs.talkbar.app/ai/providers-and-models).
 - **Templates & Skills** · shape how each session is captured and summarized, and add outputs.
 - **MCP & CLI** · let Claude, ChatGPT, Codex, and other MCP clients work with your workspace, locally.
 
