@@ -79,16 +79,15 @@ See every feature on [talkbar.app](https://www.talkbar.app/#features).
 
 ## See it in action
 
-<p align="center">
-  <img src="docs/public/screenshots/sessions/prep-page.png" width="46%" alt="Preparation page for an upcoming call with prep notes, open action items, documents, and Knowledge Cards">&emsp;<img src="docs/public/screenshots/getting-started/recording-screen.png" width="46%" alt="Live recording with speaker labels, transcript, timeline, and a Knowledge Card in view">
+<p>
+  <img src="docs/public/screenshots/sessions/prep-page.png" width="49%" alt="Preparation page for an upcoming call with prep notes, open action items, documents, and Knowledge Cards"> <img src="docs/public/screenshots/getting-started/recording-screen.png" width="49%" alt="Live recording with speaker labels, transcript, timeline, and a Knowledge Card in view">
   <br>
-  <sub><b>Before</b> · prepare the call &emsp;&emsp; <b>During</b> · live context</sub>
+  <b>Before</b> · Prepare the call&emsp;&emsp;&emsp;<b>During</b> · Live context and knowledge
 </p>
-<br>
-<p align="center">
-  <img src="docs/public/screenshots/sessions/session-details-overview.png" width="46%" alt="Session details with the summary, participants, action items, and knowledge tabs">&emsp;<img src="docs/public/screenshots/knowledge/memory-cards-page.png" width="46%" alt="Knowledge page with Knowledge Cards kept from past conversations">
+<p>
+  <img src="docs/public/screenshots/sessions/session-details-overview.png" width="49%" alt="Session details with the summary, participants, action items, and knowledge tabs"> <img src="docs/public/screenshots/knowledge/memory-cards-page.png" width="49%" alt="Knowledge page with Knowledge Cards kept from past conversations">
   <br>
-  <sub><b>After</b> · summary and action items &emsp;&emsp; <b>Knowledge</b> · facts that last</sub>
+  <b>After</b> · Summary and action items&emsp;&emsp;&emsp;<b>Knowledge</b> · Facts that last
 </p>
 
 ## Get started
