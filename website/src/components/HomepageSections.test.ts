@@ -95,7 +95,8 @@ describe("homepage search metadata", () => {
   test("shares a social image and names both desktop platforms", () => {
     expect(layout).toContain('property="og:image"');
     expect(layout).toContain('name="twitter:image"');
-    expect(existsSync(resolve(cwd(), "public/og/talkbar-og.png"))).toBe(true);
+    expect(existsSync(resolve(cwd(), "public/og/talkbar-og-en.png"))).toBe(true);
+    expect(existsSync(resolve(cwd(), "public/og/talkbar-og-ru.png"))).toBe(true);
     expect(layout).toContain("operatingSystem: 'Windows, macOS'");
   });
 });

@@ -35,10 +35,10 @@ export const useDocsSeo = (page: Ref<DocsPage | null | undefined>) => {
   const title = computed(() => page.value?.title || siteName)
   const markdownUrl = computed(() => `${path.value === '/' ? '/index' : path.value}.md`)
   const dateModified = computed(() => pageDates[path.value])
-  const image = `${siteUrl}/og/talkbar-og.png`
+  const image = `${siteUrl}/og/talkbar-og-${locale === 'ru' ? 'ru' : 'en'}.png`
   const imageAlt = locale === 'ru'
-    ? 'Окно TalkBar с итогами встречи, участниками и хронологией разговора'
-    : 'TalkBar window showing a meeting summary, speakers and the conversation timeline'
+    ? 'Окно TalkBar с итогами разговора, темами и участниками'
+    : 'TalkBar window showing a call summary, topics and participants'
 
   useSeoMeta({
     ogType: () => isLanding.value ? 'website' : 'article',

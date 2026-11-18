@@ -46,9 +46,9 @@ to `main`; set `DOCS_PRODUCTION_BRANCH` if the Pages project uses another branch
 
 ## Search and AI discovery
 
-Every page has a canonical URL, localized metadata, a 1200×630 social image
-(`public/og/talkbar-og.png`, the website's image) and structured data: the site,
-TalkBar as publisher and app, the page as a `TechArticle` with `dateModified`, a
+Every page has a canonical URL, localized metadata, a 1200×630 social image in its
+language (`public/og/talkbar-og-en.png` or `talkbar-og-ru.png`, the website's images, built
+by `npm run image:og` in `website/`) and structured data: the site, TalkBar as publisher and app, the page as a `TechArticle` with `dateModified`, a
 breadcrumb, and `FAQPage` on `/help/faq`. English and Russian pages link to each other
 with `hreflang` (plus `x-default` to English) when both translations exist. All
 published content pages are explicitly prerendered and included in the sitemap with

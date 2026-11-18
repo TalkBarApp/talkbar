@@ -1017,7 +1017,7 @@ const en: Translations = {
   "meta.ogTitle": "TalkBar: private conversation intelligence",
   "meta.ogDescription": "Capture meetings and calls, dictate voice notes, get live context, and turn every conversation into searchable local memory.",
   "meta.jsonLdDescription": "Private AI note taker for Windows and Mac. Records meetings and calls from the desktop with no bot, transcribes locally, and turns conversations into summaries, action items, and searchable notes, with local AI or your own API key.",
-  "meta.ogImageAlt": "TalkBar, a private AI note taker, showing a recorded conversation with its summary, timeline, and notes",
+  "meta.ogImageAlt": "TalkBar, a private AI note taker, showing a recorded call with its summary, topics, and participants",
   "meta.feature.1": "Bot-free recording of your microphone and computer audio",
   "meta.feature.2": "Local transcription",
   "meta.feature.3": "Local AI with a built-in model or Ollama",

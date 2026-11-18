@@ -46,7 +46,8 @@ const {
 
 const canonical = Astro.url.href;
 const siteUrl = new URL('/', Astro.site ?? Astro.url).href;
-const ogImage = new URL('/og/talkbar-og.png', Astro.site ?? Astro.url).href;
+// One preview image per language; the Russian sites show the Russian app.
+const ogImage = new URL(`/og/talkbar-og-${lang === 'ru' ? 'ru' : 'en'}.png`, Astro.site ?? Astro.url).href;
 const ogImageAlt = t(lang, 'meta.ogImageAlt');
 const OG_LOCALES: Record<Language, string> = { en: 'en_US', es: 'es_ES', ru: 'ru_RU', uk: 'uk_UA' };
 
