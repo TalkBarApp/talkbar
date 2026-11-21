@@ -71,6 +71,7 @@ for (const { path, data } of pages) {
   assert(entry, `${path}: sitemap entry`)
   assert(/<lastmod>[^<]+<\/lastmod>/.test(entry), `${path}: sitemap lastmod`)
   if (otherPaths.has(path)) assert(entry.includes('hreflang="en"') && entry.includes('hreflang="ru"'), `${path}: sitemap alternates`)
+  if (otherPaths.has(path)) assert.deepEqual([...entry.matchAll(/hreflang="x-default" href="([^"]*)"/g)].map(([, href]) => href), [`https://docs.talkbar.app${path}`], `${path}: sitemap x-default`)
   assert(llms.includes(`](${origin}${path})`), `${path}: llms index`)
   assert(llmsFull.includes(`Canonical URL: ${origin}${path}\n`), `${path}: llms-full.txt`)
   assert(read(markdownPath(path).slice(1)).includes(`Canonical URL: ${origin}${path}`), `${path}: Markdown export`)

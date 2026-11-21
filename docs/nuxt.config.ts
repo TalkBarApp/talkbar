@@ -266,8 +266,12 @@ const config = {
     urls: pages.map(({ path, lastModified }) => ({
       loc: path,
       ...(lastModified ? { lastmod: lastModified } : {}),
+      // x-default is the English page on both sites, as in the page <head> links.
       alternatives: alternatePaths.includes(path)
-        ? Object.values(docsLocales).map(({ code, siteUrl }) => ({ hreflang: code, href: `${siteUrl}${path}` }))
+        ? [
+            ...Object.values(docsLocales).map(({ code, siteUrl }) => ({ hreflang: code, href: `${siteUrl}${path}` })),
+            { hreflang: "x-default", href: `${docsLocales.en.siteUrl}${path}` },
+          ]
         : [],
     })),
   },
