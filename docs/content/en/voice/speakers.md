@@ -64,7 +64,7 @@ During or after a session, click a speaker chip to open its menu. The menu is he
 | **Move all lines to…** | While recording only. Moves this speaker's lines so far to another speaker or a **New speaker**, after you confirm. The speaker stays, and new speech from this voice still appears under it. |
 | **Color** | Changes the speaker's color. |
 | **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
-| **Delete speaker and lines…** | Deletes the speaker's lines after you confirm. While recording, the lines so far are deleted and the speaker stays as ignored, so anything new from this voice is collapsed and left out of summaries. After recording, the speaker and all of their lines are deleted from the session; summaries already written don't change. This can't be undone. |
+| **Delete speaker and lines…** | Removes the speaker together with all of their lines, after you confirm. While recording, only the lines so far are deleted and the speaker stays as ignored, so anything new from this voice is collapsed and left out of summaries. After recording, the speaker and all of their lines are deleted from the session; summaries already written don't change. This can't be undone. |
 
 When you name a speaker, that person appears in [People and companies](/knowledge/people-and-companies), linked to the session. Names can be up to 40 characters, and two speakers in one session cannot share the same name.
 

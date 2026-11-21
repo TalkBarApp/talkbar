@@ -149,7 +149,7 @@ Click a speaker's chip, in **Participants** or in the transcript, to open its me
 | **Combine into…** | Moves all of this speaker's lines to another speaker and removes this one, after you confirm. Use it when TalkBar split one person in two. |
 | **Color** | Changes the speaker's color. |
 | **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
-| **Delete speaker and lines…** | Deletes the speaker and all of their lines from the session, after you confirm. Summaries already written don't change. This can't be undone. |
+| **Delete speaker and lines…** | Removes the speaker from the session together with all of their lines, after you confirm. Summaries already written don't change. This can't be undone. |
 
 Names carry into the transcript and summary. See [Speakers](/voice/speakers) for how TalkBar recognizes voices.
 
