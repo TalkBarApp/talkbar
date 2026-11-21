@@ -1,6 +1,7 @@
 ---
 import { t, getTranslations, type Language } from '../i18n';
 import { BUILD_DOMAIN, IS_PREVIEW_BUILD, ENGLISH_CROSS_LINK, getHreflangLinks } from '../i18n/domains';
+import { ANALYTICS_SITE } from '../lib/download';
 import SiteModals from '../components/SiteModals.tsx';
 import ScrollToTop from '../components/ScrollToTop.astro';
 import { SITE_CONFIG } from '../lib/siteConfig';
@@ -247,6 +248,7 @@ const siteSchemas = [
         tbCfg: {
           previewModalOnDownload: SITE_CONFIG.previewModalOnDownload,
         },
+        analyticsSite: ANALYTICS_SITE,
       }}
     >
       // The footer Contact link always opens the contact modal. When the preview
@@ -280,7 +282,7 @@ const siteSchemas = [
             // Custom Plausible goal: fires for every download CTA click, in both
             // the real-download and early-access-modal modes. Covers the footer
             // download link and React-rendered Navbar buttons too.
-            window.plausible('Download Button Click');
+            window.plausible('Download Button Click', { props: { site: analyticsSite } });
           }
 
           if (tbCfg.previewModalOnDownload && downloadEl) {

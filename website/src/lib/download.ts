@@ -28,6 +28,9 @@ export const DOWNLOAD_URLS = {
 const RUSSIAN_SITE =
   import.meta.env.BUILD_DOMAIN === "prod-ru" || import.meta.env.BUILD_DOMAIN === "preview-ru";
 
+/** Distinguishes talkbar.app and talkbar.ru in Plausible download events. */
+export const ANALYTICS_SITE = RUSSIAN_SITE ? "ru" : "app";
+
 /** The download page, in the site's language, that lists every installer. */
 export const DOWNLOAD_PAGE_URL = RUSSIAN_SITE
   ? "https://download.talkbar.ru"

@@ -1,4 +1,9 @@
-import { detectDownloadTarget, detectFromUserAgent, directDownloadUrl } from "./download";
+import {
+  ANALYTICS_SITE,
+  detectDownloadTarget,
+  detectFromUserAgent,
+  directDownloadUrl,
+} from "./download";
 
 /**
  * What the download dialog shows: `started` thanks the visitor for a download
@@ -66,7 +71,7 @@ export function initDownloadButtons(win: DownloadWindow = window): () => void {
     if (url) {
       startDownload(url, doc);
       win.plausible?.("Download Started", {
-        props: { os: target.os, arch: target.arch ?? "unknown" },
+        props: { os: target.os, arch: target.arch ?? "unknown", site: ANALYTICS_SITE },
       });
       // A Mac whose processor is unknown (Safari, Firefox) gets the Apple
       // silicon file; the thanks says what it needs.

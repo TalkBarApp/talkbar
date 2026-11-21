@@ -1,5 +1,6 @@
 import { describe, expect, test } from "vitest";
 import {
+  ANALYTICS_SITE,
   DEFAULT_DOWNLOAD_URL,
   DOWNLOAD_PAGE_URL,
   DOWNLOAD_URLS,
@@ -27,6 +28,10 @@ describe("download links", () => {
   test("send a click without JavaScript to the English download page", () => {
     expect(DOWNLOAD_PAGE_URL).toBe("https://download.talkbar.app");
     expect(DEFAULT_DOWNLOAD_URL).toBe(DOWNLOAD_PAGE_URL);
+  });
+
+  test("names the English site for Plausible download events", () => {
+    expect(ANALYTICS_SITE).toBe("app");
   });
 });
 

@@ -3,7 +3,7 @@ import { Check, CheckCircle2 } from "lucide-react";
 import Modal from "./Modal";
 import { AppleLogo, WindowsLogo } from "./PlatformIcons";
 import type { Language, Translations } from "../i18n";
-import { DOWNLOAD_URLS } from "../lib/download";
+import { ANALYTICS_SITE, DOWNLOAD_URLS } from "../lib/download";
 import {
   OPEN_DOWNLOAD_EVENT,
   type DownloadDialogMode,
@@ -225,7 +225,7 @@ const SiteModals = ({
         ) => void;
       }
     ).plausible?.("Download Started", {
-      props: { os, arch, from: "dialog" },
+      props: { os, arch, from: "dialog", site: ANALYTICS_SITE },
     });
     setDlMode(os === "mac" ? "startedMac" : "started");
     setThanksShown((count) => count + 1);

@@ -71,7 +71,7 @@ describe("download buttons", () => {
     expect(downloads).toEqual([DOWNLOAD_URLS.windowsX64]);
     expect(opened(win)).toEqual(["started"]);
     expect(win.plausible).toHaveBeenCalledWith("Download Started", {
-      props: { os: "windows", arch: "unknown" },
+      props: { os: "windows", arch: "unknown", site: "app" },
     });
   });
 
@@ -94,7 +94,7 @@ describe("download buttons", () => {
     expect(downloads).toEqual([DOWNLOAD_URLS.mac]);
     expect(opened(mac)).toEqual(["startedMac"]);
     expect(mac.plausible).toHaveBeenCalledWith("Download Started", {
-      props: { os: "mac", arch: "unknown" },
+      props: { os: "mac", arch: "unknown", site: "app" },
     });
   });
 
