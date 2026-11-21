@@ -34,7 +34,7 @@ The screen then shows **Getting audio ready…** and **Waiting for someone to sp
 | Element | What it does |
 | --- | --- |
 | **Title** | Starts as **Untitled session**. TalkBar suggests a title once enough has been said. Click the title to rename it, or click the sparkle button (**Generate title with AI**) to suggest one now. |
-| **Audio capture** | Shows live input levels for the microphone and system audio. Click it to see each stream's state (**Active**, **Starting**, **Retrying**, **Unavailable**, **Disabled**, **Muted**), **Mute microphone**, and turn on **Enhanced audio processing** (noise suppression, gain control and echo cancellation) or **Auto level balance** (evens out quiet and loud sources). |
+| **Audio capture** | Shows live input levels for the microphone and system audio. Click it to see each stream's state (**Active**, **Starting**, **Retrying**, **Unavailable**, **Disabled**, **Muted**), **Mute microphone**, and turn on **Enhanced audio processing** (noise suppression, gain control and echo cancellation) or **Auto level balance** (evens out quiet and loud sources). With **Microphone + system audio** and **Enhanced audio processing** on, **More audio options** also has the **Your voice threshold** slider; see [Speaker echo filter](/settings/voice#processing). |
 | **Timer** | The recorded time. It stops while the session is paused. |
 | Pause (**Pause recording**) | Pauses recording. Becomes available once the transcript starts. |
 | **Stop** | Ends the recording. See [After you stop](#after-you-stop). |
@@ -43,7 +43,7 @@ A shield icon next to the title means this is a **Private session**: its AI runs
 
 ### Speakers and tools
 
-Below the header, each voice TalkBar hears gets a **speaker chip**. Click a chip to rename the speaker, mark **This is me**, set a label, combine two speakers who are the same person, or **Ignore speaker** to hide their lines and keep their text out of AI. Names you give carry into the transcript and summary. See [Speakers](/voice/speakers).
+Below the header, each voice TalkBar hears gets a **speaker chip**. Hover a chip to see the speaker's talk time and share of the conversation. Click it to rename the speaker, mark **This is me**, set a label, show only their lines, combine two speakers who are the same person, move or delete their lines so far, or **Ignore speaker** to hide their lines and keep their text out of AI. Names you give carry into the transcript and summary. See [Speakers](/voice/speakers).
 
 On the right of the same row:
 
@@ -67,7 +67,7 @@ Live speech, split by speaker. New lines appear at the bottom; click **Jump to l
 - change the order (**Oldest first** or **Newest first**) and how the transcript looks;
 - choose **Original**, **Both** or the target language (for example **Russian**) when [live translation](/voice/live-translation) is on.
 
-Right-click a line, or select text in it, to **Set action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker with **Assign to…**.
+Right-click a line, or select text in it, to **Set action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker or a new one with **Move this line to…**. To read only some speakers, use **Filter by speakers** in the panel header.
 
 ### Notes
 
@@ -84,6 +84,8 @@ The **Ask AI** bar at the bottom of the note writes for you, and it sees the liv
 The AI summary while you record: short notes added once people talk. The timeline refreshes every 10 seconds by default; change this with [**Timeline frequency**](/settings/voice#timelines). Each entry links back to the transcript (**Show in transcript**). The panel menu sets the order, bullet style, the **Timeline language** and the AI model used for the timeline. It also has **Action items** and **Bookmarks** menus.
 
 If the timeline can't be written for a while, TalkBar shows **Live summary is temporarily unavailable** and keeps trying. Your transcript keeps recording.
+
+To turn the timeline off for this session, open **Layout** and switch off **Timeline for this session**. The Timeline panel goes away, a timeline request in progress stops, and TalkBar writes no new entries. Entries already written are kept. Switch it back on to see them again; new entries cover what is said from that moment on. Changing [**Timeline enabled**](/settings/voice#timelines) in **Settings → Voice** also applies to the session you're recording.
 
 ### Knowledge
 
@@ -122,7 +124,7 @@ Click **Layout** to arrange the panels:
 | **Tabs in main panel** | Transcript, notes and timeline as tabs in the main panel. |
 | **Split main panel** | Transcript and notes on top, timeline below. |
 
-**Place each view** lets you show, hide and move each panel, and drag to reorder tabs. **Manage custom layouts…** saves your arrangement under a name (up to 8 layouts). **Rounded** and **Flat** change the panel style. You can also set these in **Settings → General → Live Session Appearance**.
+**Timeline for this session** turns this session's timeline on or off (see [Timeline](#timeline)); while it's off, **Timeline** isn't listed under **Place each view**. **Place each view** lets you show, hide and move each panel, and drag to reorder tabs. **Manage custom layouts…** saves your arrangement under a name (up to 8 layouts). **Rounded** and **Flat** change the panel style. You can also set these in **Settings → General → Live Session Appearance**.
 
 **Focus mode** hides the app sidebar and the panel headers so only the session content shows. Turn it on with **Focus** in the **Layout** menu or the **Focus mode** button in the title bar. Hover a panel to see its header; press `Esc` to exit.
 

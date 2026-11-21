@@ -40,6 +40,7 @@ The **⋮** menu:
 | **Scan for knowledge** | Scans this session for knowledge cards. Hidden when the session's privacy mode doesn't allow it. See [Review and scans](/knowledge/review-and-scans). |
 | **Export session** | Exports the session. After the first export, it becomes a submenu with **Export again…**, a way to open the exported files, and **View export history**. See [Exports](/sharing/exports). |
 | **Add source** / **Edit source** | Records where the session comes from, with a name and an optional link. |
+| **Turn off timeline** / **Turn on timeline** | Turns this session's timeline off or back on. While it's off, the **Timeline** view and the timeline's search results and quotes are hidden, and the timeline isn't added to shares or used in AI answers. A link you already published keeps showing it until you choose **Publish update**. Nothing is deleted. Turning it on shows the existing timeline again; it doesn't write a new one. |
 | **Audio Player** | **Show Player** or **Hide Player**, **Export Audio** and **Delete Audio**. Only shown when the session has audio. |
 | **Move to Trash** | Moves the session to Trash after you confirm. |
 
@@ -135,31 +136,33 @@ If the session has temporary memories, a banner offers **Keep all** or **Discard
 
 ## Speakers
 
-Click a speaker's chip, in **Participants** or in the transcript, to open its menu:
+Click a speaker's chip, in **Participants** or in the transcript, to open its menu. The menu is headed by the speaker's name and line count; hover a chip to see their talk time and share of the conversation.
 
 | Option | What it does |
 | --- | --- |
-| **Rename voice** | Names the speaker. Type `@` to link the speaker to a saved person. |
+| **Rename speaker** | Names the speaker. Type `@` to link the speaker to a saved person. |
 | **Session Leader** | Marks the person leading the session. |
 | **This is me** | Marks the speaker as you. |
 | **Ignore speaker** | Hides the speaker's lines and keeps their text out of AI. The audio keeps every voice. |
+| **Show only their lines** | Filters the transcript to this speaker. **Filter by speakers** in the transcript header chooses several. See [Filter the transcript by speaker](/voice/speakers#filter-the-transcript-by-speaker). |
 | **Label** | Gives the speaker a role label, such as *Client* or *Manager*. **Manage labels** opens **Settings → Voice → Speakers**. |
-| **Combine speakers…** | Moves all speech from this speaker to another one, when TalkBar split one person in two. |
+| **Combine into…** | Moves all of this speaker's lines to another speaker and removes this one, after you confirm. Use it when TalkBar split one person in two. |
 | **Color** | Changes the speaker's color. |
 | **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
+| **Delete speaker and lines…** | Deletes the speaker and all of their lines from the session, after you confirm. Summaries already written don't change. This can't be undone. |
 
 Names carry into the transcript and summary. See [Speakers](/voice/speakers) for how TalkBar recognizes voices.
 
 ## Transcript
 
-The **Transcript** tab has two views: **Transcript** (every turn) and **Timeline** (the notes written while you recorded).
+The **Transcript** tab has two views: **Transcript** (every turn) and **Timeline** (the notes written while you recorded). **Timeline** isn't shown while the session's timeline is turned off.
 
 Right-click a line, or use its **⋮** menu:
 
 | Action | What it does |
 | --- | --- |
 | **Set action item** | Flags the line as an action item. |
-| **Speaker** → **Assign to…** | Moves the line to another speaker, or type `@` to pick a person. |
+| **Speaker** → **Move this line to…** | Moves the line to another speaker or to a **New speaker**. |
 | **Speaker** → **Join with previous** | Merges the line into the one before it. |
 | **Copy text** | Copies the line. |
 | **Add bookmark** | Bookmarks the moment. |

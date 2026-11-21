@@ -84,7 +84,7 @@ The window is titled **Schedule for later**. Its first part, **Schedule**, sets 
 | **Repeats** | **Does not repeat**, **Daily**, weekly on the chosen day, **Every weekday (Mon–Fri)**, monthly on the same date or weekday, or **Custom…** (see below). |
 | **Auto-start recording** | Starts recording by itself after a countdown of 10, 30 or 60 seconds, instead of asking you. Off by default. |
 
-The other parts — **Template**, **Prep & context** and **AI & privacy** — are the same as in the [New session window](/sessions/starting-a-session), so you can set up everything in advance.
+The other parts — **Template**, **Prep & context** and **AI & privacy** — are the same as in the [New session window](/sessions/starting-a-session), so you can set up everything in advance, including whether the session makes a timeline. A one-off meeting keeps that choice, and the meetings of a repeating schedule carry the series' choice. A choice that matches [**Timeline enabled**](/settings/voice#timelines) isn't saved, so those meetings follow that setting when they start.
 
 The Schedule window uses your computer's time zone. **Custom timezone override (optional)** in **Settings → General** doesn't change it. To schedule in another time zone, use the [**Series schedule**](/sessions/series#schedules-and-occurrences) window, which has its own **Timezone** field.
 

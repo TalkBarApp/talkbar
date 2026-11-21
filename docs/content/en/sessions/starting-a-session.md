@@ -81,7 +81,8 @@ Attach what the AI should know about during the session. You can read these item
 | Option | What it does | Default |
 | --- | --- | --- |
 | **Summary language** | The language of the summary, the timeline and the AI title. **Auto** follows the language spoken. Click **More…** to pick from 16 languages. | Auto |
-| **Summary length** | **Short**, **Standard** or **Detailed**. Affects the summary only, not the timeline. | Standard |
+| **Summary length** | **Short**, **Standard** or **Detailed**. Affects the summary only, not the timeline. When **Timeline** is set to **Disable**, the hint reads "How short or thorough the summary is." | Standard |
+| **Timeline** | **Enable** or **Disable** the timeline for this session. The choice that matches [**Timeline enabled**](/settings/voice#timelines) is marked **(default)** and starts selected. With **Disable**, the session makes no timeline and sends no timeline requests to AI. You can turn it on or off later from the session. | Your **Timeline enabled** setting |
 | **Privacy** | What TalkBar may do with this session's knowledge. See the table below. | Normal |
 
 The **Privacy** modes:

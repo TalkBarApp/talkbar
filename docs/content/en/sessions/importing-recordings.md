@@ -5,7 +5,7 @@ navigation:
   icon: i-heroicons-arrow-up-tray
 ---
 
-Already have a recording of a meeting, lecture or call? Import it, and TalkBar turns it into a session just like one you recorded live: a transcript by speaker, a timeline, a summary and a title. Transcription runs on your computer.
+Already have a recording of a meeting, lecture or call? Import it, and TalkBar turns it into a session just like one you recorded live: a transcript by speaker, a timeline (when **Timeline** is on), a summary and a title. Transcription runs on your computer.
 
 ## Supported files
 
@@ -32,6 +32,7 @@ Video files (mp4, mkv, webm) work too: TalkBar uses their audio track.
 | **Speakers** | **Just you** is fastest: it skips speaker detection. **You + 1**, **Small (2–4)** and **Large (5–8)** separate who said what. |
 | **Transcription model** | The speech model that transcribes the file. If the model isn't installed yet, you can download it from this window. |
 | **Summary model** | The AI model used for the timeline entries and the summary. **Default** uses your configured model. For a Private AI session, the summary runs on a built-in local model. |
+| **Timeline** | Writes timeline notes from the file. It starts from your [**Timeline enabled**](/settings/voice#timelines) setting; turn it off to skip the timeline. |
 
 The session uses the rest of the setup from the New session window, such as the template, project and privacy mode.
 
@@ -47,7 +48,7 @@ The **Importing audio file** window shows each stage and how long it has taken:
 2. **Detecting speech**: finds the parts where people talk.
 3. **Transcribing**: transcribes each part, and detects speakers.
 4. **Saving transcript**.
-5. **Summarizing timeline**: writes the timeline notes.
+5. **Summarizing timeline**: writes the timeline notes. Skipped when the session's timeline is off.
 6. **Writing the summary**.
 7. **Naming the session**: suggests a title.
 

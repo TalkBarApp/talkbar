@@ -228,7 +228,7 @@ Type **/** and choose **Ask AI** to open a prompt at that spot in the note. Unli
 | **Previous paragraphs** | The three blocks above the prompt. The default. |
 | **Full note** | The whole note. |
 
-The block shares up to 12,000 characters and keeps the text closest to it. The note's title is always sent. In a session note, the session's summary or timeline and the latest transcript are also sent with every choice, including **No context**, unless the session is private or in Sensitive memory mode.
+The block shares up to 12,000 characters and keeps the text closest to it. The note's title is always sent. In a session note, the session's summary or timeline and the latest transcript are also sent with every choice, including **No context**, unless the session is private or in Sensitive memory mode. A session whose timeline is turned off sends no timeline entries.
 
 Press `Enter` to generate; `Shift+Enter` starts a new line. `Esc` or **Close Ask AI** removes the block. **Cancel** stops a running request.
 

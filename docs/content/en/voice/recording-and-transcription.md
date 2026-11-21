@@ -54,6 +54,8 @@ Under **Processing**:
 | **Enhanced audio processing** | Noise suppression, gain control and echo cancellation for the microphone | On |
 | **Auto level balance** | Raises quiet sources and lowers loud ones in **Microphone + system audio** mode | On |
 
+In **Microphone + system audio** sessions, the **Speaker echo filter** drops microphone lines made from speaker sound. See [its rules](/settings/voice#processing).
+
 ### When a session goes quiet
 
 Under **Session end**, TalkBar can pause and stop a session on its own:

@@ -31,7 +31,7 @@ AI settings group the features into four **feature groups**. You can give each g
 | **Chat & Ask AI** | Chat replies | Answers in [Ask TalkBar](/chats-and-notes/ask-talkbar) chats, grounded in your sessions, notes and knowledge |
 | | Ask AI | Writes or rewrites note text from your prompt in the notes Ask bar |
 | **Summaries** | Voice summaries | Writes the live and final summary of each session |
-| | Timeline | Writes the short live timeline bullets during a session |
+| | Timeline | Writes the short live timeline bullets during a session. Off for a session whose [timeline is turned off](/settings/voice#timelines) |
 | **Dictation & voice commands** | Dictation polish | Cleans up dictated text before it is inserted ([Dictation](/voice/dictation#polish-with-ai)) |
 | | Command interpretation | Understands natural-language commands in chat and maps them to actions |
 | **Knowledge & titles** | Knowledge extraction | Finds knowledge cards, people and companies in sessions and documents during [knowledge scans](/knowledge/review-and-scans) |

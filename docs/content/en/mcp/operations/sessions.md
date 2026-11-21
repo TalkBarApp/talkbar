@@ -156,7 +156,7 @@ Reads a session's figures: how long it recorded, its breaks, turns, characters, 
 
 ## `sessions.transcript`
 
-Reads a session's transcript as the session page shows it, with speaker names and times, in pages of whole turns.
+Reads a session's transcript as the session page shows it, with speaker names and times, in pages of whole turns. The app's speaker filter doesn't apply; use the `speaker` argument to read one speaker.
 
 **Read** · runs with [`talkbar_read`](/mcp/tools#talkbar_read) · MCP switch **On** by default · policy group `content`
 
@@ -196,7 +196,7 @@ Reads a session's transcript as the session page shows it, with speaker names an
 
 ## `sessions.timeline`
 
-Reads a session's timeline with times, as the session page shows it.
+Reads a session's timeline with times, as the session page shows it. The saved entries of a session whose timeline is turned off are still returned.
 
 **Read** · runs with [`talkbar_read`](/mcp/tools#talkbar_read) · MCP switch **On** by default · policy group `content`
 

@@ -35,7 +35,7 @@ For a session, pick the parts to include under **What they'll see**:
 
 - **Summary**, and which **Summary sections**. Keywords are shared with the summary.
 - **Action items** (shown only when the session has some).
-- **Timeline**. It can't be shared while a speaker is excluded from AI.
+- **Timeline**. It can't be shared while a speaker is excluded from AI, and isn't offered while the session's timeline is turned off. Updating a link then publishes it without the timeline; after you turn the timeline back on, the next update includes it again if the link shares **Timeline** and no speaker is excluded from AI.
 - **Transcript**.
 - **Notes**.
 
@@ -110,7 +110,7 @@ Pages without custom branding show a small TalkBar footer and a link to download
 
 Open **Manage links** from the session's **Share** menu or the share dialog. All your links are also listed in **Settings → Export & Share → Share Content → Shared links**, with a search box and a status filter.
 
-- **Publish update** replaces the page at the same link with the current content. Who can open it, when it expires and which parts it shares stay the same; you can still change the summary sections with **Edit and publish**. On the Free plan you can update a link once every 30 minutes.
+- **Publish update** replaces the page at the same link with the current content. Who can open it, when it expires and which parts it shares stay the same; you can still change the summary sections with **Edit and publish**. While the session's timeline is turned off, the update leaves the timeline out; once you turn it back on, the next update includes it again if the link shares **Timeline** and no speaker is excluded from AI. On the Free plan you can update a link once every 30 minutes.
 - **Revoke link**: anyone using the link loses access at once. A revoked or expired link can't be brought back; publish a new one instead.
 - **Clear ended links** removes revoked, expired and removed links from the list. Active links are not affected.
 

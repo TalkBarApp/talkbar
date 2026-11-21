@@ -38,6 +38,16 @@ For how recording works end to end, see [Recording and transcription](/voice/rec
 | **Enhanced audio processing** | Applies noise suppression, gain control and echo cancellation to microphone audio. | On |
 | **Auto level balance** | In **Microphone + system audio** mode, raises quiet sources and lowers loud ones automatically. | On |
 
+**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. These rules drop microphone lines made from that speaker sound. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
+
+| Rule | What it does | Default |
+| --- | --- | --- |
+| **Short lines over system audio (words)** | Drops a microphone line of up to this many words said while system audio is speaking. | 2 |
+| **Minimum speech per word (ms)** | Drops a microphone line with less detected speech per word than this, when someone speaks in system audio during it or just before. | 100 |
+| **Echo cancellation warm-up (ms)** | Drops microphone lines said over system audio while echo cancellation adapts after it starts. | 8000 |
+| **Minimum microphone chunk (ms)** | Drops a microphone line from a stretch of audio shorter than this, when someone speaks in system audio during it or just before. | 800 |
+| **Your voice threshold (%)** | A moment counts as your voice when echo cancellation leaves more than this share of its sound. Higher removes more speaker echo but can cut words you say over system audio. Also available during a recording under **Audio capture → More audio options**, with **Microphone + system audio** and **Enhanced audio processing** on. | 20 |
+
 ### Session end
 
 | Setting | What it does | Default |
@@ -76,7 +86,10 @@ The model lists include Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo,
 
 | Setting | What it does | Default |
 | --- | --- | --- |
+| **Timeline enabled** | Turns the timeline on for every new session. Changing it also applies to the session you're recording; finished sessions keep their own setting. To change it for one session or a scheduled session, use **Timeline** in **AI & privacy** when you set it up. | On |
 | **Timeline frequency** | How often the live timeline (short bullets about what was said) refreshes during a session. Options: 10, 20 or 30 seconds, or **1 min**. With a Whisper model as the **Live transcription model**, it refreshes every 30 seconds at the fastest. | 10 seconds |
+
+A session with its timeline off makes no timeline and sends no timeline requests to AI. Its timeline is hidden in the session, in search and in AI answers, and isn't shared. Timeline entries it already has are kept and come back when you turn it on again; MCP and the CLI can still read them (`sessions.timeline`). See [Timeline](/sessions/recording#timeline) for turning it off during a session.
 
 ### Summaries
 

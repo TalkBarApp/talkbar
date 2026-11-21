@@ -47,30 +47,41 @@ If a session starts without speaker detection because its model is missing, Talk
 
 ## Rename speakers and link them to people
 
-During or after a session, click a speaker chip to open its menu.
+During or after a session, click a speaker chip to open its menu. The menu is headed by the speaker's name and how many lines they have. Hover a chip to see their talk time and share of the conversation, for example **Talk time: 4 min · 30% of total**. A speaker with no lines yet shows as a faded, dashed chip (**No speech**).
 
 ::screenshot{src="/screenshots/voice/speaker-chip-menu.png" alt="A session's speaker chip menu open, showing Rename voice, Session Leader, This is me, Ignore speaker, Label, Combine speakers… and the Color swatches" caption="The speaker menu" compact max-width="600"}
 ::
 
 | Menu item | What it does |
 | --- | --- |
-| **Rename voice** | Type a name, or type `@` to pick a saved person. The name carries into the transcript and summary. |
+| **Rename speaker** | Type a name, or type `@` to pick a saved person. The name carries into the transcript and summary. |
 | **Session Leader** | Marks the speaker who leads the session. |
 | **This is me** | Marks this speaker as you. |
 | **Ignore speaker** | Leaves this speaker out of AI (see below). |
+| **Show only their lines** | Filters the transcript to this speaker. See [Filter the transcript by speaker](#filter-the-transcript-by-speaker). |
 | **Label** | Adds a role such as Client or Manager. See [Speaker labels](#speaker-labels). |
-| **Combine speakers…** | Moves all speech from this speaker to another one, when TalkBar split one person into two. |
+| **Combine into…** | Moves all of this speaker's lines to another speaker and removes this one, after you confirm. Anything this voice says later is shown as the other speaker too. Use it when TalkBar split one person into two. |
+| **Move all lines to…** | While recording only. Moves this speaker's lines so far to another speaker or a **New speaker**, after you confirm. The speaker stays, and new speech from this voice still appears under it. |
 | **Color** | Changes the speaker's color. |
 | **Remove name** | Clears a name you gave, so the speaker goes back to its default label. Shown only for a speaker you named. |
+| **Delete speaker and lines…** | Deletes the speaker's lines after you confirm. While recording, the lines so far are deleted and the speaker stays as ignored, so anything new from this voice is collapsed and left out of summaries. After recording, the speaker and all of their lines are deleted from the session; summaries already written don't change. This can't be undone. |
 
 When you name a speaker, that person appears in [People and companies](/knowledge/people-and-companies), linked to the session. Names can be up to 40 characters, and two speakers in one session cannot share the same name.
 
 ### Fix single lines
 
-Sometimes one line lands on the wrong speaker. Open the line's menu in the transcript:
+Sometimes one line lands on the wrong speaker. Open the line's menu in the transcript and its **Speaker** submenu. The **This line** section has:
 
-- **Assign to…** moves the line to another speaker.
+- **Move this line to…** moves the line to another speaker or to a **New speaker**.
 - **Join with previous** merges the line into the previous speaker turn. This cannot be undone.
+
+Below it, a section headed by the speaker's name has **Rename speaker** and **Ignore speaker**, which apply to the whole speaker.
+
+## Filter the transcript by speaker
+
+To read only some speakers, click **Filter by speakers** in the transcript header. Under **Show lines from**, tick the speakers to show (each shows its line count), or click **Only** next to one speaker. The header shows how many lines are shown, for example **12 of 40 lines**. **Show all speakers** clears the filter. **Show only their lines** in a speaker's menu is a shortcut for **Only**.
+
+While the transcript is filtered, the chip of each speaker it shows has a funnel icon (**Filtered by speaker**). Filtering only changes the transcript view: nothing is moved or deleted, and summaries are not affected. Ignored speakers stay left out of summaries.
 
 ### When your microphone is recorded
 
