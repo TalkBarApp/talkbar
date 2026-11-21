@@ -67,7 +67,7 @@ Live speech, split by speaker. New lines appear at the bottom; click **Jump to l
 - change the order (**Oldest first** or **Newest first**) and how the transcript looks;
 - choose **Original**, **Both** or the target language (for example **Russian**) when [live translation](/voice/live-translation) is on.
 
-Right-click a line, or select text in it, to **Set action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker or a new one with **Move this line to…**. To read only some speakers, use **Filter by speakers** in the panel header.
+Right-click a line, or select text in it, to **Set action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker or a new one with **Move this line to…**. To see only some speakers, use **Filter by speakers** in the panel header.
 
 ### Notes
 
@@ -85,7 +85,7 @@ The AI summary while you record: short notes added once people talk. The timelin
 
 If the timeline can't be written for a while, TalkBar shows **Live summary is temporarily unavailable** and keeps trying. Your transcript keeps recording.
 
-To turn the timeline off for this session, open **Layout** and switch off **Timeline for this session**. The Timeline panel goes away, a timeline request in progress stops, and TalkBar writes no new entries. Entries already written are kept. Switch it back on to see them again; new entries cover what is said from that moment on. Changing [**Timeline enabled**](/settings/voice#timelines) in **Settings → Voice** also applies to the session you're recording.
+To turn the timeline off for this session, open **Layout** and switch off **Timeline for this session**. The Timeline panel goes away, a timeline request in progress stops, and TalkBar writes no new entries. Entries already written are kept. Switch it back on to see them again; new entries cover only what is said from then on. Changing [**Timeline enabled**](/settings/voice#timelines) in **Settings → Voice** also applies to the session you're recording.
 
 ### Knowledge
 

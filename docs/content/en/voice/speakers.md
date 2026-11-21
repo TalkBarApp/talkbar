@@ -77,15 +77,15 @@ Sometimes one line lands on the wrong speaker. Open the line's menu in the trans
 
 Below it, a section headed by the speaker's name has **Rename speaker** and **Ignore speaker**, which apply to the whole speaker.
 
-## Filter the transcript by speaker
-
-To read only some speakers, click **Filter by speakers** in the transcript header. Under **Show lines from**, tick the speakers to show (each shows its line count), or click **Only** next to one speaker. The header shows how many lines are shown, for example **12 of 40 lines**. **Show all speakers** clears the filter. **Show only their lines** in a speaker's menu is a shortcut for **Only**.
-
-While the transcript is filtered, the chip of each speaker it shows has a funnel icon (**Filtered by speaker**). Filtering only changes the transcript view: nothing is moved or deleted, and summaries are not affected. Ignored speakers stay left out of summaries.
-
 ### When your microphone is recorded
 
 When the recording includes your microphone, TalkBar can mark your own voice as **You**. If your microphone is not captured (for example with **System audio** only), no speaker is marked as you. Use **This is me** to set it yourself.
+
+## Filter the transcript by speaker
+
+To see only what some speakers said, click **Filter by speakers** in the transcript header. Under **Show lines from**, tick the speakers to show (each shows its line count), or click **Only** next to one speaker. The header shows how many lines are shown, for example **12 of 40 lines**. **Show all speakers** clears the filter. **Show only their lines** in a speaker's menu is a shortcut for **Only**.
+
+While the transcript is filtered, each speaker it shows has a funnel icon on their chip (**Filtered by speaker**). Filtering only changes the transcript view: nothing is moved or deleted, and summaries are not affected. Ignored speakers are still left out of summaries.
 
 ## Exclude a speaker from AI
 

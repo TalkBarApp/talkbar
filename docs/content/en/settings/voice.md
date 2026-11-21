@@ -38,7 +38,7 @@ For how recording works end to end, see [Recording and transcription](/voice/rec
 | **Enhanced audio processing** | Applies noise suppression, gain control and echo cancellation to microphone audio. | On |
 | **Auto level balance** | In **Microphone + system audio** mode, raises quiet sources and lowers loud ones automatically. | On |
 
-**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. These rules drop microphone lines made from that speaker sound. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
+**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. These rules drop microphone lines that are really sound from your speakers. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
 
 | Rule | What it does | Default |
 | --- | --- | --- |

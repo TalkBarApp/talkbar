@@ -40,7 +40,7 @@ The **⋮** menu:
 | **Scan for knowledge** | Scans this session for knowledge cards. Hidden when the session's privacy mode doesn't allow it. See [Review and scans](/knowledge/review-and-scans). |
 | **Export session** | Exports the session. After the first export, it becomes a submenu with **Export again…**, a way to open the exported files, and **View export history**. See [Exports](/sharing/exports). |
 | **Add source** / **Edit source** | Records where the session comes from, with a name and an optional link. |
-| **Turn off timeline** / **Turn on timeline** | Turns this session's timeline off or back on. While it's off, the **Timeline** view and the timeline's search results and quotes are hidden, and the timeline isn't added to shares or used in AI answers. A link you already published keeps showing it until you choose **Publish update**. Nothing is deleted. Turning it on shows the existing timeline again; it doesn't write a new one. |
+| **Turn off timeline** / **Turn on timeline** | Turns this session's timeline off or back on. While it's off, the **Timeline** view and the timeline's search results and quotes are hidden, and the timeline isn't included in share links or used in AI answers. A link you already published keeps showing it until you choose **Publish update**. Nothing is deleted. Turning it back on shows the existing timeline again; it doesn't write a new one. |
 | **Audio Player** | **Show Player** or **Hide Player**, **Export Audio** and **Delete Audio**. Only shown when the session has audio. |
 | **Move to Trash** | Moves the session to Trash after you confirm. |
 
