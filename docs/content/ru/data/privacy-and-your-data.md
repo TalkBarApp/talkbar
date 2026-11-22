@@ -153,4 +153,4 @@ TalkBar избавляет от бота на встрече, но не от в�
 - [Приватный режим ИИ](/ai/private-ai-mode)
 - [Ссылки для общего доступа](/sharing/share-links)
 - [Общие настройки](/settings/general)
-- Полная политика конфиденциальности: [www.talkbar.ru/privacy](https://www.talkbar.ru/privacy)
+- [Политика конфиденциальности](/privacy)

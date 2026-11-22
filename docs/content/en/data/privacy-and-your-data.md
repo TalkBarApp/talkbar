@@ -153,4 +153,4 @@ When a session starts, TalkBar shows a reminder about this. You can turn it off 
 - [Private AI Mode](/ai/private-ai-mode)
 - [Share links](/sharing/share-links)
 - [General settings](/settings/general)
-- The full privacy policy: [www.talkbar.app/privacy](https://www.talkbar.app/privacy)
+- [Privacy policy](/privacy)
