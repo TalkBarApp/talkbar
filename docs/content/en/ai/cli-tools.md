@@ -626,6 +626,7 @@ Your plan with the service has usage limits. When you reach them, the tool stops
 
 ## Related
 
+- [Mac App Store version](/ai/cli-tools/help)
 - [Providers and models](/ai/providers-and-models)
 - [Speed up local AI](/ai/speed-up-ai)
 - [Private AI Mode](/ai/private-ai-mode)

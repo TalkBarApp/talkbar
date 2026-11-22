@@ -626,6 +626,7 @@ source ~/.profile
 
 ## См. также
 
+- [Версия из Mac App Store](/ai/cli-tools/help)
 - [Провайдеры и модели](/ai/providers-and-models)
 - [Как ускорить локальный ИИ](/ai/speed-up-ai)
 - [Приватный режим ИИ](/ai/private-ai-mode)
