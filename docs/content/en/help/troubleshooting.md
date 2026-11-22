@@ -107,6 +107,8 @@ First check that **Enhance transcripts after recording** is on in **Settings →
 
 Check **Transcription language** in **Settings → Voice → Transcription**. Some speech models detect the language automatically; others transcribe only certain languages. See [Recording and transcription](/voice/recording-and-transcription).
 
+With Parakeet V3 or Orukeet, hold the recording to its language instead: **Transcription language** in **Settings → General → Session defaults**, or in the transcript **View** menu while you record. See [Hold Parakeet V3 and Orukeet to one language](/voice/languages#hold-parakeet-v3-and-orukeet-to-one-language).
+
 ## AI and providers
 
 ### A banner says a feature "could not use" a model

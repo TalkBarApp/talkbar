@@ -34,7 +34,7 @@ The screen then shows **Getting audio ready…** and **Waiting for someone to sp
 | Element | What it does |
 | --- | --- |
 | **Title** | Starts as **Untitled session**. TalkBar suggests a title once enough has been said. Click the title to rename it, or click the sparkle button (**Generate title with AI**) to suggest one now. |
-| **Audio capture** | Shows live input levels for the microphone and system audio. Click it to see each stream's state (**Active**, **Starting**, **Retrying**, **Unavailable**, **Disabled**, **Muted**), **Mute microphone**, and turn on **Enhanced audio processing** (noise suppression, gain control and echo cancellation) or **Auto level balance** (evens out quiet and loud sources). With **Microphone + system audio** and **Enhanced audio processing** on, **More audio options** also has the **Your voice threshold** slider; see [Speaker echo filter](/settings/voice#processing). |
+| **Audio capture** | Shows live input levels for the microphone and system audio. Click it to see each stream's state (**Active**, **Starting**, **Retrying**, **Unavailable**, **Disabled**, **Muted**), switch **System audio** or **Microphone** on or off, **Mute microphone**, and under **More audio options** turn on **Enhanced audio processing** (noise suppression, gain control and echo cancellation) or **Auto level balance** (evens out quiet and loud sources). Switching system audio on or off also changes who your microphone's voice is; see [When your microphone is recorded](/voice/speakers#when-your-microphone-is-recorded). |
 | **Timer** | The recorded time. It stops while the session is paused. |
 | Pause (**Pause recording**) | Pauses recording. Becomes available once the transcript starts. |
 | **Stop** | Ends the recording. See [After you stop](#after-you-stop). |
@@ -65,6 +65,7 @@ Live speech, split by speaker. New lines appear at the bottom; click **Jump to l
 
 - open the **Action items** and **Bookmarks** menus for this session;
 - change the order (**Oldest first** or **Newest first**) and how the transcript looks;
+- with Parakeet V3 or Orukeet, hold the transcript to one language under **Transcription language** in the **View** menu. It applies from the next words, and **Continue session** keeps it. See [Hold Parakeet V3 and Orukeet to one language](/voice/languages#hold-parakeet-v3-and-orukeet-to-one-language);
 - choose **Original**, **Both** or the target language (for example **Russian**) when [live translation](/voice/live-translation) is on.
 
 Right-click a line, or select text in it, to **Set action item**, **Add bookmark**, **Add to note** or copy it. The **Speaker** options on a line let you move it to another speaker or a new one with **Move this line to…**. To see only some speakers, use **Filter by speakers** in the panel header.

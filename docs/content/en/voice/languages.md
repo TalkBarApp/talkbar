@@ -104,11 +104,28 @@ With a Whisper model for live transcription, the [timeline](/settings/voice#time
 
 1. Open **Settings → Voice → Transcription**.
 2. Choose the **Live transcription model** and **After-recording enhancement model**. Download them if needed.
-3. Leave **Transcription language** on **Auto-detect**, or pick the language if words come out wrong. The list shows only languages your chosen models support. It's locked while your models detect the language themselves, as Parakeet V3, Orukeet INT8 and GigaAM v3 do.
+3. Leave **Transcription language** on **Auto-detect**, or pick the language if words come out wrong. The list shows only languages your chosen models support. It's locked while your models detect the language themselves, as Parakeet V3, Orukeet INT8 and GigaAM v3 do. For Parakeet V3 and Orukeet, see the next section.
+
+### Hold Parakeet V3 and Orukeet to one language
+
+Parakeet V3 and Orukeet detect the language on their own. When they write words in the wrong language, for example English words in a Russian conversation, you can hold them to one language: they then write only that language's letters. It works for English, Russian, Ukrainian, Spanish, German, French, Italian, Portuguese, Dutch and Polish.
+
+| Where | What it changes |
+| --- | --- |
+| **Transcription language** in [Settings → General → Session defaults](/settings/general#session-defaults) | The language new recordings start with. |
+| **Transcription language** in the [New session window](/sessions/starting-a-session) | This session only, including scheduled sessions. A series keeps the choice for its next sessions. |
+| **Transcription language** in the transcript **View** menu while recording | The rest of this recording, from the next words. **Continue session** keeps it. |
+| **Dictation language** in [Settings → Voice → Dictation](/settings/voice#speech), or **Language** in the dictation panel's quick settings | Dictation only, separate from sessions. |
+
+**Enhance transcript** and audio imports on these models use the language too. See [Session details](/sessions/session-details#enhance-transcript) and [Importing recordings](/sessions/importing-recordings).
+
+::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
+Hold a recording only to a language everyone speaks in it. Speech in another language, including system audio, is dropped or comes out garbled. Languages written with the same letters (for example Spanish and Italian) can still mix; the hold mostly stops words in the wrong alphabet. Leave it on **Auto-detect** for conversations in several languages.
+::
 
 ## Dictation
 
-Dictation uses the same speech models. **Dictation model** follows your live model unless you pick another, so a language table above applies to the model you dictate with. **Dictation language** follows your **Transcription language** unless you lock it to one language. See [Dictation](/voice/dictation).
+Dictation uses the same speech models. **Dictation model** follows your live model unless you pick another, so a language table above applies to the model you dictate with. **Dictation language** follows your **Transcription language** unless you lock it to one language. With Parakeet V3 or Orukeet, it has its own setting instead (see [Hold Parakeet V3 and Orukeet to one language](#hold-parakeet-v3-and-orukeet-to-one-language)). See [Dictation](/voice/dictation).
 
 ## Live translation
 

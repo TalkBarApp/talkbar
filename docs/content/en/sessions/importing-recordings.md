@@ -31,6 +31,7 @@ Video files (mp4, mkv, webm) work too: TalkBar uses their audio track.
 | --- | --- |
 | **Speakers** | **Just you** is fastest: it skips speaker detection. **You + 1**, **Small (2–4)** and **Large (5–8)** separate who said what. |
 | **Transcription model** | The speech model that transcribes the file. If the model isn't installed yet, you can download it from this window. |
+| **Spoken language** | Shown when the model can use a language. Leave it on **Auto-detect**, or pick the language of the recording. With Parakeet V3 or Orukeet it holds the transcript to that language's letters and starts with **Transcription language** from [Session defaults](/settings/general#session-defaults). **Enhance transcript** later starts with the same language. |
 | **Summary model** | The AI model used for the timeline entries and the summary. **Default** uses your configured model. For a Private AI session, the summary runs on a built-in local model. |
 | **Timeline** | Writes timeline notes from the file. It starts from your [**Timeline enabled**](/settings/voice#timelines) setting; turn it off to skip the timeline. |
 

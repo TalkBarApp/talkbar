@@ -79,7 +79,7 @@ To skip or move one session, use its row in **Upcoming**. To end a repeating ser
 
 ## Series defaults
 
-New sessions in a series start with the series' defaults: template, audio, speakers, context (including attached documents and knowledge cards) and AI choices. Some series types suggest a template, which is used until you save defaults for the series. To set them, start a session in the series. In the New session window, under **Project and Series → Defaults**:
+New sessions in a series start with the series' defaults: template, audio, speakers, context (including attached documents and knowledge cards), AI choices and the transcription language for Parakeet V3 and Orukeet. Some series types suggest a template, which is used until you save defaults for the series. To set them, start a session in the series. In the New session window, under **Project and Series → Defaults**:
 
 - **Save current setup as defaults** saves the window's current choices for the series.
 - **Copy latest** copies the setup of the series' most recent session.

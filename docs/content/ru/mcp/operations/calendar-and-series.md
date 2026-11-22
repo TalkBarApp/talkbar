@@ -185,6 +185,7 @@ navigation:
   - `source`: `mic`, `system` или `both`; `micDeviceId`.
   - `sessionTemplateId`, `projectId`, `topicIds`, `memoryIds` (карточки знаний), `documentIds`.
   - `summariesEnabled`, `summaryLanguage` (`auto` или код языка итогов), `summaryLength` (`short`, `standard` или `detailed`), `summaryModel` (`{providerId, modelId}`).
+  - `transcriptionLanguage`: `auto`, `en`, `ru`, `uk`, `es`, `de`, `fr`, `it`, `pt`, `nl` или `pl`. Закрепляет этот язык за записью на Parakeet V3 или Orukeet; другие модели для записи его не учитывают. Если поле не задано, встреча берёт значение из параметров сессий в приложении.
   - `participants`: `[{name, contactId}]`; у каждого участника должно быть `name`.
   - `memoryMode`: `normal`, `session_only`, `manual_only` или `sensitive`. `speakerMode`: `solo`, `duo`, `small` или `large`. `privateSession`.
   - `origin`: `{name, url}`.

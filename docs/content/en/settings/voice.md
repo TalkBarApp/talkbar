@@ -35,10 +35,10 @@ For how recording works end to end, see [Recording and transcription](/voice/rec
 
 | Setting | What it does | Default |
 | --- | --- | --- |
-| **Enhanced audio processing** | Applies noise suppression, gain control and echo cancellation to microphone audio. | On |
+| **Enhanced audio processing** | Applies noise suppression, gain control and echo cancellation to microphone audio in sessions. Dictation gets the noise suppression and gain control, so words come through in a noisier room. | On |
 | **Auto level balance** | In **Microphone + system audio** mode, raises quiet sources and lowers loud ones automatically. | On |
 
-**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. These rules drop microphone lines that are really sound from your speakers. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
+**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. Echo cancellation in **Enhanced audio processing** removes most of it, including with Bluetooth headsets. These rules drop microphone lines that are still really sound from your speakers. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
 
 | Rule | What it does | Default |
 | --- | --- | --- |
@@ -46,7 +46,6 @@ For how recording works end to end, see [Recording and transcription](/voice/rec
 | **Minimum speech per word (ms)** | Drops a microphone line with less detected speech per word than this, when someone speaks in system audio during it or just before. | 100 |
 | **Echo cancellation warm-up (ms)** | Drops microphone lines said over system audio while echo cancellation adapts after it starts. | 8000 |
 | **Minimum microphone chunk (ms)** | Drops a microphone line from a stretch of audio shorter than this, when someone speaks in system audio during it or just before. | 800 |
-| **Your voice threshold (%)** | A moment counts as your voice when echo cancellation leaves more than this share of its sound. Higher removes more speaker echo but can cut words you say over system audio. Also available during a recording under **Audio capture → More audio options**, with **Microphone + system audio** and **Enhanced audio processing** on. | 20 |
 
 ### Session end
 
@@ -77,7 +76,7 @@ Speech-to-text runs on this computer. A model downloads when you select it; a st
 | **Live transcription model** | The model that writes the live transcript while you record. A fast model keeps words appearing as you speak; TalkBar warns you if you pick a slow one. | **Parakeet V3** |
 | **Enhance transcripts after recording** | Makes **Enhance transcript** available on finished sessions; when a session ends, a larger model checks the transcript again for better accuracy. The enhancement model below shows only when this is on. | Off |
 | **After-recording enhancement model** | The model used by **Enhance transcript** after a recording ends. Slower, more accurate models are fine here. | **Whisper Turbo** |
-| **Transcription language** | The spoken language for live and enhanced transcripts. Leave it on auto-detect, or pick a language if words come out wrong. The list only offers languages your selected models support, and it is locked when both models detect the language on their own. | **Auto-detect** |
+| **Transcription language** | The spoken language for live and enhanced transcripts. Leave it on auto-detect, or pick a language if words come out wrong. The list only offers languages your selected models support, and it is locked when both models detect the language on their own. Parakeet V3 and Orukeet don't use it: recordings on them take their language from **Transcription language** in [Session defaults](/settings/general#session-defaults), and **Enhance transcript** on them keeps each session's own language. The hint under the setting says which transcripts it is used for. | **Auto-detect** |
 | **Speaker detection model** | The model that separates speakers in new sessions, imported audio and Enhance. Options: **Automatic (Sortformer up to 4 speakers, Nemotron 3 for more)**, **Sortformer (4 or 8 speakers)**, **Nemotron 3 (up to 8 speakers)**. For more than 4 speakers, **Automatic** uses Nemotron 3 when it is installed, otherwise the 8-speaker Sortformer model. | **Automatic (Sortformer up to 4 speakers, Nemotron 3 for more)** |
 
 The model lists include Parakeet V3, Orukeet INT8, Whisper Small, Whisper Turbo, GigaAM v3, Canary 180M Flash and Canary 1B v2. See [Supported languages](/voice/languages) for which model to choose for your language. Each entry shows a short hint and its download size. See [Local models](/ai/local-models) for more about them.
@@ -144,7 +143,7 @@ The switch in the section header turns polishing on or off. When it is on, AI cl
 | --- | --- | --- |
 | **Microphone** | The microphone dictation uses. | **Same as voice recording** |
 | **Dictation model** | The speech model for dictation. Follows the **Live transcription model** unless you pick another. | **Same as voice transcription** |
-| **Dictation language** | Locks dictation to one language from the next dictation. Locked to auto-detect when the dictation model only detects the language itself. | **Same as voice (…)**, showing your **Transcription language** |
+| **Dictation language** | Locks dictation to one language from the next dictation. Locked to auto-detect when the dictation model only detects the language itself. With Parakeet V3 or Orukeet, dictation has its own setting, separate from sessions: it writes only the chosen language's letters, and you can also change it in the dictation panel's quick settings while you dictate. | **Same as voice (…)**, showing your **Transcription language**; **Auto-detect** with Parakeet V3 or Orukeet |
 
 ### When dictation stops
 

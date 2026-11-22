@@ -185,6 +185,7 @@ Schedules a standalone or series meeting. It never starts recording.
   - `source`: `mic`, `system` or `both`; `micDeviceId`.
   - `sessionTemplateId`, `projectId`, `topicIds`, `memoryIds` (knowledge cards), `documentIds`.
   - `summariesEnabled`, `summaryLanguage` (`auto` or a summary language code), `summaryLength` (`short`, `standard` or `detailed`), `summaryModel` (`{providerId, modelId}`).
+  - `transcriptionLanguage`: `auto`, `en`, `ru`, `uk`, `es`, `de`, `fr`, `it`, `pt`, `nl` or `pl`. Holds a Parakeet V3 or Orukeet recording to that language; other live models ignore it. Left out, the meeting uses the app's Session defaults.
   - `participants`: `[{name, contactId}]`; each needs a `name`.
   - `memoryMode`: `normal`, `session_only`, `manual_only` or `sensitive`. `speakerMode`: `solo`, `duo`, `small` or `large`. `privateSession`.
   - `origin`: `{name, url}`.

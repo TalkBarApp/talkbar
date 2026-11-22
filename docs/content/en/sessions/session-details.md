@@ -178,7 +178,7 @@ The **View** menu switches between **Classic layout**, **Avatar layout** and **C
 
 **Enhance transcript** runs the saved recording through a more accurate speech model on your computer, to improve the text and the speaker separation. It is available for completed sessions that still have their audio, when **Enhance transcripts after recording** is on in **Settings → Voice → Transcription**. The default enhancement model, Whisper Turbo, is a 1.5 GB download; you can also pick Parakeet V3, the model already used for live transcription.
 
-1. Click **Enhance transcript**, choose the **Enhancement model** and **Spoken language**, and start. TalkBar offers to download a model if one is missing.
+1. Click **Enhance transcript**, choose the **Enhancement model** and **Spoken language**, and start. TalkBar offers to download a model if one is missing. With Parakeet V3 or Orukeet, **Spoken language** starts with the language the session was recorded or imported in, or **Auto-detect** when it has none.
 2. When it finishes, review the result in the **Enhanced transcript ready for review** card. **Show preview** shows the new text.
 3. If some speakers didn't match, map each one to an existing speaker, or keep it as a new speaker, then click **Apply speaker mapping**.
 4. Click **Replace session transcript** to use the new version, or **Discard enhanced transcript** to keep the old one.

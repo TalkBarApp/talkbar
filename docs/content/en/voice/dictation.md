@@ -31,6 +31,8 @@ While the panel is open you can also:
 - Open **Recent inserts** from the panel logo to copy or insert an earlier dictation again.
 - Open **Quick settings** (gear icon) to change common options without leaving the panel.
 
+With Parakeet V3 or Orukeet, **Quick settings** also has **Language**: drag the row or use its arrows to see every language. A change applies from your next words. While a language is set, its two-letter code (such as **RU**) takes the place of the word count; click it to open quick settings. See [Hold Parakeet V3 and Orukeet to one language](/voice/languages#hold-parakeet-v3-and-orukeet-to-one-language).
+
 Closing the panel discards text you have not inserted.
 
 ::screenshot{src="/screenshots/voice/dictation-overlay.png" alt="The floating dictation panel over another app, showing dictated text, the microphone, Copy, Polish, erase and Insert buttons, and the gear and history icons in the header" caption="The dictation panel" compact max-width="460"}

@@ -107,7 +107,7 @@ The list depends on the models you chose:
 - **Whisper** models offer Auto-detect plus English, Russian, Spanish, German, French, Italian, Portuguese, Dutch, Polish, Ukrainian, Arabic, Hindi, Japanese, Korean, Chinese and Turkish.
 - **Canary 1B v2** offers English, Russian, Ukrainian, Spanish, German, French, Italian, Portuguese, Dutch and Polish.
 - **Canary 180M Flash** offers English, German, Spanish and French.
-- **Parakeet V3**, **Orukeet INT8** and **GigaAM v3** detect the language themselves (or support only one), so the setting is locked.
+- **Parakeet V3**, **Orukeet INT8** and **GigaAM v3** detect the language themselves (or support only one), so the setting is locked. You can still hold Parakeet V3 and Orukeet to one language for sessions and dictation; see [Hold Parakeet V3 and Orukeet to one language](/voice/languages#hold-parakeet-v3-and-orukeet-to-one-language).
 
 ::callout{icon="i-heroicons-exclamation-triangle" color="amber"}
 Canary models do not detect the language reliably. If you use a Canary model for non-English speech, pick the spoken language instead of Auto-detect.
