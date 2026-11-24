@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><img src="https://talkbar-updater-experiment.kurdin.workers.dev/badge/version.svg" alt="Latest version"></a>
+  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><img src="https://updater.talkbar.app/badge/version.svg" alt="Latest version"></a>
   <a href="https://updater.talkbar.app/get/windows/x64"><img src=".github/badges/windows-x64.svg" alt="Download for Windows x64"></a>
   <a href="https://updater.talkbar.app/get/windows/arm"><img src=".github/badges/windows-arm64.svg" alt="Download for Windows on Arm"></a>
   <a href="https://updater.talkbar.app/get/mac"><img src=".github/badges/macos-apple-silicon.svg" alt="Download for Mac with Apple silicon"></a>
