@@ -56,46 +56,6 @@ Under **Processing**:
 
 In **Microphone + system audio** sessions, the **Speaker echo filter** drops microphone lines that are really sound from your speakers. See [its rules](/settings/voice#processing).
 
-### Mac echo cancellation
-
-On a Mac, **Mac echo cancellation** is an optional switch for recording. When it's on, TalkBar uses macOS's own voice processing for the Mac's built-in microphone instead of TalkBar's own echo cancellation. That's the same echo cancellation FaceTime uses, tuned by Apple for each Mac model. It can help when sound from the Mac's built-in speakers (a call or a video) is picked up by the built-in microphone and shows up in the transcript as your words.
-
-TalkBar's own echo cancellation stays the default everywhere and keeps working as before, including for USB microphones, headsets and external speakers. The switch is an extra choice only for a Mac's built-in microphone with its built-in speakers. If echo from the built-in speakers shows up in the transcript as your words, this is an option to try.
-
-**When the switch appears.** All of the following must be true:
-
-- A Mac with macOS 14 (Sonoma) or later.
-- A recording is running in **Microphone + system audio** mode.
-- **Enhanced audio processing** is on.
-- The microphone in use is the Mac's built-in microphone, and the sound output is the Mac's built-in speakers. In practice this means a MacBook. A Mac mini, iMac or Mac Studio without a built-in microphone won't show it, and neither will a MacBook using headphones (wired or Bluetooth), an external microphone, external speakers, a display's speakers or AirPlay.
-
-The switch never appears in Microphone-only or System-audio-only recordings, never in dictation, and never on Windows.
-
-**How to turn it on**
-
-1. Start a recording in **Microphone + system audio** mode on a MacBook, using its own microphone and speakers.
-2. On the recording screen, open the **Audio capture** panel (the audio status badge in the session's header).
-3. Expand **More audio options**.
-4. Turn on **Mac echo cancellation** (the row is right under **Enhanced audio processing**).
-
-It's off by default. Once turned on, TalkBar remembers the choice and uses it again in later recordings whenever the conditions above are met. To stop using it, turn the switch off.
-
-The row reads: **Uses macOS's own processing for this Mac's microphone and speakers. Other apps may play a little quieter while recording.**
-
-**While recording**
-
-- Turning the switch on or off during a recording switches the microphone right away. Expect a gap of under a second in the transcript.
-- If you plug in headphones or switch the output, TalkBar goes back to its own echo cancellation within a few seconds and the switch disappears. When you return to the built-in speakers, Apple's processing comes back. The saved choice stays on.
-- If macOS's processing can't start or stops working, TalkBar continues with its own echo cancellation and the recording keeps going. The row then shows: **Not in use right now: TalkBar's own echo cancellation is running.**
-- If you try to turn it on after the route has changed (for example, headphones were just plugged in), TalkBar shows: **Mac echo cancellation needs this Mac's built-in microphone and speakers.**
-- TalkBar's [Speaker echo filter](/settings/voice#processing) still runs: it drops microphone lines that repeat what the speakers played.
-
-**Trade-offs**
-
-- Other apps may play a little quieter while recording with it on. macOS lowers other audio; TalkBar asks for the minimum.
-- The recorded microphone audio is macOS's processed voice, not the raw microphone.
-- While it's on, TalkBar may appear in macOS's Mic Mode menu (Control Center). Choosing a mode there, such as Voice Isolation, changes TalkBar's microphone sound too.
-
 ### When a session goes quiet
 
 Under **Session end**, TalkBar can pause and stop a session on its own:
