@@ -81,7 +81,9 @@ Below it, a section headed by the speaker's name has **Rename speaker** and **Ig
 
 With **Microphone + system audio**, everything your microphone hears is **You**. With **Microphone** only, TalkBar tells the voices on your microphone apart; with **You + 1**, the first new voice is **You**. If your microphone is not captured (for example with **System audio** only), no speaker is marked as you. Use **This is me** to set it yourself.
 
-You can switch system audio on or off during a recording from **Audio capture** on the recording screen. TalkBar then treats your microphone as a session started that way would: with system audio on, your microphone is **You**; with it off, TalkBar tells its voices apart again.
+You can switch system audio on or off during a recording from **Audio capture** on the recording screen. With separate streams, TalkBar then treats your microphone as a session started that way would: with system audio on, your microphone is **You**; with it off, TalkBar tells its voices apart again.
+
+While [Mixed transcription](/voice/recording-and-transcription#mixed-transcription) mixes the sources, speaker detection runs on your voice too and no speaker is marked **You** automatically. Mark yourself with **This is me**. Speakers keep their names when you switch a source off or on.
 
 **You** is a speaker like any other: rename it, combine it with another speaker, or delete it with its lines.
 

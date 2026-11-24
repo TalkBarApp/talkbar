@@ -109,6 +109,10 @@ Check **Transcription language** in **Settings → Voice → Transcription**. So
 
 With Parakeet V3 or Orukeet, hold the recording to its language instead: **Transcription language** in **Settings → General → Session defaults**, or in the transcript **View** menu while you record. See [Hold Parakeet V3 and Orukeet to one language](/voice/languages#hold-parakeet-v3-and-orukeet-to-one-language).
 
+### The other people's words appear as your lines
+
+With **Microphone + system audio**, sound from your speakers can reach your microphone. Use headphones if you can. Otherwise keep **Enhanced audio processing** on, adjust the [Speaker echo filter](/settings/voice#processing), or turn on [Mixed transcription](/voice/recording-and-transcription#mixed-transcription), which transcribes both sources as one stream and runs speaker detection on your voice too.
+
 ## AI and providers
 
 ### A banner says a feature "could not use" a model

@@ -53,8 +53,42 @@ Under **Processing**:
 | --- | --- | --- |
 | **Enhanced audio processing** | Noise suppression, gain control and echo cancellation for the microphone | On |
 | **Auto level balance** | Raises quiet sources and lowers loud ones in **Microphone + system audio** mode | On |
+| **Mixed transcription** | Transcribes the microphone and system audio as one stream, see [below](#mixed-transcription) | Off |
+| **Save raw echo recordings** | In **Microphone + system audio** sessions, saves the microphone and system audio before echo cancellation, to help tune echo cancellation | Off |
 
 In **Microphone + system audio** sessions, the **Speaker echo filter** drops microphone lines that are really sound from your speakers. See [its rules](/settings/voice#processing).
+
+### Mixed transcription
+
+With **Microphone + system audio**, TalkBar normally transcribes your microphone and the computer's audio separately: microphone lines are **You**, system audio lines are the other people. When your speakers are loud or close to the microphone, for example a laptop's built-in speakers, some of the other side can still reach your microphone and show up as extra lines from you.
+
+**Mixed transcription** instead combines your microphone, after echo cancellation, with the system audio and transcribes them as one stream. Speaker detection then runs on the combined stream, your voice included, so the other side's words aren't written a second time as your lines.
+
+- Turn it on in **Settings → Voice → Processing**, or during a recording under **More audio options** in **Audio capture**. A change applies at once and is kept for your next recordings.
+- It works on Windows and Mac. Mixing needs **Microphone + system audio**, **Enhanced audio processing** and speaker detection (a speaker mode other than **Just you**, with a speaker detection model installed). Until a recording has all of them, the switch under **More audio options** is unavailable and says what is missing; the choice saved in Settings applies once they are there.
+- Your voice isn't marked **You** automatically, because TalkBar can no longer tell which voice came from your microphone. Mark yourself once with **This is me** in the speaker menu, see [Speakers](/voice/speakers#when-your-microphone-is-recorded).
+- If you turn the microphone or system audio off during the recording, TalkBar keeps transcribing the other source the same way, so speakers keep their names. Turning **Enhanced audio processing** off goes back to separate streams until you turn it on again.
+- The saved recording is the same either way; only the transcript changes. The **Speaker echo filter** doesn't apply to mixed lines.
+
+Try it when your speakers' sound keeps appearing as your own lines. With headphones, separate streams usually work best.
+
+### Mic Mode
+
+::platform-tabs
+#windows
+Windows has no Mic Mode. **Enhanced audio processing** handles noise and echo, and any effects your microphone's own software applies reach TalkBar too.
+#macos
+On recent versions of macOS, the microphone item in the menu bar can offer **Mic Mode** for TalkBar while it records. It isn't on every macOS version, so if the item has no **Mic Mode** while TalkBar records, your Mac doesn't offer it for TalkBar.
+
+1. Start a recording that uses the microphone.
+2. Click the microphone item in the menu bar (on macOS 13, **Control Center**), then **Mic Mode**.
+3. Choose a mode:
+   - **Standard**: the microphone as it is.
+   - **Voice Isolation**: macOS filters out background sounds so your voice stands out. Good for calls from a noisy room.
+   - **Wide Spectrum**: keeps the sounds around you. Good when several people talk around the Mac.
+
+macOS applies the mode before TalkBar hears the microphone, so it changes both the transcript and the saved recording, and TalkBar can't see or change it. **Voice Isolation** can quiet other people in the room, so use **Standard** or **Wide Spectrum** to record an in-person conversation with the Mac's microphone. TalkBar's **Enhanced audio processing** still runs on top of any mode.
+::
 
 ### When a session goes quiet
 

@@ -37,8 +37,10 @@ For how recording works end to end, see [Recording and transcription](/voice/rec
 | --- | --- | --- |
 | **Enhanced audio processing** | Applies noise suppression, gain control and echo cancellation to microphone audio in sessions. Dictation gets the noise suppression and gain control, so words come through in a noisier room. | On |
 | **Auto level balance** | In **Microphone + system audio** mode, raises quiet sources and lowers loud ones automatically. | On |
+| **Mixed transcription** | With **Microphone + system audio**, transcribes both as one stream after echo cancellation instead of separately, with speaker detection on your voice too. Mixing starts when a recording has **Enhanced audio processing** and speaker detection. Also in **More audio options** while recording. See [Mixed transcription](/voice/recording-and-transcription#mixed-transcription). | Off |
+| **Save raw echo recordings** | Saves the microphone and system audio before echo cancellation to the `echo-record` folder in the TalkBar data folder, about 460 MB an hour, so echo problems can be studied. Only in **Microphone + system audio** sessions; paused time isn't saved. Needs **Enhanced audio processing**. | Off |
 
-**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. Echo cancellation in **Enhanced audio processing** removes most of it, including with Bluetooth headsets. These rules drop microphone lines that are still really sound from your speakers. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
+**Speaker echo filter.** In **Microphone + system audio** sessions, your microphone can pick up the other side from your speakers. Echo cancellation in **Enhanced audio processing** removes most of it, including with Bluetooth headsets. These rules drop microphone lines that are still really sound from your speakers; they don't apply to lines from **Mixed transcription**. Each rule shows its default; **0** turns a rule off. **Reset** restores one rule and **Reset all** restores every rule.
 
 | Rule | What it does | Default |
 | --- | --- | --- |
