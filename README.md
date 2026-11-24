@@ -11,10 +11,10 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><img src="https://img.shields.io/github/v/release/TalkBarApp/talkbar?style=for-the-badge&label=version&color=054df6" alt="Latest version"></a>
-  <a href="https://updater.talkbar.app/get/windows/x64"><img src="https://img.shields.io/badge/Windows-x64-054df6?style=for-the-badge&logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgxMS40djExLjRIMHptMTIuNiAwSDI0djExLjRIMTIuNnpNMCAxMi42aDExLjRWMjRIMHptMTIuNiAwSDI0VjI0SDEyLjZ6Ii8%2BPC9zdmc%2B" alt="Download for Windows x64"></a>
-  <a href="https://updater.talkbar.app/get/windows/arm"><img src="https://img.shields.io/badge/Windows-Arm64-054df6?style=for-the-badge&logo=data:image/svg%2Bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI%2BPHBhdGggZmlsbD0iI2ZmZiIgZD0iTTAgMGgxMS40djExLjRIMHptMTIuNiAwSDI0djExLjRIMTIuNnpNMCAxMi42aDExLjRWMjRIMHptMTIuNiAwSDI0VjI0SDEyLjZ6Ii8%2BPC9zdmc%2B" alt="Download for Windows on Arm"></a>
-  <a href="https://updater.talkbar.app/get/mac"><img src="https://img.shields.io/badge/macOS-Apple%20silicon-054df6?style=for-the-badge&logo=apple&logoColor=white" alt="Download for Mac with Apple silicon"></a>
+  <a href="https://github.com/TalkBarApp/talkbar/releases/latest"><img src="https://talkbar-updater-experiment.kurdin.workers.dev/badge/version.svg" alt="Latest version"></a>
+  <a href="https://updater.talkbar.app/get/windows/x64"><img src=".github/badges/windows-x64.svg" alt="Download for Windows x64"></a>
+  <a href="https://updater.talkbar.app/get/windows/arm"><img src=".github/badges/windows-arm64.svg" alt="Download for Windows on Arm"></a>
+  <a href="https://updater.talkbar.app/get/mac"><img src=".github/badges/macos-apple-silicon.svg" alt="Download for Mac with Apple silicon"></a>
 </p>
 
 <p align="center">
