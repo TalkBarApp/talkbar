@@ -1,6 +1,6 @@
 ---
 title: End User License Agreement (EULA)
-description: End User License Agreement for the TalkBar desktop app, including plans, licenses, app store terms, recording consent, and liability.
+description: 'End User License Agreement for the TalkBar desktop app, including plans, licenses, app store terms, recording consent, and liability.'
 navigation: false
 ---
 
