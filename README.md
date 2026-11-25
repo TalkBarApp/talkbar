@@ -90,6 +90,8 @@ into the next conversation.
 
 See every feature on [talkbar.app](https://www.talkbar.app/#features).
 
+
+
 ## See it in action
 
 <!-- Justified rows: the left screenshot and label sit on the left edge, the right ones on the right edge.
@@ -109,6 +111,8 @@ See every feature on [talkbar.app](https://www.talkbar.app/#features).
   <b>Knowledge</b>&#8239;·&#8239;Facts&#8239;that&#8239;last
   <img src="docs/public/screenshots/sessions/session-details-overview.png" width="100%" height="0" alt="">
 </p>
+
+<img width="1280" height="720" alt="TalkBar-animated-intro" src="https://github.com/user-attachments/assets/37902611-844f-4c95-8c37-378f2be0121b" />
 
 ## Get started
 
