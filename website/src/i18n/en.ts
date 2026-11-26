@@ -636,6 +636,9 @@ const en: Translations = {
   "footer.support": "Support",
   "footer.contact": "Contact",
   "footer.licenses": "Licenses",
+  "footer.offer": "Public offer",
+  // Shown on the Russian site only (seller requisites); intentionally empty in English.
+  "footer.seller": "",
   "footer.copyright": "© 2026 TalkBar. Built for sensitive conversations.",
 
   "modal.close": "Close",

@@ -34,4 +34,12 @@ describe("TalkBar footer", () => {
     expect(source).not.toContain("localeUrls");
     expect(source).not.toContain("PageSignal");
   });
+
+  test("shows the seller requisites and public offer link on the Russian site only", () => {
+    const source = read("src/components/Footer.astro");
+    expect(source).toContain("lang === 'ru'");
+    expect(source).toContain("footer.offer");
+    expect(source).toContain("footer.seller");
+    expect(source).toContain('/offer');
+  });
 });

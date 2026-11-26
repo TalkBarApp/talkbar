@@ -43,6 +43,10 @@ const columns = [
       { label: t(lang, 'footer.support'), href: `mailto:${SITE_CONFIG.contactEmail}?subject=Support` },
       { label: t(lang, 'footer.contact'), href: `mailto:${SITE_CONFIG.contactEmail}`, contact: true },
       { label: t(lang, 'footer.licenses'), href: LICENSE_PORTAL_URLS[lang], external: true },
+      // Russian site only: the public offer lives on the license portal
+      ...(lang === 'ru'
+        ? [{ label: t(lang, 'footer.offer'), href: `${LICENSE_PORTAL_URLS[lang]}/offer`, external: true }]
+        : []),
       { label: t(lang, 'footer.download'), href: DEFAULT_DOWNLOAD_URL, download: true },
     ],
   },
@@ -91,6 +95,12 @@ const columns = [
         </div>
       ))}
     </div>
+
+    {lang === 'ru' && (
+      <p class="mt-10 max-w-3xl text-[13px] leading-[1.6] text-white/55" data-seller-requisites>
+        {t(lang, 'footer.seller')}
+      </p>
+    )}
 
     <div class="mt-14 flex flex-col sm:flex-row gap-3 justify-between items-center label text-white/45">
       <span>{copyrightText}</span>
